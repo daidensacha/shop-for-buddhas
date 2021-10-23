@@ -1,0 +1,212 @@
+html {
+    height: 100%;
+}
+
+body {
+    /* background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed; */
+    /* background-size: cover; */
+    background-image: url("/media/cartographer.png");
+    /* position: relative;
+    padding: 190px 0; */
+    height: calc(100vh - 56px);
+    color: #555;
+    font-family: 'Lato';
+}
+
+.bg-home {
+    background-image: url("/media/cartographer.png");
+    position: relative;
+    padding: 190px 0;
+  }
+
+/*
+===================== Nav Search Bar ===================== */
+#site-searchbar {
+    /*   width:35%; */
+    width: 250px;
+}
+
+#search {
+    width: 75px;
+    transition: width .5s ease;
+    color: #a8a7a7;
+    font-family: Roboto;
+    /*   background-color: #3f3a58; */
+}
+
+#search:focus {
+    width: 150px;
+    outline: none;
+    border-bottom: 1px solid #616161;
+    border-right: 1px solid #616161;
+    border-top: 1px solid #212121;
+    border-left: 1px solid #212121;
+    background-color: #3f3a58;
+
+}
+
+#search:focus-visible {
+    outline: none;
+    /*   border-bottom: 1px solid #484746; */
+    /*   outline: 3px solid #484746;  */
+}
+
+/* .nav-link {
+    color: white;
+} */
+
+
+.number-circle {
+    border-radius: 20%;
+    padding: 0px 7px;
+    background: #cddc39;
+    border: 1px solid #666;
+    color: #666;
+    text-align: center;
+}
+
+/*
+===================== Colors ===================== */
+.color-lime {
+    color: #cddc39;
+}
+
+
+/*
+===================== Navbar styling ===================== */
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.nav-link:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* TESTING CSS */
+
+.nav-sticky.navbar-custom.sticky-dark {
+    background-color: #1a1a1a !important;
+    padding: 15px 0px;
+}
+
+.nav-sticky .navbar-nav li a {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.nav-sticky.navbar-custom .navbar-nav li.active a,
+.nav-sticky.navbar-custom .navbar-nav li a:hover,
+.nav-sticky.navbar-custom .navbar-nav li a:active {
+    color: #ffffff !important;
+}
+
+.nav-sticky.navbar-custom .navbar-toggles {
+    padding: 0.25rem 0.75rem;
+    border: 1px solid transparent;
+    outline: 0;
+}
+
+.nav-sticky .navbar-nav {
+    margin-top: 0px;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.nav-link:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar-brand,
+.ti-mobile {
+    color: #ffffff
+}
+
+.navbar-brand:hover,
+.ti-mobile:hover {
+    color: #ffffff
+}
+
+.nav-sticky.navbar-custom.sticky-dark.bg-custom {
+    background-color: #1a1a1a;
+    padding: 15px 0px;
+}
+
+/* ============ desktop view ============ */
+
+
+/* ============ desktop view .end// ============ */
+
+@media (min-width: 992px) {
+
+/* Header Styling */
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 56px;
+    }
+
+/* Navbar Styling */
+    .navbar .dropdown-menu-end {
+        right: 0;
+        left: auto;
+    }
+
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transition: .3s;
+        margin-top: -1px;
+    }
+
+    .navbar .dropdown-menu.fade-down {
+        top: 80%;
+        transform: rotateX(-75deg);
+        transform-origin: 0% 0%;
+    }
+
+    .navbar .dropdown-menu.fade-up {
+        top: 180%;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        transition: .3s;
+        opacity: 1;
+        visibility: visible;
+        top: 100%;
+        transform: rotateX(0deg);
+    }
+
+    .navbar-nav {
+        margin-left: auto;
+
+    }
+
+    .navbar {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .nav-link {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .navbar-light .navbar-nav .nav-link:focus,
+    .navbar-light .navbar-nav .nav-link:hover {
+        color: #535353 !important;
+        background-color: #e9ecef
+    }
+
+    .navbar-expand-lg .offcanvas {
+        background-color: transparent;
+    }
+}

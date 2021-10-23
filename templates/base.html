@@ -2,40 +2,120 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
 
     {% block meta %}
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% endblock %}
 
     {% block extra_meta %}
     {% endblock %}
 
     {% block corecss %}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
     {% block extra_css %}
     {% endblock %}
 
     {% block corejs %}
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/7432ab4d43.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     {% endblock %}
 
     {% block extra_js %}
     {% endblock %}
 
     <title>Shop for Buddhas {% block extra_title %}{% endblock %}</title>
-  </head>
-  <body>
-    <header class="container-fluid fixed-top"></header>
+</head>
+
+<body>
+    <header class="container-fluid fixed-top">
+
+        <nav class="navbar navbar-expand-lg navbar-customsticky-top sticky sticky-dark flex-row">
+            <div class="container-fluid">
+                <div class="col-6 col-lg-4 my-auto py-1 py-lg-0 d-none d-lg-block">
+                    <a class="navbar-brand" href="#">Shop for Buddhas</a>
+                </div>
+                <div class="col-3 col-lg-4 my-auto py-1 py-lg-0">
+
+
+                    <!-- Start nav links -->
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav mx-auto" id="navbar-navlist">
+                            <li class="nav-item">
+                                <a data-scroll class="nav-link" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-scroll class="nav-link" href="#">Services</a>
+                            </li>
+                            <li class="nav-item dropdown" id="navbar-dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Statues
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark fade-down" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">About</a></li>
+                                    <li><a class="dropdown-item" href="#">Making</a></li>
+                                    <li><a class="dropdown-item" href="#">Testimonials</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a data-scroll class="nav-link" href="#">Shop</a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-scroll class="nav-link" href="#">Contact</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-9 col-lg-4 mb-auto my-lg-auto py-1 py-lg-0">
+
+                    <!-- Search bar -->
+                    <form methon="GET" action="">
+                        <div class="input-group d-flex ms-auto align-top" id="site-searchbar">
+                            <input type="text" class="form-control-plaintext ms-auto rounded px-1" id="search"
+                                placeholder="Search..." aria-label="Recipient's username"
+                                aria-describedby="button-addon2" />
+                            <button class="btn text-white" type="button" id="button-addon2">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <div class="shopping-cart mx-1 my-auto">
+                                <a href="#" class="cart"><span class="text-white"><small
+                                            class="number-circle">0</small><i
+                                            class="fas fa-shopping-cart color-lime"></i></span></a>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- End search bar -->
+                </div>
+                <!-- End nav links -->
+            </div>
+            <!-- End container-fluid -->
+        </nav>
+
+
+    </header>
 
     {% if messages %}
-        <div class="message-container"></div>
+    <div class="message-container"></div>
     {% endif %}
 
     {% block page_header %}
@@ -47,6 +127,7 @@
     {% block postloadjs %}
     {% endblock %}
 
-    
-  </body>
+
+</body>
+
 </html>
