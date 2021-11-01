@@ -3,25 +3,25 @@
 
     <ul class="my-auto d-flex ms-auto">
         <li class="list-inline-item my-auto d-none ms-auto d-lg-inline-flex">
-            <a class="nav-link ms-auto" href="#" id="main-search" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link ms-auto" href="#" id="main-search" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="focusMainSearch()">
                 <div class="text-center">
                     <div><i class="fas fa-search fa-lg"></i></div>
                
                 </div>
             </a>
-            <div class="dropdown-menu dropdown-menu-end border-0 w-100 bg-home my-0" aria-labelledby="main-search">
+            <div class="dropdown-menu dropdown-menu-end border-0 bg-home my-0" aria-labelledby="main-search">
                 <form methon="GET" action="">
-                    <div class="input-group d-flex ms-auto align-top" id="site-searchbar">
+                    <div class="input-group d-flex ms-auto ps-2 align-top" id="site-searchbar">
                     <!-- Start Search -->
                     <input
                         type="text"
-                        class="form-control-plaintext ms-auto rounded px-1"
-                        id="search"
+                        class="form-control-plaintext main-search ms-auto rounded px-1"
+                        id="search-products"
                         placeholder="Search..."
                         aria-label="Recipient's username"
-                        aria-describedby="button-addon2"
+                        aria-describedby="search-icon"
                     />
-                    <button class="btn text-white" type="button" id="button-addon2">
+                    <button class="btn text-white" type="button" id="search-icon">
                         <i class="fas fa-search"></i>
                     </button>
                     </div>
@@ -63,7 +63,7 @@
           <div class="shopping-cart mx-1 my-auto">
             <a href="#" class="cart">
               <span class="text-white">
-                <small class="number-circle">$0.00</small >
+                <small class="number-circle">$0.00 </small >
                 <i class="fas fa-shopping-cart color-lime"></i></span>
               
             </a>
@@ -73,3 +73,25 @@
       </ul>
 </div>
 <!-- END SEARCH ACCOUNT CART -->
+<script>
+  // var searchIcon = document.getElementById('main-search')
+
+  // searchIcon.addEventListener('click', function (event) {
+  //   console.log("icon clicked");
+  //   document.getElementById('search-products').focus();
+  // })
+
+//   focusMethod = function getFocus() {
+//   document.getElementById("search-products").focus();
+// }
+
+</script>
+<script>
+  function focusMainSearch() {
+      setTimeout(setFocus, 10);
+      function setFocus() {
+          let searchInput = document.querySelector(".main-search")
+          searchInput.focus();
+      }
+  }
+</script>

@@ -37,9 +37,9 @@
 </head>
 
 <body>
-    <header class="container-fluid fixed-top bg-home">
+    <header class="container-fluid fixed-top bg-home px-0">
 
-        <nav class="navbar navbar-expand-lg navbar-customsticky-top sticky sticky-dark navbar-dark bg-home flex-row">
+        <nav class="navbar navbar-expand-lg navbar-custom sticky-top sticky sticky-dark navbar-dark bg-home flex-row">
             <div class="container-fluid">
                 <div class="col-6 col-lg-4 my-auto py-1 py-lg-0 d-none d-lg-block">
                     <a class="navbar-brand" href="#">Shop for Buddhas</a>
@@ -73,10 +73,10 @@
                               All Products
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark fade-down" aria-labelledby="productsDropdown">
-                              <li><a class="dropdown-item" href="#">All Products</a></li>
-                              <li><a class="dropdown-item" href="#">By Proce</a></li>
+                              <li><a class="dropdown-item" href="#">By Price</a></li>
                               <li><a class="dropdown-item" href="#">By Rating</a></li>
                               <li><a class="dropdown-item" href="#">By Category</a></li>
+                              <li><a class="dropdown-item" href="#">All Products</a></li>
                             </ul>
                           </li>
                           <li class="nav-item dropdown" id="navbar-dropdown">
@@ -89,10 +89,10 @@
                               Statues
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark fade-down" aria-labelledby="statueDropdown">
-                              <li><a class="dropdown-item" href="#">All Statues</a></li>
                               <li><a class="dropdown-item" href="#">Oxidised</a></li>
-                              <li><a class="dropdown-item" href="#">Painted</a></li>
-                              <li><a class="dropdown-item" href="#">Minature</a></li>
+                              <li><a class="dropdown-item" href="#">Half Gold Painted</a></li>
+                              <li><a class="dropdown-item" href="#">Fully Gold Painted</a></li>
+                              <li><a class="dropdown-item" href="#">All Statues</a></li>
                             </ul>
                           </li>
                           <li class="nav-item dropdown" id="navbar-dropdown">
@@ -106,9 +106,9 @@
                               Malas
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark fade-down" aria-labelledby="malaDropdown">
-                              <li><a class="dropdown-item" href="#">All Malas</a></li>
                               <li><a class="dropdown-item" href="#">108 Beads</a></li>
                               <li><a class="dropdown-item" href="#">Wrist Malas</a></li>
+                              <li><a class="dropdown-item" href="#">All Malas</a></li>
                               
                             </ul>
                           </li>
@@ -141,26 +141,23 @@
     {% block page_header %}
     {% endblock %}
     
-   
-
     {% block content %}
     {% endblock %}
 
     {% block services %}
-    {% endblock services %}
+    {% endblock %}
 
     {% block craftsmen %}
-    {% endblock craftsmen %}
+    {% endblock %}
 
     {% block testimonial %}
-    {% endblock testimonial %}
+    {% endblock %}
 
     {% block contact %}
-    {% endblock contact %}
+    {% endblock %}
 
-    {% block footer %}
-    {% endblock footer %}
-
+    {% include 'includes/footer.html' %}
+  
     {% block postloadjs %}
     {% endblock %}
 

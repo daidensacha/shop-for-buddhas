@@ -13,22 +13,43 @@ body {
     font-family: 'Lato';
 }
 
-.bg-home {
-    background-image: url("/media/cartographer.png");
-    /* position: relative;
-    padding: 190px 0; */
-  } 
+#landing-page {
+  padding-top: 64px;
+}
 
+/*
+===================== Template Style and Colors ===================== */
+.bg-home {
+  background-image: url("/media/cartographer.png");
+  /* position: relative;
+  padding: 190px 0; */
+} 
+
+.color-lime {
+  color: #cddc39;
+}
+
+
+/*
+===================== Nav Cart ===================== */
+.cart {
+  text-decoration: none;
+}
+
+.number-circle {
+  border-radius: 5px;
+  padding: 0px 5px;
+  background: #cddc39;
+  border: 1px solid #666;
+  color: #666;
+  text-align: center;
+}
 
 /*
 ===================== Nav Search Bar ===================== */
 
-#site-searchbar {
-    /*   width:35%; */
-    /* width: 250px; */
-}
 
-#search {
+#search-products, #search-mobile {
     width: calc(100% - 42px);
     /* transition: width .5s ease; */
     color: #a8a7a7;
@@ -40,43 +61,22 @@ body {
     background-color: #3f3a58;
 }
 
-#search:focus {
+#search-products:focus, #search-mobile:focus {
     /* width: 150px; */
     outline: none;
-    /* border-bottom: 1px solid #616161;
+    border-bottom: 1px solid #616161;
     border-right: 1px solid #616161;
     border-top: 1px solid #212121;
     border-left: 1px solid #212121;
-    background-color: #3f3a58; */
+    background-color: #3f3a58;
 
 }
 
-#search:focus-visible {
+#search-products:focus-visible {
     outline: none;
     /*   border-bottom: 1px solid #484746; */
     /*   outline: 3px solid #484746;  */
 }
-
-/* .nav-link {
-    color: white;
-} */
-
-
-.number-circle {
-    border-radius: 20%;
-    padding: 0px 7px;
-    background: #cddc39;
-    border: 1px solid #666;
-    color: #666;
-    text-align: center;
-}
-
-/*
-===================== Colors ===================== */
-.color-lime {
-    color: #cddc39;
-}
-
 
 /*
 ===================== Navbar styling ===================== */
@@ -90,7 +90,7 @@ body {
 }
 
 /* TESTING CSS */
-
+/* 
 .nav-sticky.navbar-custom.sticky-dark {
     background-color: #1a1a1a !important;
     padding: 15px 0px;
@@ -114,17 +114,17 @@ body {
 
 .nav-sticky .navbar-nav {
     margin-top: 0px;
-}
+} */
 
-.nav-link {
+/* .nav-link {
     color: rgba(255, 255, 255, 0.6);
 }
 
 .nav-link:hover {
     color: rgba(255, 255, 255, 0.9);
-}
+} */
 
-.navbar-brand,
+/* .navbar-brand,
 .ti-mobile {
     color: #ffffff
 }
@@ -137,6 +137,17 @@ body {
 .nav-sticky.navbar-custom.sticky-dark.bg-custom {
     background-color: #1a1a1a;
     padding: 15px 0px;
+} */
+
+/* Mobile dropdown styling */
+.dropdown-menu.show {
+  border-radius: 0;
+}
+
+.dropdown-menu[data-bs-popper] {
+  top: 100%;
+  left: 0;
+  margin-top: 0;
 }
 
 /* ============ desktop view ============ */
@@ -161,7 +172,7 @@ body {
 
 /* Navbar Styling */
     .navbar .dropdown-menu-end {
-        right: 0;
+        /* right: -15px; */
         left: auto;
     }
 
@@ -218,12 +229,12 @@ body {
 
 /* Search input styling for large screens */
 
-    #site-searchbar {
-        /*   width:35%; */
+    /* #site-searchbar {
         width: 250px;
-    }
+        padding-left: 10px;
+    } */
 
-    #search {
+    #search-products {
         width: 75px;
         transition: width .5s ease;
         color: #a8a7a7;
@@ -232,7 +243,7 @@ body {
         background-color: transparent;
     }
 
-    #search:focus {
+    #search-products:focus {
         width: 200px;
         outline: none;
         border-bottom: 1px solid #616161;
@@ -276,7 +287,7 @@ body {
     
     /* Image for Parallax Section */ 
     .paralsec {
-    background-image: url("/media/shakyamuni-4.png");
+    background-image: url("/media/bg_shakyamuni.png");
     }
     
     /* .paralsec1 {
@@ -348,10 +359,10 @@ textarea.form-control {
   }
   
   .form-control {
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     -webkit-box-shadow: none !important;
             box-shadow: none !important;
-    height: 50px;
+    /* height: 50px; */
     padding-left: 20px;
     border: 1px solid #e0e0e0;
     font-size: 14px;

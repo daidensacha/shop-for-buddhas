@@ -4,19 +4,19 @@
     <ul class="my-auto d-flex">
         <li class="list-inline-item my-auto ms-auto">
         
-            <a class="nav-link d-block d-lg-none" href="#" id="mobile-search" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link d-block d-lg-none" href="#" id="mobile-search" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="focusMobileSearch()">
                 <div class="text-center">
                     <div><i class="fas fa-search fa-lg"></i></div>
                
                 </div>
             </a>
-            <div class="dropdown-menu border-0 w-100 bg-home my-0" aria-labelledby="mobile-search">
+            <div class="dropdown-menu border-0 w-100 p-3 bg-home my-0" aria-labelledby="mobile-search">
                 <form methon="GET" action="">
                     <div class="input-group d-flex  align-top" id="site-searchbar">
                
-                    <input
+                    <!-- <input
                         type="text"
-                        class="form-control-plaintext ms-auto rounded px-1"
+                        class="form-control ms-auto px-1"
                         id="search"
                         placeholder="Search..."
                         aria-label="Recipient's username"
@@ -25,12 +25,16 @@
                     <button class="btn text-white" type="button" id="button-addon2">
                         <i class="fas fa-search"></i>
                     </button>
+                    </div> -->
+                    <div class="input-group">
+                      <input type="text" class="form-control mobile-search" id="search-mobile" placeholder="Search..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                      <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
                     </div>
                 </form>
             </div>
           <!-- End Search -->
         </li>
-        <li class="list-inline-item my-auto ms-auto ms-lg-0">
+        <li class="list-inline-item my-auto ms-lg-0">
           
           <a
             class="nav-link"
@@ -74,3 +78,15 @@
       </ul>
 </div>
 <!-- END SEARCH ACCOUNT CART -->
+
+<script>
+  function focusMobileSearch() {
+      setTimeout(setFocus, 200);
+      function setFocus() {
+          let searchInput = document.querySelector(".mobile-search")
+           console.log(searchInput)
+           console.log('makeFocus function works!!')
+          searchInput.focus();
+      }
+  }
+</script>
