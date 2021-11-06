@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Carattere&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+
 html {
   height: 100%;
 }
@@ -29,6 +35,10 @@ body {
   color: #cddc39;
 }
 
+.brand-heading {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5em;
+}
 
 /*
 ===================== Nav Cart ===================== */
@@ -91,55 +101,42 @@ body {
   color: rgba(255, 255, 255, 0.9);
 }
 
+/*  Required for megamenu */
+.box-shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/* Required for mega menu */
+@media all and (min-width: 992px) {
+.navbar{ padding-top: 0; padding-bottom: 0; }
+.navbar .has-megamenu{
+  position:static!important;
+}
+.navbar .megamenu{
+  left:0; 
+  right:0; 
+  width:100%;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  /* transition: .3s; */
+  transform: translateY(-10px);
+  transition: all .3s ease;
+  margin-top: -1px;
+}
+
+/* the container to be made visible */
+li.dropdown:hover div.megamenu {
+  transition: .3s;
+  opacity: 1;
+  visibility: visible;
+  top: 100%;
+  transform: rotateX(0deg);
+}
+/* .navbar .megamenu{left:0; right:0; width:100%; padding:20px;  } */
+/* .navbar .nav-link{ padding-top:1rem; padding-bottom:1rem;  } */
+}
+
 /* TESTING CSS */
-/* 
-.nav-sticky.navbar-custom.sticky-dark {
-    background-color: #1a1a1a !important;
-    padding: 15px 0px;
-}
-
-.nav-sticky .navbar-nav li a {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.nav-sticky.navbar-custom .navbar-nav li.active a,
-.nav-sticky.navbar-custom .navbar-nav li a:hover,
-.nav-sticky.navbar-custom .navbar-nav li a:active {
-    color: #ffffff !important;
-}
-
-.nav-sticky.navbar-custom .navbar-toggles {
-    padding: 0.25rem 0.75rem;
-    border: 1px solid transparent;
-    outline: 0;
-}
-
-.nav-sticky .navbar-nav {
-    margin-top: 0px;
-} */
-
-/* .nav-link {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.nav-link:hover {
-    color: rgba(255, 255, 255, 0.9);
-} */
-
-/* .navbar-brand,
-.ti-mobile {
-    color: #ffffff
-}
-
-.navbar-brand:hover,
-.ti-mobile:hover {
-    color: #ffffff
-}
-
-.nav-sticky.navbar-custom.sticky-dark.bg-custom {
-    background-color: #1a1a1a;
-    padding: 15px 0px;
-} */
 
 /* Mobile dropdown styling */
 .dropdown-menu.show {
@@ -172,10 +169,44 @@ body {
     padding-top: 56px;
   }
 
-  /* Navbar Styling */
+  /****************************************************** Megamenu transition */
+
+
+/* Megamenu experiment for transition */
+
+#product-megadropdown {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+  margin-top: -1px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  transform: translate(0, 0)!important;
+}
+
+.navbar .dropdown-menu.megamenu.fade-down {
+  top: 80%!important;
+  transform: rotateY(-75deg)!important;
+  transform-origin: 0% 0%;
+}
+
+.navbar .dropdown-menu.megamenu.fade-up {
+  top: 180%;
+}
+
+#product-megamenu:hover .dropdown-menu.megamenu {
+  transition: .3s;
+  opacity: 1;
+  visibility: visible;
+  top: 100%!important;
+  transform: rotateX(0deg)!important;
+}
+
+  /*********************************************************** Navbar Styling */
   .navbar .dropdown-menu-end {
-    /* right: -15px; */
-    left: auto;
+    /* left: auto; */
   }
 
   .navbar .nav-item .dropdown-menu {
@@ -214,16 +245,16 @@ body {
     padding-bottom: 0;
   }
 
-  .nav-link {
+  /* .nav-link {
     padding-top: 1rem;
     padding-bottom: 1rem;
-  }
+  } */
 
-  .navbar-light .navbar-nav .nav-link:focus,
+  /* .navbar-light .navbar-nav .nav-link:focus,
   .navbar-light .navbar-nav .nav-link:hover {
     color: #535353 !important;
-    background-color: #e9ecef
-  }
+    background-color: #e9ecef;
+  } */
 
   .navbar-expand-lg .offcanvas {
     background-color: transparent;
