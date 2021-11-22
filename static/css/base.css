@@ -149,6 +149,10 @@ li.dropdown:hover div.megamenu {
   margin-top: 0;
 }
 
+.header-height-bar {
+  height: 82px;
+}
+
 /* ============ desktop view ============ */
 
 
@@ -463,7 +467,8 @@ textarea.form-control {
   position: relative;
 }
 
-.social .social-icon {
+a.social-icon {
+  /* background: #5465ff!important; */
   border: 2px solid #868e96;
   border-radius: 50%;
   -webkit-transition: all 0.5s;
@@ -474,6 +479,13 @@ textarea.form-control {
   font-size: 16px;
   line-height: 40px;
   text-align: center;
+}
+
+a.social-icon:hover {
+  color: #fff!important;
+  border: 2px solid #5465ff!important;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .footer-terms li:last-child:after {
