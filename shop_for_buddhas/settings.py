@@ -110,6 +110,7 @@ LOGIN_REDIRECT_URL = '/'
 ACCOUNT_FORMS = {
     "signup": "accounts.forms.CustomSignup"
 }
+
 AUTH_USER_MODEL = "accounts.Profile"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"

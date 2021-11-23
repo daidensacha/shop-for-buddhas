@@ -10,7 +10,10 @@ user_type = (
 
 
 class CustomSignup(SignupForm):
-    user_type = forms.ChoiceField(choices=user_type)
+    user_type = forms.ChoiceField(
+        choices=user_type,
+        label='Register as a customer or vendor?'
+        )
 
     def save(self, request):
         user = super(CustomSignup, self).save(request)
