@@ -7,8 +7,8 @@ from .models import Profile
 
 
 user_type = (
-    ('customer', "Customer"),
-    ('vendor', "Vendor")
+    ('is_customer', "Customer"),
+    ('is_vendor', "Vendor")
 )
 
 
@@ -22,8 +22,8 @@ class CustomSignup(SignupForm):
     """Add user_type choicefield with label to signup form"""
     user_type = forms.ChoiceField(
         choices=user_type,
-        label='Register as a customer or vendor?'
-        )
+        label='Register as a customer or vendor?',
+        required=True)
 
     def save(self, request):
         user = super(CustomSignup, self).save(request)

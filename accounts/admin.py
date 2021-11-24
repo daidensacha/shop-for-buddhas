@@ -29,3 +29,4 @@ class ProfileAdmin(admin.ModelAdmin):
     list_filter = ('user_type',)
     ordering = ('username',)
     search_fields = ('username', 'email', 'user_type')
+    readonly_fields = ['password']
