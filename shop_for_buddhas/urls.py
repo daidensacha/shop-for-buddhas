@@ -23,3 +23,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Configure site admin headings
+admin.site.site_header = 'Shop for Buddhas Admin'
+admin.site.site_title = 'Shop for Buddhas'
+admin.site.index_title = 'Welcome to Shop for Buddhas Admin Panel'
