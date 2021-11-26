@@ -1,8 +1,14 @@
+"""
+Remove unrequired apps from the admin panel by unregistering them.
+Create custom layout of required form elements and information in the
+accounts app in the admin panel.
+"""
+
 from django.contrib import admin
-from .models import Profile
 from django.contrib.auth.models import User, Group
 # from django.contrib.sites.models import Site
 from allauth.socialaccount.models import SocialApp, SocialAccount, SocialToken
+from .models import Profile
 
 # Register your models here.
 
@@ -13,8 +19,10 @@ admin.site.unregister(SocialApp)
 admin.site.unregister(SocialAccount)
 admin.site.unregister(SocialToken)
 
+
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
+    """Change layout of required information in accounts admin panel."""
     fields = (
         'first_name',
         'last_name',
@@ -27,6 +35,6 @@ class ProfileAdmin(admin.ModelAdmin):
         )
     list_display = ('username', 'email', 'user_type', 'date_joined')
     list_filter = ('user_type',)
-    ordering = ('username',)
+    ordering = ('user_type', 'username',)
     search_fields = ('username', 'email', 'user_type')
     readonly_fields = ['password']

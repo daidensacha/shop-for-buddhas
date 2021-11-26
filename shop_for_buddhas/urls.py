@@ -26,7 +26,7 @@ urlpatterns = [
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-"""Configure site adminn panel headings"""
+# Configure site adminn panel headings
 admin.site.site_header = 'Shop for Buddhas Admin'
 admin.site.site_title = 'Shop for Buddhas'
 admin.site.index_title = 'Welcome to Shop for Buddhas Admin Panel'
