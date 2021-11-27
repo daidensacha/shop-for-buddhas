@@ -214,9 +214,8 @@
 {% block testimonial %}
     <!-- START TESTIMONIAL -->
     <section class="section bg-client" id="testi">
-        <div class="container">
-            <button type="button" class="btn btn-outline-light rounded-3" id="btn-testimonial"><i class="fas fa-pencil-alt me-4"></i>Leave a Testimonial</button>
-            <!-- <button type="button" class="btn btn-outline-light">Testimonial</button> -->
+        <div class="container"> 
+            <a class="btn btn-outline-light rounded-3" id="btn-testimonial" href="{% url 'testimonial_view' %}" role="button"><i class="fas fa-pencil-alt me-4"></i>Leave a Testimonial</a>
             <div class="row justify-content-center mt-5 mb-5">
                 <div class="col-lg-12">
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
