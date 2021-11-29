@@ -1,14 +1,15 @@
+from accounts.models import Profile
 from django.test import TestCase
 import pytest
-from django import urls
-from accounts.models import Profile
-# Create your tests here.
+import tempfile
 
+MEDIA_ROOT = tempfile.mkdtemp()
 pytestmark = pytest.mark.django_db(transaction=True)
 
 
+# Unit Tests: Testing Models
 class ModelTests(TestCase):
-    def profile_test(self):
+    def test_profile(self):
         length = len(Profile.objects.all())
         assert length == 0
         user = Profile()

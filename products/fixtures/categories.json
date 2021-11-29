@@ -1,0 +1,58 @@
+[
+    {
+      "pk": 1,
+      "model": "products.category",
+      "fields": {
+        "name": "full_gold",
+        "friendly_name": "Full Gold Finish"
+      }
+    },
+    {
+      "pk": 2,
+      "model": "products.category",
+      "fields": {
+        "name": "half_gold",
+        "friendly_name": "Half Gold Finish"
+      }
+    },
+    {
+      "pk": 3,
+      "model": "products.category",
+      "fields": {
+        "name": "oxidised",
+        "friendly_name": "Oxidised Finish"
+      }
+    },
+    {
+      "pk": 4,
+      "model": "products.category",
+      "fields": {
+        "name": "minature",
+        "friendly_name": "Minature Statues"
+      }
+    },
+    {
+      "pk": 5,
+      "model": "products.category",
+      "fields": {
+        "name": "mala_108",
+        "friendly_name": "Mala: 108 Beads"
+      }
+    },
+    {
+      "pk": 6,
+      "model": "products.category",
+      "fields": {
+        "name": "mala_wrist",
+        "friendly_name": "Mala: Wrist"
+      }
+    },
+    {
+      "pk": 7,
+      "model": "products.category",
+      "fields": {
+        "name": "specials",
+        "friendly_name": "Specials"
+      }
+    }
+]
