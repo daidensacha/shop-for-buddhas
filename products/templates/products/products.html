@@ -22,37 +22,107 @@
             <div class="product-container col-10 offset-1">
                 <div class="row mt-1 mb-2"></div>
                 <div class="row">
-                    {% for product in products %}
-                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4">
-                        <div class="col card h-100 border-0">
-                            {% if product.image %}
-                                    <a href="">
-                                        <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                   
+
+                       <!-- Product Box -->
+                       {% for product in products %}
+
+                       <div class="col-sm-6 col-lg-3">
+                        <div class="product-card-1">
+                            <div class="product-card-image">
+                                <div class="badge-ribbon">
+
+                                    <!-- <span class="badge bg-danger">Sale</span> -->
+                                </div>
+                                <div class="product-action">
+                                    <a href="#" class="btn btn-outline-primary">
+                                        <i class="bi bi-heart"></i>
                                     </a>
+                                    <a href="#" class="btn btn-outline-primary">
+                                        <i class="bi bi-arrow-left-right"></i>
+                                    </a>
+                                    <!-- <a data-bs-toggle="modal" data-bs-target="#px-quick-view" href="javascript:void(0)" class="btn btn-outline-primary"> -->
+                                    <a data-bs-toggle="modal" data-bs-target="#{{ product.sku }}" href="javascript:void(0)" class="btn btn-outline-primary">
+                                        <i class="bi bi-eye-fill"></i>
+                                    </a>
+                                </div>
+                                <div class="product-media">
+                                    {% if product.image %}
+                                        <a href="">
+                                            <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" title="">
+                                        </a>
                                     {% else %}
-                                    <a href="">
-                                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                                    </a>
+                                        <a href="">
+                                            <img class="img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}"  title="">
+                                        </a>
                                     {% endif %}
-                                    <div class="card-body pb-0">
-                                        <p class="mb-0">{{ product.name }}</p>
+
+                                    <div class="product-cart-btn">
+                                        <a href="#" class="btn btn-primary btn-sm w-100">
+                                            <i class="bi bi-cart"></i>
+                                            Add to cart
+                                        </a>
                                     </div>
-                                    <div class="card-footer bg-white pt-0 border-0 text-left">
-                                        <div class="row">
-                                            <div class="col">
-                                                <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
-                                                {% if product.rating %}
-                                                    <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
-                                                {% else %}
-                                                    <small class="text-muted">No Rating</small>
-                                                {% endif %}
-                                            </div>
-                                        </div>
+                                </div>
+                            </div>
+                            <div class="product-card-info">
+                                <div class="product-meta small">
+                                    <a href="#">{{ product.categpry }}</a>
+                                </div>
+                                {% if product.rating %}
+                                    <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                                {% else %}
+                                    <small class="text-muted">No Rating</small>
+                                {% endif %}
+                                <!-- <div class="rating-star text">
+                                    <i class="bi bi-star-fill active"></i>
+                                    <i class="bi bi-star-fill active"></i>
+                                    <i class="bi bi-star-fill active"></i>
+                                    <i class="bi bi-star-fill active"></i>
+                                    <i class="bi bi-star"></i>
+                                </div> -->
+                                <h6 class="product-title">
+                                    <a href="#">{{ product.name }}</a>
+                                </h6>
+                                <div class="product-price">
+                                    <span class="text-primary">${{ product.price }}</span>
+                                    <!-- <del class="fs-sm text-muted">$38.<small>50</small></del> -->
+                                </div>
+                                <!-- <div class="nav-thumbs">
+                                    <div class="form-check radio-color form-check-inline">
+                                        <input class="form-check-input" type="radio" name="color1" id="color_1" checked="">
+                                        <label class="radio-color-label" for="color_1">
+                                            <span style="background-color: #d1dceb;"></span>
+                                        </label>
                                     </div>
+                                    <div class="form-check radio-color form-check-inline">
+                                        <input class="form-check-input" type="radio" name="color1" id="color_2">
+                                        <label class="radio-color-label" for="color_2">
+                                            <span style="background-color: #d1dceb;"></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check radio-color form-check-inline">
+                                        <input class="form-check-input" type="radio" name="color1" id="color_3">
+                                        <label class="radio-color-label" for="color_3">
+                                            <span style="background-color: #d1dceb;"></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check radio-color form-check-inline">
+                                        <input class="form-check-input" type="radio" name="color1" id="color_4">
+                                        <label class="radio-color-label" for="color_4">
+                                            <span style="background-color: #d1dceb;"></span>
+                                        </label>
+                                    </div>
+                                </div> -->
+                            </div>
                         </div>
                     </div>
-                    
+                    <!-- End Product Box -->
+                  
+
+
                     {% endfor %}
+
                 </div>
               
             </div>
