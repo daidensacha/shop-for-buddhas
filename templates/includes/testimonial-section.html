@@ -5,7 +5,7 @@
         {% if request.user.is_authenticated %}
         <a class="btn btn-outline-light rounded-3" id="btn-testimonial" href="{% url 'testimonial_view' %}" role="button"><i class="fas fa-pencil-alt me-4"></i>Leave a Testimonial</a>
        {% endif %}
-        <div class="row justify-content-center mt-5 mb-5">
+        <div class="row justify-content-center">
             <div class="col-lg-12">
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
@@ -36,7 +36,6 @@
                                         </p>
                                         {% endif %}
                                     <p class="text-muted">
-
                                         {% for star in stars %}
                                         {% if star < testimonial.user_rating|add:"1" %}
                                             <span class="text-warning"><i class="fas fa-star"></i></span>
@@ -45,8 +44,6 @@
                                             <span class="text-warning"><i class="far fa-star"></i></span>
                                         {% endif %}
                                         {% endfor %}
-
-                                       
                                       </p>
                                 </div>
                             </div>

@@ -261,6 +261,9 @@ li.dropdown:hover div.megamenu {
   padding-bottom: 0;
 }
 
+nav#main-navbar {
+  padding: 0 7em!important;
+}
   /* .nav-link {
     padding-top: 1rem;
     padding-bottom: 1rem;

@@ -27,26 +27,29 @@
                        <!-- Product Box -->
                        {% for product in products %}
 
-                       <div class="col-sm-6 col-lg-3">
-                        <div class="product-card-1">
+                       <div class="col-sm-6 col-lg-3 my-3">
+                        <div class="product-card-3">
                             <div class="product-card-image">
                                 <div class="badge-ribbon">
 
                                     <!-- <span class="badge bg-danger">Sale</span> -->
                                 </div>
                                 <div class="product-action">
-                                    <a href="#" class="btn btn-outline-primary">
+                                    <a href="#" class="btn btn-outline-dark">
                                         <i class="bi bi-heart"></i>
                                     </a>
-                                    <a href="#" class="btn btn-outline-primary">
+                                    <a href="#" class="btn btn-outline-dark">
                                         <i class="bi bi-arrow-left-right"></i>
                                     </a>
                                     <!-- <a data-bs-toggle="modal" data-bs-target="#px-quick-view" href="javascript:void(0)" class="btn btn-outline-primary"> -->
-                                    <a data-bs-toggle="modal" data-bs-target="#{{ product.sku }}" href="javascript:void(0)" class="btn btn-outline-primary">
+                                    <a data-bs-toggle="modal" data-bs-target="#{{ product.sku }}" href="javascript:void(0)" class="btn btn-outline-dark">
                                         <i class="bi bi-eye-fill"></i>
                                     </a>
+                                    <a data-bs-toggle="modal" data-bs-target="#{{ product.sku }}" href="javascript:void(0)" class="btn btn-outline-dark">
+                                        <i class="bi bi-cart"></i>
+                                    </a>
                                 </div>
-                                <div class="product-media">
+                                <div class="product-media h-100">
                                     {% if product.image %}
                                         <a href="">
                                             <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" title="">
@@ -57,12 +60,12 @@
                                         </a>
                                     {% endif %}
 
-                                    <div class="product-cart-btn">
+                                    <!-- <div class="product-cart-btn">
                                         <a href="#" class="btn btn-primary btn-sm w-100">
                                             <i class="bi bi-cart"></i>
                                             Add to cart
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="product-card-info">
@@ -70,7 +73,20 @@
                                     <a href="#">{{ product.categpry }}</a>
                                 </div>
                                 {% if product.rating %}
-                                    <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                                    <!-- <p class="text-muted"> -->
+                                    <div class="rating-star text">
+
+                                   
+                                        {% for star in stars %}
+                                        {% if star < product.rating|add:"1" %}
+                                            <span class="text-warning"><i class="fas fa-star"></i></span>
+                                        {% endif %}
+                                        {% if star > product.rating|add:"0"%}
+                                            <span class="text-warning"><i class="far fa-star"></i></span>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <!-- <small class="text-muted"><i class="fas fa-star mr-1"></i> </small> -->
                                 {% else %}
                                     <small class="text-muted">No Rating</small>
                                 {% endif %}
@@ -81,6 +97,9 @@
                                     <i class="bi bi-star-fill active"></i>
                                     <i class="bi bi-star"></i>
                                 </div> -->
+
+                                
+
                                 <h6 class="product-title">
                                     <a href="#">{{ product.name }}</a>
                                 </h6>

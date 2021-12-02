@@ -11420,9 +11420,12 @@
              transition-delay: 0.25s; }
              .product-card-3 .product-action .btn + .btn + .btn + .btn + .btn {
                transition-delay: 0.30s; }
-       .product-card-3 .product-action .btn:hover {
+       /* .product-card-3 .product-action .btn:hover {
          background: #5465ff;
-         border-color: #5465ff; }
+         border-color: #5465ff; } */
+         .product-card-3 .product-action .btn:hover {
+          background: #02010a;
+          border-color: #02010a; }
    .product-card-3 .product-card-info {
      position: relative;
      padding: 10px 15px 15px;
