@@ -5,11 +5,12 @@
    
         
          <!-- Blog Section Start -->
-         <div class="section section-padding-02 mt-n10">
+         <div class="section section-padding-02">
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-lg-8">
                         <div class="blog-wrapper">
+                            <h1>Blog</h1>
                             <div class="row">
                                 {% for blog in blog %}
                                 <div class="col-md-6">
@@ -43,11 +44,11 @@
                             <!-- Page pagination Start -->
                             <div class="page-pagination">
                                 <ul class="pagination justify-content-center">
-                                    <li class="page-item"><a class="page-link" href="#"><i class="las la-angle-left"></i></a></li>
+                                    <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-left"></i></a></li>
                                     <li class="page-item"><a class="page-link" href="#">1</a></li>
                                     <li class="page-item"><a class="page-link active" href="#">2</a></li>
                                     <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#"><i class="las la-angle-right"></i></a></li>
+                                    <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
                                 </ul>
                             </div>
                             <!-- Page pagination End -->
@@ -65,7 +66,7 @@
                                 <div class="widget-search">
                                     <form action="#">
                                         <input class="form-control" type="text" placeholder="Search">
-                                        <button><i class="ion-ios-search-strong"></i></button>
+                                        <button><i class="fas fa-search"></i></button>
                                     </form>
                                 </div>
                                 <!-- Widget Search End -->
@@ -79,8 +80,8 @@
                                 <!-- Widget Category Start -->
                                 <div class="widget-link">
                                     <ul>
-                                        {% for category in category %}
-                                        <li><a href="#">{{ category.category }}</a></li>
+                                        {% for name in category %}
+                                        <li><a href="#">{{ name.category }}</a></li>
                                         {% endfor %}
                                     </ul>
                                 </div>
@@ -169,15 +170,15 @@
                             <!-- Sidebar Widget End -->
 
                             <!-- Sidebar banner Start -->
-                            <div class="sidebar-banner">
+                            <!-- <div class="sidebar-banner"> -->
                                 <!-- Single banner Start -->
-                                <div class="single-banner">
+                                <!-- <div class="single-banner">
                                     <a href="#">
                                         <img src="assets/images/banner-04.jpg" alt="Banner">
                                     </a>
-                                </div>
+                                </div> -->
                                 <!-- Single banner End -->
-                            </div>
+                            <!-- </div> -->
                             <!-- Sidebar banner End -->
 
                         </div>

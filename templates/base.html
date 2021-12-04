@@ -495,7 +495,8 @@
 		<!-- End Top Header -->
 		<nav class="navbar navbar-expand-lg navbar-light" id="main-navbar">
             <!-- Container fluid removes side margin on mengamenu. -->
-			<div class="container-fluid">
+			<div class="container">
+			<!-- <div class="container-fluid"> -->
 				<!-- Logo -->
 				<a class="navbar-brand" href="{% url 'home' %}">
 					<p3 class="brand-heading">Shop for Buddhas</p3>
@@ -620,7 +621,7 @@
 						</li>
 
 						<li class="nav-item">
-							<a href="#" class="nav-link">Blog</a>
+							<a href="{% url 'blog_list' %}" class="nav-link">Blog</a>
 						</li>
 						<li class="nav-item">
 							<a href="#contect_form" class="nav-link">Contact</a>
