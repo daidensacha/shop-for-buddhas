@@ -3,7 +3,15 @@
   <section class="section bg-client" id="testi">
     <div class="container"> 
         {% if request.user.is_authenticated %}
+        <!-- <div class="btn-testimonial-cont">
         <a class="btn btn-outline-light rounded-3" id="btn-testimonial" href="{% url 'testimonial_view' %}" role="button"><i class="fas fa-pencil-alt me-4"></i>Leave a Testimonial</a>
+        </div> -->
+        <div class="testimonial-btn-wrapper">
+            <a class="btn btn-outline-light rounded-3" id="btn-testimonial" href="{% url 'testimonial_view' %}" role="button">
+              <i class="fas fa-pencil-alt py-auto"></i>
+              <span class="button-text">Leave a Testimonial</span>
+            </a>
+          </div>
        {% endif %}
         <div class="row justify-content-center">
             <div class="col-lg-12">

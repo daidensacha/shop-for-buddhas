@@ -470,7 +470,7 @@
 						<!-- Top link -->
 						<ul class="nav ms-auto ms-lg-3">
 							<li class="nav-item">
-								<a href="#contect_form" class="nav-link text-white">Contact</a>
+								<a href="{% url 'home' %}#contact" class="nav-link text-white">Contact</a>
 							</li>
 							<li class="nav-item">
 								<!-- <a href="#" class="nav-link text-white" data-bs-toggle="modal"
@@ -485,8 +485,8 @@
 						<!-- Top social -->
 						<div class="nav header-social justify-content-end d-none d-lg-block white-link">
 							<a class="h-social-link" href="#"><i class="bi bi-facebook"></i></a>
-							<a class="h-social-link" href="#"><i class="bi bi-twitter"></i></a>
 							<a class="h-social-link" href="#"><i class="bi bi-linkedin"></i></a>
+							<a class="h-social-link" href="#"><i class="bi bi-github"></i></a>
 						</div>
 					</div>
 				</div>
@@ -518,11 +518,11 @@
 								<div class="container-fluid px-0">
 									<!-- START ROW -->
 									<div class="row g-0">
-										<div class="col-12 col-md-4 my-3">
+										<div class="col-12 col-md-3 offset-md-1 my-3">
                                             <!-- START FIRST MEGAMENU COLUMN -->
 											<div class="row">
 												<div class="col-6 col-sm-6 text-end">
-													<img class="rounded" src="{% static 'img/BFG5002001.jpg' %}" alt="">
+													<img class="rounded megamenu-image"  src="{% static 'img/BFG5002001.jpg' %}" alt="">
 												</div>
 												<div class="col-6 col-sm-6">
 													<h6 class="px-3 text-uppercase">Filter</h6>
@@ -549,10 +549,10 @@
 										</div>
 
                                         <!-- START SECOND MEGAMENU COLUMN -->
-										<div class="col-md-4 my-3">
+										<div class="col-12 col-md-4 my-3">
 											<div class="row">
 												<div class="col-6 col-sm-6 text-end">
-													<img class="rounded" src="{% static 'img/BO5002001.jpg' %}" alt="">
+													<img class="rounded megamenu-image" src="{% static 'img/BO5002001.jpg' %}" alt="">
 												</div>
 												<div class="col-6 col-sm-6">
 													<h6 class="px-3 text-uppercase">Statues</h6>
@@ -583,10 +583,10 @@
 										</div>
                                         <!-- END SECOND MEGAMENU COLUMN -->
                                         <!-- START THIRD MEGAMENU COLUMN -->
-										<div class="col-md-4 my-3">
+										<div class="col-12 col-md-3 my-3">
 											<div class="row">
 												<div class="col-6 col-sm-6 text-end">
-													<img class="rounded" src="{% static 'img/M108_MA91162.jpg' %}" alt="">
+													<img class="rounded megamenu-image" src="{% static 'img/M108_MA91162.jpg' %}" alt="">
                                                     
 												</div>
 												<div class="col-6 col-sm-6">
