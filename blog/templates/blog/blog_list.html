@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+   
+        
+         <!-- Blog Section Start -->
+         <div class="section section-padding-02 mt-n10">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-lg-8">
+                        <div class="blog-wrapper">
+                            <div class="row">
+                                {% for blog in blog %}
+                                <div class="col-md-6">
+                                    <!-- Single Blog Start -->
+                                    <div class="single-blog">
+                                        <div class="blog-images">
+                                            <div class="post-meta">
+                                                <span class="meta-date">{{ blog.posted_at | date }}</span>
+                                                <span class="meta-author">Posted by <span> {{ blog.author }} </span></span>
+                                            </div>
+                                            <a href="blog-details-left-sidebar.html"><img src="/media/{{blog.image}}" alt=""></a>
+                                            <div class="meta-category">
+                                                <a href="#">{{ blog.category }}</a>
+                                            </div>
+                                        </div>
+                                        <div class="blog-content">
+                                            <h4 class="blog-title"><a href="blog-details-left-sidebar.html"> {{ blog.title }} </a></h4>
+                                            <p> {{ blog.description }} ...</p>
+                                            
+                                        </div>
+                                    </div>
+                                    <!-- Single Blog end -->
+                                </div>
+                                {% endfor %}
+                               
+                                
+                                
+                                
+                            </div>
+
+                            <!-- Page pagination Start -->
+                            <div class="page-pagination">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item"><a class="page-link" href="#"><i class="las la-angle-left"></i></a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link active" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#"><i class="las la-angle-right"></i></a></li>
+                                </ul>
+                            </div>
+                            <!-- Page pagination End -->
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4">
+                        <!-- Sidebar Start -->
+                        <div class="sidebar pt-1">
+
+                            <!-- Sidebar Widget Start -->
+                            <div class="sidebar-widget">
+                                <h3 class="widget-title">Search</h3>
+
+                                <!-- Widget Search Start -->
+                                <div class="widget-search">
+                                    <form action="#">
+                                        <input class="form-control" type="text" placeholder="Search">
+                                        <button><i class="ion-ios-search-strong"></i></button>
+                                    </form>
+                                </div>
+                                <!-- Widget Search End -->
+                            </div>
+                            <!-- Sidebar Widget End -->
+
+                            <!-- Sidebar Widget Start -->
+                            <div class="sidebar-widget">
+                                <h3 class="widget-title">Category</h3>
+
+                                <!-- Widget Category Start -->
+                                <div class="widget-link">
+                                    <ul>
+                                        {% for category in category %}
+                                        <li><a href="#">{{ category.category }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <!-- Widget Category End -->
+                            </div>
+                            <!-- Sidebar Widget End -->
+
+                            <!-- Sidebar Widget Start -->
+                            <div class="sidebar-widget">
+                                <h3 class="widget-title">Popular Post</h3>
+
+                                <!-- Widget Post Start -->
+                                <div class="widget-post">
+                                    <div class="single-post">
+                                        <div class="post-thumb">
+                                            <a href="blog-details-left-sidebar.html">
+                                                <img src="assets/images/blog/blog-01.jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="post-content">
+                                            <h6 class="post-title"><a href="blog-details-left-sidebar.html">This is Nicholas K Spring 2020 Runway</a></h6>
+                                            <span class="date">Nov 12, 2020</span>
+                                        </div>
+                                    </div>
+                                    <div class="single-post">
+                                        <div class="post-thumb">
+                                            <a href="blog-details-left-sidebar.html">
+                                                <img src="assets/images/blog/blog-06.jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="post-content">
+                                            <h6 class="post-title"><a href="blog-details-left-sidebar.html">This is Secound Post For XipBlog</a></h6>
+                                            <span class="date">Nov 12, 2020</span>
+                                        </div>
+                                    </div>
+                                    <div class="single-post">
+                                        <div class="post-thumb">
+                                            <a href="blog-details-left-sidebar.html">
+                                                <img src="assets/images/blog/blog-02.jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="post-content">
+                                            <h6 class="post-title"><a href="blog-details-left-sidebar.html">London Fashion Week 2020</a></h6>
+                                            <span class="date">Nov 12, 2020</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Widget Post End -->
+                            </div>
+                            <!-- Sidebar Widget End -->
+
+                            <!-- Sidebar Widget Start -->
+                            <div class="sidebar-widget">
+                                <h3 class="widget-title">Blog Archives</h3>
+
+                                <!-- Widget Category Start -->
+                                <div class="widget-link">
+                                    <ul>
+                                        <li><a href="#">January (10)</a></li>
+                                        <li><a href="#"> February (08)</a></li>
+                                        <li><a href="#"> March (07)</a></li>
+                                        <li><a href="#">April (14)</a></li>
+                                        <li><a href="#">May (05)</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Widget Category End -->
+                            </div>
+                            <!-- Sidebar Widget End -->
+
+                            <!-- Sidebar Widget Start -->
+                            <div class="sidebar-widget">
+                                <h3 class="widget-title">tags</h3>
+
+                                <!-- Widget Tags Start -->
+                                <div class="widget-tags">
+                                    <a href="#">Run</a>
+                                    <a href="#">Sport Shoes</a>
+                                    <a href="#">Frozen</a>
+                                    <a href="#">Nike</a>
+                                    <a href="#">Organics</a>
+                                    <a href="#">Snacks</a>
+                                    <a href="#">Shoes</a>
+                                </div>
+                                <!-- Widget Tags End -->
+                            </div>
+                            <!-- Sidebar Widget End -->
+
+                            <!-- Sidebar banner Start -->
+                            <div class="sidebar-banner">
+                                <!-- Single banner Start -->
+                                <div class="single-banner">
+                                    <a href="#">
+                                        <img src="assets/images/banner-04.jpg" alt="Banner">
+                                    </a>
+                                </div>
+                                <!-- Single banner End -->
+                            </div>
+                            <!-- Sidebar banner End -->
+
+                        </div>
+                        <!-- Sidebar End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Blog Section End -->
+
+
+
+{% endblock %}
