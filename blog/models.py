@@ -1,7 +1,7 @@
 from datetime import datetime
 from django.db import models
-from accounts.models import Profile
 from taggit.managers import TaggableManager
+from accounts.models import Profile
 
 
 class Category(models.Model):

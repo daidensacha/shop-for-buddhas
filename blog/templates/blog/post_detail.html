@@ -34,7 +34,7 @@
                                     <span class="meta-author"><a href="#"> Fashion </a></span>
                                 </div> -->
 
-                                <p>{{ post.body }}</p>
+                                <p>{{ post.body | safe }}</p>
 
                         
                                
@@ -80,7 +80,7 @@
                         <!-- Blog Comment Start  -->
                         <div class="blog-comment">
                             <div class="comment-wrapper section-padding">
-                                <h2 class="comment-title">Comment (03) </h2>
+                                <h2 class="comment-title">Comments ( {{ post.comments.all.count }} ) </h2>
 
                                 <ul class="comment-items">
                                     {% for comment in post.comments.all %}
@@ -189,8 +189,8 @@
                                 <!-- Widget Category Start -->
                                 <div class="widget-link">
                                     <ul>
-                                        {% for name in category %}
-                                        <li><a href="#">{{ name.category }}</a></li>
+                                        {% for category in categories %}
+                                        <li><a href="#">{{ category }}</a></li>
                                         {% endfor %}
                                     </ul>
                                 </div>
@@ -199,10 +199,10 @@
                             <!-- Sidebar Widget End -->
 
                             <!-- Sidebar Widget Start -->
-                            <div class="sidebar-widget">
+                            <!-- <div class="sidebar-widget">
                                 <h3 class="widget-title">Popular Post</h3>
 
-                                <!-- Widget Post Start -->
+                                <!-- Widget Post Start --> <!--
                                 <div class="widget-post">
                                     <div class="single-post">
                                         <div class="post-thumb">
@@ -237,9 +237,10 @@
                                             <span class="date">Nov 12, 2020</span>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- Widget Post End -->
-                            </div>
+                                </div> -->
+                                <!-- Widget Post End --> 
+                                <!--
+                            </div> -->
                             <!-- Sidebar Widget End -->
 
                             <!-- Sidebar Widget Start -->

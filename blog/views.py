@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
+from taggit.models import Tag
 from .models import Category, Post, Comment
 from .forms import CommentForm
-from taggit.models import Tag
 
 
 def blog_posts(request, tag_slug=None):
@@ -24,6 +24,7 @@ def blog_posts(request, tag_slug=None):
 
 def post_detail(request, slug):
     post = Post.objects.get(slug=slug)
+    categories = Category.objects.all()
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -39,5 +40,5 @@ def post_detail(request, slug):
 
     return render(request,
                   'blog/post_detail.html',
-                  {'post': post, 'form': form}
+                  {'post': post, 'form': form, 'categories': categories}
                   )
