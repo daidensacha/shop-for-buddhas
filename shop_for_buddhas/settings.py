@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'crispy_bootstrap5',
+    'taggit'
 
 ]
 
@@ -122,6 +123,8 @@ AUTH_USER_MODEL = "accounts.Profile"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+TAGGIT_CASE_INSENSITIVE = True
 
 WSGI_APPLICATION = 'shop_for_buddhas.wsgi.application'
 
