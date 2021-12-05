@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <!-- <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div> -->
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="top-spacer"></div>
+    <div class="container-fluid bg-white min-vh-50">
+        <div class="row my-5">
+            <div class="col text-center mt-3">
+              <h2>Products</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="product-container col-10 offset-1">
+                <div class="row mt-1 mb-2"></div>
+                <div class="row">
+                   
+
+                    <!-- Quick View Modal-->
+                  
+                    <!-- <div class="modal-quick-view modal fade" id="{{ product.sku }}" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <button class="btn-close position-absolute end-0 top-0 me-2 mt-2 z-index-1" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <div class="modal-body p-3"> -->
+                                    <div class="row">
+                                        <!-- Product Gallery -->
+                                        <div class="col-lg-6 lightbox-gallery product-gallery">
+                                            {% if product.image %}
+                                                <a href="{{ product.image.url }}" target="blank">
+                                                    <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" title="">
+                                                </a>
+                                            {% else %}
+                                                <a href="">
+                                                    <img class="img-fluid" src="{{ MEDIA_URL }} noimage.png" alt="{{ product.name }}"  title="">
+                                                </a>
+                                            {% endif %}
+                                        </div>
+                                        <!-- End Product Gallery -->
+                                        <!-- Product Details -->
+                                        <div class="col-lg-6">
+                                            <div class="product-detail pt-4">
+                                                <div class="product-meta small">
+                                                    <a href="#">{{ product.categpry }}</a>
+                                                </div>
+                                                <div class="products-title mb-2">
+                                                    <h1 class="h4">{{ product.name }}</h1>
+                                                </div>
+                                                
+                                                <!-- <div class="rating-star text small pb-4"> -->
+                                                    {% if product.rating %}
+                                                        <!-- <p class="text-muted"> -->
+                                                        <div class="rating-star text">
+                                                            {% for star in stars %}
+                                                            {% if star < product.rating|add:"1" %}
+                                                                <span class="text-warning"><i class="fas fa-star"></i></span>
+                                                            {% endif %}
+                                                            {% if star > product.rating|add:"0"%}
+                                                                <span class="text-warning"><i class="far fa-star"></i></span>
+                                                            {% endif %}
+                                                            {% endfor %}
+                                                        </div>
+                                                        <!-- <small class="text-muted"><i class="fas fa-star mr-1"></i> </small> -->
+                                                    {% else %}
+                                                        <small class="text-muted">No Rating</small>
+                                                    {% endif %}
+                                                    <!-- <i class="bi bi-star-fill active"></i>
+                                                    <i class="bi bi-star-fill active"></i>
+                                                    <i class="bi bi-star-fill active"></i>
+                                                    <i class="bi bi-star-fill active"></i>
+                                                    <i class="bi bi-star"></i>
+                                                    <small>(4 Reviews )</small> -->
+                                                <!-- </div> -->
+                                                <div class="product-description">
+                                                    <p>{{ product.description }}</p>
+                                                </div>
+                                                <div class="product-attribute">
+                                                    <p class="fs-6 text-dark pb-2 fw-500">Size: {{ product.size }}</p>
+                                                    <!-- <div class="nav-thumbs nav mb-3">
+                                                        <div class="form-check radio-text form-check-inline me-2">
+                                                            <input class="form-check-input" type="radio" name="size3" id="xs2" checked="">
+                                                            <label class="radio-text-label" for="xs2">XS</label>
+                                                        </div>
+                                                        <div class="form-check radio-text form-check-inline me-2">
+                                                            <input class="form-check-input" type="radio" name="size3" id="s2">
+                                                            <label class="radio-text-label" for="s2">S</label>
+                                                        </div>
+                                                        <div class="form-check radio-text form-check-inline me-2">
+                                                            <input class="form-check-input" type="radio" name="size3" id="m2">
+                                                            <label class="radio-text-label" for="m2">M</label>
+                                                        </div>
+                                                        <div class="form-check radio-text form-check-inline me-2">
+                                                            <input class="form-check-input" type="radio" name="size3" id="l2">
+                                                            <label class="radio-text-label" for="l2">L</label>
+                                                        </div>
+                                                    </div> -->
+                                                    <p class="fs-6 text-dark pb-2 fw-500">Color</p>
+                                                    <!-- <div class="nav-thumbs nav mb-3">
+                                                        <div class="form-check radio-color large form-check-inline me-2">
+                                                            <input class="form-check-input" type="radio" name="color1" id="color1" checked="">
+                                                            <label class="radio-color-label" for="color1">
+                                                                <span style="background-color: #126532;"></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check radio-color large form-check-inline me-2">
+                                                            <input class="form-check-input" type="radio" name="color1" id="color2">
+                                                            <label class="radio-color-label" for="color2">
+                                                                <span style="background-color: #ff9922;"></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check radio-color large form-check-inline me-2">
+                                                            <input class="form-check-input" type="radio" name="color1" id="color3">
+                                                            <label class="radio-color-label" for="color3">
+                                                                <span style="background-color: #326598;"></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check radio-color large form-check-inline me-2">
+                                                            <input class="form-check-input" type="radio" name="color1" id="color4">
+                                                            <label class="radio-color-label" for="color4">
+                                                                <span style="background-color: #126578;"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+                                                <div class="product-price fs-3 fw-500 mb-2">
+                                                    <!-- <del class="text-muted fs-6">$38.<small>50</small></del> -->
+                                                    <span class="text-primary">${{ product.price }}</span>
+                                                </div>
+                                                <div class="product-detail-actions d-flex flex-wrap pt-3">
+                                                    <div class="cart-qty me-3 mb-3">
+                                                        <div class="dec qty-btn">-</div>
+                                                        <input class="cart-qty-input form-control" type="text" name="qtybutton" value="1">
+                                                        <div class="inc qty-btn">+</div>
+                                                    </div>
+                                                    <div class="cart-button mb-3 d-flex">
+                                                        <button class="btn btn-dark me-3">
+                                                            <i class="bi bi-cart"></i> Add to cart
+                                                        </button>
+                                                        <button class="btn btn-outline-primary me-3">
+                                                            <i class="bi bi-heart"></i>
+                                                        </button>
+                                                        <button class="btn btn-outline-primary">
+                                                            <i class="bi bi-arrow-left-right"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Product Details -->
+                                    </div>
+                                <!-- </div>
+                            </div>
+                        </div>
+                    </div> -->
+                
+                    <!-- End Quick View Modal-->
+                 
+
+               
+
+                </div>
+              
+            </div>
+        </div>
+    </div>
+{% endblock %}

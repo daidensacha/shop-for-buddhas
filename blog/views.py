@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from taggit.models import Tag
 from .models import Category, Post, Comment
 from .forms import CommentForm
 
 
 def blog_posts(request, tag_slug=None):
+    """ A view to show the blog list page """
+
     posts = Post.objects.all()
     categories = Category.objects.all()
 
@@ -23,6 +25,8 @@ def blog_posts(request, tag_slug=None):
 
 
 def post_detail(request, slug):
+    """ A view to show the blog post page """
+
     post = Post.objects.get(slug=slug)
     categories = Category.objects.all()
 

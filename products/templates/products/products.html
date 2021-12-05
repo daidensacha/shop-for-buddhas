@@ -12,7 +12,7 @@
 {% block content %}
     <div class="overlay"></div>
     <div class="top-spacer"></div>
-    <div class="container-fluid bg-light min-vh-50">
+    <div class="container-fluid bg-white min-vh-50">
         <div class="row my-5">
             <div class="col text-center mt-3">
               <h2>Products</h2>
@@ -28,7 +28,7 @@
                        {% for product in products %}
 
                        <div class="col-sm-6 col-lg-3 my-3">
-                        <div class="product-card-3">
+                        <div class="product-card-3 h-100">
                             <div class="product-card-image">
                                 <div class="badge-ribbon">
 
@@ -38,25 +38,28 @@
                                     <a href="#" class="btn btn-outline-primary">
                                         <i class="bi bi-heart"></i>
                                     </a>
-                                    <!-- <a href="#" class="btn btn-outline-dark">
-                                        <i class="bi bi-arrow-left-right"></i>
-                                    </a> -->
-                                    <!-- <a data-bs-toggle="modal" data-bs-target="#px-quick-view" href="javascript:void(0)" class="btn btn-outline-primary"> -->
-                                    <a data-bs-toggle="modal" data-bs-target="#{{ product.sku }}" href="javascript:void(0)" class="btn btn-outline-dark">
+                                
+                                    <!-- <a data-bs-toggle="modal" data-bs-target="#{{ product.sku }}" href="javascript:void(0)" class="btn btn-outline-dark">
                                         <i class="bi bi-eye-fill"></i>
                                     </a>
                                     <a data-bs-toggle="modal" data-bs-target="#{{ product.sku }}" href="javascript:void(0)" class="btn btn-outline-dark">
+                                        <i class="bi bi-cart"></i>
+                                    </a> -->
+                                    <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-dark">
+                                        <i class="bi bi-eye-fill"></i>
+                                    </a>
+                                    <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-dark">
                                         <i class="bi bi-cart"></i>
                                     </a>
                                 </div>
                                 <div class="product-media h-100">
                                     {% if product.image %}
-                                        <a href="">
+                                        <a href="{% url 'product_detail' product.id %}">
                                             <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" title="">
                                         </a>
                                     {% else %}
-                                        <a href="">
-                                            <img class="img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}"  title="">
+                                        <a href="{% url 'product_detail' product.id %}">
+                                            <img class="img-fluid" src="/media/noimage.png" alt="{{ product.name }}"  title="">
                                         </a>
                                     {% endif %}
 
@@ -136,9 +139,23 @@
                             </div>
                         </div>
                     </div>
-                    <!-- End Product Box -->
-                  
 
+                    <!-- End Product Box -->
+                    {% if forloop.counter|divisibleby:1 %}
+                        <div class="col-12 d-sm-none mb-5">
+                            <hr>
+                        </div>
+                    {% endif %}                        
+                    {% if forloop.counter|divisibleby:2 %}
+                        <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
+                            <hr>
+                        </div>
+                    {% endif %}
+                    {% if forloop.counter|divisibleby:4 %}
+                        <div class="col-12 d-none d-lg-block mb-5">
+                            <hr>
+                        </div>
+                    {% endif %}
 
                     {% endfor %}
 

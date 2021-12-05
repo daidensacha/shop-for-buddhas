@@ -2350,11 +2350,18 @@
    user-select: none;
    background-color: transparent;
    border: 1px solid transparent;
-   padding: 0.65rem 1.25rem;
+   /* padding: 0.65rem 1rem; */
+   padding: 0.65rem 1rem;
    font-size: 0.93rem;
    border-radius: 0.3rem;
    /* border-radius: 0; */
    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
+   @media (min-width: 768px) {
+     .btn {
+      padding: 0.65rem 1.25rem;
+     }
+     
+   }
    @media (prefers-reduced-motion: reduce) {
      .btn {
        transition: none; } }
@@ -11416,7 +11423,8 @@
        transition: ease-in opacity 0.30s, ease-in left 0.30s;
        position: relative;
        left: -20px;
-       opacity: 0; }
+       opacity: 0;
+       background-color: #fafafac7; }
        .product-card-3 .product-action .btn + .btn {
          transition-delay: 0.15s; }
          .product-card-3 .product-action .btn + .btn + .btn {
