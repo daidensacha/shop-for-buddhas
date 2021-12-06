@@ -38,6 +38,7 @@ class Product(models.Model):
     name = models.CharField(max_length=254)
     description = models.TextField()
     size = models.CharField(max_length=25, null=True, blank=True)
+    color = models.CharField(max_length=25, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     rating = models.CharField(
                         max_length=30, 

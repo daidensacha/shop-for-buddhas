@@ -175,7 +175,29 @@ body {
 
  } 
 
- /* Testimonial form rating css */
+ /* ================================ PRODUCTS ================================*/
+
+ .product-meta.category-tags a.tag {
+  height: 30px;
+  padding: 5px 10px;
+  line-height: 28px;
+  border: 1px solid #e1e1e1;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  /* display: block; */
+}
+
+.product-meta.category-tags a.tag:hover {
+  background-color: #83bc2e;
+  border-color: #83bc2e;
+  color: #fff;
+}
+
+ /* ======================= Testimonial form rating css ======================*/
  .rate {
   float: left;
   height: 46px;

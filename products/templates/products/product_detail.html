@@ -48,17 +48,24 @@
                                         <!-- Product Details -->
                                         <div class="col-lg-6">
                                             <div class="product-detail pt-4">
-                                                <div class="product-meta small">
-                                                    <a href="#">{{ product.categpry }}</a>
-                                                </div>
+                                               
                                                 <div class="products-title mb-2">
                                                     <h1 class="h4">{{ product.name }}</h1>
                                                 </div>
+                                                <div class="product-meta category-tags small my-3">
+                                                    <!-- <a href="#">{{ product.categpry }}</a> -->
+                                                    {% if product.category %}
+                                                    <p class="small my-1">
+                                                        <a class="tag" href="{% url 'products' %}?category={{ product.category.name }}">
+                                                            <i class="fas fa-tag"></i>
+                                                            <span class="p-2 mt-2 ">{{ product.category.friendly_name }}</span>
+                                                        </a>
+                                                    </p>
+                                                    {% endif %}
+                                                </div>
                                                 
-                                                <!-- <div class="rating-star text small pb-4"> -->
                                                     {% if product.rating %}
-                                                        <!-- <p class="text-muted"> -->
-                                                        <div class="rating-star text">
+                                                        <div class="rating-star text my-3">
                                                             {% for star in stars %}
                                                             {% if star < product.rating|add:"1" %}
                                                                 <span class="text-warning"><i class="fas fa-star"></i></span>
@@ -68,67 +75,22 @@
                                                             {% endif %}
                                                             {% endfor %}
                                                         </div>
-                                                        <!-- <small class="text-muted"><i class="fas fa-star mr-1"></i> </small> -->
                                                     {% else %}
                                                         <small class="text-muted">No Rating</small>
                                                     {% endif %}
-                                                    <!-- <i class="bi bi-star-fill active"></i>
-                                                    <i class="bi bi-star-fill active"></i>
-                                                    <i class="bi bi-star-fill active"></i>
-                                                    <i class="bi bi-star-fill active"></i>
-                                                    <i class="bi bi-star"></i>
-                                                    <small>(4 Reviews )</small> -->
-                                                <!-- </div> -->
+
                                                 <div class="product-description">
                                                     <p>{{ product.description }}</p>
                                                 </div>
                                                 <div class="product-attribute">
                                                     <p class="fs-6 text-dark pb-2 fw-500">Size: {{ product.size }}</p>
-                                                    <!-- <div class="nav-thumbs nav mb-3">
-                                                        <div class="form-check radio-text form-check-inline me-2">
-                                                            <input class="form-check-input" type="radio" name="size3" id="xs2" checked="">
-                                                            <label class="radio-text-label" for="xs2">XS</label>
-                                                        </div>
-                                                        <div class="form-check radio-text form-check-inline me-2">
-                                                            <input class="form-check-input" type="radio" name="size3" id="s2">
-                                                            <label class="radio-text-label" for="s2">S</label>
-                                                        </div>
-                                                        <div class="form-check radio-text form-check-inline me-2">
-                                                            <input class="form-check-input" type="radio" name="size3" id="m2">
-                                                            <label class="radio-text-label" for="m2">M</label>
-                                                        </div>
-                                                        <div class="form-check radio-text form-check-inline me-2">
-                                                            <input class="form-check-input" type="radio" name="size3" id="l2">
-                                                            <label class="radio-text-label" for="l2">L</label>
-                                                        </div>
-                                                    </div> -->
-                                                    <p class="fs-6 text-dark pb-2 fw-500">Color</p>
-                                                    <!-- <div class="nav-thumbs nav mb-3">
-                                                        <div class="form-check radio-color large form-check-inline me-2">
-                                                            <input class="form-check-input" type="radio" name="color1" id="color1" checked="">
-                                                            <label class="radio-color-label" for="color1">
-                                                                <span style="background-color: #126532;"></span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check radio-color large form-check-inline me-2">
-                                                            <input class="form-check-input" type="radio" name="color1" id="color2">
-                                                            <label class="radio-color-label" for="color2">
-                                                                <span style="background-color: #ff9922;"></span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check radio-color large form-check-inline me-2">
-                                                            <input class="form-check-input" type="radio" name="color1" id="color3">
-                                                            <label class="radio-color-label" for="color3">
-                                                                <span style="background-color: #326598;"></span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check radio-color large form-check-inline me-2">
-                                                            <input class="form-check-input" type="radio" name="color1" id="color4">
-                                                            <label class="radio-color-label" for="color4">
-                                                                <span style="background-color: #126578;"></span>
-                                                            </label>
-                                                        </div>
-                                                    </div> -->
+                                                  
+                                                    {% if product.color %}
+                                                        <p class="fs-6 text-dark pb-2 fw-500">Color: {{ product.color }}</p>
+                                                    {% else %}
+                                                        <p class="fs-6 text-dark pb-2 fw-500">Color: - </p>
+                                                    {% endif %}
+                                                 
                                                 </div>
                                                 <div class="product-price fs-3 fw-500 mb-2">
                                                     <!-- <del class="text-muted fs-6">$38.<small>50</small></del> -->

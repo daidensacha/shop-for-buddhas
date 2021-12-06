@@ -15,7 +15,7 @@
     <div class="container-fluid bg-white min-vh-50">
         <div class="row my-5">
             <div class="col text-center mt-3">
-              <h2>Products</h2>
+                <h2>Products</h2>
             </div>
         </div>
         <div class="row">
@@ -72,14 +72,13 @@
                                 </div>
                             </div>
                             <div class="product-card-info">
-                                <div class="product-meta small">
-                                    <a href="#">{{ product.categpry }}</a>
-                                </div>
+                                
+                               
+                                <h6 class="product-title">
+                                    <a href="#">{{ product.name }}</a>
+                                </h6>
                                 {% if product.rating %}
-                                    <!-- <p class="text-muted"> -->
-                                    <div class="rating-star text">
-
-                                   
+                                    <div class="rating-star text my-2">
                                         {% for star in stars %}
                                         {% if star < product.rating|add:"1" %}
                                             <span class="text-warning"><i class="fas fa-star"></i></span>
@@ -89,53 +88,24 @@
                                         {% endif %}
                                         {% endfor %}
                                     </div>
-                                    <!-- <small class="text-muted"><i class="fas fa-star mr-1"></i> </small> -->
                                 {% else %}
                                     <small class="text-muted">No Rating</small>
                                 {% endif %}
-                                <!-- <div class="rating-star text">
-                                    <i class="bi bi-star-fill active"></i>
-                                    <i class="bi bi-star-fill active"></i>
-                                    <i class="bi bi-star-fill active"></i>
-                                    <i class="bi bi-star-fill active"></i>
-                                    <i class="bi bi-star"></i>
-                                </div> -->
 
-                                
+                                <div class="product-meta category-tags small my-2">
+                                    {% if product.category %}
+                                        <a class="tag text-decoration-none" href="{% url 'products' %}?category={{ product.category.name }}">
+                                            <i class="fas fa-tag"></i>
+                                            <span class="p-2 mt-2 ">{{ product.category.friendly_name }}</span>
+                                        </a>
+                                    {% endif %}
+                                </div>
 
-                                <h6 class="product-title">
-                                    <a href="#">{{ product.name }}</a>
-                                </h6>
-                                <div class="product-price">
+                                <div class="product-price my-2">
                                     <span class="text-primary">${{ product.price }}</span>
                                     <!-- <del class="fs-sm text-muted">$38.<small>50</small></del> -->
                                 </div>
-                                <!-- <div class="nav-thumbs">
-                                    <div class="form-check radio-color form-check-inline">
-                                        <input class="form-check-input" type="radio" name="color1" id="color_1" checked="">
-                                        <label class="radio-color-label" for="color_1">
-                                            <span style="background-color: #d1dceb;"></span>
-                                        </label>
-                                    </div>
-                                    <div class="form-check radio-color form-check-inline">
-                                        <input class="form-check-input" type="radio" name="color1" id="color_2">
-                                        <label class="radio-color-label" for="color_2">
-                                            <span style="background-color: #d1dceb;"></span>
-                                        </label>
-                                    </div>
-                                    <div class="form-check radio-color form-check-inline">
-                                        <input class="form-check-input" type="radio" name="color1" id="color_3">
-                                        <label class="radio-color-label" for="color_3">
-                                            <span style="background-color: #d1dceb;"></span>
-                                        </label>
-                                    </div>
-                                    <div class="form-check radio-color form-check-inline">
-                                        <input class="form-check-input" type="radio" name="color1" id="color_4">
-                                        <label class="radio-color-label" for="color_4">
-                                            <span style="background-color: #d1dceb;"></span>
-                                        </label>
-                                    </div>
-                                </div> -->
+
                             </div>
                         </div>
                     </div>
