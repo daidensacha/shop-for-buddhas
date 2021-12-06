@@ -530,13 +530,13 @@
 													<h6 class="px-3 text-uppercase">Filter</h6>
 													<ul class="list-unstyled">
 														<li>
-															<a href="#" class="dropdown-item">By Price</a>
+															<a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
 														</li>
 														<li>
-															<a href="#" class="dropdown-item">By Rating</a>
+															<a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item">By Rating</a>
 														</li>
 														<li>
-															<a href="#" class="dropdown-item">By Category</a>
+															<a href="{% url 'products' %}?sort=category&direction=asc" class="dropdown-item">By Category</a>
 														</li>
 														<li>
 															<a href="{% url 'products' %}" class="dropdown-item">All Products</a>
