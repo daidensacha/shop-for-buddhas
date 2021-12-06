@@ -23,21 +23,10 @@
                                         <span class="meta-author">Posted by <span> {{ post.author }} </span></span>
                                     </small>
                                 </div>
-                                <img src="/media/{{post.image}}" alt="">
-                                <!-- <img src="assets/images/blog/blog-details.jpg" alt="Blog Details"> -->
-                                
                                 <h4 class="blog-title">{{ post.title }}</h4>
-
-                                <!-- <div class="post-meta ">
-                                    <span class="meta-date">Sep 12TH, 2020</span>
-                                    <span class="meta-author">Posted by <span>Demo hasthemes</span></span>
-                                    <span class="meta-author"><a href="#"> Fashion </a></span>
-                                </div> -->
-
-                                <p>{{ post.body | safe }}</p>
-
-                        
-                               
+                                <img src="/media/{{post.image}}" alt="">
+                                
+                                <div class="blog-body">{{ post.body | safe }}</div>
 
                                 <div class="blog-dec-tags-social">
                                     <div class="blog-dec-tags">
@@ -47,9 +36,7 @@
                                             <li><a href="{% url 'post_tag' tag.slug %}">{{tag.name}}</a></li>
                                             <!-- {% if not forloop.last %}, {% endif %} -->
                                             {% endfor %}
-                                            <!-- <li><a href="#">Event</a></li>
-                                            <li><a href="#">Gift</a></li>
-                                            <li><a href="#">Joy</a></li> -->
+
                                         </ul>
                                     </div>
                                     <div class="blog-dec-social">

@@ -859,6 +859,10 @@ a.social-icon:hover {
   }
 }
 
+.blog-details .blog-body {
+  text-align: justify;  
+}
+
 .blog-details .post-meta {
   overflow: hidden;
   position: relative;
