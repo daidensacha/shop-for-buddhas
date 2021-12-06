@@ -495,6 +495,54 @@ a.social-icon:hover {
   color: #757575;
 }
 
+/* ============================ Back to top button ========================== */
+
+/* .back-to-top {
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  /* display: none; */
+  /* text-align: center;
+  z-index: 10000;
+  border-radius: 3px;
+  background-color: #212121;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  border: 1px solid gray;
+} */
+
+/* .back-to-top i {
+  color: #ffffff;
+  font-size: 16px;
+  display: block;
+  line-height: 40px;
+}  */
+
+.scrollToTopBtn {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  display: block;
+  /* padding: 8px 4px; */
+  cursor: pointer;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.3s;
+  border: 1px solid gray;
+  background-color: rgba(2, 1, 10, 0.5)
+}
+
+.scrollToTopBtn i {
+  font-size: 2em;
+}
+
+.showScrollBtn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 /* PRIMARY COLORS */
 
 

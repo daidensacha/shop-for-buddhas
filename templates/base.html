@@ -40,6 +40,7 @@
 	{% endblock %}
 
 	{% block extra_js %}
+
 	{% endblock %}
 
 	<title>Shop for Buddhas {% block extra_title %}{% endblock %}</title>
@@ -713,10 +714,16 @@
 	{% block contact %}
 	{% endblock %}
 
-	{% include 'includes/footer.html' %}
+	{% block footer %}
+    {% include 'includes/footer.html' %}
+	{% endblock footer %}
+	
+	{% block backtotop %}
+    	{% include 'includes/backtotop.html' %}
+	{% endblock backtotop %}
 
 	{% block postloadjs %}
-
+		{% include 'includes/javascript.html' %}
 	<script>
 		// https://javascript.tutorialink.com/changing-cart-items-quantity-in-shopping-cart-using-vanilla-javascript/
 		let deductBtnArr = document.getElementsByClassName('dec');
