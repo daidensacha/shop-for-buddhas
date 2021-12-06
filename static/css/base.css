@@ -896,6 +896,9 @@ a.social-icon:hover {
   padding-top: 20px;
 }
 
+.pagination {
+  margin-top: 60px;
+}
 
 /*--
 /*  4.18 - Blog Details CSS
@@ -1331,7 +1334,7 @@ a.social-icon:hover {
   padding: 10px 20px;
   font-size: 14px;
   line-height: 20px;
-  color: #555555;
+  color: #5465ff;
   font-weight: 400;
   border: 1px solid #ebebeb;
   border-radius: 5px;

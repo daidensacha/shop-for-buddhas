@@ -307,9 +307,7 @@
 								<h1 class="h4">{{ product.name }}</h1>
 							</div>
 							
-							<!-- <div class="rating-star text small pb-4"> -->
 								{% if product.rating %}
-                                    <!-- <p class="text-muted"> -->
                                     <div class="rating-star text">
                                         {% for star in stars %}
                                         {% if star < product.rating|add:"1" %}
@@ -320,70 +318,21 @@
                                         {% endif %}
                                         {% endfor %}
                                     </div>
-                                    <!-- <small class="text-muted"><i class="fas fa-star mr-1"></i> </small> -->
                                 {% else %}
                                     <small class="text-muted">No Rating</small>
                                 {% endif %}
-								<!-- <i class="bi bi-star-fill active"></i>
-								<i class="bi bi-star-fill active"></i>
-								<i class="bi bi-star-fill active"></i>
-								<i class="bi bi-star-fill active"></i>
-								<i class="bi bi-star"></i>
-								<small>(4 Reviews )</small> -->
+
 							<!-- </div> -->
 							<div class="product-description">
 								<p>{{ product.description }}</p>
 							</div>
 							<div class="product-attribute">
 								<p class="fs-6 text-dark pb-2 fw-500">Size: {{ product.size }}</p>
-								<!-- <div class="nav-thumbs nav mb-3">
-									<div class="form-check radio-text form-check-inline me-2">
-										<input class="form-check-input" type="radio" name="size3" id="xs2" checked="">
-										<label class="radio-text-label" for="xs2">XS</label>
-									</div>
-									<div class="form-check radio-text form-check-inline me-2">
-										<input class="form-check-input" type="radio" name="size3" id="s2">
-										<label class="radio-text-label" for="s2">S</label>
-									</div>
-									<div class="form-check radio-text form-check-inline me-2">
-										<input class="form-check-input" type="radio" name="size3" id="m2">
-										<label class="radio-text-label" for="m2">M</label>
-									</div>
-									<div class="form-check radio-text form-check-inline me-2">
-										<input class="form-check-input" type="radio" name="size3" id="l2">
-										<label class="radio-text-label" for="l2">L</label>
-									</div>
-								</div> -->
+					
 								<p class="fs-6 text-dark pb-2 fw-500">Color</p>
-								<!-- <div class="nav-thumbs nav mb-3">
-									<div class="form-check radio-color large form-check-inline me-2">
-										<input class="form-check-input" type="radio" name="color1" id="color1" checked="">
-										<label class="radio-color-label" for="color1">
-											<span style="background-color: #126532;"></span>
-										</label>
-									</div>
-									<div class="form-check radio-color large form-check-inline me-2">
-										<input class="form-check-input" type="radio" name="color1" id="color2">
-										<label class="radio-color-label" for="color2">
-											<span style="background-color: #ff9922;"></span>
-										</label>
-									</div>
-									<div class="form-check radio-color large form-check-inline me-2">
-										<input class="form-check-input" type="radio" name="color1" id="color3">
-										<label class="radio-color-label" for="color3">
-											<span style="background-color: #326598;"></span>
-										</label>
-									</div>
-									<div class="form-check radio-color large form-check-inline me-2">
-										<input class="form-check-input" type="radio" name="color1" id="color4">
-										<label class="radio-color-label" for="color4">
-											<span style="background-color: #126578;"></span>
-										</label>
-									</div>
-								</div> -->
+								
 							</div>
 							<div class="product-price fs-3 fw-500 mb-2">
-								<!-- <del class="text-muted fs-6">$38.<small>50</small></del> -->
 								<span class="text-primary">${{ product.price }}</span>
 							</div>
 							<div class="product-detail-actions d-flex flex-wrap pt-3">
@@ -724,31 +673,6 @@
 
 	{% block postloadjs %}
 		{% include 'includes/javascript.html' %}
-	<script>
-		// https://javascript.tutorialink.com/changing-cart-items-quantity-in-shopping-cart-using-vanilla-javascript/
-		let deductBtnArr = document.getElementsByClassName('dec');
-		let addButtonArr = document.getElementsByClassName('inc');
-
-		for(let deductBtn of deductBtnArr){
-			deductBtn.onclick = function(){
-				let currentInputBox = deductBtn.nextElementSibling;
-				if (currentInputBox.value > 0) {
-					currentInputBox.value =  currentInputBox.value - 1;
-				}
-				
-			}
-		}
-
-		for(let addButton of addButtonArr){
-			addButton.onclick = () => {
-				let currentInputBox = addButton.previousElementSibling;
-				currentInputBox.value =  parseInt(currentInputBox.value) + 1;
-				
-			}
-		}
-
-	</script>
-
 	{% endblock %}
 
 

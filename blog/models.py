@@ -5,7 +5,11 @@ from accounts.models import Profile
 
 
 class Category(models.Model):
+    """Blog category model for the blog app"""
+
     class Meta:
+        """Plural name for Category model admin view"""
+
         verbose_name_plural = 'Categories'
 
     name = models.CharField(max_length=150)
@@ -16,7 +20,8 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    # Can I change this to class name Post?
+    """Blog post model for the blog app"""
+
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.ImageField()
@@ -47,6 +52,8 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    """Blog comment model for the blog app"""
+
     post = models.ForeignKey(
                     Post,
                     related_name='comments',

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggit.models import Tag
 from .models import Category, Post, Comment
 from .forms import CommentForm
@@ -9,16 +10,26 @@ def blog_posts(request, tag_slug=None):
 
     posts = Post.objects.all()
     categories = Category.objects.all()
-
+    tags = Tag.objects.all()
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
-        posts = posts.filter(tags_in=[tag])
+        posts = posts.filter(tags=tag.id)
+
+    paginator = Paginator(posts, 2)
+    page = request.GET.get("page", 1)
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
 
     context = {
         "posts": posts,
         "categories": categories,
         'tag': tag,
+        "tags": tags,
     }
 
     return render(request, "blog/blog_posts.html", context)
@@ -29,7 +40,7 @@ def post_detail(request, slug):
 
     post = Post.objects.get(slug=slug)
     categories = Category.objects.all()
-
+    tags = Tag.objects.all()
     if request.method == 'POST':
         form = CommentForm(request.POST)
 
@@ -44,5 +55,8 @@ def post_detail(request, slug):
 
     return render(request,
                   'blog/post_detail.html',
-                  {'post': post, 'form': form, 'categories': categories}
+                  {'post': post,
+                   'form': form,
+                   'categories': categories,
+                   'tags': tags}
                   )

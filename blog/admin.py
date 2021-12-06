@@ -4,6 +4,8 @@ from .models import Category, Post, Comment
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    """Prepopulate the slug field in the admin view"""\
+
     prepopulated_fields = {"slug": ("name",)}
 
 

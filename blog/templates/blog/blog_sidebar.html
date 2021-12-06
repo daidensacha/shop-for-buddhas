@@ -1,0 +1,126 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block sidebar %}
+
+
+    <!-- START BLOG SIDEBAR SECTION  -->
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pt-1">
+
+            <!-- Sidebar Widget Start -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Search</h3>
+
+                <!-- Widget Search Start -->
+                <div class="widget-search">
+                    <form action="#">
+                        <input class="form-control" type="text" placeholder="Search">
+                        <button><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <!-- Widget Search End -->
+            </div>
+            <!-- Sidebar Widget End -->
+
+            <!-- Sidebar Widget Start -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Category</h3>
+
+                <!-- Widget Category Start -->
+                <div class="widget-link">
+                    <ul>
+                        {% for category in categories %}
+                        <li><a href="#">{{ category }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- Widget Category End -->
+            </div>
+            <!-- Sidebar Widget End -->
+
+            <!-- Sidebar Widget Start -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Popular Post</h3>
+
+                <!-- Widget Post Start -->
+                <div class="widget-post">
+                    <div class="single-post">
+                        <div class="post-thumb">
+                            <a href="blog-details-left-sidebar.html">
+                                <img src="assets/images/blog/blog-01.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="post-content">
+                            <h6 class="post-title"><a href="blog-details-left-sidebar.html">This is Nicholas K Spring 2020 Runway</a></h6>
+                            <span class="date">Nov 12, 2020</span>
+                        </div>
+                    </div>
+                    <div class="single-post">
+                        <div class="post-thumb">
+                            <a href="blog-details-left-sidebar.html">
+                                <img src="assets/images/blog/blog-06.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="post-content">
+                            <h6 class="post-title"><a href="blog-details-left-sidebar.html">This is Secound Post For XipBlog</a></h6>
+                            <span class="date">Nov 12, 2020</span>
+                        </div>
+                    </div>
+                    <div class="single-post">
+                        <div class="post-thumb">
+                            <a href="blog-details-left-sidebar.html">
+                                <img src="assets/images/blog/blog-02.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="post-content">
+                            <h6 class="post-title"><a href="blog-details-left-sidebar.html">London Fashion Week 2020</a></h6>
+                            <span class="date">Nov 12, 2020</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Widget Post End -->
+            </div>
+            <!-- Sidebar Widget End -->
+
+            <!-- Sidebar Widget Start -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Blog Archives</h3>
+
+                <!-- Widget Category Start -->
+                <div class="widget-link">
+                    <ul>
+                        <li><a href="#">January (10)</a></li>
+                        <li><a href="#"> February (08)</a></li>
+                        <li><a href="#"> March (07)</a></li>
+                        <li><a href="#">April (14)</a></li>
+                        <li><a href="#">May (05)</a></li>
+                    </ul>
+                </div>
+                <!-- Widget Category End -->
+            </div>
+            <!-- Sidebar Widget End -->
+
+            <!-- Sidebar Widget Start -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">tags</h3>
+
+                <!-- Widget Tags Start -->
+                <div class="widget-tags">
+                    {% for tag in tags %}
+                    <a href="{% url 'post_tag' tag.slug %}">{{tag.name}}</a>
+                    <!-- {% if not forloop.last %}, {% endif %} -->
+                    {% endfor %}
+                    
+                </div>
+                <!-- Widget Tags End -->
+            </div>
+            <!-- Sidebar Widget End -->
+
+        </div>
+        <!-- Sidebar End -->
+    
+    <!-- END BLOG SIDEBAR SECTION  -->
+
+{% endblock %}

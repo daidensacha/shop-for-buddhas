@@ -4,6 +4,8 @@ from .models import Product, Category
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
+    """Register the Product admin view and required layout of fields"""
+
     list_display = (
         'sku',
         'name',
@@ -21,6 +23,8 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    """Register the Product Category admin view and required layout of fields"""
+
     list_display = (
         'friendly_name',
         'name',

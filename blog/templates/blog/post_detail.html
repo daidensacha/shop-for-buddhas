@@ -1,283 +1,111 @@
-{% extends "base.html" %}
+{% extends "blog/base.html" %}
 
-{% block content %}
+{% block inner_content %}
 
    
         
-         <!-- Blog Section Start -->
-         <div class="section section-padding-02">
-            <div class="container">
-                <div class="row justify-content-between">
-                    <div class="col-lg-8">
+  <!-- START POSTS DETAILS SECTION  -->
 
+        <div class="blog-details">
+            
+    
 
-                        <!-- Blog Details Start -->
+                <div class="post-meta">
+                    <small>
+                        <span class="meta-date">{{ post.posted_at | date }}</span>
+                        <span class="meta-author">Posted by <span> {{ post.author }} </span></span>
+                    </small>
+                </div>
+                <h4 class="blog-title">{{ post.title }}</h4>
+                <img src="/media/{{post.image}}" alt="">
+                
+                <div class="blog-body">{{ post.body | safe }}</div>
 
-                        <div class="blog-details">
-                            
-                    
-
-                                <div class="post-meta">
-                                    <small>
-                                        <span class="meta-date">{{ post.posted_at | date }}</span>
-                                        <span class="meta-author">Posted by <span> {{ post.author }} </span></span>
-                                    </small>
-                                </div>
-                                <h4 class="blog-title">{{ post.title }}</h4>
-                                <img src="/media/{{post.image}}" alt="">
-                                
-                                <div class="blog-body">{{ post.body | safe }}</div>
-
-                                <div class="blog-dec-tags-social">
-                                    <div class="blog-dec-tags">
-                                        <span>Tags:</span>
-                                        <ul class="tags">
-                                            {% for tag in post.tags.all %}
-                                            <li><a href="{% url 'post_tag' tag.slug %}">{{tag.name}}</a></li>
-                                            <!-- {% if not forloop.last %}, {% endif %} -->
-                                            {% endfor %}
-
-                                        </ul>
-                                    </div>
-                                    <div class="blog-dec-social">
-                                        <span>Share:</span>
-                                        <ul class="social">
-                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="blog-next-previous">
-                                    <span class="left">
-                                        <a href="#"><i class="fal fa-arrow-left"></i> Older Post </a>
-                                    </span>
-                                    <span class="right">
-                                        <a href="#">Newer Post  <i class="fal fa-arrow-right"></i></a>
-                                    </span>
-                                </div>
-                            
-                        </div>
-                        <!-- Blog Details End -->
-
-
-
-                        <!-- Blog Comment Start  -->
-                        <div class="blog-comment">
-                            <div class="comment-wrapper section-padding">
-                                <h2 class="comment-title">Comments ( {{ post.comments.all.count }} ) </h2>
-
-                                <ul class="comment-items">
-                                    {% for comment in post.comments.all %}
-                                    <li>
-                                        <div class="single-comment">
-                                            <!-- <div class="comment-avater">
-                                                <img src="assets/images/author/author-1.png" alt="">
-                                            </div> -->
-                                            <div class="comment-content">
-                                                <h4 class="avater-name">{{ comment.name }}</h4>
-                                                <span class="date">{{ comment.created_at }}</span>
-                                                <p>{{ comment.body }}</p>
-                                                <!-- <a href="#" class="reply">Reply</a> -->
-                                            </div>
-                                        </div>
-                                        <hr>
-<!-- 
-                                        <ul class="comment-replay">
-                                            <li>
-                                                <div class="single-comment">
-                                                    <div class="comment-avater">
-                                                        <img src="assets/images/author/author-2.png" alt="">
-                                                    </div>
-                                                    <div class="comment-content">
-                                                        <h4 class="avater-name">Anthony Stephens</h4>
-                                                        <span class="date">February 16, 2021 at 1:38 am</span>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor magna aliqua. Ut enim ad minim veniam,</p>
-                                                        <a href="#" class="replay">Replay</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul> -->
-                                    </li>
-                                    {% empty %}
-                                    <li>
-                                        <div class="notification">
-                                            <p>No comments yet...</p> 
-                                        </div>
-                                    </li>
-                                        
-                                    {% endfor %}
-                                </ul>
-                            </div>
-
-                            <div class="comment-wrapper section-padding">
-                                <div class="allauth-form-inner-content">
-                                <h2 class="comment-title">Leave a comment</h2>
-
-                                <form method="post" action=".">
-                                    <!-- <div class="row"> -->
-                                        {% csrf_token %}
-                                        {{ form|crispy }}
-                                    
-                                    <button class="btn btn-outline-dark btn-round rounded-3" type="submit">Submit</button>
-                                <!-- </form> -->
-                                        <!-- <div class="col-md-6">
-                                            <div class="single-form">
-                                                <input type="text" placeholder="Name" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="single-form">
-                                                <input type="email" placeholder="Email" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="single-form">
-                                                <textarea placeholder="Message" class="form-control"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="single-form">
-                                                <button class="btn btn-primary btn-hover-dark">Send Message</button>
-                                            </div>
-                                        </div> -->
-                                    <!-- </div> -->
-                                </form>
-                            </div>
-                            </div>
-                        </div>
-                        <!-- Blog Comment End  -->
+                <div class="blog-dec-tags-social">
+                    <div class="blog-dec-tags">
+                        <span>Tags:</span>
+                        <ul class="tags">
+                            {% for tag in post.tags.all %}
+                            <li><a href="{% url 'post_tag' tag.slug %}">{{tag.name}}</a></li>
+                            <!-- {% if not forloop.last %}, {% endif %} -->
+                            {% endfor %}
+                        </ul>
                     </div>
-                    <div class="col-xl-3 col-lg-4">
-                        <!-- Sidebar Start -->
-                        <div class="sidebar pt-1">
-
-                            <!-- Sidebar Widget Start -->
-                            <div class="sidebar-widget">
-                                <h3 class="widget-title">Search</h3>
-
-                                <!-- Widget Search Start -->
-                                <div class="widget-search">
-                                    <form action="#">
-                                        <input class="form-control" type="text" placeholder="Search">
-                                        <button><i class="fas fa-search"></i></button>
-                                    </form>
-                                </div>
-                                <!-- Widget Search End -->
-                            </div>
-                            <!-- Sidebar Widget End -->
-
-                            <!-- Sidebar Widget Start -->
-                            <div class="sidebar-widget">
-                                <h3 class="widget-title">Category</h3>
-
-                                <!-- Widget Category Start -->
-                                <div class="widget-link">
-                                    <ul>
-                                        {% for category in categories %}
-                                        <li><a href="#">{{ category }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                                <!-- Widget Category End -->
-                            </div>
-                            <!-- Sidebar Widget End -->
-
-                            <!-- Sidebar Widget Start -->
-                            <!-- <div class="sidebar-widget">
-                                <h3 class="widget-title">Popular Post</h3>
-
-                                <!-- Widget Post Start --> <!--
-                                <div class="widget-post">
-                                    <div class="single-post">
-                                        <div class="post-thumb">
-                                            <a href="blog-details-left-sidebar.html">
-                                                <img src="assets/images/blog/blog-01.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="post-content">
-                                            <h6 class="post-title"><a href="blog-details-left-sidebar.html">This is Nicholas K Spring 2020 Runway</a></h6>
-                                            <span class="date">Nov 12, 2020</span>
-                                        </div>
-                                    </div>
-                                    <div class="single-post">
-                                        <div class="post-thumb">
-                                            <a href="blog-details-left-sidebar.html">
-                                                <img src="assets/images/blog/blog-06.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="post-content">
-                                            <h6 class="post-title"><a href="blog-details-left-sidebar.html">This is Secound Post For XipBlog</a></h6>
-                                            <span class="date">Nov 12, 2020</span>
-                                        </div>
-                                    </div>
-                                    <div class="single-post">
-                                        <div class="post-thumb">
-                                            <a href="blog-details-left-sidebar.html">
-                                                <img src="assets/images/blog/blog-02.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="post-content">
-                                            <h6 class="post-title"><a href="blog-details-left-sidebar.html">London Fashion Week 2020</a></h6>
-                                            <span class="date">Nov 12, 2020</span>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <!-- Widget Post End --> 
-                                <!--
-                            </div> -->
-                            <!-- Sidebar Widget End -->
-
-                            <!-- Sidebar Widget Start -->
-                            <div class="sidebar-widget">
-                                <h3 class="widget-title">Blog Archives</h3>
-
-                                <!-- Widget Category Start -->
-                                <div class="widget-link">
-                                    <ul>
-                                        <li><a href="#">January (10)</a></li>
-                                        <li><a href="#"> February (08)</a></li>
-                                        <li><a href="#"> March (07)</a></li>
-                                        <li><a href="#">April (14)</a></li>
-                                        <li><a href="#">May (05)</a></li>
-                                    </ul>
-                                </div>
-                                <!-- Widget Category End -->
-                            </div>
-                            <!-- Sidebar Widget End -->
-
-                            <!-- Sidebar Widget Start -->
-                            <div class="sidebar-widget">
-                                <h3 class="widget-title">tags</h3>
-
-                                <!-- Widget Tags Start -->
-                                <div class="widget-tags">
-                                    {% for tag in post.tags.all %}
-                                    <a href="{% url 'post_tag' tag.slug %}">{{tag.name}}</a>
-                                    <!-- {% if not forloop.last %}, {% endif %} -->
-                                    {% endfor %}
-                                    <!-- <a href="#">Run</a>
-                                    <a href="#">Sport Shoes</a>
-                                    <a href="#">Frozen</a>
-                                    <a href="#">Nike</a>
-                                    <a href="#">Organics</a>
-                                    <a href="#">Snacks</a>
-                                    <a href="#">Shoes</a> -->
-                                </div>
-                                <!-- Widget Tags End -->
-                            </div>
-                            <!-- Sidebar Widget End -->
-
-                        </div>
-                        <!-- Sidebar End -->
+                    <div class="blog-dec-social">
+                        <span>Share:</span>
+                        <ul class="social">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+                        </ul>
                     </div>
                 </div>
+
+                <div class="blog-next-previous">
+                    <span class="left">
+                        <a href="#"><i class="fal fa-arrow-left"></i> Older Post </a>
+                    </span>
+                    <span class="right">
+                        <a href="#">Newer Post  <i class="fal fa-arrow-right"></i></a>
+                    </span>
+                </div>
+            
+        </div>
+        <!-- Blog Details End -->
+
+
+
+        <!-- Blog Comment Start  -->
+        <div class="blog-comment">
+            <div class="comment-wrapper section-padding">
+                <h2 class="comment-title">Comments ( {{ post.comments.all.count }} ) </h2>
+
+                <ul class="comment-items">
+                    {% for comment in post.comments.all %}
+                    <li>
+                        <div class="single-comment">
+                            <!-- <div class="comment-avater">
+                                <img src="assets/images/author/author-1.png" alt="">
+                            </div> -->
+                            <div class="comment-content">
+                                <h4 class="avater-name">{{ comment.name }}</h4>
+                                <span class="date">{{ comment.created_at }}</span>
+                                <p>{{ comment.body }}</p>
+                                <!-- <a href="#" class="reply">Reply</a> -->
+                            </div>
+                        </div>
+                        <hr>
+
+                    </li>
+                    {% empty %}
+                    <li>
+                        <div class="notification">
+                            <p>No comments yet...</p> 
+                        </div>
+                    </li>
+                        
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="comment-wrapper section-padding">
+                <div class="allauth-form-inner-content">
+                <h2 class="comment-title">Leave a comment</h2>
+
+                <form method="post" action=".">
+
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                    
+                    <button class="btn btn-outline-dark btn-round rounded-3" type="submit">Submit</button>
+
+                </form>
+            </div>
             </div>
         </div>
-        <!-- Blog Section End -->
+        <!-- Blog Comment End  -->
 
-
+    <!-- END BLOG POSTS SECTION  -->
 
 {% endblock %}
