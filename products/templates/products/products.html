@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block page_header %}
-    <!-- <div class="container header-container">
+    <div class="container header-container">
         <div class="row">
             <div class="col"></div>
         </div>
-    </div> -->
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -171,30 +171,8 @@
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
+{{ block.super }}
 
-    
-    <script type="text/javascript">
+	{% include 'includes/product_filter_script.html' %}
 
-       document.getElementById("sort-selector").addEventListener('change',function() {
-            let selector = this;
-            let currentUrl = new URL(window.location);
-
-            let selectedVal = selector.value;
-            if(selectedVal != "reset"){
-                let sort = selectedVal.split("_")[0];
-                let direction = selectedVal.split("_")[1];
-
-                currentUrl.searchParams.set("sort", sort);
-                currentUrl.searchParams.set("direction", direction);
-
-                window.location.replace(currentUrl);
-            } else {
-                currentUrl.searchParams.delete("sort");
-                currentUrl.searchParams.delete("direction");
-
-                window.location.replace(currentUrl);
-            }
-        })
-    </script>
 {% endblock %}

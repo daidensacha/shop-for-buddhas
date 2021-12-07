@@ -22,4 +22,4 @@ def testimonial_view(request):
     context = {
         "form": TestimonialForm,
     }
-    return render(request, "testimonials/testimonial-form.html", context)
+    return render(request, "testimonials/testimonial_form.html", context)

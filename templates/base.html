@@ -31,11 +31,15 @@
 
 	{% block corejs %}
 	<script src="https://kit.fontawesome.com/7432ab4d43.js" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+	<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-	</script>
+	</script> -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  			crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+			crossorigin="anonymous">
 	</script>
 	{% endblock %}
 
@@ -117,48 +121,7 @@
     </div>
 </div>
 <!-- Search END -->
-<!-- Login Popup START -->
-<div class="modal fade" id="topbarlogin">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <div class="modal-title p-3">
-                    <h5 class="m-0 text-white">Sign in to your account!</h5>
-                    <p class="m-0 text-white">Nice to see you! Please log in with your account.</p>
-                </div>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="w-100 p-3">
-                    <!-- Form START -->
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*********">
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">keep me signed in</label>
-                        </div>
-                        <div class="row align-items-center">
-                            <div class="col-sm-4">
-                                <button type="submit" class="btn btn-dark rounded-3">Login</button>
-                            </div>
-                            <div class="col-sm-8 text-sm-end">
-                                <span class="text-muted">Don't have an account? <a href="sign-up.html">Signup here</a></span>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Login Popup END -->
+
 <!-- Mini Cart -->
 <div class="modal px-modal-right fade" id="modalMiniCart" tabindex="-1" role="dialog" aria-hidden="true">
     <!-- Shopping Cart -->
@@ -201,15 +164,9 @@
                                 <div class="d-flex align-items-center">
 									<div class="cart-qty d-inline-flex">
 										<div class="dec qty-btn">-</div>
-										<input class="cart-qty-input form-control" type="text" name="qtybutton" value="{{ item.quantity }}">
+										<input class="cart-qty-input form-control" type="text" name="qtybutton" min="1" max="99" value="{{ item.quantity }}">
 										<div class="inc qty-btn">+</div>
 									</div>
-                                    <!-- Select -->
-                                    <!-- <select class="form-select form-select-sm w-auto">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select> -->
                                     <!-- Remove -->
                                     <a class="small text-dark ms-auto" href="#!">
                                         <i class="bi bi-x"></i> Remove
@@ -249,7 +206,7 @@
                 </div>
                 <div class="pt-4">
                     <a class="btn btn-block btn-dark w-100 mb-3" href="#">Continue to Checkout</a>
-                    <a class="btn btn-block btn-outline-dark w-100" href="{ url 'view_cart'}">View Cart</a>
+                    <a class="btn btn-block btn-outline-dark w-100" href="{% url 'view_cart' %}">View Cart</a>
                 </div>
             </div>
             <!-- Buttons -->
@@ -257,96 +214,6 @@
     </div>
 </div>
 <!-- End Mini Cart -->
-
-
- <!-- Quick View Modal-->
- {%  for product in products %}
- <div class="modal-quick-view modal fade" id="{{ product.sku }}" tabindex="-1">
-	<div class="modal-dialog modal-dialog-centered modal-xl">
-		<div class="modal-content">
-			<button class="btn-close position-absolute end-0 top-0 me-2 mt-2 z-index-1" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-			<div class="modal-body p-3">
-				<div class="row">
-					<!-- Product Gallery -->
-					<div class="col-lg-6 lightbox-gallery product-gallery">
-						{% if product.image %}
-							<a href="">
-								<img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" title="">
-							</a>
-						{% else %}
-							<a href="">
-								<img class="img-fluid" src="{{ MEDIA_URL }} noimage.png" alt="{{ product.name }}"  title="">
-							</a>
-						{% endif %}
-					</div>
-					<!-- End Product Gallery -->
-					<!-- Product Details -->
-					<div class="col-lg-6">
-						<div class="product-detail pt-4">
-							<div class="product-meta small">
-								<a href="#">{{ product.categpry }}</a>
-							</div>
-							<div class="products-title mb-2">
-								<h1 class="h4">{{ product.name }}</h1>
-							</div>
-							
-								{% if product.rating %}
-                                    <div class="rating-star text">
-                                        {% for star in stars %}
-                                        {% if star < product.rating|add:"1" %}
-                                            <span class="text-warning"><i class="fas fa-star"></i></span>
-                                        {% endif %}
-                                        {% if star > product.rating|add:"0"%}
-                                            <span class="text-warning"><i class="far fa-star"></i></span>
-                                        {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                {% else %}
-                                    <small class="text-muted">No Rating</small>
-                                {% endif %}
-
-							<!-- </div> -->
-							<div class="product-description">
-								<p>{{ product.description }}</p>
-							</div>
-							<div class="product-attribute">
-								<p class="fs-6 text-dark pb-2 fw-500">Size: {{ product.size }}</p>
-					
-								<p class="fs-6 text-dark pb-2 fw-500">Color</p>
-								
-							</div>
-							<div class="product-price fs-3 fw-500 mb-2">
-								<span class="text-primary">${{ product.price }}</span>
-							</div>
-							<div class="product-detail-actions d-flex flex-wrap pt-3">
-								<div class="cart-qty me-3 mb-3">
-									<div class="dec qty-btn">-</div>
-									<input class="cart-qty-input form-control" type="text" name="qtybutton" value="1">
-									<div class="inc qty-btn">+</div>
-								</div>
-								<div class="cart-button mb-3 d-flex">
-									<button class="btn btn-dark me-3">
-										<i class="bi bi-cart"></i> Add to cart
-									</button>
-									<button class="btn btn-outline-primary me-3">
-										<i class="bi bi-heart"></i>
-									</button>
-									<button class="btn btn-outline-primary">
-										<i class="bi bi-arrow-left-right"></i>
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- End Product Details -->
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-{% endfor %}
-<!-- End Quick View Modal-->
-
 
 
 	<!-- Header -->
@@ -665,6 +532,7 @@
 	{% endblock backtotop %}
 
 	{% block postloadjs %}
+	{{ block.super }}
 		{% include 'includes/javascript.html' %}
 	{% endblock %}
 
