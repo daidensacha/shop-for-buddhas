@@ -96,24 +96,56 @@
                                                     <!-- <del class="text-muted fs-6">$38.<small>50</small></del> -->
                                                     <span class="text-primary">${{ product.price }}</span>
                                                 </div>
-                                                <div class="product-detail-actions d-flex flex-wrap pt-3">
-                                                    <div class="cart-qty me-3 mb-3">
-                                                        <div class="dec qty-btn">-</div>
-                                                        <input class="cart-qty-input form-control" type="text" name="qtybutton" value="1">
-                                                        <div class="inc qty-btn">+</div>
+                                                <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
+                                                    {% csrf_token %}
+                                                    <div class="form-row">
+
+                                                        <div class="product-detail-actions d-flex flex-wrap pt-3">
+
+                                                            <div class="cart-qty me-3 mb-3">
+                                                                <div class="dec decrement-qty qty-btn" 
+                                                                        data-item_id="{{ product.id }}" 
+                                                                    id="decrement-qty_{{ product.id }}">-</div>
+                                                                <input class="cart-qty-input form-control" 
+                                                                        type="number" 
+                                                                        name="quantity" 
+                                                                        value="1" 
+                                                                        min="1" 
+                                                                        max="99"
+                                                                        data-item_id="{{ product.id }}" 
+                                                                        id="id_qty_{{ product.id }}">
+                                                                <div class="inc increment-qty qty-btn"  
+                                                                        data-item_id="{{ product.id }}" 
+                                                                        id="increment-qty_{{ product.id }}">+</div>
+                                                            </div>
+                                                            <div class="cart-button mb-3 d-flex">
+                                                                <button class="btn btn-dark me-3"
+                                                                        type="submit">
+                                                                    <i class="bi bi-cart"></i> Add to cart
+                                                                </button>
+                                                                <button class="btn btn-outline-primary me-3">
+                                                                    <i class="bi bi-heart"></i>
+                                                                </button>
+                                                                <button class="btn btn-outline-primary">
+                                                                    <i class="bi bi-arrow-left-right"></i>
+                                                                </button>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div class="d-flex pt-3">
+                                                            <a class="btn btn-outline-dark" href="{% url 'products' %}">
+                                                                <i class="fas fa-chevron-left mt-sm-0 me-1"></i>
+                                                                <span class="d-none d-sm-inline">Continue Shopping</span>
+                                                                <span class="d-inline d-sm-none">Back</span>
+                                                            </a>
+                                                        </div>
+                                                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+
+
                                                     </div>
-                                                    <div class="cart-button mb-3 d-flex">
-                                                        <button class="btn btn-dark me-3">
-                                                            <i class="bi bi-cart"></i> Add to cart
-                                                        </button>
-                                                        <button class="btn btn-outline-primary me-3">
-                                                            <i class="bi bi-heart"></i>
-                                                        </button>
-                                                        <button class="btn btn-outline-primary">
-                                                            <i class="bi bi-arrow-left-right"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
+
+                                                </form>
+                                                
                                             </div>
                                         </div>
                                         <!-- End Product Details -->

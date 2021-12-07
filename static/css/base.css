@@ -19,15 +19,15 @@ body {
   font-family: 'Lato';
 }
 
-/* .overlay {
+.overlay {
 	height: 100%;
 	width: 100%;
 	top: 0;
 	left: 0;
 	position: fixed;
-	background: black;
+	background: white;
 	z-index: -1;
-} */
+}
 
 #landing-page {
   padding-top: 64px;
