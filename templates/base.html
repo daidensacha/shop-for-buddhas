@@ -176,36 +176,7 @@
             <div class="modal-body">
                 <!-- List group -->
                 <ul class="list-unstyled m-0 p-0">
-                    <li class="py-3 border-bottom">
-                        <div class="row align-items-center">
-                            <div class="col-4">
-                                <!-- Image -->
-                                <a href="#">
-                                    <img class="img-fluid border" src="../static/img/1000x1000.jpg" alt="...">
-                                </a>
-                            </div>
-                            <div class="col-8">
-                                <!-- Title -->
-                                <p class="mb-2">
-                                    <a class="text-dark fw-500" href="#">Cotton floral print Dress</a>
-                                    <span class="m-0 text-muted w-100 d-block">$40.00</span>
-                                </p>
-                                <!--Footer -->
-                                <div class="d-flex align-items-center">
-                                    <!-- Select -->
-                                    <select class="form-select form-select-sm w-auto">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                    </select>
-                                    <!-- Remove -->
-                                    <a class="small text-dark ms-auto" href="#!">
-                                        <i class="bi bi-x"></i> Remove
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                   
                     <li class="py-3 border-bottom">
                         <div class="row align-items-center">
                             <div class="col-4">
@@ -266,7 +237,7 @@
                 </div>
                 <div class="pt-4">
                     <a class="btn btn-block btn-dark w-100 mb-3" href="#">Continue to Checkout</a>
-                    <a class="btn btn-block btn-outline-dark w-100" href="#">View Cart</a>
+                    <a class="btn btn-block btn-outline-dark w-100" href="{ url 'view_cart'}">View Cart</a>
                 </div>
             </div>
             <!-- Buttons -->
@@ -575,7 +546,7 @@
 							<a href="{% url 'blog_posts' %}" class="nav-link">Blog</a>
 						</li>
 						<li class="nav-item">
-							<a href="#contect_form" class="nav-link">Contact</a>
+							<a href="{% url 'home' %}#contact" class="nav-link">Contact</a>
 
 						</li>
 					</ul>

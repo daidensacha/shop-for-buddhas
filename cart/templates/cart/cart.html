@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+<!-- <div class="overlay"></div> -->
+
+<!-- Cart Table -->
+<div class="py-6">
+    <div class="container min-vh-60">
+
+        <div class="row">
+            <div class="col">
+                <!-- <hr> -->
+                <h2 class="mb-4">Shopping Cart</h2>
+                <!-- <hr> -->
+            </div>
+        </div>
+        <div class="row">
+
+            {% if cart_items %}
+
+             <!-- Cart Table -->
+             <div class="table-content table-responsive cart-table-content my-5">
+                <table class="table table-bordered align-middle">
+                    <!-- <table class="table table-borderless table-sm align-middle"></table> -->
+                    <thead>
+                        <tr class="text-uppercase">
+                            <th class="text-dark text-center fw-500 text-nowrap">Image</th>
+                            <th class="text-dark text-center fw-500 text-nowrap">Product Name</th>
+                            <th class="text-dark text-center fw-500 text-nowrap">Until Price</th>
+                            <th class="text-dark text-center fw-500 text-nowrap">Qty</th>
+                            <th class="text-dark text-center fw-500 text-nowrap">Subtotal</th>
+                            <th class="text-dark fw-500 text-end text-nowrap">action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center product-thumbnail">
+                                <a class="text-reset" href="#"><img src="../static/img/1000x1000.jpg" class="img-fluid" width="100" alt=""></a>
+                            </td>
+                            <td class="text-center product-name"><a class="text-reset" href="#">Product Name</a></td>
+                            <td class="text-center product-price-cart"><span class="amount">$260.00</span></td>
+                            <td class="text-center product-quantity">
+                                <div class="cart-qty d-inline-flex">
+                                    <div class="dec qty-btn">-</div>
+                                    <input class="cart-qty-input form-control" type="text" name="qtybutton" value="1">
+                                    <div class="inc qty-btn">+</div>
+                                </div>
+                            </td>
+                            <td class="text-center product-subtotal">$110.00</td>
+                            <td class="product-remove text-end text-nowrap">
+                                <a href="#" class="btn btn-sm btn-outline-secondary text-nowrap px-3"><i class="bi bi-pencil-square lh-1"></i> <span class="d-none d-md-inline-block">Edit</span></a>
+                                <a href="#" class="btn btn-sm btn-outline-danger text-nowrap px-3"><i class="bi bi-x lh-1"></i> <span class="d-none d-md-inline-block">Remove</span></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center product-thumbnail">
+                                <a class="text-reset" href="#"><img src="../static/img/1000x1000.jpg" class="img-fluid" width="100" alt=""></a>
+                            </td>
+                            <td class="text-center product-name"><a class="text-reset" href="#">Product Name</a></td>
+                            <td class="text-center product-price-cart"><span class="amount">$260.00</span></td>
+                            <td class="text-center product-quantity">
+                                <div class="cart-qty d-inline-flex">
+                                    <div class="dec qty-btn">-</div>
+                                    <input class="cart-qty-input form-control" type="text" name="qtybutton" value="1">
+                                    <div class="inc qty-btn">+</div>
+                                </div>
+                            </td>
+                            <td class="text-center product-subtotal">$110.00</td>
+                            <td class="product-remove text-end text-nowrap">
+                                <a href="#" class="btn btn-sm btn-outline-secondary text-nowrap px-3"><i class="bi bi-pencil-square lh-1"></i> <span class="d-none d-md-inline-block">Edit</span></a>
+                                <a href="#" class="btn btn-sm btn-outline-danger text-nowrap px-3"><i class="bi bi-x lh-1"></i> <span class="d-none d-md-inline-block">Remove</span></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center product-thumbnail">
+                                <a class="text-reset" href="#"><img src="../static/img/1000x1000.jpg" class="img-fluid" width="100" alt=""></a>
+                            </td>
+                            <td class="text-center product-name"><a class="text-reset" href="#">Product Name</a></td>
+                            <td class="text-center product-price-cart"><span class="amount">$260.00</span></td>
+                            <td class="text-center product-quantity">
+                                <div class="cart-qty d-inline-flex">
+                                    <div class="dec qty-btn">-</div>
+                                    <input class="cart-qty-input form-control" type="text" name="qtybutton" value="1">
+                                    <div class="inc qty-btn">+</div>
+                                </div>
+                            </td>
+                            <td class="text-center product-subtotal">$110.00</td>
+                            <td class="product-remove text-end text-nowrap">
+                                <a href="#" class="btn btn-sm btn-outline-secondary text-nowrap px-3"><i class="bi bi-pencil-square lh-1"></i> <span class="d-none d-md-inline-block">Edit</span></a>
+                                <a href="#" class="btn btn-sm btn-outline-danger text-nowrap px-3"><i class="bi bi-x lh-1"></i> <span class="d-none d-md-inline-block">Remove</span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Cart Table -->
+            <div class="d-flex">
+                <div>
+                    <a class="btn btn-outline-dark" href="#">
+                        <i class="ci-arrow-left mt-sm-0 me-1"></i>
+                        <span class="d-none d-sm-inline">Continue Shopping</span>
+                        <span class="d-inline d-sm-none">Back</span>
+                    </a>
+                </div>
+                <div class="ms-auto">
+                    <a class="btn btn-outline-primary" href="#">
+                        <span class="d-none d-sm-inline">Update shopping cart</span>
+                        <span class="d-inline d-sm-none">Next</span>
+                        <i class="ci-arrow-right mt-sm-0 ms-1"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="row flex-row-reverse pt-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-header bg-transparent py-3">
+                            <h6 class="m-0 mb-1">Order Total</h6>
+                        </div>
+                        <div class="card-body ">
+                            <ul class="list-unstyled">
+                                <li class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="me-2 text-body">Subtotal</h6><span class="text-end">$265.00</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="me-2 text-body">Taxes</h6><span class="text-end">$265.00</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center border-top pt-3 mt-3">
+                                    <h6 class="me-2">Grand Total</h6><span class="text-end text-dark">$265.00</span>
+                                </li>
+                            </ul>
+                            <div class="d-grid gap-2 mx-auto">
+                                <a class="btn btn-primary" href="checkout-shipping.html">PROCEED TO CHECKOUT</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-8">
+                    <div class="card">
+                        <div class="card-header bg-transparent py-3">
+                            <h6 class="m-0">Use Coupon Code</h6>
+                        </div>
+                        <div class="card-body ">
+                            <form>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Have a Coupon Code?</label>
+                                    <input type="email" class="form-control" placeholder="">
+                                </div>
+                                <button class="btn btn-primary">Apply</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {% else %}
+
+            <p class="lead mb-5">Your bag is empty.</p>
+            <div class="d-flex">
+                <a class="btn btn-outline-dark" href="{% url 'products' %}">
+                    <i class="fas fa-chevron-left mt-sm-0 me-1"></i>
+                    <span class="d-none d-sm-inline">Continue Shopping</span>
+                    <span class="d-inline d-sm-none">Back</span>
+                </a>
+            </div>
+           
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+<!-- Cart Table -->
+  
+{% endblock %}

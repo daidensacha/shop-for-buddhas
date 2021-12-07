@@ -11,13 +11,23 @@ html {
 body {
   /* background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed; */
   /* background-size: cover; */
-  background-image: url("/media/cartographer.png");
+  /* background-image: url("/media/cartographer.png"); */
   /* position: relative;
     padding: 190px 0; */
   height: calc(100vh - 56px);
   color: #555;
   font-family: 'Lato';
 }
+
+/* .overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: black;
+	z-index: -1;
+} */
 
 #landing-page {
   padding-top: 64px;
