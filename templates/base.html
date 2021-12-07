@@ -167,7 +167,12 @@
             <!-- Header-->
             <div class="modal-header border-bottom">
                 <h6 class="m-0 fw-bold">
-                    Your Cart (2)
+                    Your Cart (	
+						{% if product_count %}
+							{{ product_count }}
+						{% else %}
+							0
+						{% endif %})
                 </h6>
                 <!-- Close -->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
@@ -176,29 +181,35 @@
             <div class="modal-body">
                 <!-- List group -->
                 <ul class="list-unstyled m-0 p-0">
-                   
+
+					{% for item in cart_items %}
                     <li class="py-3 border-bottom">
                         <div class="row align-items-center">
                             <div class="col-4">
                                 <!-- Image -->
                                 <a href="#">
-                                    <img class="img-fluid border" src="../static/img/1000x1000.jpg" alt="...">
+                                    <img class="img-fluid border" src="{{ item.product.image.url }}" alt="...">
                                 </a>
                             </div>
                             <div class="col-8">
                                 <!-- Title -->
                                 <p class="mb-2">
-                                    <a class="text-dark fw-500" href="#">Cotton floral print Dress</a>
-                                    <span class="m-0 text-muted w-100 d-block">$40.00</span>
+                                    <a class="text-dark fw-500" href="#">{{ item.product.name }}</a>
+                                    <span class="m-0 text-muted w-100 d-block">${{ item.product.price }}</span>
                                 </p>
                                 <!--Footer -->
                                 <div class="d-flex align-items-center">
+									<div class="cart-qty d-inline-flex">
+										<div class="dec qty-btn">-</div>
+										<input class="cart-qty-input form-control" type="text" name="qtybutton" value="{{ item.quantity }}">
+										<div class="inc qty-btn">+</div>
+									</div>
                                     <!-- Select -->
-                                    <select class="form-select form-select-sm w-auto">
+                                    <!-- <select class="form-select form-select-sm w-auto">
                                         <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                    </select>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select> -->
                                     <!-- Remove -->
                                     <a class="small text-dark ms-auto" href="#!">
                                         <i class="bi bi-x"></i> Remove
@@ -207,6 +218,7 @@
                             </div>
                         </div>
                     </li>
+					{% endfor %}
                 </ul>
             </div>
             <!-- Footer -->
@@ -216,23 +228,23 @@
                         <span class="text-dark">Subtotal</span>
                     </div>
                     <div class="col-4 text-end">
-                        <span class="ml-auto">$89.00</span>
+                        <span class="ml-auto">${{ total | floatformat:2 }}</span>
                     </div>
                 </div>
-                <div class="row g-0 py-2">
+                <!-- <div class="row g-0 py-2">
                     <div class="col-8">
                         <span class="text-dark">Taxes:</span>
                     </div>
                     <div class="col-4 text-end">
                         <span class="ml-auto">$89.00</span>
                     </div>
-                </div>
+                </div> -->
                 <div class="row g-0 pt-2 mt-2 border-top fw-bold text-dark">
                     <div class="col-8">
-                        <span class="text-dark">Subtotal</span>
+                        <span class="text-dark">Grand Total</span>
                     </div>
                     <div class="col-4 text-end">
-                        <span class="ml-auto">$89.00</span>
+                        <span class="ml-auto">${{ grand_total | floatformat:2 }}</span>
                     </div>
                 </div>
                 <div class="pt-4">
@@ -591,7 +603,13 @@
 					<div class="nav-item">
 						<a class="nav-link" data-bs-toggle="modal" data-bs-target="#modalMiniCart"
 							href="javascript:void(0)">
-							<span class="" data-cart-items="8">
+							<span class="" 
+									data-cart-items="
+									{% if product_count %}
+										{{ product_count }}
+									{% else %}
+										0
+									{% endif %}">
 								<i class="bi bi-cart"> </i>
 							</span>
 						</a>
