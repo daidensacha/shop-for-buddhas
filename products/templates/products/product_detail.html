@@ -35,7 +35,7 @@
                                         <!-- Product Gallery -->
                                         <div class="col-lg-6 lightbox-gallery product-gallery">
                                             {% if product.image %}
-                                                <a href="{{ product.image.url }}" target="blank">
+                                                <a href="{{ product.image.url }}" data-toggle="lightbox">
                                                     <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" title="">
                                                 </a>
                                             {% else %}

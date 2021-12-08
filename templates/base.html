@@ -41,6 +41,8 @@
 			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
 			crossorigin="anonymous">
 	</script>
+	<script src="{% static '/js/index.bundle.min.js' %}"></script>
+	
 	{% endblock %}
 
 	{% block extra_js %}
@@ -144,38 +146,73 @@
             <div class="modal-body">
                 <!-- List group -->
                 <ul class="list-unstyled m-0 p-0">
+					{% if cart_items %}
 
-					{% for item in cart_items %}
-                    <li class="py-3 border-bottom">
-                        <div class="row align-items-center">
-                            <div class="col-4">
-                                <!-- Image -->
-                                <a href="#">
-                                    <img class="img-fluid border" src="{{ item.product.image.url }}" alt="...">
-                                </a>
-                            </div>
-                            <div class="col-8">
-                                <!-- Title -->
-                                <p class="mb-2">
-                                    <a class="text-dark fw-500" href="#">{{ item.product.name }}</a>
-                                    <span class="m-0 text-muted w-100 d-block">${{ item.product.price }}</span>
-                                </p>
-                                <!--Footer -->
-                                <div class="d-flex align-items-center">
-									<div class="cart-qty d-inline-flex">
-										<div class="dec qty-btn">-</div>
-										<input class="cart-qty-input form-control" type="text" name="qtybutton" min="1" max="99" value="{{ item.quantity }}">
-										<div class="inc qty-btn">+</div>
+						{% for item in cart_items %}
+						<li class="py-3 border-bottom">
+							<div class="row align-items-center">
+								<div class="col-4">
+									<!-- Image -->
+									<a href="#">
+										<img class="img-fluid border" src="{{ item.product.image.url }}" alt="...">
+									</a>
+								</div>
+								<div class="col-8">
+									<!-- Title -->
+									<p class="mb-2">
+										<a class="text-dark fw-500" href="#">{{ item.product.name }}</a>
+										<span class="m-0 text-muted w-100 d-block">${{ item.product.price }}</span>
+									</p>
+									<!--Footer -->
+
+									<div class="d-flex align-items-center">
+										<form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
+											{% csrf_token %}
+											<div class="cart-qty d-inline-flex">
+												<div class="dec qty-btn"
+													data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">-</div>
+
+												<input class="cart-qty-input form-control" 
+													type="number" 
+													name="quantity" 
+													min="1" 
+													max="99" 
+													value="{{ item.quantity }}"
+													data-item_id="{{ item.item_id }}"
+													id="id_qty_{{ item.item_id }}">
+
+												<div class="inc qty-btn"
+													data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">+</div>
+												<!-- <div class="dec qty-btn">-</div>
+												<input class="cart-qty-input form-control" type="text" name="qtybutton" min="1" max="99" value="{{ item.quantity }}">
+												<div class="inc qty-btn">+</div> -->
+											</div>
+											<!-- Remove -->
+											<a class="small btn btn-link text-dark ms-auto remove-item" id="remove_{{ item.item_id }}">
+												<i class="bi bi-x"></i> <span class="">Remove</span>
+											</a>
+											<!-- <a class="small text-dark ms-auto" href="#!">
+												<i class="bi bi-x"></i> Remove
+											</a> -->
+										</form>
 									</div>
-                                    <!-- Remove -->
-                                    <a class="small text-dark ms-auto" href="#!">
-                                        <i class="bi bi-x"></i> Remove
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-					{% endfor %}
+								</div>
+							</div>
+						</li>
+						{% endfor %}
+
+					{% else %}
+
+					<p class="lead mb-5">Your bag is empty.</p>
+					<div class="d-flex">
+						<a class="btn btn-outline-dark" href="{% url 'products' %}">
+							<i class="fas fa-chevron-left mt-sm-0 me-1"></i>
+							<span class="d-none d-sm-inline">Continue Shopping</span>
+							<span class="d-inline d-sm-none">Back</span>
+						</a>
+					</div>
+				
+					{% endif %}
                 </ul>
             </div>
             <!-- Footer -->

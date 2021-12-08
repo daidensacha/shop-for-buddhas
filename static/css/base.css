@@ -77,6 +77,11 @@ body {
   text-align: center;
 }
 
+
+.update-link,
+.remove-item {
+    cursor: pointer!important;
+}
 /*
 ===================== Nav Search Bar ===================== */
 

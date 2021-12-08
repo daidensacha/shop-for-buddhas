@@ -58,4 +58,30 @@ for(let addButton of addButtonArr){
   }
 }
 
+// Update cart quantity with Vanilla JS
+let updateItemBtns = document.getElementsByClassName('update-link');
+let removeItemBtns = document.getElementsByClassName('remove-item');
+
+for(let updateBtn of updateItemBtns){
+  updateBtn.onclick = function(){
+      let elParentPrevElSibling = updateBtn.parentElement.previousElementSibling
+      let prevForm = elParentPrevElSibling.previousElementSibling.firstElementChild
+      prevForm.submit();
+  }
+}
+// Remove cart items with Vanilla JS
+for(let removeBtn of removeItemBtns){
+    removeBtn.onclick = function(){
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        // var itemId = document.querySelector(this).attr('id').split('remove_')[1];
+        var url = `/cart/remove/${itemId}/`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+        $.post(url, data)
+     .done(function() {
+         location.reload();
+     });
+  }
+}
+
 </script>

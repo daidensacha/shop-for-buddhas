@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cart_tools %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -83,7 +84,7 @@
 
                             
 
-                            <td class="text-center product-subtotal">${{ item.product.price }}</td>
+                            <td class="text-center product-subtotal">${{ item.product.price | calc_subtotal:item.quantity  }}</td>
                             <td class="product-remove text-end text-nowrap">
                                 <a class="btn btn-sm btn-outline-secondary update-link text-nowrap px-3"><i class="bi bi-pencil-square lh-1"></i> <span class="d-none d-md-inline-block">Update</span></a>
                                 <a class="btn btn-sm btn-outline-danger remove-item text-nowrap px-3" id="remove_{{ item.item_id }}">
@@ -193,31 +194,7 @@
 {{ block.super}}
 <script type="text/javascript">
 
-// Update cart quantity with Vanilla JS
-let updateItemBtns = document.getElementsByClassName('update-link');
-let removeItemBtns = document.getElementsByClassName('remove-item');
 
-for(let updateBtn of updateItemBtns){
-  updateBtn.onclick = function(){
-      let elParentPrevElSibling = updateBtn.parentElement.previousElementSibling
-      let prevForm = elParentPrevElSibling.previousElementSibling.firstElementChild
-      prevForm.submit();
-  }
-}
-// Remove cart items with Vanilla JS
-for(let removeBtn of removeItemBtns){
-    removeBtn.onclick = function(){
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        // var itemId = document.querySelector(this).attr('id').split('remove_')[1];
-        var url = `/cart/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken};
-        $.post(url, data)
-     .done(function() {
-         location.reload();
-     });
-  }
-}
 
 
 </script>
