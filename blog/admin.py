@@ -23,6 +23,8 @@ class PostAdmin(admin.ModelAdmin):
               'tags',
               'description',
               'body',
+              "status",
+              "featured",
               'created_at',
               'posted_at'
              )

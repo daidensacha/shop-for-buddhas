@@ -190,6 +190,111 @@ body {
 
  } 
 
+/* =================================== TOASTS =============================== */ 
+
+ .message-container {
+  position: absolute;
+  top: 125px;
+  left: -400px;
+  z-index: 99999999999;
+}
+
+.toast.show {
+ transform: translateX(430px);
+ transition: 1s;
+ transition-timing-function: ease-out;
+ opacity: 1;
+}
+
+.toast.hide {
+ transform: translateX(-400px)!important;
+ transition-timing-function: ease-in!important;
+ transition: 1s;
+ opacity: 0!important;
+ display: block!important;
+}
+
+.toast-success {
+  position: relative;
+  background-color: #ffffff;
+  box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05);
+  border-left: 8px solid #198754;
+  border-radius: 7px; 
+}
+.toast-success .toast-header {
+  border-bottom: 1px solid #198754;
+  background-color: #198754;
+}
+
+.toast-header .close {
+  color: white;
+}
+
+.toast-info {
+  position: relative;
+  background-color: #ffffff;
+  box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05);
+  border-left: 8px solid #3b86ff;
+  border-radius: 7px; 
+}
+
+.toast-info .toast-header {
+  border-bottom: 1px solid #3b86ff;
+  background-color: #0dcaf0;
+}
+
+.toast-error {
+  position: relative;
+  background-color: #ffffff;
+  box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05);
+  border-left: 8px solid #dc3545;
+  border-radius: 7px; 
+}
+
+.toast-warning {
+  position: relative;
+  background-color: #ffffff;
+  box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05);
+  border-left: 8px solid #ff9736;
+  border-radius: 7px; 
+}
+
+.toast-warning .toast-header {
+  border-bottom: 1px solid #ff9736;
+  background-color: #ffc107;
+}
+
+
+/* ------------------------------- bootstrap toasts */
+
+/* .message-container {
+  position: fixed;
+  top: 125px;
+  right: 15px;
+  z-index: 99999999999;
+  border:1px solid red;
+}
+
+.custom-toast {
+  overflow: visible;
+}
+
+.toast-capper {
+  height: 2px;
+} */
+
+/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent; 
+  border-bottom: 10px solid black;
+  position: absolute;
+  top: -10px;
+  right: 36px;
+}
+
  /* ================================ PRODUCTS ================================*/
 
  .product-meta.category-tags a.tag {
@@ -263,21 +368,10 @@ body {
 }
 
 /* Paragrapgh for Parallax Section */
-.paral p {
-  font-size: 24px;
-  color: #f5f5f5;
-  text-align: center;
-  line-height: 60px;
-}
+
 
 /* Heading for Parallax Section */
-.paral h1 {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 60px;
-  text-align: center;
-  padding-top: 60px;
-  line-height: 100px;
-}
+
 
 /* Image for Parallax Section */
 .paralsec {
@@ -296,6 +390,54 @@ body {
 /* Remove Bottom Margin from Jumbotron */
 .jumbotron {
   margin-bottom: 0;
+  padding-top:130px;
+}
+.paral h1 {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 35px;
+  text-align: center;
+  padding-top: 60px;
+  line-height: 100px;
+}
+.paral p {
+  font-size: 20px;
+  color: #f5f5f5;
+  text-align: center;
+  line-height: 60px;
+}
+
+
+@media only screen and (min-width: 768px){
+  .jumbotron {
+    margin-bottom: 0;
+    padding-top: 220px;
+  }
+  .paral h1 {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 60px;
+    text-align: center;
+    padding-top: 60px;
+    line-height: 100px;
+  }
+  .paral p {
+    font-size: 24px;
+    color: #f5f5f5;
+    text-align: center;
+    line-height: 60px;
+  }
+}
+@media only screen and (min-width: 992px){
+  .jumbotron {
+    margin-bottom: 0;
+    padding-top: 200px;
+  }
+  .paral h1 {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 60px;
+    text-align: center;
+    padding-top: 60px;
+    line-height: 100px;
+  }
 }
 
 /* Buttons */
@@ -471,6 +613,7 @@ textarea.form-control {
 .footer {
   background-image: url("/media/cartographer.png");
   position: relative;
+  margin-top: 3em;
 }
 
 a.social-icon {
@@ -629,7 +772,11 @@ a.social-icon:hover {
 /*----------------------------------------*/
 .single-blog {
   margin-top: 30px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
   z-index: 1;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
 }
 
 .single-blog .blog-images {
@@ -749,8 +896,8 @@ a.social-icon:hover {
 .single-blog .post-meta {
   overflow: hidden;
   position: relative;
-  /* border-top: 1px solid #ebebeb;
-  border-bottom: 1px solid #ebebeb; */
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
   padding: 15px 0;
 }
 
@@ -1558,6 +1705,10 @@ ul, ol {
 
   .header-container {
     padding-top: 56px;
+  }
+
+  .header-main {
+    box-shadow: 0px 2px 5px 1px #f5f5f5;
   }
 
   /* **************** Megamenu transition **************** */

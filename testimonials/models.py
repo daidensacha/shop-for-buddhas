@@ -24,5 +24,6 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return self.user
+        # __str__does not return str
         # return self.user.username
         # ERROR: Instance of 'ForeignKey' has no 'username' member ???

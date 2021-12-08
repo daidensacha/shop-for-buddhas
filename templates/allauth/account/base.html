@@ -1,16 +1,26 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
+{% block page_header %}
+    <div class="container header-container my-4">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
-    <div class="container-fluid bg-light min-vh-50">
-        <!-- <div class="overlay"></div> -->
-        <div class="row my-5">
-            <div class="col-12 col-lg-6 mx-auto my-5">
-                <div class="allauth-form-inner-content">
-                    {% block inner_content %}
-                    {% endblock %}
+    <div class="container-fluid bg-white min-vh-60">
+        <section class="section" id="allauth-forms">
+            <!-- <div class="overlay"></div> -->
+            <div class="row my-5">
+                <div class="col-12 col-lg-6 mx-auto my-5">
+                    <div class="allauth-form-inner-content">
+                        {% block inner_content %}
+                        {% endblock %}
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 {% endblock %}

@@ -1,14 +1,18 @@
 {% extends "blog/base.html" %}
 
-{% block inner_content %}
 
+{% block inner_content %}
+    <!-- <section class="section" id="blog-posts"> -->
         <!-- START BLOG POSTS SECTION  -->
         <div class="blog-wrapper">
-            <h1>Posts</h1>
+            {% if category_slug == None %}
             <div class="row">
                 {% for post in posts %}
-                <div class="col-md-6">
+                {% if post.featured %}
+                <h1>Featured Post</h1>
+                <div class="col-12">
                     <!-- Single Blog Start -->
+
                     <div class="single-blog">
                         <div class="blog-images">
                             <div class="post-meta">
@@ -33,6 +37,44 @@
                     </div>
                     <!-- Single Blog end -->
                 </div>
+                {% endif %}
+                {% endfor %}
+
+            </div>
+            {% endif %}
+            <div class="row">
+              
+                <h1>Posts</h1>
+              
+                {% for post in posts %}
+                    <!-- {% if not post.featured %} -->
+                    <div class="col-md-6">
+                        <!-- Single Blog Start -->
+                        <div class="single-blog">
+                            <div class="blog-images">
+                                <div class="post-meta">
+                                    <small>
+                                        <span class="meta-date">{{ post.posted_at | date }}</span>
+                                        <span class="meta-author">Posted by <span> {{ post.author }} </span></span>
+                                    </small>
+
+                                </div>
+                                <a href="{% url 'post_detail' post.slug %}"><img src="/media/{{post.image}}" alt=""></a>
+                                <div class="meta-category">
+                                    <a href="#">{{ post.category }}</a>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <h4 class="blog-title"><a href="{% url 'post_detail' post.slug %}"> {{ post.title }} </a>
+                                </h4>
+                                <p> {{ post.description }} ...</p>
+
+                            </div>
+                            <a href="{% url 'post_detail' post.slug %}">Read more</a>
+                        </div>
+                        <!-- Single Blog end -->
+                    </div>
+                    <!-- {% endif %} -->
                 {% endfor %}
 
             </div>
@@ -66,6 +108,6 @@
             </div>
             <!-- Page pagination End -->
         </div>
-    <!-- END BLOG POSTS SECTION  -->
-
+        <!-- END BLOG POSTS SECTION  -->
+    <!-- </section> -->
 {% endblock %}

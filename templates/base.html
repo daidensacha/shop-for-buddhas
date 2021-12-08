@@ -1,4 +1,5 @@
 {% load static %}
+{% load cart_tools %}
 
 <!doctype html>
 <html lang="en">
@@ -41,7 +42,7 @@
 			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
 			crossorigin="anonymous">
 	</script>
-	<script src="{% static '/js/index.bundle.min.js' %}"></script>
+
 	
 	{% endblock %}
 
@@ -161,7 +162,7 @@
 									<!-- Title -->
 									<p class="mb-2">
 										<a class="text-dark fw-500" href="#">{{ item.product.name }}</a>
-										<span class="m-0 text-muted w-100 d-block">${{ item.product.price }}</span>
+										<span class="m-0 text-muted w-100 d-block">${{ item.product.price | calc_subtotal:item.quantity  }}</span>
 									</p>
 									<!--Footer -->
 
@@ -254,7 +255,7 @@
 
 
 	<!-- Header -->
-	<div class="header-height-bar"></div>
+	<!-- <div class="header-height-bar"></div> -->
 	<header class="header-main bg-white header-light fixed-top header-height">
 		<!-- Top Header -->
 		<div class="header-top header-border-bottom small bg-black">
@@ -539,7 +540,21 @@
 	</header>
 
 	{% if messages %}
-	<div class="message-container"></div>
+		<div class="message-container">
+			{% for message in messages %}
+				{% with message.level as level %}
+					{% if level == 40 %}
+						{% include 'includes/toasts/toast_error.html' %}
+					{% elif level == 30 %}
+						{% include 'includes/toasts/toast_warning.html' %}
+					{% elif level == 25 %}
+						{% include 'includes/toasts/toast_success.html' %}
+					{% else %}
+						{% include 'includes/toasts/toast_info.html' %}
+					{% endif %}
+				{% endwith %}
+			{% endfor %}
+		</div>
 	{% endif %}
 
 	{% block page_header %}
@@ -570,10 +585,11 @@
 
 	{% block postloadjs %}
 	{{ block.super }}
+
 		{% include 'includes/javascript.html' %}
 	{% endblock %}
 
-
+	<script src="{% static '/js/index.bundle.min.js' %}"></script>
 </body>
 
 </html>

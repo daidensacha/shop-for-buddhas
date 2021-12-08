@@ -46,39 +46,21 @@
 
                 <!-- Widget Post Start -->
                 <div class="widget-post">
-                    <div class="single-post">
-                        <div class="post-thumb">
-                            <a href="blog-details-left-sidebar.html">
-                                <img src="assets/images/blog/blog-01.jpg" alt="">
-                            </a>
+                    {% for post in posts|slice:":4" %}
+                        <div class="single-post">
+                            <div class="post-thumb">
+                                <a href="{% url 'post_detail' post.slug %}"><img src="/media/{{post.image}}" alt=""></a>
+                                <!-- <a href="blog-details-left-sidebar.html">
+                                    <img src="assets/images/blog/blog-01.jpg" alt="">
+                                </a> -->
+                            </div>
+                            <div class="post-content">
+                                <h6 class="post-title"><a href="{% url 'post_detail' post.slug %}"> {{ post.title }} </a></h6>
+                                <span class="date">{{ post.posted_at | date }}</span>
+                            </div>
                         </div>
-                        <div class="post-content">
-                            <h6 class="post-title"><a href="blog-details-left-sidebar.html">This is Nicholas K Spring 2020 Runway</a></h6>
-                            <span class="date">Nov 12, 2020</span>
-                        </div>
-                    </div>
-                    <div class="single-post">
-                        <div class="post-thumb">
-                            <a href="blog-details-left-sidebar.html">
-                                <img src="assets/images/blog/blog-06.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="post-content">
-                            <h6 class="post-title"><a href="blog-details-left-sidebar.html">This is Secound Post For XipBlog</a></h6>
-                            <span class="date">Nov 12, 2020</span>
-                        </div>
-                    </div>
-                    <div class="single-post">
-                        <div class="post-thumb">
-                            <a href="blog-details-left-sidebar.html">
-                                <img src="assets/images/blog/blog-02.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="post-content">
-                            <h6 class="post-title"><a href="blog-details-left-sidebar.html">London Fashion Week 2020</a></h6>
-                            <span class="date">Nov 12, 2020</span>
-                        </div>
-                    </div>
+                        
+                    {% endfor %}
                 </div>
                 <!-- Widget Post End -->
             </div>

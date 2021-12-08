@@ -79,9 +79,23 @@ for(let removeBtn of removeItemBtns){
         var data = {'csrfmiddlewaretoken': csrfToken};
         $.post(url, data)
      .done(function() {
-         location.reload();
+        location.reload();
+        console.log("done")
      });
   }
 }
+
+//  Show toasts
+var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+  var toastList = toastElList.map(function(toastEl) {
+    return new bootstrap.Toast(toastEl);
+  })
+  toastList.forEach((toast) => {
+    toast.show();
+  })
+   
+  console.log(toastList); 
+
+
 
 </script>

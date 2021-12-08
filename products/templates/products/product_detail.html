@@ -11,158 +11,135 @@
 
 {% block content %}
     <div class="overlay"></div>
-    <div class="top-spacer"></div>
+    <!-- <div class="top-spacer"></div> -->
     <div class="container-fluid bg-white min-vh-70">
-        <div class="row my-5">
-            <div class="col text-center mt-3">
-              <h2>Products</h2>
+        <section class="section" id="product-details">
+            <div class="row my-5">
+                <div class="col text-center mt-3">
+                <h2>Products</h2>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="product-container col-10 offset-1">
-                <div class="row mt-1 mb-2"></div>
-                <div class="row">
-                   
+            <div class="row">
+                <div class="product-container col-10 offset-1">
 
-                    <!-- Quick View Modal-->
-                  
-                    <!-- <div class="modal-quick-view modal fade" id="{{ product.sku }}" tabindex="-1">
-                        <div class="modal-dialog modal-dialog-centered modal-xl">
-                            <div class="modal-content">
-                                <button class="btn-close position-absolute end-0 top-0 me-2 mt-2 z-index-1" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                                <div class="modal-body p-3"> -->
-                                    <div class="row">
-                                        <!-- Product Gallery -->
-                                        <div class="col-lg-6 lightbox-gallery product-gallery">
-                                            {% if product.image %}
-                                                <a href="{{ product.image.url }}" data-toggle="lightbox">
-                                                    <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" title="">
-                                                </a>
-                                            {% else %}
-                                                <a href="">
-                                                    <img class="img-fluid" src="{{ MEDIA_URL }} noimage.png" alt="{{ product.name }}"  title="">
-                                                </a>
+                    <div class="row">
+                        <!-- Product Gallery -->
+                        <div class="col-lg-6 lightbox-gallery product-gallery">
+                            {% if product.image %}
+                                <a href="{{ product.image.url }}" data-toggle="lightbox">
+                                    <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" title="">
+                                </a>
+                            {% else %}
+                                <a href="">
+                                    <img class="img-fluid" src="{{ MEDIA_URL }} noimage.png" alt="{{ product.name }}"  title="">
+                                </a>
+                            {% endif %}
+                        </div>
+                        <!-- End Product Gallery -->
+                        <!-- Product Details -->
+                        <div class="col-lg-6">
+                            <div class="product-detail pt-4">
+                            
+                                <div class="products-title mb-2">
+                                    <h1 class="h4">{{ product.name }}</h1>
+                                </div>
+                                <div class="product-meta category-tags small my-3">
+                                    {% if product.category %}
+                                    <p class="small my-1">
+                                        <a class="tag" href="{% url 'products' %}?category={{ product.category.name }}">
+                                            <i class="fas fa-tag"></i>
+                                            <span class="p-2 mt-2 ">{{ product.category.friendly_name }}</span>
+                                        </a>
+                                    </p>
+                                    {% endif %}
+                                </div>
+                                
+                                    {% if product.rating %}
+                                        <div class="rating-star text my-3">
+                                            {% for star in stars %}
+                                            {% if star < product.rating|add:"1" %}
+                                                <span class="text-warning"><i class="fas fa-star"></i></span>
                                             {% endif %}
+                                            {% if star > product.rating|add:"0"%}
+                                                <span class="text-warning"><i class="far fa-star"></i></span>
+                                            {% endif %}
+                                            {% endfor %}
                                         </div>
-                                        <!-- End Product Gallery -->
-                                        <!-- Product Details -->
-                                        <div class="col-lg-6">
-                                            <div class="product-detail pt-4">
-                                               
-                                                <div class="products-title mb-2">
-                                                    <h1 class="h4">{{ product.name }}</h1>
-                                                </div>
-                                                <div class="product-meta category-tags small my-3">
-                                                    <!-- <a href="#">{{ product.categpry }}</a> -->
-                                                    {% if product.category %}
-                                                    <p class="small my-1">
-                                                        <a class="tag" href="{% url 'products' %}?category={{ product.category.name }}">
-                                                            <i class="fas fa-tag"></i>
-                                                            <span class="p-2 mt-2 ">{{ product.category.friendly_name }}</span>
-                                                        </a>
-                                                    </p>
-                                                    {% endif %}
-                                                </div>
-                                                
-                                                    {% if product.rating %}
-                                                        <div class="rating-star text my-3">
-                                                            {% for star in stars %}
-                                                            {% if star < product.rating|add:"1" %}
-                                                                <span class="text-warning"><i class="fas fa-star"></i></span>
-                                                            {% endif %}
-                                                            {% if star > product.rating|add:"0"%}
-                                                                <span class="text-warning"><i class="far fa-star"></i></span>
-                                                            {% endif %}
-                                                            {% endfor %}
-                                                        </div>
-                                                    {% else %}
-                                                        <small class="text-muted">No Rating</small>
-                                                    {% endif %}
+                                    {% else %}
+                                        <small class="text-muted">No Rating</small>
+                                    {% endif %}
 
-                                                <div class="product-description">
-                                                    <p>{{ product.description }}</p>
-                                                </div>
-                                                <div class="product-attribute">
-                                                    <p class="fs-6 text-dark pb-2 fw-500">Size: {{ product.size }}</p>
-                                                  
-                                                    {% if product.color %}
-                                                        <p class="fs-6 text-dark pb-2 fw-500">Color: {{ product.color }}</p>
-                                                    {% else %}
-                                                        <p class="fs-6 text-dark pb-2 fw-500">Color: - </p>
-                                                    {% endif %}
-                                                 
-                                                </div>
-                                                <div class="product-price fs-3 fw-500 mb-2">
-                                                    <!-- <del class="text-muted fs-6">$38.<small>50</small></del> -->
-                                                    <span class="text-primary">${{ product.price }}</span>
-                                                </div>
-                                                <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
-                                                    {% csrf_token %}
-                                                    <div class="form-row">
+                                <div class="product-description">
+                                    <p>{{ product.description }}</p>
+                                </div>
+                                <div class="product-attribute">
+                                    <p class="fs-6 text-dark pb-2 fw-500">Size: {{ product.size }}</p>
+                                
+                                    {% if product.color %}
+                                        <p class="fs-6 text-dark pb-2 fw-500">Color: {{ product.color }}</p>
+                                    {% else %}
+                                        <p class="fs-6 text-dark pb-2 fw-500">Color: - </p>
+                                    {% endif %}
+                                
+                                </div>
+                                <div class="product-price fs-3 fw-500 mb-2">
+                                    <!-- <del class="text-muted fs-6">$38.<small>50</small></del> -->
+                                    <span class="text-primary">${{ product.price }}</span>
+                                </div>
+                                <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-row">
 
-                                                        <div class="product-detail-actions d-flex flex-wrap pt-3">
+                                        <div class="product-detail-actions d-flex flex-wrap pt-3">
 
-                                                            <div class="cart-qty me-3 mb-3">
-                                                                <div class="dec decrement-qty qty-btn" 
-                                                                        data-item_id="{{ product.id }}" 
-                                                                    id="decrement-qty_{{ product.id }}">-</div>
-                                                                <input class="cart-qty-input form-control" 
-                                                                        type="number" 
-                                                                        name="quantity" 
-                                                                        value="1" 
-                                                                        min="1" 
-                                                                        max="99"
-                                                                        data-item_id="{{ product.id }}" 
-                                                                        id="id_qty_{{ product.id }}">
-                                                                <div class="inc increment-qty qty-btn"  
-                                                                        data-item_id="{{ product.id }}" 
-                                                                        id="increment-qty_{{ product.id }}">+</div>
-                                                            </div>
-                                                            <div class="cart-button mb-3 d-flex">
-                                                                <button class="btn btn-dark me-3"
-                                                                        type="submit">
-                                                                    <i class="bi bi-cart"></i> Add to cart
-                                                                </button>
-                                                                <button class="btn btn-outline-primary me-3">
-                                                                    <i class="bi bi-heart"></i>
-                                                                </button>
-                                                                <button class="btn btn-outline-primary">
-                                                                    <i class="bi bi-arrow-left-right"></i>
-                                                                </button>
-                                                            </div>
-                                                            
-                                                        </div>
-                                                        <div class="d-flex pt-3">
-                                                            <a class="btn btn-outline-dark" href="{% url 'products' %}">
-                                                                <i class="fas fa-chevron-left mt-sm-0 me-1"></i>
-                                                                <span class="d-none d-sm-inline">Continue Shopping</span>
-                                                                <span class="d-inline d-sm-none">Back</span>
-                                                            </a>
-                                                        </div>
-                                                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
-
-
-                                                    </div>
-
-                                                </form>
-                                                
+                                            <div class="cart-qty me-3 mb-3">
+                                                <div class="dec decrement-qty qty-btn" 
+                                                        data-item_id="{{ product.id }}" 
+                                                    id="decrement-qty_{{ product.id }}">-</div>
+                                                <input class="cart-qty-input form-control" 
+                                                        type="number" 
+                                                        name="quantity" 
+                                                        value="1" 
+                                                        min="1" 
+                                                        max="99"
+                                                        data-item_id="{{ product.id }}" 
+                                                        id="id_qty_{{ product.id }}">
+                                                <div class="inc increment-qty qty-btn"  
+                                                        data-item_id="{{ product.id }}" 
+                                                        id="increment-qty_{{ product.id }}">+</div>
                                             </div>
+                                            <div class="cart-button mb-3 d-flex">
+                                                <button class="btn btn-dark me-3"
+                                                        type="submit">
+                                                    <i class="bi bi-cart"></i> Add to cart
+                                                </button>
+                                                <button class="btn btn-outline-primary me-3">
+                                                    <i class="bi bi-heart"></i>
+                                                </button>
+                                                <button class="btn btn-outline-primary">
+                                                    <i class="bi bi-arrow-left-right"></i>
+                                                </button>
+                                            </div>
+                                            
                                         </div>
-                                        <!-- End Product Details -->
+                                        <div class="d-flex pt-3">
+                                            <a class="btn btn-outline-dark" href="{% url 'products' %}">
+                                                <i class="fas fa-chevron-left mt-sm-0 me-1"></i>
+                                                <span class="d-none d-sm-inline">Continue Shopping</span>
+                                                <span class="d-inline d-sm-none">Back</span>
+                                            </a>
+                                        </div>
+                                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                     </div>
-                                <!-- </div>
+                                </form>
+                                
                             </div>
                         </div>
-                    </div> -->
-                
-                    <!-- End Quick View Modal-->
-                 
-
-               
-
+                        <!-- End Product Details -->
+                    </div>
+                    
                 </div>
-              
             </div>
-        </div>
+        </section>
     </div>
 {% endblock %}

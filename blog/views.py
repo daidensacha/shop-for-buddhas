@@ -5,16 +5,20 @@ from .models import Category, Post, Comment
 from .forms import CommentForm
 
 
-def blog_posts(request, tag_slug=None):
+def blog_posts(request, tag_slug=None, category_slug = None):
     """ A view to show the blog list page """
 
-    posts = Post.objects.all()
+    posts = Post.objects.filter(status = 1)
+    posts_sidebar = Post.objects.filter(status = 1)
     categories = Category.objects.all()
     tags = Tag.objects.all()
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
-        posts = posts.filter(tags=tag.id)
+        posts = posts.filter(status = 1,tags=tag.id)
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        posts = posts.filter(status = 1, category= category.id)
 
     paginator = Paginator(posts, 2)
     page = request.GET.get("page", 1)
@@ -27,9 +31,11 @@ def blog_posts(request, tag_slug=None):
 
     context = {
         "posts": posts,
+        "posts_sidebar":posts_sidebar,
         "categories": categories,
         'tag': tag,
         "tags": tags,
+        "category_slug":category_slug ,
     }
 
     return render(request, "blog/blog_posts.html", context)
@@ -39,6 +45,7 @@ def post_detail(request, slug):
     """ A view to show the blog post page """
 
     post = Post.objects.get(slug=slug)
+    posts_sidebar = Post.objects.filter(status = 1)
     categories = Category.objects.all()
     tags = Tag.objects.all()
     if request.method == 'POST':
@@ -56,6 +63,7 @@ def post_detail(request, slug):
     return render(request,
                   'blog/post_detail.html',
                   {'post': post,
+                  "posts_sidebar": posts_sidebar,
                    'form': form,
                    'categories': categories,
                    'tags': tags}

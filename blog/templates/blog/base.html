@@ -1,10 +1,18 @@
 {% extends "base.html" %}
 
+{% block page_header %}
+    <div class="container header-container my-4">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
 
-        
+    <section class="section" id="blog-posts"> 
          <!-- Blog Section Start -->
-         <div class="section section-padding-02">
+         <div class="section-padding-02">
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-lg-8">
@@ -40,7 +48,7 @@
                                 <div class="widget-link">
                                     <ul>
                                         {% for category in categories %}
-                                        <li><a href="#">{{ category }}</a></li>
+                                        <li><a href="{% url 'post_category' category.slug %}">{{ category }}</a></li>
                                         {% endfor %}
                                     </ul>
                                 </div>
@@ -54,7 +62,22 @@
 
                                 <!-- Widget Post Start -->
                                 <div class="widget-post">
-                                    <div class="single-post">
+                                    {% for post in posts_sidebar|slice:":4" %}
+                                        <div class="single-post">
+                                            <div class="post-thumb">
+                                                <a href="{% url 'post_detail' post.slug %}"><img src="/media/{{post.image}}" alt=""></a>
+                                                <!-- <a href="blog-details-left-sidebar.html">
+                                                    <img src="assets/images/blog/blog-01.jpg" alt="">
+                                                </a> -->
+                                            </div>
+                                            <div class="post-content">
+                                                <h6 class="post-title"><a href="{% url 'post_detail' post.slug %}"> {{ post.title }} </a></h6>
+                                                <span class="date">{{ post.posted_at | date }}</span>
+                                            </div>
+                                        </div>
+                                      
+                                    {% endfor %}
+                                    <!-- <div class="single-post">
                                         <div class="post-thumb">
                                             <a href="blog-details-left-sidebar.html">
                                                 <img src="assets/images/blog/blog-01.jpg" alt="">
@@ -86,7 +109,7 @@
                                             <h6 class="post-title"><a href="blog-details-left-sidebar.html">London Fashion Week 2020</a></h6>
                                             <span class="date">Nov 12, 2020</span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- Widget Post End -->
                             </div>
@@ -134,6 +157,6 @@
         </div>
         <!-- Blog Section End -->
 
-
+    </section>
 
 {% endblock %}
