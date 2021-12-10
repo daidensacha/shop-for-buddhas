@@ -5,9 +5,9 @@
     <!-- <section class="section" id="blog-posts"> -->
         <!-- START BLOG POSTS SECTION  -->
         <div class="blog-wrapper">
-            {% if category_slug == None %}
+            {% if category_slug == None and tag_slug == None %}
             <div class="row">
-                {% for post in posts %}
+                {% for post in featured_post %}
                 {% if post.featured %}
                 <h1>Featured Post</h1>
                 <div class="col-12">
@@ -24,7 +24,7 @@
                             </div>
                             <a href="{% url 'post_detail' post.slug %}"><img src="/media/{{post.image}}" alt=""></a>
                             <div class="meta-category">
-                                <a href="#">{{ post.category }}</a>
+                                <a href="{% url 'post_category' post.category.slug %}">{{ post.category }}</a>
                             </div>
                         </div>
                         <div class="blog-content">
@@ -47,7 +47,7 @@
                 <h1>Posts</h1>
               
                 {% for post in posts %}
-                    <!-- {% if not post.featured %} -->
+                    {% if not post.featured %}
                     <div class="col-md-6">
                         <!-- Single Blog Start -->
                         <div class="single-blog">
@@ -61,7 +61,7 @@
                                 </div>
                                 <a href="{% url 'post_detail' post.slug %}"><img src="/media/{{post.image}}" alt=""></a>
                                 <div class="meta-category">
-                                    <a href="#">{{ post.category }}</a>
+                                    <a href="{% url 'post_category' post.category.slug %}">{{ post.category }}</a>
                                 </div>
                             </div>
                             <div class="blog-content">
@@ -74,7 +74,7 @@
                         </div>
                         <!-- Single Blog end -->
                     </div>
-                    <!-- {% endif %} -->
+                    {% endif %}
                 {% endfor %}
 
             </div>

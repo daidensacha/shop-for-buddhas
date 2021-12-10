@@ -1,11 +1,7 @@
 {% extends "base.html" %}
 
 {% block page_header %}
-    <div class="container header-container my-4">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+
 {% endblock %}
 
 {% block content %}
@@ -58,7 +54,7 @@
 
                             <!-- Sidebar Widget Start -->
                             <div class="sidebar-widget">
-                                <h3 class="widget-title">Popular Post</h3>
+                                <h3 class="widget-title">Recent Posts</h3>
 
                                 <!-- Widget Post Start -->
                                 <div class="widget-post">
@@ -121,6 +117,27 @@
 
                                 <!-- Widget Category Start -->
                                 <div class="widget-link">
+
+                                    <!-- {{ all_posts }} -->
+                                    <!-- {% regroup all_posts by posted_at.year as year_list %}
+
+                                    <ul>
+                                    {% for year in year_list %}
+                                        <li>{{ year.grouper }}
+                                            {% regroup year.list by posted_at.month as month_list %}
+                                            <ul>
+                                            {% for month in month_list %}
+                                                <li>
+                                                 
+                                                    <a href="{% url 'blog:post_archive_month' year.grouper month.grouper %}"> 
+                                                        {{ month.list.0.posted_at|date:'b' }} ({{ month.list|length }})
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
+                                            </ul>
+                                        </li>
+                                    {% endfor %}
+                                    </ul> -->
                                     <ul>
                                         <li><a href="#">January (10)</a></li>
                                         <li><a href="#"> February (08)</a></li>

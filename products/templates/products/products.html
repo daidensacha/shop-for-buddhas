@@ -2,11 +2,7 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+
 {% endblock %}
 
 {% block content %}
@@ -67,26 +63,37 @@
                                 <div class="product-card-image">
                                     <div class="badge-ribbon">
 
-                                        <!-- <span class="badge bg-danger">Sale</span> -->
                                     </div>
-                                    <div class="product-action">
-                                        <a href="#" class="btn btn-outline-primary">
-                                            <i class="bi bi-heart"></i>
-                                        </a>
-                                    
-                                        <!-- <a data-bs-toggle="modal" data-bs-target="#{{ product.sku }}" href="javascript:void(0)" class="btn btn-outline-dark">
-                                            <i class="bi bi-eye-fill"></i>
-                                        </a>
-                                        <a data-bs-toggle="modal" data-bs-target="#{{ product.sku }}" href="javascript:void(0)" class="btn btn-outline-dark">
-                                            <i class="bi bi-cart"></i>
-                                        </a> -->
-                                        <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-dark">
-                                            <i class="bi bi-eye-fill"></i>
-                                        </a>
-                                        <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-dark">
-                                            <i class="bi bi-cart"></i>
-                                        </a>
-                                    </div>
+                                    <!-- Quick add to cart button from product page -->
+                                    <form class="form update-form" data-form="{{ item.item_id }}" method="POST" action="{% url 'add_to_cart' product.id %}">
+                                        {% csrf_token %}
+                                        <div class="product-action">
+
+                                                <a href="#" class="btn btn-outline-primary">
+                                                    <i class="bi bi-heart"></i>
+                                                </a>
+                                                <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-dark">
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </a>
+                                                <span class="btn btn-outline-dark update-link">
+                                                    <i class="bi bi-cart"></i>
+                                                </span>
+
+                                                <input class="cart-qty-input form-control" 
+                                                    type="hidden" 
+                                                    name="quantity" 
+                                                    value="1" 
+                                                    min="1" 
+                                                    max="99"
+                                                    data-item_id="{{ product.id }}" 
+                                                    id="id_qty_{{ product.id }}">
+
+                                                <input type="hidden" 
+                                                    name="redirect_url" 
+                                                    value="{{ request.path }}">
+                                                 
+                                        </div>
+                                    </form>
                                     <div class="product-media h-100">
                                         {% if product.image %}
                                             <a href="{% url 'product_detail' product.id %}">

@@ -59,6 +59,17 @@ def remove_from_cart(request, item_id):
  
         cart = request.session.get('cart', {})
 
+        # for item in request.POST:
+        #     if 'csrf' in item:
+        #         # ignore csrf token
+        #         pass
+        #     elif 'item-delete' in item:
+        #         if request.POST[item] == '1':
+        #             # if value of hidden input is 1, delete the item
+        #             id = item.replace('item-delete-', '')
+        #             cart.pop(id, None)
+        #             messages.success(request, f'Removed {product.name} from your cart')
+
         cart.pop(item_id)
         messages.success(request, f'Removed {product.name} from your cart')
 

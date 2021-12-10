@@ -190,20 +190,32 @@ body {
 
  } 
 
-/* =================================== TOASTS =============================== */ 
+/* =============================================================================
+============================ BOOTSTRAP TOAST MESSAGES ==========================
+============================================================================= */ 
 
  .message-container {
   position: absolute;
   top: 125px;
   left: -400px;
   z-index: 99999999999;
+  height: auto;
 }
 
 .toast.show {
- transform: translateX(430px);
+ transform: translateX(115%);
  transition: 1s;
  transition-timing-function: ease-out;
  opacity: 1;
+}
+
+@media only screen and (min-width: 768px){
+  .toast.show {
+    transform: translateX(430px);
+    transition: 1s;
+    transition-timing-function: ease-out;
+    opacity: 1;
+   }
 }
 
 .toast.hide {
@@ -214,89 +226,72 @@ body {
  display: block!important;
 }
 
+/**********************************************************
+******** Custom Bootstrap Toast Message styles ********* */
+
+/* Add box shadow */
+.toast {
+  box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important;
+}
+
+/* Toast Success */
 .toast-success {
   position: relative;
   background-color: #ffffff;
-  box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05);
+  /* box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important; */
   border-left: 8px solid #198754;
   border-radius: 7px; 
 }
 .toast-success .toast-header {
   border-bottom: 1px solid #198754;
-  background-color: #198754;
+  background-color: #28bb74 !important;
 }
 
-.toast-header .close {
-  color: white;
-}
-
+/* Toast Info */
 .toast-info {
   position: relative;
   background-color: #ffffff;
-  box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05);
+  /* box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05); */
   border-left: 8px solid #3b86ff;
   border-radius: 7px; 
 }
 
 .toast-info .toast-header {
   border-bottom: 1px solid #3b86ff;
-  background-color: #0dcaf0;
+  background-color: #0dcaf0 !important;
 }
 
+/* Toast Error */
 .toast-error {
   position: relative;
   background-color: #ffffff;
-  box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05);
+  /* box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05); */
   border-left: 8px solid #dc3545;
   border-radius: 7px; 
 }
 
+.toast-error .toast-header {
+  border-bottom: 1px solid #dc3545;
+  background-color: #ff6f61 !important;
+}
+
+/* Toast Warning */
 .toast-warning {
   position: relative;
   background-color: #ffffff;
-  box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05);
+  /* box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05); */
   border-left: 8px solid #ff9736;
   border-radius: 7px; 
 }
 
 .toast-warning .toast-header {
   border-bottom: 1px solid #ff9736;
-  background-color: #ffc107;
-}
-
-
-/* ------------------------------- bootstrap toasts */
-
-/* .message-container {
-  position: fixed;
-  top: 125px;
-  right: 15px;
-  z-index: 99999999999;
-  border:1px solid red;
-}
-
-.custom-toast {
-  overflow: visible;
-}
-
-.toast-capper {
-  height: 2px;
-} */
-
-/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
-.arrow-up {
-  width: 0; 
-  height: 0; 
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent; 
-  border-bottom: 10px solid black;
-  position: absolute;
-  top: -10px;
-  right: 36px;
+  background-color: #ffc107 !important;
 }
 
  /* ================================ PRODUCTS ================================*/
 
+ /* Style Tags */
  .product-meta.category-tags a.tag {
   height: 30px;
   padding: 5px 10px;
@@ -355,43 +350,31 @@ body {
   color: #c59b08;
 }
 
-/* Parallax */
+/* =================== Header Section Jumbotron Parallax ==================== */
+
+/* Remove Bottom Margin/ add top padding for Jumbotron */
+.jumbotron {
+  margin-bottom: 0;
+  padding-top:130px;
+}
 
 /* Header Parallax Element Style*/
 .paral {
   height: 100%;
   min-height: 600px;
   bottom: 0;
-  /* background-attachment: fixed; */
+  background-attachment: fixed;
   background-size: cover;
-  background-position: 70% 50%;
+  background-position: 70% 70%;
 }
 
-/* Paragrapgh for Parallax Section */
-
-
-/* Heading for Parallax Section */
-
-
-/* Image for Parallax Section */
+/* Image for Jumbotron Parallax Section */
 .paralsec {
   background-image: url("/media/bg_shakyamuni.png");
+
 }
 
-/* .paralsec1 {
-    background-image: url("https://img.webnots.com/2017/05/parallax1.jpg");}
-    
-    .paralsec2 {
-    background-image: url("https://img.webnots.com/2015/11/parallax2.jpg");
-    } */
-
-/* Add more images for more sections */
-
-/* Remove Bottom Margin from Jumbotron */
-.jumbotron {
-  margin-bottom: 0;
-  padding-top:130px;
-}
+/* Heading for Jumbotron Parallax Section */
 .paral h1 {
   color: rgba(255, 255, 255, 0.8);
   font-size: 35px;
@@ -399,13 +382,14 @@ body {
   padding-top: 60px;
   line-height: 100px;
 }
+
+/* Paragrapgh for Parallax Section */
 .paral p {
   font-size: 20px;
   color: #f5f5f5;
   text-align: center;
   line-height: 60px;
 }
-
 
 @media only screen and (min-width: 768px){
   .jumbotron {

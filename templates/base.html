@@ -534,13 +534,12 @@
                 <h4 class="logo-font my-1">Free delivery on orders over ${{ free_delivery_threshold }}!</h4>                
             </div>            
         </div> -->
-
-
-
 	</header>
-
+	<!-- header container to push body below fixed navbar -->
+	<div class="container header-container bg-white"></div>
 	{% if messages %}
-		<div class="message-container">
+	
+		<div class="message-container" >
 			{% for message in messages %}
 				{% with message.level as level %}
 					{% if level == 40 %}
@@ -555,11 +554,11 @@
 				{% endwith %}
 			{% endfor %}
 		</div>
+	
 	{% endif %}
-
 	{% block page_header %}
 	{% endblock %}
-
+		
 	{% block content %}
 	{% endblock %}
 

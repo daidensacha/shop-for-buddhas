@@ -3,9 +3,10 @@ from django.db import models
 from taggit.managers import TaggableManager
 from accounts.models import Profile
 
-STATUS = (("0","Draft"),
-           ("1","Published")
-    )
+STATUS = (('draft', 'Draft'),
+          ('published', 'Published')
+          )
+
 
 class Category(models.Model):
     """Blog category model for the blog app"""
@@ -39,7 +40,7 @@ class Post(models.Model):
                     blank=True,
                     null=True
                     )
-    status = models.CharField(max_length=5, choices=STATUS)
+    status = models.CharField(max_length=15, choices=STATUS)
     featured = models.BooleanField(default=False)
     posted_at = models.DateTimeField(
                     blank=True,

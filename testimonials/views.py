@@ -1,8 +1,10 @@
+from datetime import datetime
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .forms import TestimonialForm
 from .models import Testimonial
-from django.contrib.auth.decorators import login_required
-from datetime import datetime
+
+
 # Model Testimonial imported but unused?
 
 

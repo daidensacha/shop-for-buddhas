@@ -1,8 +1,8 @@
 from datetime import datetime
 from django.db import models
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from accounts.models import Profile
-
+from django.conf import settings
 
 rating = (("1", "1/5 stars"),
           ("2", "2/5 stars"),
@@ -14,7 +14,7 @@ rating = (("1", "1/5 stars"),
 
 class Testimonial(models.Model):
     """Create testimonial class model"""
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     user_image = models.ImageField()
     user_testimonial = models.TextField(max_length=254)
     user_rating = models.CharField(max_length=150, choices=rating)
@@ -22,8 +22,6 @@ class Testimonial(models.Model):
     created_at = models.DateTimeField(default=datetime.now)
     approved = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.user
         # __str__does not return str
         # return self.user.username
         # ERROR: Instance of 'ForeignKey' has no 'username' member ???

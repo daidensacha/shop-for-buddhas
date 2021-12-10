@@ -3,11 +3,7 @@
 {% load cart_tools %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+   
 {% endblock %}
 
 {% block content %}
@@ -26,12 +22,130 @@
                     <!-- <hr> -->
                 </div>
             </div>
+            
+
+            {% if cart_items %}
+
+            <!-- Start Mobile Cart View -->
+            <div class="row d-block d-lg-none">
+                <div class="product-container col-11 mx-auto">
+                    {% for item in cart_items %}
+                    <div class="row">
+                        <!-- Product Gallery -->
+                        <div class="col-lg-6 lightbox-gallery product-gallery">
+                            {% if item.product.image %}
+                                <a href="{{ item.product.image.url }}" data-toggle="lightbox">
+                                    <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" title="">
+                                </a>
+                            {% else %}
+                                <a href="">
+                                    <img class="img-fluid" src="{{ MEDIA_URL }} noimage.png" alt="{{ item.product.name }}"  title="">
+                                </a>
+                            {% endif %}
+                        </div>
+                        <!-- End Product Gallery -->
+                        <!-- Product Details -->
+                        <div class="col-lg-6">
+                            <div class="product-detail pt-4">
+                            
+                                <div class="products-title mb-2">
+                                    <h1 class="h4">{{ item.product.name }}</h1>
+                                </div>
+                                
+                                <div class="product-name">
+                                    <!-- <p><a class="text-reset" href="#">{{ item.product.name }}</a></p> -->
+                                        <p>{{ item.product.sku | upper }}</p>
+                                </div>
+
+                                <div class="product-price fs-3 fw-500 mb-2">
+                                    <!-- <del class="text-muted fs-6">$38.<small>50</small></del> -->
+                                    <span class="text-primary">${{ item.product.price }}</span>
+                                </div>
+                                <form class="form update-form" data-form="{{ item.item_id }}" method="POST" action="{% url 'adjust_cart' item.item_id %}">
+                                    {% csrf_token %}
+                                    <div class="form-row">
+
+                                        <div class="product-detail-actions d-flex flex-wrap pt-3">
+
+                                            <div class="cart-qty me-3 mb-3">
+                                                <div class="dec decrement-qty qty-btn" 
+                                                        data-item_id="{{ product.id }}" 
+                                                    id="decrement-qty_{{ product.id }}">&minus;</div>
+                                                <input class="cart-qty-input form-control" 
+                                                        type="number" 
+                                                        name="quantity" 
+                                                        value="{{ item.quantity }}" 
+                                                        min="1" 
+                                                        max="99"
+                                                        data-item_id="{{ product.id }}" 
+                                                        id="id_qty_{{ product.id }}">
+                                                
+                                                <div class="inc increment-qty qty-btn"  
+                                                        data-item_id="{{ product.id }}" 
+                                                        id="increment-qty_{{ product.id }}">&plus;</div>
+                                            </div>
+                                            <input type="hidden" value="" id="item-delete-{{ item.product.id }}"
+                                            name="item-delete-{{ item.product.id }}" 
+                                            data-product-id="{{ item.product.id }}">
+                                            <div class="cart-button mb-3 d-flex">
+                                                <!-- <div class="input-group col align-items-center me-auto"> -->
+                                                    <span class="input-group-text btn btn-outline-primary update-link me-3">
+                                                        <i class="fas fa-sync-alt"></i>
+                                                    </span>
+                                                    <span class="input-group-text btn btn-outline-danger remove-item me-3"
+                                                            id="remove_{{ item.item_id }}">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </span>
+
+                                                    <!-- <a class="input-group-text btn btn-sm rounded-3 btn-outline-secondary update-link text-nowrap px-3" 
+                                                        data-product-id="{{ item.item.id }}">
+                                                            <i class="bi bi-pencil-square lh-1"></i> 
+                                                            <span class="d-none d-md-inline-block">Update</span>
+                                                    </a>
+                                                    <a class="input-group-text btn btn-sm rounded-3 btn-outline-danger remove-item text-nowrap px-3" 
+                                                        data-product-id="{{ item.item.id }}" 
+                                                        id="remove_{{ item.item_id }}">
+                                                            <i class="bi bi-x lh-1"></i> 
+                                                            <span class="d-none d-md-inline-block">Remove</span>
+                                                    </a> -->
+                                                    <!-- </div> -->
+                                                <!-- <button class="btn btn-dark me-3"
+                                                        type="submit">
+                                                    <i class="bi bi-cart"></i> Add to cart
+                                                </button>
+                                                <button class="btn btn-outline-primary me-3">
+                                                    <i class="bi bi-heart"></i>
+                                                </button>
+                                                <button class="btn btn-outline-primary">
+                                                    <i class="bi bi-arrow-left-right"></i>
+                                                </button> -->
+                                            </div>
+                                            
+                                        </div>
+                                        <!-- <div class="d-flex pt-3">
+                                            <a class="btn btn-outline-dark" href="{% url 'products' %}">
+                                                <i class="fas fa-chevron-left mt-sm-0 me-1"></i>
+                                                <span class="d-none d-sm-inline">Continue Shopping</span>
+                                                <span class="d-inline d-sm-none">Back</span>
+                                            </a>
+                                        </div>
+                                        <input type="hidden" name="redirect_url" value="{{ request.path }}"> -->
+                                    </div>
+                                </form>
+                                
+                            </div>
+                        </div>
+                        <!-- End Product Details -->
+                    </div>
+                    <hr class="my-4">
+                    {% endfor %}
+                    
+                </div>
+            </div>
+                <!-- End Mobile Cart View -->
             <div class="row">
-
-                {% if cart_items %}
-
                 <!-- Cart Table -->
-                <div class="table-content table-responsive cart-table-content my-5">
+                <div class="table-content table-responsive cart-table-content my-5 d-none d-lg-block">
                     <table class="table table-borderless table-sm align-middle">
                         <!-- <table class="table table-borderless table-sm align-middle"></table> -->
                         <thead>
@@ -40,8 +154,9 @@
                                 <th class="text-dark text-center fw-500 text-nowrap" scope="col">Product Info</th>
                                 <th class="text-dark text-center fw-500 text-nowrap" scope="col">Price</th>
                                 <th class="text-dark text-center fw-500 text-nowrap" scope="col">Qty</th>
-                                <th class="text-dark text-center fw-500 text-nowrap" scope="col">Subtotal</th>
-                                <th class="text-dark fw-500 text-end text-nowrap" scope="col">action</th>
+                                <!-- <th class="text-dark fw-500 text-center text-nowrap" colspan="2">Action</th> -->
+                                <th class="text-dark text-end fw-500 text-nowrap" scope="col">Subtotal</th>
+                                <!-- <th class="text-dark fw-500 text-end text-nowrap" scope="col">action</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -56,43 +171,74 @@
                                 </td>
                                 <td class="text-center product-price-cart"><span class="amount">${{ item.product.price }}</span></td>
 
-                                <td class="text-center product-quantity">
-                                    <!-- START FORM -->
-                                    <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
-                                        {% csrf_token %}
-                                        <div class="cart-qty d-inline-flex">
-
-                                            <div class="dec qty-btn"
-                                                data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">-</div>
-
-                                            <input class="cart-qty-input form-control" 
-                                                type="number" 
-                                                name="quantity" 
-                                                min="1" 
-                                                max="99" 
-                                                value="{{ item.quantity }}"
-                                                data-item_id="{{ item.item_id }}"
-                                                id="id_qty_{{ item.item_id }}">
-
-                                            <div class="inc qty-btn"
-                                                data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">+</div>
-
-                                        </div>
-
-                                    </form>
-                                    <!-- START FORM -->
-                                </td>
-
                                 
+                                    <td class="text-center product-quantity">
+                                        <form class="form update-form" data-form="{{ item.item_id }}" method="POST" action="{% url 'adjust_cart' item.item_id %}">
+                                            {% csrf_token %}
+                                            <div class="cart-qty d-inline-flex">
 
-                                <td class="text-center product-subtotal">${{ item.product.price | calc_subtotal:item.quantity  }}</td>
-                                <td class="product-remove text-end text-nowrap">
-                                    <a class="btn btn-sm btn-outline-secondary update-link text-nowrap px-3"><i class="bi bi-pencil-square lh-1"></i> <span class="d-none d-md-inline-block">Update</span></a>
-                                    <a class="btn btn-sm btn-outline-danger remove-item text-nowrap px-3" id="remove_{{ item.item_id }}">
-                                        <i class="bi bi-x lh-1"></i> <span class="d-none d-md-inline-block">Remove</span>
-                                    </a>
-                                </td>
+                                                <div class="dec qty-btn"
+                                                    data-item_id="id_{{ item.item.id }}" id="decrement-qty_{{ item.item_id }}">&minus;</div>
+
+                                                <input class="cart-qty-input form-control" 
+                                                    type="number" 
+                                                    name="quantity" 
+                                                    min="1" 
+                                                    max="99" 
+                                                    value="{{ item.quantity }}"
+                                                    data-item_id="{{ item.item_id }}"
+                                                    id="id_qty_{{ item.item_id }}">
+
+                                                <div class="inc qty-btn"
+                                                    data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">&plus;</div>
+
+                                            </div>
+                                            <input type="hidden" value="" id="item-delete-{{ item.product.id }}"
+                                                    name="item-delete-{{ item.product.id }}" data-product-id="{{ item.product.id }}">
+                                        
+                                                    <span class="input-group-text btn btn-outline-primary update-link mx-3">
+                                                        <i class="fas fa-sync-alt"></i>
+                                                      </span>
+                                                      <span class="input-group-text btn btn-outline-danger remove-item me-3"
+                                                            id="remove_{{ item.item_id }}">
+                                                        <i class="far fa-trash-alt"></i>
+                                                      </span>
+                                        </form>
+                                       
+                                        <!-- END FORM -->
+                                        <!-- This update works wioth the jQuery/ ajax -->
+                                        <!-- <a class="btn btn-sm btn-outline-secondary update-link text-nowrap px-3" data-product-id="{{ item.item.id }}"><i class="bi bi-pencil-square lh-1"></i> <span class="d-none d-md-inline-block">Update</span></a> -->
+
+                                    </td>
+                                    <!-- <td class="product-remove text-end text-nowrap">
+                                        <span class="input-group-text btn btn-outline-primary update-link mx-3">
+                                            <i class="fas fa-sync-alt"></i>
+                                          </span>
+                                          <span class="input-group-text btn btn-outline-danger remove-item me-3"
+                                                id="remove_{{ item.item_id }}">
+                                            <i class="far fa-trash-alt"></i>
+                                          </span>
+
+                                    </td> -->
+                                    <!-- FORM SUBTOTAL -->
+                                    <td class="text-end product-subtotal">${{ item.product.price | calc_subtotal:item.quantity  }}</td>
+
+                                    <!-- FORM REMOVE BUTTON -->
+                                    <!-- <td class="product-remove text-end text-nowrap"> -->
+                                        <!-- <a class="input-group-text btn btn-sm rounded-3 btn-outline-secondary update-link text-nowrap px-3" data-product-id="{{ item.item.id }}"><i class="bi bi-pencil-square lh-1"></i> <span class="d-none d-md-inline-block">Update</span></a>
+                                        <a class="input-group-text btn btn-sm rounded-3 btn-outline-danger remove-item text-nowrap px-3" data-product-id="{{ item.item.id }}" id="remove_{{ item.item_id }}">
+                                            <i class="bi bi-x lh-1"></i> <span class="d-none d-md-inline-block">Remove</span>
+                                        </a> -->
+                                        <!-- <span class="input-group-text btn btn-outline-primary me-3">
+                                            <i class="fas fa-sync-alt"></i>
+                                          </span>
+                                          <span class="input-group-text btn btn-outline-danger me-3">
+                                            <i class="far fa-trash-alt"></i>
+                                          </span> -->
+                                    <!-- </td> -->
+                                
                             </tr>
+                            <!-- <hr> -->
                             {% endfor %}
                         
                         </tbody>
@@ -100,24 +246,25 @@
                 </div>
 
                 <!-- Cart Table -->
-                <div class="d-flex">
-                    <div>
-                        <a class="btn btn-outline-dark" href="{% url 'products' %}">
-                            <i class="ci-arrow-left mt-sm-0 me-1"></i>
-                            <span class="d-none d-sm-inline">Continue Shopping</span>
-                            <span class="d-inline d-sm-none">Back</span>
+                <div class="d-flex justify-content-start justify-content-sm-end">
+                    <div class="">
+                        <a class="btn btn-outline-dark ms-auto" href="{% url 'products' %}">
+                            <i class="ci-arrow-left mt-sm-0 ms-auto"></i>
+                            <span class="">Continue Shopping</span>
+                            <!-- <span class="d-none d-sm-inline">Continue Shopping</span>
+                            <span class="d-inline d-sm-none">Back</span> -->
                         </a>
                     </div>
-                    <div class="ms-auto">
+                    <!-- <div class="ms-auto">
                         <a class="btn btn-outline-primary" href="#">
                             <span class="d-none d-sm-inline">Update shopping cart</span>
                             <span class="d-inline d-sm-none">Next</span>
                             <i class="ci-arrow-right mt-sm-0 ms-1"></i>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="row flex-row-reverse pt-4">
-                    <div class="col-md-6 col-lg-4">
+                <div class="row flex-row-reverse pt-4 gx-0">
+                    <div class="col-md-6 col-lg-4 gx-3">
                         <div class="card">
                             <div class="card-header bg-transparent py-3">
                                 <h6 class="m-0 mb-1">Order Total</h6>
@@ -152,7 +299,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-8">
+                    <div class="col-md-6 col-lg-8 gx-3">
                         <div class="card">
                             <div class="card-header bg-transparent py-3">
                                 <h6 class="m-0">Use Coupon Code</h6>

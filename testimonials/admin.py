@@ -27,6 +27,6 @@ class TestimonialAdmin(admin.ModelAdmin):
     get_username.admin_order_field = "user"
     list_display = ('get_username', 'created_at', 'approved', 'posted_at')
     list_filter = ('approved',)
-    ordering = ('created_at',)
+    ordering = ('-created_at',)
     # search_fields = ('username', 'email', 'user_type')
     # readonly_fields = ['password']
