@@ -243,7 +243,7 @@
                     </div>
                 </div>
                 <div class="pt-4">
-                    <a class="btn btn-block btn-dark w-100 mb-3" href="#">Continue to Checkout</a>
+                    <a class="btn btn-block btn-dark w-100 mb-3" href="{% url 'checkout' %}">Continue to Checkout</a>
                     <a class="btn btn-block btn-outline-dark w-100" href="{% url 'view_cart' %}">View Cart</a>
                 </div>
             </div>
@@ -535,8 +535,9 @@
             </div>            
         </div> -->
 	</header>
+
 	<!-- header container to push body below fixed navbar -->
-	<div class="container header-container bg-white"></div>
+	<div class="container header-container bg-white" id="header-spacer"></div>
 	{% if messages %}
 	
 		<div class="message-container" >

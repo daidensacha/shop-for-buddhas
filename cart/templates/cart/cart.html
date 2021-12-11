@@ -11,15 +11,13 @@
 <div class="overlay"></div>
 
 <!-- Cart Table -->
-<div class="py-6">
+    <section class="section" id="shopping-cart">
     <div class="container min-vh-60">
-        <section class="section" id="shopping-cart">
+        
 
             <div class="row">
                 <div class="col mt-3">
-                    <!-- <hr> -->
                     <h2 class="mb-4">Shopping Cart</h2>
-                    <!-- <hr> -->
                 </div>
             </div>
             
@@ -101,28 +99,6 @@
                                                         <i class="far fa-trash-alt"></i>
                                                     </span>
 
-                                                    <!-- <a class="input-group-text btn btn-sm rounded-3 btn-outline-secondary update-link text-nowrap px-3" 
-                                                        data-product-id="{{ item.item.id }}">
-                                                            <i class="bi bi-pencil-square lh-1"></i> 
-                                                            <span class="d-none d-md-inline-block">Update</span>
-                                                    </a>
-                                                    <a class="input-group-text btn btn-sm rounded-3 btn-outline-danger remove-item text-nowrap px-3" 
-                                                        data-product-id="{{ item.item.id }}" 
-                                                        id="remove_{{ item.item_id }}">
-                                                            <i class="bi bi-x lh-1"></i> 
-                                                            <span class="d-none d-md-inline-block">Remove</span>
-                                                    </a> -->
-                                                    <!-- </div> -->
-                                                <!-- <button class="btn btn-dark me-3"
-                                                        type="submit">
-                                                    <i class="bi bi-cart"></i> Add to cart
-                                                </button>
-                                                <button class="btn btn-outline-primary me-3">
-                                                    <i class="bi bi-heart"></i>
-                                                </button>
-                                                <button class="btn btn-outline-primary">
-                                                    <i class="bi bi-arrow-left-right"></i>
-                                                </button> -->
                                             </div>
                                             
                                         </div>
@@ -223,32 +199,9 @@
                                         <!-- <a class="btn btn-sm btn-outline-secondary update-link text-nowrap px-3" data-product-id="{{ item.item.id }}"><i class="bi bi-pencil-square lh-1"></i> <span class="d-none d-md-inline-block">Update</span></a> -->
 
                                     </td>
-                                    <!-- <td class="product-remove text-end text-nowrap">
-                                        <span class="input-group-text btn btn-outline-primary update-link mx-3">
-                                            <i class="fas fa-sync-alt"></i>
-                                          </span>
-                                          <span class="input-group-text btn btn-outline-danger remove-item me-3"
-                                                id="remove_{{ item.item_id }}">
-                                            <i class="far fa-trash-alt"></i>
-                                          </span>
 
-                                    </td> -->
                                     <!-- FORM SUBTOTAL -->
                                     <td class="text-end product-subtotal">${{ item.product.price | calc_subtotal:item.quantity  }}</td>
-
-                                    <!-- FORM REMOVE BUTTON -->
-                                    <!-- <td class="product-remove text-end text-nowrap"> -->
-                                        <!-- <a class="input-group-text btn btn-sm rounded-3 btn-outline-secondary update-link text-nowrap px-3" data-product-id="{{ item.item.id }}"><i class="bi bi-pencil-square lh-1"></i> <span class="d-none d-md-inline-block">Update</span></a>
-                                        <a class="input-group-text btn btn-sm rounded-3 btn-outline-danger remove-item text-nowrap px-3" data-product-id="{{ item.item.id }}" id="remove_{{ item.item_id }}">
-                                            <i class="bi bi-x lh-1"></i> <span class="d-none d-md-inline-block">Remove</span>
-                                        </a> -->
-                                        <!-- <span class="input-group-text btn btn-outline-primary me-3">
-                                            <i class="fas fa-sync-alt"></i>
-                                          </span>
-                                          <span class="input-group-text btn btn-outline-danger me-3">
-                                            <i class="far fa-trash-alt"></i>
-                                          </span> -->
-                                    <!-- </td> -->
                                 
                             </tr>
                             <!-- <hr> -->
@@ -262,8 +215,9 @@
                 <div class="d-flex justify-content-start justify-content-sm-end">
                     <div class="">
                         <a class="btn btn-outline-dark ms-auto" href="{% url 'products' %}">
-                            <i class="ci-arrow-left mt-sm-0 ms-auto"></i>
+                            
                             <span class="">Continue Shopping</span>
+                            <i class="fas fa-chevron-right"></i>
                             <!-- <span class="d-none d-sm-inline">Continue Shopping</span>
                             <span class="d-inline d-sm-none">Back</span> -->
                         </a>
@@ -307,7 +261,7 @@
                                 
 
                                 <div class="d-grid gap-2 mx-auto">
-                                    <a class="btn btn-primary" href="checkout-shipping.html">PROCEED TO CHECKOUT</a>
+                                    <a class="btn btn-primary" href="{% url 'checkout' %}">PROCEED TO CHECKOUT</a>
                                 </div>
                             </div>
                         </div>
@@ -345,9 +299,10 @@
                 {% endif %}
 
             </div>
-        </section>
+       
     </div>
-</div>
+</section>
+<!-- </div> -->
 <!-- Cart Table -->
   
 {% endblock %}
