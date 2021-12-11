@@ -61,31 +61,24 @@ for(let addButton of addButtonArr){
 // Update cart quantity with Vanilla JS
 // let updateItemBtns = document.getElementsByClassName('update-link');
 
-
-
     document.querySelectorAll(".update-link").forEach((item) => {
       item.addEventListener('click', (e) => {
         e.target.closest('form').submit();
       }) 
 })
-// document.querySelectorAll('.delete-item-button').forEach((item) => {
-//         item.addEventListener('click', (e) => {
-//             let id = e.target.closest('.delete-item-button').dataset['productId'];
-//             document.querySelector(`#item-delete-${id}`).value = 1
-//             document.querySelector('#cart-form').submit();
-//         })
-//     })
 
+
+// MY SCRIPT
 // document.querySelectorAll('.remove-item').forEach((item) => {
 //         item.addEventListener('click', (e) => {
-//             let id = e.target.closest('.remove-item').dataset['itemId'];
-//             document.querySelector(`#item-delete-${id}`).value = 1
+//             let id = e.target.closest('.remove-item').dataset['productId'];
+//             document.querySelector(`#remove-item-${id}`).value = 1
 //             e.target.closest('form').submit();
 //         })
 //     })
 
 
-// Remove cart items with Vanilla JS
+// Remove cart items course example JS
 let removeItemBtns = document.getElementsByClassName('remove-item');
 
 for(let removeBtn of removeItemBtns){

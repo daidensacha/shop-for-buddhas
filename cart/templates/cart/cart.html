@@ -84,16 +84,20 @@
                                                         data-item_id="{{ product.id }}" 
                                                         id="increment-qty_{{ product.id }}">&plus;</div>
                                             </div>
-                                            <input type="hidden" value="" id="item-delete-{{ item.product.id }}"
-                                            name="item-delete-{{ item.product.id }}" 
-                                            data-product-id="{{ item.product.id }}">
+                                            <!-- <input type="hidden" 
+                                                    value="" 
+                                                    id="item-delete-{{ item.product.id }}"
+                                                    name="item-delete-{{ item.product.id }}" 
+                                                    data-product-id="{{ item.product.id }}"> -->
+
                                             <div class="cart-button mb-3 d-flex">
                                                 <!-- <div class="input-group col align-items-center me-auto"> -->
                                                     <span class="input-group-text btn btn-outline-primary update-link me-3">
                                                         <i class="fas fa-sync-alt"></i>
                                                     </span>
                                                     <span class="input-group-text btn btn-outline-danger remove-item me-3"
-                                                            id="remove_{{ item.item_id }}">
+                                                        id="remove_{{ item.item_id }}"
+                                                        data-product-id="{{ item.product.id }}">
                                                         <i class="far fa-trash-alt"></i>
                                                     </span>
 
@@ -128,8 +132,8 @@
                                                 <span class="d-none d-sm-inline">Continue Shopping</span>
                                                 <span class="d-inline d-sm-none">Back</span>
                                             </a>
-                                        </div>
-                                        <input type="hidden" name="redirect_url" value="{{ request.path }}"> -->
+                                        </div>-->
+                                        <!-- <input type="hidden" name="redirect_url" value="{{ request.path }}">  -->
                                     </div>
                                 </form>
                                 
@@ -193,16 +197,25 @@
                                                     data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">&plus;</div>
 
                                             </div>
-                                            <input type="hidden" value="" id="item-delete-{{ item.product.id }}"
-                                                    name="item-delete-{{ item.product.id }}" data-product-id="{{ item.product.id }}">
+                                            <input type="hidden" 
+                                                    value="" 
+                                                    id="remove-item-{{ item.item_id }}"
+                                                    name="remove-item-{{ item.item_id }}">
+                                            
                                         
                                                     <span class="input-group-text btn btn-outline-primary update-link mx-3">
                                                         <i class="fas fa-sync-alt"></i>
-                                                      </span>
-                                                      <span class="input-group-text btn btn-outline-danger remove-item me-3"
-                                                            id="remove_{{ item.item_id }}">
+                                                    </span>
+                                                    <span class="input-group-text btn btn-outline-danger remove-item me-3"
+                                                        id="remove_{{ item.item_id }}"
+                                                        data-product-id="{{ item.product.id }}">
+                                                    <i class="far fa-trash-alt"></i>
+                                                    </span>
+                                                    <!-- <a href="{% url 'remove_from_cart' %" class="input-group-text btn btn-outline-danger remove-item me-3"
+                                                        id="remove_{{ item.item_id }}"
+                                                        data-product-id="{{ item.product.id }}">
                                                         <i class="far fa-trash-alt"></i>
-                                                      </span>
+                                                    </a> -->
                                         </form>
                                        
                                         <!-- END FORM -->
@@ -256,7 +269,7 @@
                         </a>
                     </div>
                     <!-- <div class="ms-auto">
-                        <a class="btn btn-outline-primary" href="#">
+                        <a class="btn btn-outline-primary" href="{% url 'view_cart' %}">
                             <span class="d-none d-sm-inline">Update shopping cart</span>
                             <span class="d-inline d-sm-none">Next</span>
                             <i class="ci-arrow-right mt-sm-0 ms-1"></i>
@@ -342,9 +355,6 @@
 {% block postloadjs %}
 {{ block.super}}
 <script type="text/javascript">
-
-
-
 
 </script>
 {% endblock %}

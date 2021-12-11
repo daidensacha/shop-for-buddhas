@@ -119,12 +119,24 @@
                                             
                                         </div>
                                         <div class="d-flex pt-3">
-                                            <a class="btn btn-outline-dark" href="{% url 'products' %}">
+                                            <a class="btn btn-outline-dark me-4" href="{% url 'products' %}">
                                                 <i class="fas fa-chevron-left mt-sm-0 me-1"></i>
                                                 <span class="d-none d-sm-inline">Continue Shopping</span>
                                                 <span class="d-inline d-sm-none">Back</span>
                                             </a>
+                                            <a class="btn btn-outline-primary" href="{% url 'view_cart' %}">
+                                                <span class="d-none d-sm-inline">Shopping Cart</span>
+                                                <span class="d-inline d-sm-none">Next</span>
+                                                <i class="fas fa-chevron-right mt-sm-0 me-1"></i>
+                                            </a>
                                         </div>
+                                        <!-- <div class="ms-auto">
+                                            <a class="btn btn-outline-primary" href="{% url 'view_cart' %}">
+                                                <span class="d-none d-sm-inline">Update shopping cart</span>
+                                                <span class="d-inline d-sm-none">Next</span>
+                                                <i class="ci-arrow-right mt-sm-0 ms-1"></i>
+                                            </a>
+                                        </div> -->
                                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                     </div>
                                 </form>
