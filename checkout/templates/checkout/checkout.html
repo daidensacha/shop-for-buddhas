@@ -35,7 +35,7 @@
                 <div class="row py-6">
                     <!-- Start Column 2 Order details -->
                     <div class="col-lg-5 ps-lg-5 order-lg-2 mb-4">
-                        <p class="text-muted text-end">Order Summary ({{ product_count }})</p>
+                        <!-- <p class="text-muted text-end">Order Summary ({{ product_count }})</p>
                         <div class="row">
                             <div class="col-5 col-md-6 offset-3 offset-md-2">
                                 <p class="mb-1 mt-0 small text-muted">Item</p>
@@ -43,9 +43,21 @@
                             <div class="col-4 col-lg-4">
                                 <p class="mb-1 mt-0 pe-4 small text-muted text-end">Subtotal</p>
                             </div>
-                        </div>
-                        <div class="card">
+                        </div> -->
+                        <div class="card border-0">
+
                             <div class="card-body">
+                                <h5 class="text-muted border-bottom  mb-4 pb-3 text-end">Order Summary ({{ product_count }})</h5>
+                                <div class="row border-bottom">
+                                    <div class="col-5 col-md-6 offset-3 offset-md-2">
+                                        <p class="mb-1 mt-0 text-muted">Item</p>
+                                    </div>
+                                    <div class="col-4 col-lg-4">
+                                        <p class="mb-1 mt-0  text-muted text-end">Subtotal</p>
+                                    </div>
+                                </div>
+
+
                                 <ul class="list-unstyled m-0 p-0">
 
                                     <!-- Start Lineitem Details -->
@@ -88,19 +100,27 @@
                                     <!-- End Lineitem Details -->
                                    
                                 </ul>
-
                                 <!-- Subtotal, Taxes, Shipping, Grand Total -->
-                                <ul class="list-unstyled m-0">
-                                    <li class="d-flex justify-content-between align-items-center mb-2">
-                                        <h6 class="me-2 text-body">Subtotal</h6><span class="text-end">${{ total | floatformat:2 }}</span>
-                                    </li>
-                                    <li class="d-flex justify-content-between align-items-center mb-2">
-                                        <h6 class="me-2 text-body">Delivery</h6><span class="text-end">${{ delivery | floatformat:2 }}</span>
-                                    </li>
-                                    <li class="d-flex justify-content-between align-items-center border-top pt-3 mt-3">
-                                        <h6 class="me-2">Grand Total</h6><span class="text-end text-dark">${{ grand_total | floatformat:2 }}</span>
-                                    </li>
-                                </ul>
+                                <div class="row text-end">
+                                    <div class="col-7 offset-2">
+                                        <p class="text-body mb-2">Order Total:</p>
+                                        <p class="text-body mb-2">Delivery:</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="mb-2">${{ total | floatformat:2 }}</p>
+                                        <p class="mb-2">${{ delivery | floatformat:2 }}</p>
+                                    </div>
+                                </div>
+                                <hr class="my-2">
+                                <div class="row text-end">
+                                    <div class="col-7 offset-2">
+                                        <h6 class="mb-2 text-dark">Grand Total:</h6>
+                                    </div>
+                                    <div class="col-3">
+                                        <h6 class="mb-2 text-dark">${{ grand_total | floatformat:2 }}</h6>
+                                    </div>
+                                </div>
+                             
                             </div>
                         </div>
                     </div>
@@ -108,7 +128,7 @@
 
                     <!-- Start Column 1 Customer details -->
                     <div class="col-lg-7  ">
-                        <div class="card">
+                        <div class="card border-0">
                             <div class="card-body">
                                 <h5 class="border-bottom mb-4 pb-3">Shipping address</h5>
 
@@ -118,12 +138,12 @@
                                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                                     {% csrf_token %}
                                     <fieldset class="rounded px-3 mb-5">
-                                        <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                                        <legend class="fieldset-label small text-black px-0 w-auto">Details</legend>
                                         {{ order_form.full_name | as_crispy_field }}
                                         {{ order_form.email | as_crispy_field }}
                                     </fieldset>
                                     <fieldset class="rounded px-3 mb-5">
-                                        <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
+                                        <legend class="fieldset-label small text-black px-0 w-auto">Delivery</legend>
                                         {{ order_form.phone_number | as_crispy_field }}
                                         {{ order_form.country | as_crispy_field }}
                                         {{ order_form.postcode | as_crispy_field }}

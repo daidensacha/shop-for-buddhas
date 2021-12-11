@@ -1,0 +1,15 @@
+#checkout-section > div.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid red !important;
+}
+
+.fieldset-label {
+    position:relative;
+    right: .5rem;
+}
