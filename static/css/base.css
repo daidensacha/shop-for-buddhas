@@ -569,14 +569,28 @@ textarea.form-control {
   height: auto !important;
 }
 
-.form-control {
+/*  ALLAUTH FORM STYLE WORKAROUND */
+.form-control, .form-select {
   /* margin-bottom: 20px; */
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   /* height: 50px; */
-  padding-left: 20px;
+  /* padding-left: 20px; */
   border: 1px solid #e0e0e0;
   font-size: 14px;
+  border-radius: 0.3rem;
+  /* height: 2.5rem; */
+  height: 40px;
+  padding: 12px 10px;
+}
+
+.form-label {
+ display: none;
+}
+
+.form-select {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .form-control:focus {
@@ -1804,3 +1818,6 @@ ul, ol {
   }
 }
 
+/* .allauth-form-inner-content .form-control {
+  border-radius: .3rem;
+} */
