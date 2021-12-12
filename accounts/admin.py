@@ -13,7 +13,8 @@ from .models import Profile
 # Register your models here.
 
 # admin.site.register(Profile)
-admin.site.unregister(Group)
+# admin.site.unregister(Group)
+# admin.site.register(Group)
 # admin.site.unregister(Site)
 admin.site.unregister(SocialApp)
 admin.site.unregister(SocialAccount)

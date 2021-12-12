@@ -102,21 +102,21 @@
                                 </ul>
                                 <!-- Subtotal, Taxes, Shipping, Grand Total -->
                                 <div class="row text-end">
-                                    <div class="col-7 offset-2">
+                                    <div class="col-6 offset-2">
                                         <p class="text-body mb-2">Order Total:</p>
                                         <p class="text-body mb-2">Delivery:</p>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-4">
                                         <p class="mb-2">${{ total | floatformat:2 }}</p>
                                         <p class="mb-2">${{ delivery | floatformat:2 }}</p>
                                     </div>
                                 </div>
                                 <hr class="my-2">
                                 <div class="row text-end">
-                                    <div class="col-7 offset-2">
+                                    <div class="col-6 offset-2">
                                         <h6 class="mb-2 text-dark">Grand Total:</h6>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-4">
                                         <h6 class="mb-2 text-dark">${{ grand_total | floatformat:2 }}</h6>
                                     </div>
                                 </div>
@@ -152,7 +152,7 @@
                                         {{ order_form.street_address2 | as_crispy_field }}
                                         {{ order_form.county | as_crispy_field }}
                                         <div class="form-check form-check-inline float-right mr-0">
-                                            {% if user.is_authenticated %}
+                                            {% if request.user.is_authenticated %}
                                                 <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
                                                 <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
                                             {% else %}
@@ -265,8 +265,8 @@
 {% endblock %}
 
 {% block postloadjs %}
-{{ block.super}}
-<script type="text/javascript">
-
-</script>
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
