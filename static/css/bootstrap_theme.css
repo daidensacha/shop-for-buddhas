@@ -11609,15 +11609,25 @@
      justify-content: center;
      cursor: pointer;
      font-size: 20px;
+     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
      background: #f3f5f9; }
      .cart-qty .qty-btn:selection {
        background: transparent; }
      .cart-qty .qty-btn:hover {
-       color: #000; }
+      background-color: #5465ff;
+      color: white;
+       /* color: #000;  */
+      }
    .cart-qty .dec {
-     left: 1px; }
+     left: 1px; 
+     /* height: 38px; */
+     border-top-left-radius: .3rem;
+     border-bottom-left-radius: .3rem;}
    .cart-qty .inc {
-     right: 1px; }
+     right: 1px; 
+     /* height: 38px; */
+     border-top-right-radius: .3rem;
+     border-bottom-right-radius: .3rem;}
    .cart-qty .cart-qty-input {
      padding-left: 25px;
      padding-right: 25px;
