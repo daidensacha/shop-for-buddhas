@@ -19,7 +19,7 @@
   box-sizing: border-box;
   height: 40px;
   padding: 10px 12px;
-  border: 1px solid transparent;
+  /* border: 1px solid transparent; */
   /* border-radius: 0px; */
   border-radius: .3rem;
   background-color: white;
@@ -32,6 +32,7 @@
 .stripe-style-input:focus,
 .stripe-style-input:active {
   box-shadow: 0 1px 3px 0 #cfd7df;
+  border: 1px solid #e0e0e0 !important;
 }
 
 .StripeElement--webkit-autofill {
@@ -44,9 +45,20 @@
 /* Not sure about this? */
 #payment-form .form-control,
 #card-element {
-    color: #000;
+    color: #555;
     /* border: 1px solid #000; */
     border: 1px solid #e0e0e0;
+}
+
+select,
+select option,
+.form-select {
+    color: #555;
+}
+
+select:invalid,
+select option[value=""] {
+    color: #aab7c4 !important;
 }
 
 #loading-overlay {

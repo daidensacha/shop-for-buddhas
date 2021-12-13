@@ -6,6 +6,7 @@ crispy-bootstrap5==0.6
 defusedxml==0.7.1
 Django==3.2.8
 django-allauth==0.41.0
+django-countries==7.2.1
 django-crispy-forms==1.13.0
 django-taggit==2.0.0
 flake8==4.0.1
