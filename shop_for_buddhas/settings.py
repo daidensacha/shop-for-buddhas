@@ -52,10 +52,12 @@ INSTALLED_APPS = [
     'accounts',
     "testimonials",
     'products',
-    "blog",
+    'blog',
     'cart',
     'checkout',
+    # 'profiles',
 
+    # Other
     'crispy_forms',
     'crispy_bootstrap5',
     'taggit'
