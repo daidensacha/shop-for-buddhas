@@ -39,4 +39,4 @@ class PostAdmin(admin.ModelAdmin):
 admin.site.register(Comment)
 # @admin.register(Comment)
 # class Comment(admin.ModelAdmin):
-    # readonly_fields = ('created_at',)
+# readonly_fields = ('created_at',)

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block content %}
+
+<section class="section" id="checkout-section">
+    <!-- Start Profile Section -->
+    <div class="container">
+        <div id="loading-overlay">
+            <div class="text-light logo-font loading-spinner">
+                <span class="icon">
+                    <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mt-3">
+                <h2 class="mb-4">My Profile</h2>
+            </div>
+        </div>
+        
+        <div class="container">
+
+            
+        </div>
+    <!-- End Profile Section -->
+    </div>
+</section>
+
+{% endblock %}

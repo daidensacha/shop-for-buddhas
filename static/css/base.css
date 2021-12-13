@@ -218,7 +218,7 @@ body {
 ============================================================================= */ 
 
  .message-container {
-  position: absolute;
+  position: fixed;
   top: 125px;
   left: -400px;
   z-index: 99999999999;
@@ -607,9 +607,9 @@ textarea.form-control {
   padding: 12px 10px;
 }
 
-.form-label {
+/* .form-label {
  display: none;
-}
+} */
 
 .form-select {
   padding-top: 0 !important;

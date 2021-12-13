@@ -8,11 +8,11 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 # from django.contrib.sites.models import Site
 from allauth.socialaccount.models import SocialApp, SocialAccount, SocialToken
-from .models import Profile
+from .models import UserModel
 
 # Register your models here.
 
-# admin.site.register(Profile)
+# admin.site.register(UserModel)
 # admin.site.unregister(Group)
 # admin.site.register(Group)
 # admin.site.unregister(Site)
@@ -21,8 +21,8 @@ admin.site.unregister(SocialAccount)
 admin.site.unregister(SocialToken)
 
 
-@admin.register(Profile)
-class ProfileAdmin(admin.ModelAdmin):
+@admin.register(UserModel)
+class UserModelAdmin(admin.ModelAdmin):
     """Change layout of required information in accounts admin panel."""
     fields = (
         'first_name',

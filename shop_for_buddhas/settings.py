@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "blog",
     'cart',
     'checkout',
+    'profiles',
 
     'crispy_forms',
     'crispy_bootstrap5',
@@ -128,7 +129,7 @@ ACCOUNT_FORMS = {
     "signup": "accounts.forms.CustomSignup"
 }
 
-AUTH_USER_MODEL = "accounts.Profile"
+AUTH_USER_MODEL = "accounts.UserModel"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
