@@ -65,6 +65,7 @@
 
                                     </div>
                                     <!-- Quick add to cart button from product page -->
+                                    
                                     <form class="form update-form" data-form="{{ item.item_id }}" method="POST" action="{% url 'add_to_cart' product.id %}">
                                         {% csrf_token %}
                                         <div class="product-action">

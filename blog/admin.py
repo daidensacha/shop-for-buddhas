@@ -14,6 +14,7 @@ class PostAdmin(admin.ModelAdmin):
     """Change layout of required information in accounts admin panel."""
 
     prepopulated_fields = {"slug": ("title",)}
+    # readonly_fields = ('created_at',)
     fields = (
               'author',
               'category',
@@ -36,3 +37,6 @@ class PostAdmin(admin.ModelAdmin):
 # admin.site.register(Category, CategoryAdmin)
 # admin.site.register(Post, PostAdmin)
 admin.site.register(Comment)
+# @admin.register(Comment)
+# class Comment(admin.ModelAdmin):
+    # readonly_fields = ('created_at',)

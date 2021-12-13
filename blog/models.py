@@ -42,6 +42,8 @@ class Post(models.Model):
                     )
     status = models.CharField(max_length=15, choices=STATUS)
     featured = models.BooleanField(default=False)
+    # posted_at = models.DateField(auto_now_add=False, null=True)
+    # created_at = models.DateTimeField(auto_now_add=True, null=False)
     posted_at = models.DateTimeField(
                     blank=True,
                     null=True
@@ -68,6 +70,8 @@ class Comment(models.Model):
     name = models.CharField(max_length=150)
     email = models.EmailField(max_length=150)
     body = models.TextField(max_length=150)
+    # posted_at = models.DateField(auto_now_add=False, null=True)
+    # created_at = models.DateTimeField(auto_now_add=True, null=False)
     posted_at = models.DateTimeField(
                     blank=True,
                     null=True

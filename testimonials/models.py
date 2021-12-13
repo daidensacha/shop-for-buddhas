@@ -18,8 +18,10 @@ class Testimonial(models.Model):
     user_image = models.ImageField()
     user_testimonial = models.TextField(max_length=254)
     user_rating = models.CharField(max_length=150, choices=rating)
-    posted_at = models.DateTimeField(blank=True, null=True)
-    created_at = models.DateTimeField(default=datetime.now)
+    # posted_at = models.DateTimeField(blank=True, null=True)
+    posted_at = models.DateField(auto_now_add=False, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    # created_at = models.DateTimeField(default=datetime.now)
     approved = models.BooleanField(default=False)
 
         # __str__does not return str

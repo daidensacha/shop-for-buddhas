@@ -10,6 +10,7 @@ from .models import Testimonial
 @admin.register(Testimonial)
 class TestimonialAdmin(admin.ModelAdmin):
     """Change layout of required information in testimonial admin panel."""
+    readonly_fields = ('created_at',)
     fields = (
         'user',
         'user_image',
