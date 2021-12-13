@@ -584,7 +584,14 @@ body {
   width: 220px;
 }
 
+/* Lightbox */
 
+.carousel-inner > img {
+  background-color: #fff !important;
+}
+div.ratio.ratio-16x9 {
+  background-color: #ffffff !important;
+}
 
 /* CONTACT */
 
