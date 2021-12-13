@@ -13,7 +13,7 @@ user_type = (
 # Can I change this from Profile to CustomUserProfile?
 
 
-class Profile(AbstractUser):
+class UserModel(AbstractUser):
     """Create AbstractUser model class for the user registration form."""
     username = models.CharField(
         verbose_name='Username',

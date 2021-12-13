@@ -1,7 +1,8 @@
 from datetime import datetime
 from django.db import models
 from taggit.managers import TaggableManager
-from accounts.models import Profile
+from accounts.models import UserModel
+from django.conf import settings
 
 STATUS = (('draft', 'Draft'),
           ('published', 'Published')
@@ -26,7 +27,7 @@ class Category(models.Model):
 class Post(models.Model):
     """Blog post model for the blog app"""
 
-    author = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    author = models.ForeignKey( settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.ImageField()
     title = models.CharField(max_length=150)
