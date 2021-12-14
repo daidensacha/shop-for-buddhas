@@ -489,7 +489,7 @@
 								<a href="" class="dropdown-item">Product Management</a>
 							{% endif %}
 								<!-- link to profile -->
-								<!-- <a class="dropdown-item" href="">My profile</a> -->
+								<a class="dropdown-item" href="{% url 'profile' %}">My profile</a>
 								<a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a>
 							{% else %}
 								<a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>

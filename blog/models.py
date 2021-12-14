@@ -1,8 +1,9 @@
-from datetime import datetime
+from datetime import datetime, date
 from django.db import models
 from taggit.managers import TaggableManager
 from accounts.models import UserModel
 from django.conf import settings
+from django.utils import timezone
 
 STATUS = (('draft', 'Draft'),
           ('published', 'Published')
@@ -43,17 +44,11 @@ class Post(models.Model):
                     )
     status = models.CharField(max_length=15, choices=STATUS)
     featured = models.BooleanField(default=False)
-    # posted_at = models.DateField(auto_now_add=False, null=True)
-    # created_at = models.DateTimeField(auto_now_add=True, null=False)
-    posted_at = models.DateTimeField(
-                    blank=True,
-                    null=True
-                    )
-    created_at = models.DateTimeField(
-                    blank=True,
-                    null=True,
-                    default=datetime.now
-                    )
+    posted_at = models.DateField(auto_now_add=False, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=False)
+    # posted_at = models.DateField(default=date.today)
+    # created_at = models.DateTimeField(default=timezone.now)
+
     tags = TaggableManager()
 
     def __str__(self):
@@ -71,17 +66,19 @@ class Comment(models.Model):
     name = models.CharField(max_length=150)
     email = models.EmailField(max_length=150)
     body = models.TextField(max_length=150)
-    # posted_at = models.DateField(auto_now_add=False, null=True)
-    # created_at = models.DateTimeField(auto_now_add=True, null=False)
-    posted_at = models.DateTimeField(
-                    blank=True,
-                    null=True
-                    )
-    created_at = models.DateTimeField(
-                    blank=True,
-                    null=True,
-                    default=datetime.now
-                    )
+    posted_at = models.DateField(auto_now_add=False, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    # posted_at = models.DateField(default=date.today)
+    # created_at = models.DateTimeField(default=timezone.now)
+    # posted_at = models.DateTimeField(
+    #                 blank=True,
+    #                 null=True
+    #                 )
+    # created_at = models.DateTimeField(
+    #                 blank=True,
+    #                 null=True,
+    #                 default=datetime.now
+    #                 )
 
     def __str__(self):
         return self.name

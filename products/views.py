@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Product, Category
-
+from .forms import CreateProduct
 # Create your views here.
 
 
@@ -71,3 +71,23 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'products/product_detail.html', context)
+
+def CreateProductView(request):
+    form = CreateProduct()
+
+    if request.method == "POST":
+        form = CreateProduct(request.POST,request.FILES)
+        if forms.is_valid():
+            upload_form = form.save(commit = False)
+            upload_form.created_by = request.user
+            upload_form.save()
+
+    context = {
+        "form":form
+    }
+    return render(request,"products/upload_form.html",context)
+
+
+
+
+            

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -12,27 +12,182 @@
 {% block content %}
 
 <section class="section" id="checkout-section">
-    <!-- Start Profile Section -->
-    <div class="container">
-        <div id="loading-overlay">
-            <div class="text-light logo-font loading-spinner">
-                <span class="icon">
-                    <i class="fas fa-3x fa-sync-alt fa-spin"></i>
-                </span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col mt-3">
-                <h2 class="mb-4">My Profile</h2>
-            </div>
-        </div>
-        
-        <div class="container">
+  <!-- Start Profile Section -->
+  <div class="container">
 
-            
-        </div>
-    <!-- End Profile Section -->
+    <div class="row">
+      <div class="col mt-3">
+        <h2 class="mb-4">My Profile</h2>
+      </div>
     </div>
+
+    <!-- Start profile tabs -->
+    <div class="row my-5">
+      <div class="col-12 col-sm-4 col-md-3 col-lg-2 d-flex">
+
+
+        <ul class="nav nav-pills mb-3 d-inline-flex d-sm-block" id="profile-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active rounded-3" id="pills-profile-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+              aria-selected="false">My Profile</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-3" id="pills-personal-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-personal" type="button" role="tab" aria-controls="pills-personal"
+              aria-selected="true">Personal Info</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-3" id="pills-account-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-account" type="button" role="tab" aria-controls="pills-account"
+              aria-selected="false">Account Info</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-3" id="pills-products-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-products" type="button" role="tab" aria-controls="pills-products"
+              aria-selected="false">Products</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-3" id="pills-orders-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-orders" type="button" role="tab" aria-controls="pills-orders"
+              aria-selected="false">Orders</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-3" id="pills-favorites-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-favorites" type="button" role="tab" aria-controls="pills-favorites"
+              aria-selected="false">Favorites</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-3" id="pills-testimonials-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-testimonials" type="button" role="tab" aria-controls="pills-testimonials"
+              aria-selected="false">Testimonials</button>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-8 col-md-9 col-lg-10">
+        <div class="tab-content" id="pills-tabContent">
+
+          <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <h3>Welcome "{{ profile }}"</h3>
+            <h4>Example Profile Page for customers and vendors</h4>
+            <p>Welcome to the profile of User.</p>
+            <p>A page displaying information about the user, e.g. Name, Profile image, order history maybe, and any
+              comments or testimonials that they left.</p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in est odio. Fusce aliquam velit porta
+            pulvinar eleifend. Phasellus sodales odio erat, a faucibus quam tempus sed. Vivamus tincidunt eu nibh id
+            mattis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec
+            magna sem, finibus quis pharetra id, porttitor nec urna. Quisque sollicitudin tincidunt tortor, et fringilla
+            sapien tempus sodales. Phasellus mattis tempus luctus. Vestibulum id rutrum nibh, in cursus ipsum.
+
+            <a href="{% url 'create_product' %}" class="btn btn-warning">Upload Product</a>
+            <hr class="py-2">
+
+
+
+
+          </div>
+          <div class="tab-pane fade" id="pills-personal" role="tabpanel" aria-labelledby="pills-personal-tab">
+            <h3>Personal Information</h3>
+            <p>Page for the user to edit their personal information. Address, shipping address, profile image.</p>
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{form | crispy }}
+              <input type="submit" class="btn btn-primary">
+            </form>
+
+          </div>
+          <div class="tab-pane fade" id="pills-account" role="tabpanel" aria-labelledby="pills-account-tab">
+            <h3>Account Management</h3>
+           
+            <p>User can delete the account from this page.</p>
+
+            <div class="card border-0">
+              <div class="card-header ps-0">
+                <h5>Change Password</h5>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12 col-md-4">
+                    <p class="mb-1 text-muted font-weight-bold"><strong>User Name: </strong></p>
+                  </div>
+                  <div class="col-12 col-md-8 text-md-end">
+                    <p class="mb-1">{{request.user.username}}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-md-4">
+                    <p class="mb-1 text-muted font-weight-bold"><strong>User Email: </strong></p>
+                  </div>
+                  <div class="col-12 col-md-8 text-md-end">
+                    <p class="mb-1">{{request.user.email}}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 d-flex my-5 mx-auto">
+                    <a href="{% url 'password_change' %}" class="btn btn-outline-dark mx-auto">Change Password</a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+          <div class="tab-pane fade" id="pills-products" role="tabpanel" aria-labelledby="pills-products-tab">
+            <h3>Products</h3>
+            <h5>Vendor only page</h5>
+            <p>Page displaying the users active products.</p>
+            <p>Need to add foreign key to the products model, to link the user with their products. </p>
+            <p>The vendor will be able to create and upload products from this page. </p>
+            {% for product in products %}
+            {{product}}
+            {% endfor %}
+          </div>
+          <div class="tab-pane fade" id="pills-orders" role="tabpanel" aria-labelledby="pills-orders-tab">
+            <h3>Orders</h3>
+            <p>A page displaying a list of the orders. depending on whether the user is customer or vendor, it displays
+              the information for that user type.</p>
+            <ul class="list-unstyled">
+              <li class="pt-3">
+                <h5>Customers:</h5> Displays customers orders
+              </li>
+              <li class="pt-3">
+                <h5>Vendors:</h5> Displays vendors order sales
+              </li>
+              {% for vendor_order in vendor_order_list %}
+
+              {{vendor_order}}
+              {% endfor %}
+            </ul>
+            <p>User can delete the account from this page.</p>
+            {% for order in orders %}
+            {{ order.order_number }}
+            {{ order.full_name }}
+            {{ order.lineitem_total }}
+            {% endfor %}
+
+          </div>
+          <div class="tab-pane fade" id="pills-favorites" role="tabpanel" aria-labelledby="pills-favorites-tab">
+            <h3>My Favorites</h3>
+            <p>List of the users favorites, can delete from the list.</p>
+            <p>Need to add this functionality to the front end.</p>
+
+          </div>
+
+          <div class="tab-pane fade" id="pills-testimonials" role="tabpanel" aria-labelledby="pills-testimonials-tab">
+            <h3>User Testimonials</h3>
+            <p>A list displaying the users testimonials if they left any, with the ability to edit, update or delete
+              them.</p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <!-- End profile tabs -->
+
+    <!-- End Profile Section -->
+  </div>
 </section>
 
 {% endblock %}

@@ -14,7 +14,7 @@ class PostAdmin(admin.ModelAdmin):
     """Change layout of required information in accounts admin panel."""
 
     prepopulated_fields = {"slug": ("title",)}
-    # readonly_fields = ('created_at',)
+    readonly_fields = ('created_at',)
     fields = (
               'author',
               'category',
