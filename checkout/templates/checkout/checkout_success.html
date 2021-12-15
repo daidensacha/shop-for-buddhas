@@ -216,13 +216,22 @@
                         </a>
                     </div> -->
                     <div class="col-12 col-lg-7 d-flex">
-                        <a class="btn btn-outline-dark mx-auto" href="{% url 'products' %}">
-                            <i class="fas fa-chevron-left"></i>
-                            <span class="">Back to the Shop</span>
-                            
-                            <!-- <span class="d-none d-sm-inline">Continue Shopping</span>
-                            <span class="d-inline d-sm-none">Back</span> -->
-                        </a>
+                        {% if from_profile %}
+                            <a href="{% url 'profile' %}" class="btn btn-outline-dark mx-auto">
+                                <span class="icon mr-2">
+                                    <i class="fas fa-angle-left"></i>
+                                </span>
+                                <span class="text-uppercase">Back to Profile</span>
+                            </a>
+                        {% else %}
+                            <a class="btn btn-outline-dark mx-auto" href="{% url 'products' %}">
+                                <i class="fas fa-chevron-right"></i>
+                                <span class="">To the Shop</span>
+                                
+                                <!-- <span class="d-none d-sm-inline">Continue Shopping</span>
+                                <span class="d-inline d-sm-none">Back</span> -->
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             <!-- </div> -->

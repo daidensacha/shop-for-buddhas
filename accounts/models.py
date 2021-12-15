@@ -10,9 +10,6 @@ user_type = (
     ('is_vendor', "Vendor")
 )
 
-# Can I change this from Profile to CustomUserProfile?
-
-
 class UserModel(AbstractUser):
     """Create AbstractUser model class for the user registration form."""
     username = models.CharField(
@@ -27,6 +24,3 @@ class UserModel(AbstractUser):
 
     """Add user_type field to user profile model"""
     user_type = models.CharField(max_length=25, choices=user_type, blank=True)
-
-    # USERNAME_FIELD = 'email'
-    # REQUIRED_FIELDS = ['username']
