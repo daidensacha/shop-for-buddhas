@@ -154,9 +154,15 @@
 							<div class="row align-items-center">
 								<div class="col-4">
 									<!-- Image -->
-									<a href="#">
-										<img class="img-fluid border" src="{{ item.product.image.url }}" alt="...">
-									</a>
+									{% if item.product.image %}
+										<a href="{{ item.product.image.url }}" data-toggle="lightbox">
+											<img class="img-fluid border" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" title="">
+										</a>
+									{% else %}
+										<a href="#">
+											<img class="img-fluid border" src="{{ MEDIA_URL }} noimage.png" alt="{{ item.product.name }}"  title="">
+										</a>
+									{% endif %}
 								</div>
 								<div class="col-8">
 									<!-- Title -->
@@ -485,9 +491,10 @@
 						</a>
 						<div class="dropdown-menu mt-2 shadow" aria-labelledby="dropdown_myaccount">
 							{% if request.user.is_authenticated %}
-							{% if request.user.is_vendor %}
-								<a href="" class="dropdown-item">Product Management</a>
-							{% endif %}
+                                {% if request.user.is_superuser or request.user.is_vendor %}
+							
+								<a  class="dropdown-item" href="{% url 'add_product' %}">Product Management</a>
+								{% endif %}
 								<!-- link to profile -->
 								<a class="dropdown-item" href="{% url 'profile' %}">My profile</a>
 								<a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a>

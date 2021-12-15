@@ -235,7 +235,7 @@
             <p>The vendor will be able to create and upload products from this page. </p> -->
             <div class="row my-4">
               <div class="col-12 d-flex">
-                <a href="{% url 'create_product' %}" class="btn btn-outline-dark mx-auto my-5">Upload Product</a>
+                <!-- <a href="" class="btn btn-outline-dark mx-auto my-5">Upload Product</a> -->
                 
 
                 <!-- <a class="btn btn-outline-primary" href="{% url 'view_cart' %}">
@@ -293,6 +293,13 @@
                               <span class="text-primary">${{ product.price }}</span>
                               <!-- <del class="fs-sm text-muted">$38.<small>50</small></del> -->
                           </div>
+
+                          {% if request.user.is_superuser %}
+                              <small class="ml-3 my-2">
+                                  <a href="{% url 'edit_product' product.id %}">Edit</a> | 
+                                  <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                              </small>
+                          {% endif %}
 
                       </div>
                   </div>

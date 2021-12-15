@@ -11,15 +11,16 @@ def profile(request):
     """ Display the users profile """
     profile = get_object_or_404(UserProfile, user=request.user)
 
-    form = UserProfileForm(instance=profile)
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile updated successfully')
+        else:
+            messages.error(request, 'Update failed. Please ensure the form is valid.')
+    else:
+        form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
-    # Order context creation
-    # try:
-    #     orders = Order.objects.filter(user_profile__user=request.user)
-    #     print(orders)
-    # Linting error, do not use bare except - fix
-    # except:
-    #     orders = None
 
     # products context
     try:
@@ -73,7 +74,7 @@ def order_history(request, order_number):
 
     return render(request, template, context)
 
-    
+
 def UserProfileUpdate(request):
     profile = UserProfile.objects.get(user=request.user)
     form = UserProfileForm()
