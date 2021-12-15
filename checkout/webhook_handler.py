@@ -26,13 +26,13 @@ class StripeWH_Handler:
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-        
+
         send_mail(
             subject,
             body,
             settings.DEFAULT_FROM_EMAIL,
             [cust_email]
-        )    
+        )
 
     def handle_event(self, event):
         """
@@ -59,7 +59,7 @@ class StripeWH_Handler:
         for field, value in shipping_details.address.items():
             if value == "":
                 shipping_details.address[field] = None
-        
+
         # Update profile information if save_info was checked
         profile = None
         username = intent.metadata.username
@@ -122,22 +122,12 @@ class StripeWH_Handler:
                 )
                 for item_id, quantity in json.loads(cart).items():
                     product = Product.objects.get(id=item_id)
-                    # if isinstance(quantity, int):
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
                         quantity=quantity,
                     )
                     order_line_item.save()
-                    # else:
-                    #     for size, quantity in item_data['items_by_size'].items():
-                    #         order_line_item = OrderLineItem(
-                    #             order=order,
-                    #             product=product,
-                    #             quantity=quantity,
-                    #             product_size=size,
-                    #         )
-                    #         order_line_item.save()
             except Exception as e:
                 if order:
                     order.delete()

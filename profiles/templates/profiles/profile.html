@@ -300,10 +300,12 @@
                                   <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
                               </small>
                           {% endif %}
+                          <a href="{% url 'account_change_password' %}">Change password</a>
 
                       </div>
                   </div>
               </div>
+
 
               <!-- End Product Box -->
               {% if forloop.counter|divisibleby:1 %}
