@@ -28,17 +28,18 @@ def profile(request):
     try:
         products = Product.objects.filter(created_by=request.user)
     # Linting error, do not use bare except - fix
-    except:
+    except Exception as e:
+        messages.error(request, "You dont have any products")
         products = None
 
     # vendor orders
-    vendor_order_list = []
-    if products != None:
-        for product in products:
-            vendor_orders = OrderLineItem.objects.filter(product=product)
-            vendor_order_list.append(vendor_orders)
 
-    
+    try:
+        vendor_sales = OrderLineItem.objects.filter(vendor__username=request.user.username)
+    # Linting error, do not use bare except - fix
+    except Exception as e:
+        messages.error(request, "You dont have any products")
+        vendor_sales = None
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance= profile)
@@ -55,7 +56,7 @@ def profile(request):
         'orders': orders,
         'products': products,
         'on_profile_page': True,
-        'vendor_order_list': vendor_order_list,
+        'vendor_sales': vendor_sales,
     }
 
     return render(request, template, context)
@@ -66,6 +67,22 @@ def order_history(request, order_number):
 
     messages.info(request, (
         f'This is a past confirmation for order number {order_number}. '
+        'A confirmation email was sent on the order date.'
+    ))
+
+    template = 'checkout/checkout_success.html'
+    context = {
+        'order': order,
+        'from_profile': True,
+    }
+
+    return render(request, template, context)
+
+def vendor_order_history(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+
+    messages.info(request, (
+        f'This is a past confirmation of vendor sale for order number {order_number}. '
         'A confirmation email was sent on the order date.'
     ))
 

@@ -1,20 +1,6 @@
 from django.db import models
 from django.conf import settings
-# from django.contrib.auth import get_user_model
 
-# User = get_user_model()
-
-
-# class Vendor(models.Model):
-#     user = models.OneToOneField(User,
-#     on_delete=models.CASCADE,
-#     related_name='vendor')
-
-
-# class Customer(models.Model):
-#     user = models.OneToOneField(User,
-#     on_delete=models.CASCADE,
-#     related_name='customer')
 
 product_rating = (("1", "1/5 stars"),
                   ("2", "2/5 stars"),
@@ -61,7 +47,8 @@ class Product(models.Model):
                         )
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                   on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

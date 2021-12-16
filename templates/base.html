@@ -5,7 +5,6 @@
 <html lang="en">
 
 <head>
-
 	{% block meta %}
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta charset="utf-8">
@@ -16,8 +15,6 @@
 	{% endblock %}
 
 	{% block corecss %}
-	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
         <!-- Bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{% static '/css/bootstrap_theme.css' %}">
@@ -32,9 +29,6 @@
 
 	{% block corejs %}
 	<script src="https://kit.fontawesome.com/7432ab4d43.js" crossorigin="anonymous"></script>
-	<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-	</script> -->
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
   			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   			crossorigin="anonymous"></script>
@@ -52,10 +46,7 @@
 
 	<title>Shop for Buddhas {% block extra_title %}{% endblock %}</title>
 </head>
-
 <body>
-	<!-- <header class="container-fluid fixed-top bg-home px-0"> -->
-    
    <!-- Search START -->
    <div class="px-search-full collapse bg-dark p-3 z-index-999 position-fixed w-100 top-0" id="search-open">
     <div class="container position-relative">
@@ -70,7 +61,6 @@
                         <input class="form-control border-0 shadow-none" type="text" name="q" placeholder="What are you looking for?">
                         <!-- Search button -->
                         <button type="submit" class="btn btn-primary shadow-none">
-                            <!-- <i class="bi bi-search"></i> -->
 							<i class="fas fa-search"></i>
                         </button>
                     </div>
@@ -124,7 +114,6 @@
     </div>
 </div>
 <!-- Search END -->
-
 <!-- Mini Cart -->
 <div class="modal px-modal-right fade" id="modalMiniCart" tabindex="-1" role="dialog" aria-hidden="true">
     <!-- Shopping Cart -->
@@ -148,7 +137,6 @@
                 <!-- List group -->
                 <ul class="list-unstyled m-0 p-0">
 					{% if cart_items %}
-
 						{% for item in cart_items %}
 						<li class="py-3 border-bottom">
 							<div class="row align-items-center">
@@ -171,14 +159,12 @@
 										<span class="m-0 text-muted w-100 d-block">${{ item.product.price | calc_subtotal:item.quantity  }}</span>
 									</p>
 									<!--Footer -->
-
 									<div class="d-flex align-items-center">
 										<form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
 											{% csrf_token %}
 											<div class="cart-qty d-inline-flex">
 												<div class="dec qty-btn"
 													data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">-</div>
-
 												<input class="cart-qty-input form-control" 
 													type="number" 
 													name="quantity" 
@@ -187,29 +173,19 @@
 													value="{{ item.quantity }}"
 													data-item_id="{{ item.item_id }}"
 													id="id_qty_{{ item.item_id }}">
-
 												<div class="inc qty-btn"
 													data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">+</div>
-												<!-- <div class="dec qty-btn">-</div>
-												<input class="cart-qty-input form-control" type="text" name="qtybutton" min="1" max="99" value="{{ item.quantity }}">
-												<div class="inc qty-btn">+</div> -->
 											</div>
-											<!-- Remove -->
 											<a class="small btn btn-link text-dark ms-auto remove-item" id="remove_{{ item.item_id }}">
 												<i class="bi bi-x"></i> <span class="">Remove</span>
 											</a>
-											<!-- <a class="small text-dark ms-auto" href="#!">
-												<i class="bi bi-x"></i> Remove
-											</a> -->
 										</form>
 									</div>
 								</div>
 							</div>
 						</li>
 						{% endfor %}
-
 					{% else %}
-
 					<p class="lead mb-5">Your bag is empty.</p>
 					<div class="d-flex">
 						<a class="btn btn-outline-dark" href="{% url 'products' %}">
@@ -218,7 +194,6 @@
 							<span class="d-inline d-sm-none">Back</span>
 						</a>
 					</div>
-				
 					{% endif %}
                 </ul>
             </div>
@@ -232,14 +207,6 @@
                         <span class="ml-auto">${{ total | floatformat:2 }}</span>
                     </div>
                 </div>
-                <!-- <div class="row g-0 py-2">
-                    <div class="col-8">
-                        <span class="text-dark">Taxes:</span>
-                    </div>
-                    <div class="col-4 text-end">
-                        <span class="ml-auto">$89.00</span>
-                    </div>
-                </div> -->
                 <div class="row g-0 pt-2 mt-2 border-top fw-bold text-dark">
                     <div class="col-8">
                         <span class="text-dark">Grand Total</span>
@@ -258,10 +225,7 @@
     </div>
 </div>
 <!-- End Mini Cart -->
-
-
 	<!-- Header -->
-	<!-- <div class="header-height-bar"></div> -->
 	<header class="header-main bg-white header-light fixed-top header-height">
 		<!-- Top Header -->
 		<div class="header-top header-border-bottom small bg-black">
@@ -285,7 +249,7 @@
 					<!-- Right -->
 					<div class="d-flex align-items-center justify-content-center w-100 w-lg-auto">
 						<!-- Language -->
-						<div class="dropdown ms-0 ms-lg-3">
+						<!-- <div class="dropdown ms-0 ms-lg-3">
 							<a class="dropdown-toggle text-white" href="#" role="button" id="dropdown_language"
 								data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<img class="me-2" width="20" src="../static/img/flags/uk.svg" alt="" />
@@ -311,15 +275,13 @@
 										src="../static/img/flags/gr.svg" alt="" />
 									Deutsch</a>
 							</div>
-						</div>
+						</div> -->
 						<!-- Top link -->
 						<ul class="nav ms-auto ms-lg-3">
 							<li class="nav-item">
 								<a href="{% url 'home' %}#contact" class="nav-link text-white">Contact</a>
 							</li>
 							<li class="nav-item">
-								<!-- <a href="#" class="nav-link text-white" data-bs-toggle="modal"
-									data-bs-target="#topbarlogin"><i class="bi bi-person-circle me-2"></i>Login</a> -->
 								{% if request.user.is_authenticated %}
 									<a class="nav-link text-white" href="{% url 'account_logout' %}"><i class="bi bi-person-circle me-2"></i>Logout</a>
 								{% else %}
@@ -339,15 +301,11 @@
 		</div>
 		<!-- End Top Header -->
 		<nav class="navbar navbar-expand-lg navbar-light" id="main-navbar">
-            <!-- Container fluid removes side margin on mengamenu. -->
 			<div class="container">
-			<!-- <div class="container-fluid"> -->
 				<!-- Logo -->
 				<a class="navbar-brand" href="{% url 'home' %}">
 					<p3 class="brand-heading">Shop for Buddhas</p3>
-					<!-- <img src="media/logo-1a.png" title="" alt="" width="100px"> -->
 				</a>
-				<!-- Logo -->
 				<!-- Menu -->
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mx-auto">
@@ -355,7 +313,6 @@
 						<li class="nav-item">
 							<a href="{% url 'home' %}" class="nav-link">Home</a>
 						</li>
-
 						<!-- Shop link -->
 						<li class="nav-item dropdown dropdown-full has-megamenu" id="product-megamenu">
 							<a href="#" id="mega-dropdown" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Shop</a>
@@ -385,15 +342,11 @@
 														<li>
 															<a href="{% url 'products' %}" class="dropdown-item">All Products</a>
 														</li>
-
 													</ul>
 												</div>
-												
 											</div>
                                             <!-- END FIRST MEGAMENU COLUMN -->
-
 										</div>
-
                                         <!-- START SECOND MEGAMENU COLUMN -->
 										<div class="col-12 col-md-4 my-3">
 											<div class="row">
@@ -420,12 +373,10 @@
 																class="dropdown-item">All
 																Statues</a>
 														</li>
-
 													</ul>
 												</div>
 												<!--           END COLUMN 2             -->
 											</div>
-
 										</div>
                                         <!-- END SECOND MEGAMENU COLUMN -->
                                         <!-- START THIRD MEGAMENU COLUMN -->
@@ -491,11 +442,9 @@
 						</a>
 						<div class="dropdown-menu mt-2 shadow" aria-labelledby="dropdown_myaccount">
 							{% if request.user.is_authenticated %}
-                                {% if request.user.is_superuser or request.user.is_vendor %}
-							
-								<a  class="dropdown-item" href="{% url 'add_product' %}">Product Management</a>
+                                {% if request.user.is_superuser or request.user.user_type == "is_vendor" %}
+									<a  class="dropdown-item" href="{% url 'add_product' %}">Product Management</a>
 								{% endif %}
-								<!-- link to profile -->
 								<a class="dropdown-item" href="{% url 'profile' %}">My profile</a>
 								<a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a>
 							{% else %}
@@ -536,17 +485,10 @@
 				</div>
 			</div>
 		</nav>
-		<!-- <div id="delivery-banner" class="row text-center">
-            <div class="col bg-black text-white">
-                <h4 class="logo-font my-1">Free delivery on orders over ${{ free_delivery_threshold }}!</h4>                
-            </div>            
-        </div> -->
 	</header>
-
 	<!-- header container to push body below fixed navbar -->
 	<div class="container header-container bg-white" id="header-spacer"></div>
 	{% if messages %}
-	
 		<div class="message-container" >
 			{% for message in messages %}
 				{% with message.level as level %}
@@ -562,18 +504,12 @@
 				{% endwith %}
 			{% endfor %}
 		</div>
-	
 	{% endif %}
+
 	{% block page_header %}
 	{% endblock %}
 		
 	{% block content %}
-	{% endblock %}
-
-	{% block services %}
-	{% endblock %}
-
-	{% block craftsmen %}
 	{% endblock %}
 
 	{% block testimonial %}
@@ -592,7 +528,6 @@
 
 	{% block postloadjs %}
 	{{ block.super }}
-
 		{% include 'includes/javascript.html' %}
 	{% endblock %}
 

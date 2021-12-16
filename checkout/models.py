@@ -43,8 +43,15 @@ class Order(models.Model):
                                       null=False,
                                       default=0
                                       )
-    original_cart = models.TextField(null=False, blank=False, default='')
-    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
+    original_cart = models.TextField(null=False,
+                                     blank=False,
+                                     default=''
+                                     )
+    stripe_pid = models.CharField(max_length=254,
+                                  null=False,
+                                  blank=False,
+                                  default=''
+                                  )
 
     def _generate_order_number(self):
         """
@@ -91,6 +98,9 @@ class OrderLineItem(models.Model):
                                 blank=False,
                                 on_delete=models.CASCADE
                                 )
+    vendor = models.ForeignKey(settings.AUTH_USER_MODEL,
+                               on_delete=models.CASCADE
+                               )
     quantity = models.IntegerField(null=False,
                                    blank=False,
                                    default=0
@@ -108,6 +118,8 @@ class OrderLineItem(models.Model):
         and update the order total.
         """
         self.lineitem_total = self.product.price * self.quantity
+        self.vendor = self.product.created_by
+
         super().save(*args, **kwargs)
 
     def __str__(self):

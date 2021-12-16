@@ -117,7 +117,7 @@ def checkout(request):
                     'town_or_city': profile.default_town_or_city,
                     'postcode': profile.default_postcode,
                     'country': profile.default_country,  
-                    'user_bio': profile.default_user_bio,    
+                    # 'user_bio': profile.default_user_bio,    
                 })
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
@@ -150,12 +150,12 @@ def checkout_success(request, order_number):
     order.user_profile = profile
     order.save()
 
-     # Save the user's info
+    # Save the user's info
     if save_info:
         profile_data = {
             'default_phone_number': order.phone_number,
             'default_street_address1': order.street_address1,
-            'default_street_address2': order.street_address2,    
+            'default_street_address2': order.street_address2,
             'default_town_or_city': order.town_or_city,
             'default_county': order.county,
             'default_country': order.country,

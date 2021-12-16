@@ -1,36 +1,19 @@
 from django import forms
-from django.forms import ModelForm
+from .widgets import CustomClearableFileInput
+# from django.forms import ModelForm
 from .models import Product, Category
 
-
-# class CreateProduct(ModelForm):
-#     class Meta:
-#         model = Product
-#         exclude = ["created_by"]
-#         # Testing
-#         fields = ('category', 'sku', 'name', 
-#                   'description', 'size', 'color',
-#                   'price', 'rating', 'image',
-#                   )
-
-#     def __init__(self, *args, **kwargs):
-#         """
-#         Add placeholders and classes, remove auto-generated
-#         labels and set autofocus on first field
-#         """
-#         super().__init__(*args, **kwargs)
-#         placeholders = {
-#             'sku', 'name', 
-#             'description', 'size', 'color',
-#             'price', 'image',
-#         }
 
 class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        # exclude = ["created_by"]
+        exclude = ["created_by"]
         fields = '__all__'
+
+    image = forms.ImageField(label='Image',
+                             required=False,
+                             widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

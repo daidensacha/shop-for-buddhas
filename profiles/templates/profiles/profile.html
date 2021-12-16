@@ -10,400 +10,384 @@
 {% endblock %}
 
 {% block content %}
-
 <section class="section" id="checkout-section">
-  <!-- Start Profile Section -->
-  <div class="container">
+	<!-- Start Profile Section -->
+	<div class="container">
+		<div class="row">
+			<div class="col mt-3">
+				{% if user.first_name and user.last_name %}
+					<h2 class="mb-4">{{ user.first_name }} {{ user.last_name }}' Profile</h2>
+				{% else %}
+					<h2 class="mb-4">My Profile</h2>
+				{% endif %}
+			</div>
+		</div>
+		<!-- Start profile tabs -->
+		<div class="row my-5">
+			<div class="col-12 col-sm-4 col-md-3 col-lg-2 d-flex">
+				<ul class="nav nav-pills mb-3 d-inline-flex d-sm-block" id="profile-tab" role="tablist">
+					<li class="nav-item" role="presentation">
+						<button class="nav-link active rounded-3" id="pills-profile-tab" data-bs-toggle="pill"
+							data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+							aria-selected="false">Profile</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link rounded-3" id="pills-profile2-tab" data-bs-toggle="pill"
+							data-bs-target="#pills-profile2" type="button" role="tab" aria-controls="pills-profile2"
+							aria-selected="false">Account Info</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link rounded-3" id="pills-orders-tab" data-bs-toggle="pill"
+							data-bs-target="#pills-orders" type="button" role="tab" aria-controls="pills-orders"
+							aria-selected="false">Orders</button>
+					</li>
+					<!-- Restict view of products and sales to vendors and superusers -->
+					{% if request.user.user_type == "is_vendor" %}
+						<li class="nav-item" role="presentation">
+							<button class="nav-link rounded-3" id="pills-products-tab" data-bs-toggle="pill"
+								data-bs-target="#pills-products" type="button" role="tab" aria-controls="pills-products"
+								aria-selected="false">Products</button>
+						</li>
 
-    <div class="row">
-      <div class="col mt-3">
-        <h2 class="mb-4">My Profile</h2>
-      </div>
-    </div>
+						<li class="nav-item" role="presentation">
+							<button class="nav-link rounded-3" id="pills-sales-tab" data-bs-toggle="pill"
+								data-bs-target="#pills-sales" type="button" role="tab" aria-controls="pills-sales"
+								aria-selected="false">Sales</button>
+						</li>
+					{% endif %}
+					<li class="nav-item" role="presentation">
+						<button class="nav-link rounded-3" id="pills-favorites-tab" data-bs-toggle="pill"
+							data-bs-target="#pills-favorites" type="button" role="tab" aria-controls="pills-favorites"
+							aria-selected="false">Favorites</button>
+					</li>
+				</ul>
+			</div>
+			<div class="col-12 col-sm-8 col-md-9 col-lg-10">
+				<div class="tab-content" id="pills-tabContent">
+					<!-- START PROFILE TAB -->
+					<div class="tab-pane fade show active" id="pills-profile" role="tabpanel"
+						aria-labelledby="pills-profile-tab">
+						{% if user.first_name %}
+							<h3>Welcome {{ user.first_name }}!</h3>
+						{% else %}
+							<h3>Welcome!</h3>
+						{% endif %}
+						<div class="card border-0">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-12 col-sm-4">
+										<p class="text-muted ps-5">Name</p>
+									</div>
+									<div class="col-12 col-sm-8">
+										<p>{{ user.first_name}} {{ user.last_name}}</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12 col-sm-4">
+										<p class="text-muted ps-5">Username</p>
+									</div>
+									<div class="col-12 col-sm-8">
+										<p>{{ user.username}}</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12 col-sm-4">
+										<p class="text-muted ps-5">Email</p>
+									</div>
+									<div class="col-12 col-sm-8">
+										<p>{{ user.email}}</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12 col-sm-4">
+										<p class="text-muted ps-5">User Type</p>
+									</div>
+									<div class="col-12 col-sm-8">
+										{% if user.is_vendor == true %}
+										<p>Vendor</p>
+										{% elif user.is_customer == true %}
+										<p>Customer</p>
+										{% elif user.is_admin == true %}
+										<p>Admin</p>
+										{% elif user.is_superuser == true %}
+										<p>Super User</p>
+										{% endif %}
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12 col-sm-4">
+										<p class="text-muted ps-5">Date Joined</p>
+									</div>
+									<div class="col-12 col-sm-8">
+										<p>{{ user.date_joined | date:"M d, Y" }}</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12 col-sm-4">
+										<p class="text-muted ps-5">Last Login</p>
+									</div>
+									<div class="col-12 col-sm-8">
+										<p>{{ user.last_login | date:"M d, Y"}} </p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- END PROFILE TAB -->
+					<!-- START ACCOUNT TAB -->
+					<div class="tab-pane fade" id="pills-profile2" role="tabpanel" aria-labelledby="pills-profile2-tab">
+						<h3>Account Info</h3>
+						<div class="row">
+							<div class="col-12 col-lg-6">
+								<p class="text-muted">Default Delivery Information</p>
+								<form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+									{% csrf_token %}
+									{{ form|crispy }}
+									<button class="btn btn-outline-dark rounded-3 text-uppercase float-end">Update
+										Information</button>
+								</form>
+							</div>
+							<div class="col-12 col-lg-6">
+								<p class="text-muted">Password and Email</p>
+								<div class="card border-0">
+									<h6 class="text-muted card-header">Change your Password</h6>
+									<div class="card-body">
+										<a href="{% url 'account_change_password' %}">Change Password</a> 
+									</div>
+									<h6 class="text-muted card-header">Change Primary Email</h6>
+									<div class="card-body">
+										<a href="{% url 'account_email' %}">Manage Email</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- END ACCOUNT TAB -->
+					<!-- START ORDERS TAB -->
+					<div class="tab-pane fade" id="pills-orders" role="tabpanel" aria-labelledby="pills-orders-tab">
+						<h3>Orders</h3>
+						<div class="row">
+							<div class="col-12">
+								<p class="text-muted">Order History</p>
+								<div class="order-history table-responsive">
+									<table class="table table-sm table-borderless">
+										<thead>
+											<tr>
+												<th>Order Number</th>
+												<th>Date</th>
+												<th>Items</th>
+												<th>Order Total</th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for order in orders %}
+											<tr>
+												<td>
+													<a href="{% url 'order_history' order.order_number %}"
+														title="{{ order.order_number }}">
+														{{ order.order_number|truncatechars:6 }}
+													</a>
+												</td>
+												<td>{{ order.date | date:"M d, Y" }}</td>
+												<td>
+													<ul class="list-unstyled">
+														{% for item in order.lineitems.all %}
+														<li class="small">
+															{{ item.product.name }} x{{ item.quantity }}
+														</li>
+														{% endfor %}
+													</ul>
+												</td>
+												<td>${{ order.grand_total }}</td>
+											</tr>
+											{% endfor %}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- END ORDERS TAB -->
+					<!-- START PRODUCTS TAB -->
+					<div class="tab-pane fade" id="pills-products" role="tabpanel" aria-labelledby="pills-products-tab">
+						<h3>Vendor Products</h3>
+						<!-- START PRODUCT GRID -->
+						<div class="row my-5">
+							<div class="col-12 my-5 text-center">
+								<a href="{% url 'add_product' %}" class="btn btn-outline-dark w-50">Add a Product</a>
+							</div>
+						</div>
+						<div class="row">
+							<!-- Product Box -->
+							{% for product in products %}
 
-    <!-- Start profile tabs -->
-    <div class="row my-5">
-      <div class="col-12 col-sm-4 col-md-3 col-lg-2 d-flex">
+							<div class="col-sm-6 col-lg-3 my-3">
+								<div class="product-card-3 h-100">
+									<div class="product-card-image">
+										<div class="product-media h-100">
+											{% if product.image %}
+											<a href="{% url 'product_detail' product.id %}">
+												<img class="img-fluid" src="{{ product.image.url }}"
+													alt="{{ product.name }}" title="">
+											</a>
+											{% else %}
+											<a href="{% url 'product_detail' product.id %}">
+												<img class="img-fluid" src="/media/noimage.png" alt="{{ product.name }}"
+													title="">
+											</a>
+											{% endif %}
+										</div>
+									</div>
+									<div class="product-card-info">
+										<h6 class="product-title">
+											<a href="#">{{ product.name }}</a>
+										</h6>
 
+										<div class="product-meta category-tags small my-2">
+											{% if product.category %}
+											<a class="tag text-decoration-none"
+												href="{% url 'products' %}?category={{ product.category.name }}">
+												<!-- <i class="fas fa-tag"></i> -->
+												<span class="p-2 mt-2 ">{{ product.category.friendly_name }}</span>
+											</a>
+											{% endif %}
+										</div>
 
-        <ul class="nav nav-pills mb-3 d-inline-flex d-sm-block" id="profile-tab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active rounded-3" id="pills-profile-tab" data-bs-toggle="pill"
-              data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-              aria-selected="false">My Profile</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link rounded-3" id="pills-profile2-tab" data-bs-toggle="pill"
-              data-bs-target="#pills-profile2" type="button" role="tab" aria-controls="pills-profile2"
-              aria-selected="false">Delivery Info</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link rounded-3" id="pills-personal-tab" data-bs-toggle="pill"
-              data-bs-target="#pills-personal" type="button" role="tab" aria-controls="pills-personal"
-              aria-selected="true">Personal Info</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link rounded-3" id="pills-account-tab" data-bs-toggle="pill"
-              data-bs-target="#pills-account" type="button" role="tab" aria-controls="pills-account"
-              aria-selected="false">Change Password</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link rounded-3" id="pills-products-tab" data-bs-toggle="pill"
-              data-bs-target="#pills-products" type="button" role="tab" aria-controls="pills-products"
-              aria-selected="false">Products</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link rounded-3" id="pills-orders-tab" data-bs-toggle="pill"
-              data-bs-target="#pills-orders" type="button" role="tab" aria-controls="pills-orders"
-              aria-selected="false">Orders</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link rounded-3" id="pills-favorites-tab" data-bs-toggle="pill"
-              data-bs-target="#pills-favorites" type="button" role="tab" aria-controls="pills-favorites"
-              aria-selected="false">Favorites</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link rounded-3" id="pills-testimonials-tab" data-bs-toggle="pill"
-              data-bs-target="#pills-testimonials" type="button" role="tab" aria-controls="pills-testimonials"
-              aria-selected="false">Testimonials</button>
-          </li>
-        </ul>
-      </div>
-      <div class="col-12 col-sm-8 col-md-9 col-lg-10">
-        <div class="tab-content" id="pills-tabContent">
+										<div class="product-price my-2">
+											<span class="text-primary">${{ product.price }}</span>
+											<!-- <del class="fs-sm text-muted">$38.<small>50</small></del> -->
+										</div>
 
-          <!-- START PROFILE TAB -->
-          <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-              <h3>Welcome "{{ profile }}"</h3>
-              <h4>Example Profile Page for customers and vendors</h4>
-              <p>Welcome to the profile of User.</p>
-              <p>A page displaying information about the user, e.g. Name, Profile image, order history maybe, and any
-                comments or testimonials that they left.</p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in est odio. Fusce aliquam velit porta
-              pulvinar eleifend. Phasellus sodales odio erat, a faucibus quam tempus sed. Vivamus tincidunt eu nibh id
-              mattis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec
-              magna sem, finibus quis pharetra id, porttitor nec urna. Quisque sollicitudin tincidunt tortor, et fringilla
-              sapien tempus sodales. Phasellus mattis tempus luctus. Vestibulum id rutrum nibh, in cursus ipsum.
+										{% if request.user.user_type == "is_vendor" %}
+										<small class="ml-3 my-2">
+											<a href="{% url 'edit_product' product.id %}">Edit</a> |
+											<a class="text-danger"
+												href="" data-bs-toggle="modal" data-bs-target="#delete-product">Delete</a>
+												
+										</small>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+							<!-- End Product Box -->
+							{% if forloop.counter|divisibleby:1 %}
+							<div class="col-12 d-sm-none mb-5">
+								<hr>
+							</div>
+							{% endif %}
+							{% if forloop.counter|divisibleby:2 %}
+							<div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
+								<hr>
+							</div>
+							{% endif %}
+							{% if forloop.counter|divisibleby:4 %}
+							<div class="col-12 d-none d-lg-block mb-5">
+								<hr>
+							</div>
+							{% endif %}
+							<!-- Warning Modal START -->
+							<div class="modal fade" id="delete-product">
+								<div class="modal-dialog modal-dialog-centered">
+									<div class="modal-content">
+										<div class="modal-header bg-danger">
+											<div class="modal-title p-3">
+												<h5 class="m-0 text-white">Deleting is irreversible!</h5>
+												<p class="m-0 text-white">Are you sure you want to delete the product?</p>
+											</div>
+											<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											<div class="w-100 p-3">
+													<div class="mb-3">
+														<p class="">The product {{ product.name }} will be permanently removed.</p>
+													</div>
+													<div class="row align-items-center">
+														<div class="col-sm-4">
+															<a class="btn btn-outline-danger text-danger"
+																			href="{% url 'delete_product' product.id %}">Delete</a>
+														</div>
+													</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Warning Modal END -->
 
-              
-              <hr class="py-2">
+							{% endfor %}
 
-
-
-
-          </div>
-          <!-- END PROFILE TAB -->
-           <!-- START PROFILE2 TAB -->
-          <div class="tab-pane fade" id="pills-profile2" role="tabpanel" aria-labelledby="pills-profile2-tab">
-
-
-                <!-- <div class="row">
-                  <div class="col">
-                    <hr>
-                    <h2 class="logo-font mb-4">My Profile</h2>
-                    <hr>
-                  </div>
-                </div> -->
-                <div class="row">
-                  <div class="col-12 col-lg-6">
-                    <p class="text-muted">Default Delivery Information</p>
-                    <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
-                      {% csrf_token %}
-                      {{ form|crispy }}
-                      <button class="btn btn-outline-dark rounded-3 text-uppercase float-end">Update Information</button>
-                    </form>
-                  </div>
-                  <div class="col-12 col-lg-6">
-                    <p class="text-muted">Order History</p>
-                    <div class="order-history table-responsive">
-                        <table class="table table-sm table-borderless">
-                            <thead>
-                                <tr>
-                                    <th>Order Number</th>
-                                    <th>Date</th>
-                                    <th>Items</th>
-                                    <th>Order Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for order in orders %}
-                                    <tr>
-                                        <td>
-                                            <a href="{% url 'order_history' order.order_number %}"
-                                            title="{{ order.order_number }}">
-                                                {{ order.order_number|truncatechars:6 }}
-                                            </a>
-                                        </td>
-                                        <td>{{ order.date }}</td>
-                                        <td>
-                                            <ul class="list-unstyled">
-                                                {% for item in order.lineitems.all %}
-                                                    <li class="small">
-                                                        {{ item.product.name }} x{{ item.quantity }}
-                                                    </li>
-                                                {% endfor %}
-                                            </ul>
-                                        </td>
-                                        <td>${{ order.grand_total }}</td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-            
-            <hr class="py-2">
-          </div>
-
-
-
-
-        </div>
-        <!-- END PROFILE2 TAB -->
-          <!-- START PERSONAL INFO TAB -->
-          <div class="tab-pane fade" id="pills-personal" role="tabpanel" aria-labelledby="pills-personal-tab">
-            <h3>Personal Information</h3>
-            <p>Page for the user to edit their personal information. Address, shipping address, profile image.</p>
-            <form method="POST" enctype="multipart/form-data">
-              {% csrf_token %}
-              {{form | crispy }}
-              <input type="submit" class="btn btn-primary">
-            </form>
-
-          </div>
-          <!-- END PERSONAL INFO TAB -->
-
-          <!-- START ACCOUNT MANAGEMENT TAB -->
-          <div class="tab-pane fade" id="pills-account" role="tabpanel" aria-labelledby="pills-account-tab">
-            <h3>Account Management</h3>
-           
-            <p>User can delete the account from this page.</p>
-
-            <div class="card border-0">
-              <!-- <div class="card-header ps-0 text-muted"> -->
-                <h5 class="card-header ps-0 text-muted">Change Password</h5>
-              <!-- </div> -->
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-12 col-md-4">
-                    <p class="mb-1 text-muted font-weight-bold"><strong>User Name: </strong></p>
-                  </div>
-                  <div class="col-12 col-md-8 text-md-start">
-                    <p class="mb-1">{{request.user.username}}</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12 col-md-4">
-                    <p class="mb-1 text-muted font-weight-bold"><strong>User Email: </strong></p>
-                  </div>
-                  <div class="col-12 col-md-8 text-md-start">
-                    <p class="mb-1">{{request.user.email}}</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12 d-flex my-5 mx-auto">
-                    <a href="{% url 'password_change' %}" class="btn btn-outline-dark me-4">Change Password</a>
-                  </div>
-                </div>
-
-              </div>
-              <!-- <div > -->
-                <h5 class="card-header ps-0 text-muted">Delete Account</h5>
-              <!-- </div> -->
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-12 my-5">
-                    <a href="" class="btn btn-outline-danger ms-auto">Delete Account</a>
-                  </div>
-                  <div class="col-12 mb-5">
-                    <p class="text-muted font-weight-bold my-auto"><strong>Deleting the account is irreversable. Are you sure you want to delete it?</strong></p>
-                  </div>
-                  
-                </div>
-                
-              </div>
-            </div>
-
-
-          </div>
-          <!-- END ACCOUNT MANAGEMENT TAB -->
-          <!-- START PRODUCTS TAB -->
-          <div class="tab-pane fade" id="pills-products" role="tabpanel" aria-labelledby="pills-products-tab">
-            <h3>Products</h3>
-            <!-- <h5>Vendor only page</h5>
-            <p>The vendor will be able to create and upload products from this page. </p> -->
-            <div class="row my-4">
-              <div class="col-12 d-flex">
-                <!-- <a href="" class="btn btn-outline-dark mx-auto my-5">Upload Product</a> -->
-                
-
-                <!-- <a class="btn btn-outline-primary" href="{% url 'view_cart' %}">
-                  <span class="d-none d-sm-inline">Shopping Cart</span>
-                  <span class="d-inline d-sm-none">Next</span>
-                  <i class="fas fa-chevron-right mt-sm-0 me-1"></i>
-              </a> -->
-              </div>
-            </div>
-
-
-            <!-- START PRODUCT GRID -->
-            <div class="row">
-                    
-
-              <!-- Product Box -->
-              {% for product in products %}
-
-              <div class="col-sm-6 col-lg-3 my-3">
-                  <div class="product-card-3 h-100">
-                      <div class="product-card-image">
-                          <div class="badge-ribbon">
-
-                          </div>
-                       
-                          <div class="product-media h-100">
-                              {% if product.image %}
-                                  <a href="{% url 'product_detail' product.id %}">
-                                      <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" title="">
-                                  </a>
-                              {% else %}
-                                  <a href="{% url 'product_detail' product.id %}">
-                                      <img class="img-fluid" src="/media/noimage.png" alt="{{ product.name }}"  title="">
-                                  </a>
-                              {% endif %}
-
-                          </div>
-                      </div>
-                      <div class="product-card-info">
-                          
-                          <h6 class="product-title">
-                              <a href="#">{{ product.name }}</a>
-                          </h6>
-
-                          <div class="product-meta category-tags small my-2">
-                              {% if product.category %}
-                                  <a class="tag text-decoration-none" href="{% url 'products' %}?category={{ product.category.name }}">
-                                      <i class="fas fa-tag"></i>
-                                      <span class="p-2 mt-2 ">{{ product.category.friendly_name }}</span>
-                                  </a>
-                              {% endif %}
-                          </div>
-
-                          <div class="product-price my-2">
-                              <span class="text-primary">${{ product.price }}</span>
-                              <!-- <del class="fs-sm text-muted">$38.<small>50</small></del> -->
-                          </div>
-
-                          {% if request.user.is_superuser %}
-                              <small class="ml-3 my-2">
-                                  <a href="{% url 'edit_product' product.id %}">Edit</a> | 
-                                  <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                              </small>
-                          {% endif %}
-                          <a href="{% url 'account_change_password' %}">Change password</a>
-
-                      </div>
-                  </div>
-              </div>
-
-
-              <!-- End Product Box -->
-              {% if forloop.counter|divisibleby:1 %}
-                  <div class="col-12 d-sm-none mb-5">
-                      <hr>
-                  </div>
-              {% endif %}                        
-              {% if forloop.counter|divisibleby:2 %}
-                  <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
-                      <hr>
-                  </div>
-              {% endif %}
-              {% if forloop.counter|divisibleby:4 %}
-                  <div class="col-12 d-none d-lg-block mb-5">
-                      <hr>
-                  </div>
-              {% endif %}
-
-              {% endfor %}
-
-          </div>
-            <!--  END PRODUCT GRID -->
-
-          </div>
-          <!-- END PRODUCTS TAB -->
-
-          <!-- START ORDERS TAB -->
-          <div class="tab-pane fade" id="pills-orders" role="tabpanel" aria-labelledby="pills-orders-tab">
-            <h3>Orders</h3>
-            <p>A page displaying a list of the orders. depending on whether the user is customer or vendor, it displays
-              the information for that user type.</p>
-            <ul class="list-unstyled">
-              <li class="pt-3">
-                <h5>Customers:</h5> Displays customers orders
-              </li>
-              <li class="pt-3">
-                <h5>Vendors:</h5> Displays vendors order sales
-              </li>
-              {% for vendor_order in vendor_order_list %}
-
-              {{vendor_order}}
-              {% endfor %}
-            </ul>
-            <p>User can delete the account from this page.</p>
-            {% for order in orders %}
-            {{ order.order_number }}
-            {{ order.full_name }}
-            <!-- {{ order.lineitem_total }} -->
-            {% endfor %}
-
-          </div>
-          <!-- END ORDERS TAB -->
-
-          <!-- START FAVORITES TAB -->
-          <div class="tab-pane fade" id="pills-favorites" role="tabpanel" aria-labelledby="pills-favorites-tab">
-            <h3>My Favorites</h3>
-            <p>List of the users favorites, can delete from the list.</p>
-            <p>Need to add this functionality to the front end.</p>
-
-          </div>
-          <!-- END ORDERS TAB -->
-
-          <!-- START TESTIMONIALS TAB -->
-          <div class="tab-pane fade" id="pills-testimonials" role="tabpanel" aria-labelledby="pills-testimonials-tab">
-            <h3>User Testimonials</h3>
-            <p>A list displaying the users testimonials if they left any, with the ability to edit, update or delete
-              them.</p>
-          </div>
-          <!-- END TESTIMONIALS TAB -->
-        </div>
+						</div>
+						<!--  END PRODUCT GRID -->
+					</div>
+					<!-- END PRODUCTS TAB -->
 
 
-      </div>
-    </div>
-    <!-- End profile tabs -->
+					<!-- START SALES TAB -->
+					<div class="tab-pane fade" id="pills-sales" role="tabpanel" aria-labelledby="pills-sales-tab">
+						<h3>Vendor Sales</h3>
 
-    <!-- End Profile Section -->
-  </div>
+						<div class="col-12">
+							<p class="text-muted">Vendor ID: 1 - Sales History</p>
+
+							<div class="order-history table-responsive">
+								<table class="table table-sm table-borderless">
+									<thead>
+										<tr>
+											<th>Vendor Name</th>
+											<th>Order Number</th>
+											<th>Date</th>
+											<th>Items</th>
+											<th>Order Total</th>
+										</tr>
+									</thead>
+									<tbody>
+											{% for sale in vendor_sales %}
+												<tr>
+													<td>{{ sale.product.created_by }}</td>
+												<td>
+													<a href="{% url 'vendor_order_history' sale.order.order_number %}"
+														title="{{ sale.order.order_number }}">
+														{{ sale.order.order_number|truncatechars:6 }}
+													</a>
+												</td>
+												<td>{{ sale.order.date | date:"M d, Y" }}</td>
+												<td>
+													<ul class="list-unstyled">
+														<li class="small">
+															{{ sale.product.name }} x{{ sale.quantity }}
+														</li>
+													</ul>
+												</td>
+												<td>${{ sale.order.grand_total }}</td>
+											</tr>
+											{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- END SALES TAB -->
+
+					<!-- START FAVORITES TAB -->
+					<div class="tab-pane fade" id="pills-favorites" role="tabpanel"
+						aria-labelledby="pills-favorites-tab">
+						<h3>My Favorites</h3>
+						<p>List of the users favorites, can delete from the list.</p>
+						<p>Need to add this functionality to the front end.</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- End profile tabs -->
+
+		<!-- End Profile Section -->
+	</div>
 </section>
 
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
-<script>
-      //   let countrySelected = $('#id_default_country').val();
-      // if(!countrySelected) {
-      //     $('#id_default_country').css('color', '#aab7c4');
-      // };
-      // $('#id_default_country').change(function() {
-      //     countrySelected = $(this).val();
-      //     if(!countrySelected) {
-      //         $(this).css('color', '#aab7c4');
-      //     } else {
-      //         $(this).css('color', '#52595f');
-      //     }
-      // });
-</script>
-  <!-- Cant get this script to work from the static js file -->
-    <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+{{ block.super }}
+<script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
 {% endblock %}
