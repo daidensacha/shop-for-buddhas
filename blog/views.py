@@ -9,8 +9,9 @@ from .forms import CommentForm
 
 def blog_posts(request, tag_slug=None, category_slug=None):
     """ A view to show the blog list page """
+    category_slug = category_slug
 
-    posts = Post.objects.filter(status="published", featured=False)
+    posts = Post.objects.filter(status="published",featured= False)
     featured_post = Post.objects.filter(featured=True)
     posts_sidebar = Post.objects.filter(status="published")
     # all_posts = Post.objects.filter(status="published")
@@ -22,7 +23,7 @@ def blog_posts(request, tag_slug=None, category_slug=None):
         posts = posts.filter(status="published", tags=tag.id)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
-        posts = posts.filter(status="published", category=category.id)
+        posts = Post.objects.filter(status="published", category=category.id)
 
     # archives
     #archives = Post.objects.filter(posted_at__month = 1 )
@@ -50,7 +51,7 @@ def blog_posts(request, tag_slug=None, category_slug=None):
     }
 
     return render(request, "blog/blog_posts.html", context)
-
+3
 
 def post_detail(request, slug):
     """ A view to show the blog post page """

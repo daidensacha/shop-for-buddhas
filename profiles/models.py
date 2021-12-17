@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
 from django.contrib import auth
-
+from products.models import Product
 from django_countries.fields import CountryField
 
 
@@ -49,3 +49,8 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
 #     if created:
 #         Address.objects.create(profile=instance.profile)
 #         instance.profile.address.save()
+
+
+class Favorite(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete= models.CASCADE)
+    product = models.ForeignKey(Product, on_delete= models.CASCADE)

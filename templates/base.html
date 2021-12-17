@@ -58,9 +58,9 @@
                 <form class="position-relative w-100" method="GET" action="{% url 'products' %}">
                     <div class="mb-3 input-group">
                         <!-- Search input -->
-                        <input class="form-control border-0 shadow-none" type="text" name="q" placeholder="What are you looking for?">
+                        <input class="form-control border-0 shadow-none" type="text" name="q" placeholder="Search the shop.">
                         <!-- Search button -->
-                        <button type="submit" class="btn btn-primary shadow-none">
+                        <button type="submit" class="btn btn-sm rounded-3 btn-primary shadow-none">
 							<i class="fas fa-search"></i>
                         </button>
                     </div>
@@ -70,34 +70,35 @@
                         <div class="col-lg-6">
                             <div class="row">
                                 <div class="col-6 white-link">
-                                    <a class="nav-link px-0" href="#">
-                                        <i class="fas fa-angle-right me-1"></i> Search Results List
+									<a class="nav-link px-0" href="{% url 'blog_posts' %}">
+                                        <i class="fas fa-angle-right me-1"></i> Blog
                                     </a>
-                                    <a class="nav-link px-0" href="#">
-                                        <i class="fas fa-angle-right me-1"></i> Search Results Grid
-                                    </a>
-                                    <a class="nav-link px-0" href="#">
-                                        <i class="fas fa-angle-right me-1"></i> About
-                                    </a>
-                                    <a class="nav-link px-0" href="#">
-                                        <i class="fas fa-angle-right me-1"></i> Services
-                                    </a>
-                                    <a class="nav-link px-0" href="#">
-                                        <i class="fas fa-angle-right me-1"></i> Invoice
-                                    </a>
-                                </div>
-                                <div class="col-6 white-link">
-                                    <a class="nav-link px-0" href="#">
+                                    <a class="nav-link px-0" href="{% url 'profile' %}">
                                         <i class="fas fa-angle-right me-1"></i> Profile
                                     </a>
-                                    <a class="nav-link px-0" href="#">
-                                        <i class="fas fa-angle-right me-1"></i> User Contacts
+                                    <!-- <a class="nav-link px-0" href="{% url 'home' %}#services">
+                                        <i class="fas fa-angle-right me-1"></i> Services
                                     </a>
-                                    <a class="nav-link px-0" href="#">
-                                        <i class="fas fa-angle-right me-1"></i> Reviews
+                                    <a class="nav-link px-0" href="{% url 'home' %}#testi">
+                                        <i class="fas fa-angle-right me-1"></i> Testimonials
                                     </a>
-                                    <a class="nav-link px-0" href="#">
-                                        <i class="fas fa-angle-right me-1"></i> Settings
+                                    <a class="nav-link px-0" href="{% url 'home' %}#contact">
+                                        <i class="fas fa-angle-right me-1"></i> Contact
+                                    </a> -->
+                                   
+                                </div>
+                                <div class="col-6 white-link">
+                                    <a class="nav-link px-0" href="{% url 'products' %}?category=oxidised,half_gold,full_gold">
+                                        <i class="fas fa-angle-right me-1"></i> Shop: All Buddha Statues
+                                    </a>
+                                    <a class="nav-link px-0" href="{% url 'products' %}?category=mala_108,mala_wrist">
+                                        <i class="fas fa-angle-right me-1"></i> Shop: All Malas
+                                    </a>
+                                    <a class="nav-link px-0" href="{% url 'products' %}?sort=category&direction=asc">
+                                        <i class="fas fa-angle-right me-1"></i> Shop: By Category
+                                    </a>
+                                    <a class="nav-link px-0" href="{% url 'products' %}?sort=price&direction=asc">
+                                        <i class="fas fa-angle-right me-1"></i> Shop: By Price
                                     </a>
                                 </div>
                             </div>
@@ -248,7 +249,7 @@
 					</div>
 					<!-- Right -->
 					<div class="d-flex align-items-center justify-content-center w-100 w-lg-auto">
-						<!-- Language -->
+						<!-- Language Future Development -->
 						<!-- <div class="dropdown ms-0 ms-lg-3">
 							<a class="dropdown-toggle text-white" href="#" role="button" id="dropdown_language"
 								data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -291,9 +292,9 @@
 						</ul>
 						<!-- Top social -->
 						<div class="nav header-social justify-content-end d-none d-lg-block white-link">
-							<a class="h-social-link" href="#"><i class="bi bi-facebook"></i></a>
-							<a class="h-social-link" href="#"><i class="bi bi-linkedin"></i></a>
-							<a class="h-social-link" href="#"><i class="bi bi-github"></i></a>
+							<a class="h-social-link" href="https://www.facebook.com/KIBInstitute"><i class="bi bi-facebook"></i></a>
+							<a class="h-social-link" href="https://de.linkedin.com/in/daidensacha"><i class="bi bi-linkedin"></i></a>
+							<a class="h-social-link" href="https://github.com/daidensacha"><i class="bi bi-github"></i></a>
 						</div>
 					</div>
 				</div>
@@ -317,7 +318,7 @@
 						<li class="nav-item dropdown dropdown-full has-megamenu" id="product-megamenu">
 							<a href="#" id="mega-dropdown" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Shop</a>
 							<label class="px-dropdown-toggle mob-menu"></label>
-							<div class="dropdown-menu megamenu dropdown-menu-lg py-lg-2 fade-down" id="product-megadropdown" role="menu" aria-labelledby="mega-dropdown">
+							<div class="dropdown-menu megamenu dropdown-menu-lg py-lg-2 fade-down bg-white" id="product-megadropdown" role="menu" aria-labelledby="mega-dropdown">
 								<div class="container-fluid px-0">
 									<!-- START ROW -->
 									<div class="row g-0">
@@ -458,7 +459,7 @@
 					</div>
 					<!-- Wishlist -->
 					<div class="nav-item d-none d-xl-block">
-						<a class="nav-link" href="#"> <i class="bi bi-heart"> </i> </a>
+						<a class="nav-link" href="{% url 'profile' %}"> <i class="bi bi-heart"> </i> </a>
 					</div>
 					<!-- Cart -->
 					<div class="nav-item">
@@ -511,6 +512,12 @@
 		
 	{% block content %}
 	{% endblock %}
+
+	{% block services %}
+	{% endblock services %}
+
+	{% block craftsmen %}
+	{% endblock craftsmen %}
 
 	{% block testimonial %}
 	{% endblock %}

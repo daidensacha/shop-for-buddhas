@@ -5,6 +5,7 @@ from django.conf import settings
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
+
 from products.models import Product
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
@@ -49,6 +50,7 @@ def checkout(request):
             'postcode': request.POST['postcode'],
             'country': request.POST['country'],
         }
+
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
@@ -59,13 +61,13 @@ def checkout(request):
             for item_id, quantity in cart.items():
                 try:
                     product = Product.objects.get(id=item_id)
-                    # if isinstance(quantity, int):
-                    order_line_item = OrderLineItem(
-                        order=order,
-                        product=product,
-                        quantity=quantity,
-                    )
-                    order_line_item.save()
+                    if isinstance(quantity, int):
+                        order_line_item = OrderLineItem(
+                            order=order,
+                            product=product,
+                            quantity=quantity,
+                        )
+                        order_line_item.save()
                     # else:
                     #     for size, quantity in item_data['items_by_size'].items():
                     #         order_line_item = OrderLineItem(
@@ -83,12 +85,12 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('view_cart'))
 
+            # Save the info to the user's profile if all is well
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
-
     else:
         cart = request.session.get('cart', {})
         if not cart:
@@ -104,6 +106,7 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
+        # Attempt to prefill the form with any info the user maintains in their profile
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -117,7 +120,6 @@ def checkout(request):
                     'town_or_city': profile.default_town_or_city,
                     'postcode': profile.default_postcode,
                     'country': profile.default_country,  
-                    # 'user_bio': profile.default_user_bio,    
                 })
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()

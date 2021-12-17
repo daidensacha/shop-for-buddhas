@@ -48,6 +48,36 @@
                 <h1>Posts</h1>
               
                 {% for post in posts %}
+                {% if category_slug != None   %} 
+                 
+                    <div class="col-md-6">
+                        <!-- Single Blog Start -->
+                        <div class="single-blog">
+                            <div class="blog-images">
+                                <div class="post-meta">
+                                    <small>
+                                        <span class="meta-date">{{ post.posted_at | date }}</span>
+                                        <span class="meta-author">Posted by <span> {{ post.author }} </span></span>
+                                    </small>
+
+                                </div>
+                                <a href="{% url 'post_detail' post.slug %}"><img src="/media/{{post.image}}" alt=""></a>
+                                <div class="meta-category">
+                                    <a href="{% url 'post_category' post.category.slug %}">{{ post.category }}</a>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <h4 class="blog-title"><a href="{% url 'post_detail' post.slug %}"> {{ post.title }} </a>
+                                </h4>
+                                <p> {{ post.description | safe }} </p>
+
+                            </div>
+                            <a href="{% url 'post_detail' post.slug %}">Read more</a>
+                        </div>
+                        <!-- Single Blog end -->
+                    </div>
+                    {% elif category_slug == None %}
+
                     {% if not post.featured %}
                     <div class="col-md-6">
                         <!-- Single Blog Start -->
@@ -75,6 +105,7 @@
                         </div>
                         <!-- Single Blog end -->
                     </div>
+                    {% endif %}
                     {% endif %}
                 {% endfor %}
 

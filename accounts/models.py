@@ -12,6 +12,17 @@ user_type = (
 
 class UserModel(AbstractUser):
     """Create AbstractUser model class for the user registration form."""
+    first_name = models.CharField(
+        verbose_name='first_name',
+        max_length=40,
+        unique=True,
+    )
+    
+    last_name = models.CharField(
+        verbose_name='last_name',
+        max_length=40,
+        unique=True,
+    )
     username = models.CharField(
         verbose_name='Username',
         max_length=40,

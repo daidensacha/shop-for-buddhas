@@ -15,11 +15,14 @@
 	<div class="container">
 		<div class="row">
 			<div class="col mt-3">
+				
+				{{ profile.full_name }}
 				{% if user.first_name and user.last_name %}
 					<h2 class="mb-4">{{ user.first_name }} {{ user.last_name }}' Profile</h2>
 				{% else %}
 					<h2 class="mb-4">My Profile</h2>
 				{% endif %}
+
 			</div>
 		</div>
 		<!-- Start profile tabs -->
@@ -42,7 +45,8 @@
 							aria-selected="false">Orders</button>
 					</li>
 					<!-- Restict view of products and sales to vendors and superusers -->
-					{% if request.user.user_type == "is_vendor" %}
+					{% if request.user.user_type == "is_vendor" or request.user.user_type == "is_admin" or request.user.is_superuser %}
+
 						<li class="nav-item" role="presentation">
 							<button class="nav-link rounded-3" id="pills-products-tab" data-bs-toggle="pill"
 								data-bs-target="#pills-products" type="button" role="tab" aria-controls="pills-products"
@@ -75,58 +79,58 @@
 						<div class="card border-0">
 							<div class="card-body">
 								<div class="row">
-									<div class="col-12 col-sm-4">
-										<p class="text-muted ps-5">Name</p>
+									<div class="col-4 col-sm-4">
+										<p class="text-muted ps-2 ps-sm-5">Name</p>
 									</div>
-									<div class="col-12 col-sm-8">
+									<div class="col-8 col-sm-8">
 										<p>{{ user.first_name}} {{ user.last_name}}</p>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-12 col-sm-4">
-										<p class="text-muted ps-5">Username</p>
+									<div class="col-4 col-sm-4">
+										<p class="text-muted ps-2 ps-sm-5">Username</p>
 									</div>
-									<div class="col-12 col-sm-8">
+									<div class="col-8 col-sm-8">
 										<p>{{ user.username}}</p>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-12 col-sm-4">
-										<p class="text-muted ps-5">Email</p>
+									<div class="col-4 col-sm-4">
+										<p class="text-muted ps-2 ps-sm-5">Email</p>
 									</div>
-									<div class="col-12 col-sm-8">
+									<div class="col-8 col-sm-8">
 										<p>{{ user.email}}</p>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-12 col-sm-4">
-										<p class="text-muted ps-5">User Type</p>
+									<div class="col-4 col-sm-4">
+										<p class="text-muted ps-2 ps-sm-5">User Type</p>
 									</div>
-									<div class="col-12 col-sm-8">
-										{% if user.is_vendor == true %}
+									<div class="col-8 col-sm-8">
+										{% if user.user_type == "is_vendor" %}
 										<p>Vendor</p>
-										{% elif user.is_customer == true %}
+										{% elif user.user_type == "is_customer" %}
 										<p>Customer</p>
-										{% elif user.is_admin == true %}
+										{% elif user.user_type == "is_admin" %}
 										<p>Admin</p>
-										{% elif user.is_superuser == true %}
+										{% elif user.is_superuser %}
 										<p>Super User</p>
 										{% endif %}
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-12 col-sm-4">
-										<p class="text-muted ps-5">Date Joined</p>
+									<div class="col-4 col-sm-4">
+										<p class="text-muted ps-2 ps-sm-5">Date Joined</p>
 									</div>
-									<div class="col-12 col-sm-8">
+									<div class="col-8 col-sm-8">
 										<p>{{ user.date_joined | date:"M d, Y" }}</p>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-12 col-sm-4">
-										<p class="text-muted ps-5">Last Login</p>
+									<div class="col-4 col-sm-4">
+										<p class="text-muted ps-2 ps-sm-5">Last Login</p>
 									</div>
-									<div class="col-12 col-sm-8">
+									<div class="col-8 col-sm-8">
 										<p>{{ user.last_login | date:"M d, Y"}} </p>
 									</div>
 								</div>
@@ -138,24 +142,29 @@
 					<div class="tab-pane fade" id="pills-profile2" role="tabpanel" aria-labelledby="pills-profile2-tab">
 						<h3>Account Info</h3>
 						<div class="row">
-							<div class="col-12 col-lg-6">
-								<p class="text-muted">Default Delivery Information</p>
+							<div class="col-12 col-lg-6 mx-auto">
+								<p class="text-muted"><strong>Default Delivery Information</strong></p>
 								<form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
 									{% csrf_token %}
 									{{ form|crispy }}
-									<button class="btn btn-outline-dark rounded-3 text-uppercase float-end">Update
-										Information</button>
+									<div class="d-grid gap-2 col-12">
+										<button class="btn btn-outline-dark rounded-3 my-4 text-uppercase">Update
+											Information</button>
+									  </div>
+									
 								</form>
 							</div>
 							<div class="col-12 col-lg-6">
-								<p class="text-muted">Password and Email</p>
+								<p class="text-muted"><strong>Password and Email</strong></p>
 								<div class="card border-0">
-									<h6 class="text-muted card-header">Change your Password</h6>
+									<p class="text-muted card-header">Manage your Password</p>
 									<div class="card-body">
+										<p>Entering the current and new password is required.</p>
 										<a href="{% url 'account_change_password' %}">Change Password</a> 
 									</div>
-									<h6 class="text-muted card-header">Change Primary Email</h6>
+									<p class="text-muted card-header">Manage your Email</p>
 									<div class="card-body">
+										<p>Add an email, remove an email, re-send email verification, or change your primary email.</p>
 										<a href="{% url 'account_email' %}">Manage Email</a>
 									</div>
 								</div>
@@ -169,7 +178,40 @@
 						<div class="row">
 							<div class="col-12">
 								<p class="text-muted">Order History</p>
-								<div class="order-history table-responsive">
+
+								<div class="row d-flex d-block d-sm-none">
+									{% for order in orders %}
+										<hr class="my-2">
+		
+										<div class="col-5 ps-5">Date:</div>
+										<div class="col-7">{{ order.date | date:"M d, Y" }}</div>
+		
+										<div class="col-5 ps-5">Order Number:</div>
+										<div class="col-7">
+											<a href="{% url 'order_history' order.order_number %}"
+												title="{{ order.order_number }}">
+												{{ order.order_number|truncatechars:6 }}
+											</a>
+										</div>
+		
+										<div class="col-5 ps-5">Items:</div>
+										<div class="col-7">
+											<ul class="list-unstyled">
+												{% for item in order.lineitems.all %}
+												<li class="small">
+													{{ item.product.name }} x {{ item.quantity }}
+												</li>
+												{% endfor %}
+											</ul>
+										</div>
+		
+										<div class="col-5 ps-5">Order Total:</div>
+										<div class="col-7">${{ order.grand_total }}</div>
+									
+									{% endfor %}
+								</div>
+
+								<div class="order-history table-responsive d-none d-sm-block">
 									<table class="table table-sm table-borderless">
 										<thead>
 											<tr>
@@ -193,7 +235,7 @@
 													<ul class="list-unstyled">
 														{% for item in order.lineitems.all %}
 														<li class="small">
-															{{ item.product.name }} x{{ item.quantity }}
+															{{ item.product.name }} x {{ item.quantity }}
 														</li>
 														{% endfor %}
 													</ul>
@@ -213,8 +255,10 @@
 						<h3>Vendor Products</h3>
 						<!-- START PRODUCT GRID -->
 						<div class="row my-5">
-							<div class="col-12 my-5 text-center">
-								<a href="{% url 'add_product' %}" class="btn btn-outline-dark w-50">Add a Product</a>
+							<div class="col-12 my-5">
+								<div class="d-grid col-12 col-lg-6 mx-auto gap-2">
+									<a href="{% url 'add_product' %}" class="btn btn-outline-dark">Add a Product</a>
+								</div>
 							</div>
 						</div>
 						<div class="row">
@@ -258,7 +302,7 @@
 											<!-- <del class="fs-sm text-muted">$38.<small>50</small></del> -->
 										</div>
 
-										{% if request.user.user_type == "is_vendor" %}
+										{% if request.user.user_type == "is_vendor" or request.user.user_type == "is_admin" or request.user.is_superuser %}
 										<small class="ml-3 my-2">
 											<a href="{% url 'edit_product' product.id %}">Edit</a> |
 											<a class="text-danger"
@@ -302,10 +346,15 @@
 														<p class="">The product {{ product.name }} will be permanently removed.</p>
 													</div>
 													<div class="row align-items-center">
-														<div class="col-sm-4">
-															<a class="btn btn-outline-danger text-danger"
-																			href="{% url 'delete_product' product.id %}">Delete</a>
-														</div>
+														<!-- <div class="col-sm-4"> -->
+															<div class="d-flex gap-2">
+																<button class="btn btn-outline-dark col-6"
+																	    data-bs-dismiss="modal" >Cancel</button>
+																<a class="btn btn-outline-danger col-6 text-danger"
+																   href="{% url 'delete_product' product.id %}">Delete</a>
+															</div>
+															
+														<!-- </div> -->
 													</div>
 											</div>
 										</div>
@@ -327,9 +376,45 @@
 						<h3>Vendor Sales</h3>
 
 						<div class="col-12">
-							<p class="text-muted">Vendor ID: 1 - Sales History</p>
+							<p class="text-muted">Vendor ID: {{ request.user.id }} - Sales History</p>
 
-							<div class="order-history table-responsive">
+							<div class="row d-flex d-block d-sm-none">
+								{% for sale in vendor_sales %}
+								<hr class="my-2">
+
+								<div class="col-5 ps-5">Date:</div>
+								<div class="col-7">{{ sale.order.date | date:"M d, Y" }}</div>
+
+								<div class="col-5 ps-5">Vendor Name:</div>
+								<div class="col-7">{{ sale.product.created_by }}</div>
+
+								<div class="col-5 ps-5">Order Number:</div>
+								<div class="col-7">
+									<a href="{% url 'vendor_order_history' sale.order.order_number %}"
+										title="{{ sale.order.order_number }}">
+										{{ sale.order.order_number|truncatechars:6 }}
+									</a>
+								</div>
+
+								<div class="col-5 ps-5">Items:</div>
+								<div class="col-7">
+									<ul class="list-unstyled">
+										{% for item in sale.order.lineitems.all %}
+										<li class="small">
+											{{ item.product.name }} x{{ item.quantity }}
+										</li>
+										{% endfor %}
+									</ul>
+								</div>
+
+								<div class="col-5 ps-5">Order Total:</div>
+								<div class="col-7">${{ sale.order.grand_total }}</div>
+								
+								{% endfor %}
+							</div>
+
+							<!-- start table responsive -->
+							<div class="order-history table-responsive d-none d-sm-block">
 								<table class="table table-sm table-borderless">
 									<thead>
 										<tr>
@@ -353,9 +438,11 @@
 												<td>{{ sale.order.date | date:"M d, Y" }}</td>
 												<td>
 													<ul class="list-unstyled">
+														{% for item in sale.order.lineitems.all %}
 														<li class="small">
-															{{ sale.product.name }} x{{ sale.quantity }}
+															{{ item.product.name }} x{{ item.quantity }}
 														</li>
+														{% endfor %}
 													</ul>
 												</td>
 												<td>${{ sale.order.grand_total }}</td>
@@ -363,7 +450,9 @@
 											{% endfor %}
 									</tbody>
 								</table>
+								
 							</div>
+							<!-- end table responsive -->
 						</div>
 					</div>
 					<!-- END SALES TAB -->
@@ -372,8 +461,80 @@
 					<div class="tab-pane fade" id="pills-favorites" role="tabpanel"
 						aria-labelledby="pills-favorites-tab">
 						<h3>My Favorites</h3>
-						<p>List of the users favorites, can delete from the list.</p>
-						<p>Need to add this functionality to the front end.</p>
+						
+						<!-- Start Favorite Product View -->
+						<div class="row">
+							<!-- Product Box -->
+							{% for favorite in favorites  %}
+
+								<div class="col-sm-6 col-lg-3 my-3">
+									<div class="product-card-3 h-100">
+										<div class="product-card-image">
+											<div class="product-media h-100">
+												{% if favorite.product.image %}
+												<a href="{% url 'product_detail' favorite.product.id %}">
+													<img class="img-fluid" src="{{ favorite.product.image.url }}"
+														alt="{{ favorite.product.name }}" title="">
+												</a>
+												{% else %}
+												<a href="{% url 'product_detail' favorite.product.id %}">
+													<img class="img-fluid" src="/media/noimage.png" alt="{{ favorite.product.name }}"
+														title="">
+												</a>
+												{% endif %}
+											</div>
+										</div>
+										<div class="product-card-info">
+											<h6 class="product-title">
+												<a href="#">{{ favorite.product.name }}</a>
+											</h6>
+
+											<div class="product-meta category-tags small my-2">
+												{% if favorite.product.category %}
+												<a class="tag text-decoration-none"
+													href="{% url 'products' %}?category={{ product.category.name }}">
+													<!-- <i class="fas fa-tag"></i> -->
+													<span class="p-2 mt-2 ">{{ favorite.product.category.friendly_name }}</span>
+												</a>
+												{% endif %}
+											</div>
+
+											<div class="product-price my-2">
+												<span class="text-primary">${{ favorite.product.price }}</span>
+												<!-- <del class="fs-sm text-muted">$38.<small>50</small></del> -->
+											</div>
+											{% if request.user %}
+												<small class="ml-3 my-2">
+													<a class="text-danger"
+														href="{% url 'add_remove_favorite' favorite.product.id %}" >Remove</a>
+														
+												</small>
+											{% endif %}
+
+										</div>
+									</div>
+								</div>
+								<!-- End Product Box -->
+								{% if forloop.counter|divisibleby:1 %}
+									<div class="col-12 d-sm-none mb-5">
+										<hr>
+									</div>
+								{% endif %}
+								{% if forloop.counter|divisibleby:2 %}
+									<div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
+										<hr>
+									</div>
+								{% endif %}
+								{% if forloop.counter|divisibleby:4 %}
+									<div class="col-12 d-none d-lg-block mb-5">
+										<hr>
+									</div>
+								{% endif %}
+							
+							{% endfor %}
+
+						</div>
+						<!-- End Favorite Product View -->
 					</div>
 				</div>
 

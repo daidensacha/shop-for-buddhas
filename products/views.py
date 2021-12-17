@@ -6,6 +6,8 @@ from django.db.models.functions import Lower
 
 from .models import Product, Category
 from .forms import ProductForm
+# from profiles.views import profile
+from profiles.models import Favorite
 # from .forms import CreateProduct
 # Create your views here.
 
@@ -50,6 +52,9 @@ def all_products(request):
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
+    # favorites = Favorite.objects.all()
+    favorites = Favorite.objects.filter(user=request.user)
+
     current_sorting = f'{sort}_{direction}'
 
     context = {
@@ -58,6 +63,7 @@ def all_products(request):
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
+        'favorites': favorites,
     }
 
     return render(request, 'products/products.html', context)
@@ -79,8 +85,11 @@ def product_detail(request, product_id):
 @login_required
 def add_product(request):
     """ Add a product to the store """
-    # Restrict view to is_vendor or superusers
-    if not request.user.user_type == "is_vendor":
+    # Restrict view to is_vendor , is_admin, or superusers
+    if not request.user.user_type == "is_vendor" \
+       and not request.user.is_authenticated or \
+       not request.user.user_type == "is_admin" \
+       and not request.user.is_authenticated:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
@@ -110,7 +119,11 @@ def add_product(request):
 def edit_product(request, product_id):
     """ Edit a product in the store """
     # Restrict view to is_vendor or superusers
-    if not request.user.user_type == "is_vendor":
+    # Restrict view to is_vendor , is_admin, or superusers
+    if not request.user.user_type == "is_vendor" \
+       and not request.user.is_authenticated or \
+       not request.user.user_type == "is_admin" \
+       and not request.user.is_authenticated:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
@@ -140,8 +153,11 @@ def edit_product(request, product_id):
 @login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
-    # Restrict view to is_vendor or superusers
-    if not request.user.user_type == "is_vendor":
+    # Restrict view to is_vendor , is_admin, or superusers
+    if not request.user.user_type == "is_vendor" \
+       and not request.user.is_authenticated or \
+       not request.user.user_type == "is_admin" \
+       and not request.user.is_authenticated:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 

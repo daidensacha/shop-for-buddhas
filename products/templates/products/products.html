@@ -28,7 +28,7 @@
 
                         <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
                             <div class="sort-select-wrapper w-50">
-                                <select id="sort-selector" class="form-select custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}gray{% endif %}">
+                                <select id="sort-selector" class="form-select custom-select custom-select-sm rounded-3 border border-{% if current_sorting != 'None_None' %}info{% else %}gray{% endif %}">
                                     <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                                     <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
                                     <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
@@ -66,13 +66,14 @@
                                     </div>
                                     <!-- Quick add to cart button from product page -->
                                     
+                                    
                                     <form class="form update-form" data-form="{{ item.item_id }}" method="POST" action="{% url 'add_to_cart' product.id %}">
                                         {% csrf_token %}
                                         <div class="product-action">
-
-                                                <a href="#" class="btn btn-outline-primary">
+                                         
+                                                <a href="{% url 'add_remove_favorite'  product.id %}" class="btn btn-outline-primary">
                                                     <i class="bi bi-heart"></i>
-                                                </a>
+                                                </a> 
                                                 <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-dark">
                                                     <i class="bi bi-eye-fill"></i>
                                                 </a>
@@ -146,8 +147,15 @@
 
                                     <div class="product-price my-2">
                                         <span class="text-primary">${{ product.price }}</span>
-                                        <!-- <del class="fs-sm text-muted">$38.<small>50</small></del> -->
                                     </div>
+                                    <!-- Add-remove favorite icon -->
+                                    {% for favorite in favorites %}
+                                        {% if favorite.product_id == product.id %}
+                                        <i class="fas fa-heart fa-2x text-danger"></i>
+                                        {% endif %}
+                                    {% endfor %}
+
+
 
                                 </div>
                             </div>
