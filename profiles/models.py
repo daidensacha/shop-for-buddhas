@@ -51,6 +51,6 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
 #         instance.profile.address.save()
 
 
-class Favorite(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete= models.CASCADE)
-    product = models.ForeignKey(Product, on_delete= models.CASCADE)
+# class Favorite(models.Model):
+#     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete= models.CASCADE)
+#     product = models.ForeignKey(Product, on_delete= models.CASCADE)

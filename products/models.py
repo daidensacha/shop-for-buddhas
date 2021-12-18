@@ -49,6 +49,8 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL,
                                    on_delete=models.CASCADE)
+    favorites = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, related_name='favorite', default=None, blank=True)
 
     def __str__(self):
         return self.name

@@ -6,8 +6,8 @@ from django.db.models.functions import Lower
 
 from .models import Product, Category
 from .forms import ProductForm
-# from profiles.views import profile
-from profiles.models import Favorite
+from profiles.views import profile
+from profiles.models import UserProfile
 # from .forms import CreateProduct
 # Create your views here.
 
@@ -53,7 +53,8 @@ def all_products(request):
             products = products.filter(queries)
 
     # favorites = Favorite.objects.all()
-    favorites = Favorite.objects.filter(user=request.user)
+    # favorites = Favorite.objects.filter(user=request.user)
+    favorite_list = Product.objects.filter(favorites=request.user)
 
     current_sorting = f'{sort}_{direction}'
 
@@ -63,7 +64,8 @@ def all_products(request):
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
-        'favorites': favorites,
+        'favorite_list': favorite_list,
+        # 'favorites': favorites,
     }
 
     return render(request, 'products/products.html', context)

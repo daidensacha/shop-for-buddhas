@@ -66,7 +66,15 @@
                                     </div>
                                     <!-- Quick add to cart button from product page -->
                                     
-                                    
+                                    <div class="favorite">
+                                        <!-- Add-Remove Favorite Icon -->
+                                        {% for favorite in favorite_list %}
+                                            {% if favorite.product_id == product.id %}
+                                                <i class="fas fa-heart fa-2x text-danger"></i>
+                                            
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
                                     <form class="form update-form" data-form="{{ item.item_id }}" method="POST" action="{% url 'add_to_cart' product.id %}">
                                         {% csrf_token %}
                                         <div class="product-action">
@@ -148,12 +156,10 @@
                                     <div class="product-price my-2">
                                         <span class="text-primary">${{ product.price }}</span>
                                     </div>
-                                    <!-- Add-remove favorite icon -->
-                                    {% for favorite in favorites %}
-                                        {% if favorite.product_id == product.id %}
-                                        <i class="fas fa-heart fa-2x text-danger"></i>
-                                        {% endif %}
-                                    {% endfor %}
+
+                                   
+                                    
+                                    
 
 
 

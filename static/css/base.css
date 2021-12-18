@@ -879,6 +879,20 @@ input[name='q']::placeholder {
   border-radius: 0;
 }
 
+/* ========================== Product Image pop up ===========================*/
+.ratio.ratio-16x9 {
+  background-color: #fff !important;
+}
+
+/* Product Favorite icon */
+.product-card-3 .favorites {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  /* display: flex; */
+  /* flex-direction: column; */
+  z-index: 1;
+}
 
 /* 
 ================================= MEDIA QUERIES ============================= */
