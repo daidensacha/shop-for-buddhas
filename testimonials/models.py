@@ -15,9 +15,11 @@ rating = (("1", "1/5 stars"),
 class Testimonial(models.Model):
     """Create testimonial class model"""
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    user_image = models.ImageField()
+    
+    # image = models.ImageField(null=True, blank=True)
     user_testimonial = models.TextField(max_length=254)
     user_rating = models.CharField(max_length=150, choices=rating)
+    image = models.ImageField()
     # posted_at = models.DateTimeField(blank=True, null=True)
     posted_at = models.DateField(auto_now_add=False, null=True)
     created_at = models.DateTimeField(auto_now_add=True)

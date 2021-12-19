@@ -92,7 +92,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                # Added context processors
                 'cart.contexts.cart_contents',
+                'blog.context_processor.posts',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
@@ -113,8 +115,15 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
-
+# Email Server
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'base@gmail.com'
+EMAIL_HOST_PASSWORD = 'anything'
+EMAIL_POST = 587
+EMAIL_USE_TLS = True
+
+# *******
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 # ACCOUNT_AUTHENTICATION_METHOD = 'email'

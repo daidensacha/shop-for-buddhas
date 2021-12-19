@@ -6,8 +6,8 @@ from django.db.models.functions import Lower
 
 from .models import Product, Category
 from .forms import ProductForm
-from profiles.views import profile
-from profiles.models import UserProfile
+# from profiles.views import profile
+# from profiles.models import UserProfile
 # from .forms import CreateProduct
 # Create your views here.
 
@@ -54,18 +54,40 @@ def all_products(request):
 
     # favorites = Favorite.objects.all()
     # favorites = Favorite.objects.filter(user=request.user)
-    favorite_list = Product.objects.filter(favorites=request.user)
+    # user = request.user
+    favorite_list = []
+    # prod = Product.objects.all()
+    # This filters only the products with favorites but for all users
+    # prod = Product.objects.exclude(favorites=None)
+    prod = Product.objects.filter(favorites__username=request.user)
+    favorite_list = Product.objects.filter(favorites__username=request.user)
+
+
+    # print(prod)
+    # for i in prod:
+        # print(i.favorites)
+        # favorite_list = i.favorites.all()
+        # all_favorites = i.favorites.all()
+        
+        # print(all_favorites)
+        # for item in all_favorites:
+            # if item == request.user:
+                # print(item)
+                # favorite_list.append(item)
+                # print(favorite_list)
+                # print(item)
+
 
     current_sorting = f'{sort}_{direction}'
 
     context = {
         'products': products,
-        "stars": [1, 2, 3, 4, 5],
+        'stars': [1, 2, 3, 4, 5],
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
         'favorite_list': favorite_list,
-        # 'favorites': favorites,
+        # 'user': user,
     }
 
     return render(request, 'products/products.html', context)

@@ -57,7 +57,7 @@
 
                         <!-- Product Box -->
                         {% for product in products %}
-
+                        <!-- {{ product.favorites }} -->
                         <div class="col-sm-6 col-lg-3 my-3">
                             <div class="product-card-3 h-100">
                                 <div class="product-card-image">
@@ -68,19 +68,43 @@
                                     
                                     <div class="favorite">
                                         <!-- Add-Remove Favorite Icon -->
-                                        {% for favorite in favorite_list %}
-                                            {% if favorite.product_id == product.id %}
-                                                <i class="fas fa-heart fa-2x text-danger"></i>
-                                            
+                                        <!-- {{ favorite_list}} -->
+                                            <!-- {{ product.favorites }} -->
+                                            <!--   {% for favorite in favorite_list %} -->
+                                        <!-- <div class="btn btn-outline-dark"> -->
+                                            <!-- <div style="width:35px;height:35px;"> -->
+                                            {% if product not in favorite_list %}
+                                                <i class="bi bi-heart text-primary favorites"></i>
+                                                <!-- <i class="far fa-heart fa text-danger favorites"></i> -->
                                             {% endif %}
-                                        {% endfor %}
+                                            {% for favorite in favorite_list %}
+                                                {% if favorite == product %}
+                                                    <!-- <i class="fas fa-heart fa text-danger favorites"></i> -->
+                                                        <i class="bi bi-heart-fill text-danger favorites"></i>
+                                                {% endif %}
+
+                                            {% endfor %}
+                                        <!-- </div> -->
+                                        <!-- </div> -->
+                                        <!-- {% endfor %} -->
                                     </div>
                                     <form class="form update-form" data-form="{{ item.item_id }}" method="POST" action="{% url 'add_to_cart' product.id %}">
                                         {% csrf_token %}
                                         <div class="product-action">
                                          
                                                 <a href="{% url 'add_remove_favorite'  product.id %}" class="btn btn-outline-primary">
-                                                    <i class="bi bi-heart"></i>
+                                            {% if product not in favorite_list %}
+                                                <i class="bi bi-heart"></i>
+                                                <!-- <i class="far fa-heart fa text-danger favorites"></i> -->
+                                            {% endif %}
+                                            {% for favorite in favorite_list %}
+                                                {% if favorite == product %}
+                                                    <!-- <i class="fas fa-heart fa text-danger favorites"></i> -->
+                                                        <i class="bi bi-heart-fill text-danger"></i>
+                                                {% endif %}
+
+                                            {% endfor %}
+                                                    <!-- <i class="bi bi-heart"></i> -->
                                                 </a> 
                                                 <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-dark">
                                                     <i class="bi bi-eye-fill"></i>

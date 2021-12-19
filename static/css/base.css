@@ -887,8 +887,10 @@ input[name='q']::placeholder {
 /* Product Favorite icon */
 .product-card-3 .favorites {
   position: absolute;
-  top: 15px;
-  left: 15px;
+  /* top: 15px;
+  right: 15px; */
+  top: 20px;
+  right: 26px;
   /* display: flex; */
   /* flex-direction: column; */
   z-index: 1;

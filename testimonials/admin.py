@@ -13,7 +13,7 @@ class TestimonialAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at',)
     fields = (
         'user',
-        'user_image',
+        'image',
         'user_testimonial',
         'user_rating',
         'approved',

@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404, \
+                             HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -7,6 +8,7 @@ from .models import UserProfile
 from .forms import UserProfileForm
 from checkout.models import Order, OrderLineItem
 from products.models import Product
+# import products.views
 
 
 @login_required
@@ -25,36 +27,25 @@ def profile(request):
         form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
 
-    # products context
+    # products context to display the list of vendor products
     try:
         products = Product.objects.filter(created_by=request.user)
     except Exception as e:
-        messages.error(request, "You dont have any products")
+        messages.error(request, "No vendor proucts found.")
         products = None
 
     # vendor orders
     try:
         vendor_sales = OrderLineItem.objects.filter(vendor__username=request.user.username)
     except Exception as e:
-        messages.error(request, "You dont have any products")
+        messages.error(request, "No vendor sales found.")
         vendor_sales = None
 
-    # try:
-    #     favorites = Product.newmanager.filter(favorites=request.user)
-    #     # favorites = Favorite.objects.filter(user=request.user)
-    # except Exception as e:
-    #     messages.error(request, "You dont have any favorite products")
-    #     favorites = None   
-   
-    # if request.method == 'POST':
-    #     form = UserProfileForm(request.POST, instance= profile)
-    #     if form.is_valid():
-    #         update_form = form.save(commit=False)
-    #         update_form.user = request.user
-    #         update_form.save()
-            # messages.success(request, 'Profile updated successfully')
-    # favorite_list = Product.objects.filter(favorites=request.user.id)
-    # favorite_list = Product.favorites.all()
+    favorite_list = []
+    # favorite_list = Product.objects.filter(favorites__username=request.user)
+    favorite_list = Product.objects.exclude(favorites=None).filter(favorites__username=request.user)
+
+    all_products = Product.objects.all()
 
     template = 'profiles/profile.html'
     context = {
@@ -62,6 +53,7 @@ def profile(request):
         'form': form,
         'orders': orders,
         'products': products,
+        'all_products': all_products,
         'on_profile_page': True,
         'vendor_sales': vendor_sales,
         "favorite_list": favorite_list,
@@ -153,10 +145,15 @@ def add_remove_favorite(request, product_id):
     if request.user.is_authenticated:
         product = get_object_or_404(Product, id=product_id)
 
+        """ 
+        Check if the selected item is already in the users favorites
+        and if it is, delete it from the list
+        """
         if product.favorites.filter(id=request.user.id).exists():
             product.favorites.remove(request.user)
             messages.info(request, f'Removed {product.name} from favorites.')
         else:
+            """ Add the item to the users list of favorites """
             product.favorites.add(request.user)
             messages.info(request, f'Added {product.name} to favorites.')
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
@@ -166,11 +163,31 @@ def add_remove_favorite(request, product_id):
 def favorite_list(request):
     # new = Product.objects.filter(favorites=request.user.id)
     # favorite_list = Product.objects.filter(favorites=request.user.id)
-    favorite_list = Product.favorites.filter(request.user.id)
-    favorite_list = Product.objects.all()
+    # user = request.user
+    # products = Product.objects.all()
+    # favorite_list = user.favorites.all()
+    favorite_list = []
+    prod = Product.objects.all()
+    for i in prod:
+
+        # favorite_list = i.favorites.all()
+        all_favorites = i.favorites.all()
+        
+        print(favorite_list)
+        for item in all_favorites:
+            if item == request.user:
+                favorite_list.append(item)
+                print(favorite_list)
+                # print(item)
+
+    context = {
+        # 'favorite_list': favorite_list,
+        # 'products': products
+    }
+    # favorite_list = Product.favorites.filter(request.user.id)
+    # favorite_list = Product.objects.all()
     print(favorite_list)
-    return render(request, 'profile',
-                    {'favorite_list': favorite_list})
+    return render(request, 'profile', context)
 
 # Example https://github.com/veryacademy/YT-Django-Simple-Blog-App-Part10-User-Favourties-Save/blob/master/accounts/views.py
 # @ login_required

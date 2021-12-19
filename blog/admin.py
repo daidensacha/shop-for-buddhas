@@ -4,16 +4,16 @@ from .models import Category, Post, Comment
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    """Prepopulate the slug field in the admin view"""\
+    """Prepopulate the slug field in the admin view"""
 
-    prepopulated_fields = {"slug": ("name",)}
+    prepopulated_fields = {'slug': ('name',)}
 
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    """Change layout of required information in accounts admin panel."""
+    """ Change layout of required information in accounts admin panel. """
 
-    prepopulated_fields = {"slug": ("title",)}
+    prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('created_at',)
     fields = (
               'author',
@@ -24,8 +24,8 @@ class PostAdmin(admin.ModelAdmin):
               'tags',
               'description',
               'body',
-              "status",
-              "featured",
+              'status',
+              'featured',
               'created_at',
               'posted_at'
              )

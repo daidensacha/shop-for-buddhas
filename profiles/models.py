@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
@@ -36,19 +36,6 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
         instance.profile.save()
-
-
-# @receiver(post_save, sender=auth.get_user_model())
-# def create_or_update_user_profile(sender, instance, created, **kwargs):
-#     """
-#     Create or update the user profile
-#     """
-#     if created:
-#         UserProfile.objects.create(user=instance)
-#         instance.profile.save()
-#     if created:
-#         Address.objects.create(profile=instance.profile)
-#         instance.profile.address.save()
 
 
 # class Favorite(models.Model):

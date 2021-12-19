@@ -32,9 +32,9 @@
 
                                 <!-- Widget Search Start -->
                                 <div class="widget-search">
-                                    <form action="#">
-                                        <input class="form-control" type="text" placeholder="Search Blog Posts">
-                                        <button><i class="fas fa-search"></i></button>
+                                    <form method="GET" action="{%  url 'blog_search' %}">
+                                        <input class="form-control" type="text" name= "query" placeholder="Search Blog Posts">
+                                        <button type="submit" ><i class="fas fa-search"></i></button>
                                     </form>
                                 </div>
                                 <!-- Widget Search End -->
@@ -78,39 +78,6 @@
                                         </div>
                                       
                                     {% endfor %}
-                                    <!-- <div class="single-post">
-                                        <div class="post-thumb">
-                                            <a href="blog-details-left-sidebar.html">
-                                                <img src="assets/images/blog/blog-01.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="post-content">
-                                            <h6 class="post-title"><a href="blog-details-left-sidebar.html">This is Nicholas K Spring 2020 Runway</a></h6>
-                                            <span class="date">Nov 12, 2020</span>
-                                        </div>
-                                    </div>
-                                    <div class="single-post">
-                                        <div class="post-thumb">
-                                            <a href="blog-details-left-sidebar.html">
-                                                <img src="assets/images/blog/blog-06.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="post-content">
-                                            <h6 class="post-title"><a href="blog-details-left-sidebar.html">This is Secound Post For XipBlog</a></h6>
-                                            <span class="date">Nov 12, 2020</span>
-                                        </div>
-                                    </div>
-                                    <div class="single-post">
-                                        <div class="post-thumb">
-                                            <a href="blog-details-left-sidebar.html">
-                                                <img src="assets/images/blog/blog-02.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="post-content">
-                                            <h6 class="post-title"><a href="blog-details-left-sidebar.html">London Fashion Week 2020</a></h6>
-                                            <span class="date">Nov 12, 2020</span>
-                                        </div>
-                                    </div> -->
                                 </div>
                                 <!-- Widget Post End -->
                             </div>
@@ -124,7 +91,8 @@
                                 <div class="widget-link">
 
                                     <!-- {{ all_posts }} -->
-                                    <!-- {% regroup all_posts by posted_at.year as year_list %}
+                        
+                                    {% regroup all_posts by posted_at.year as year_list %}
 
                                     <ul>
                                     {% for year in year_list %}
@@ -133,8 +101,8 @@
                                             <ul>
                                             {% for month in month_list %}
                                                 <li>
-                                                 
-                                                    <a href="{% url 'blog:post_archive_month' year.grouper month.grouper %}"> 
+                                                   
+                                                    <a href ="{% url 'post_archive_month' year.grouper month.grouper %}"> 
                                                         {{ month.list.0.posted_at|date:'b' }} ({{ month.list|length }})
                                                     </a>
                                                 </li>
@@ -142,14 +110,8 @@
                                             </ul>
                                         </li>
                                     {% endfor %}
-                                    </ul> -->
-                                    <ul>
-                                        <li><a href="#">January (10)</a></li>
-                                        <li><a href="#"> February (08)</a></li>
-                                        <li><a href="#"> March (07)</a></li>
-                                        <li><a href="#">April (14)</a></li>
-                                        <li><a href="#">May (05)</a></li>
                                     </ul>
+                             
                                 </div>
                                 <!-- Widget Category End -->
                             </div>

@@ -1,0 +1,125 @@
+{% load static %}
+
+{% block tab_products %}
+
+<!-- START PRODUCTS TAB -->
+<div class="tab-pane fade" id="pills-products" role="tabpanel" aria-labelledby="pills-products-tab">
+    <h3>Vendor Products</h3>
+    <!-- START PRODUCT GRID -->
+    <div class="row my-5">
+        <div class="col-12 my-5">
+            <div class="d-grid col-12 col-lg-6 mx-auto gap-2">
+                <a href="{% url 'add_product' %}" class="btn btn-outline-dark">Add a Product</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Product Box -->
+        {% for product in products %}
+
+        <div class="col-sm-6 col-lg-3 my-3">
+            <div class="product-card-3 h-100">
+                <div class="product-card-image">
+                    <div class="product-media h-100">
+                        {% if product.image %}
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img class="img-fluid" src="{{ product.image.url }}"
+                                alt="{{ product.name }}" title="">
+                        </a>
+                        {% else %}
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img class="img-fluid" src="/media/noimage.png" alt="{{ product.name }}"
+                                title="">
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="product-card-info">
+                    <h6 class="product-title">
+                        <a href="#">{{ product.name }}</a>
+                    </h6>
+
+                    <div class="product-meta category-tags small my-2">
+                        {% if product.category %}
+                        <a class="tag text-decoration-none"
+                            href="{% url 'products' %}?category={{ product.category.name }}">
+                            <!-- <i class="fas fa-tag"></i> -->
+                            <span class="p-2 mt-2 ">{{ product.category.friendly_name }}</span>
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    <div class="product-price my-2">
+                        <span class="text-primary">${{ product.price }}</span>
+                        <!-- <del class="fs-sm text-muted">$38.<small>50</small></del> -->
+                    </div>
+
+                    {% if request.user.user_type == "is_vendor" or request.user.user_type == "is_admin" or request.user.is_superuser %}
+                    <small class="ml-3 my-2">
+                        <a href="{% url 'edit_product' product.id %}">Edit</a> |
+                        <a class="text-danger"
+                            href="" data-bs-toggle="modal" data-bs-target="#delete-product">Delete</a>
+                            
+                    </small>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <!-- End Product Box -->
+        {% if forloop.counter|divisibleby:1 %}
+        <div class="col-12 d-sm-none mb-5">
+            <hr>
+        </div>
+        {% endif %}
+        {% if forloop.counter|divisibleby:2 %}
+        <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
+            <hr>
+        </div>
+        {% endif %}
+        {% if forloop.counter|divisibleby:4 %}
+        <div class="col-12 d-none d-lg-block mb-5">
+            <hr>
+        </div>
+        {% endif %}
+        <!-- Warning Modal START -->
+        <div class="modal fade" id="delete-product">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger">
+                        <div class="modal-title p-3">
+                            <h5 class="m-0 text-white">Deleting is irreversible!</h5>
+                            <p class="m-0 text-white">Are you sure you want to delete the product?</p>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="w-100 p-3">
+                                <div class="mb-3">
+                                    <p class="">The product {{ product.name }} will be permanently removed.</p>
+                                </div>
+                                <div class="row align-items-center">
+                                    <!-- <div class="col-sm-4"> -->
+                                        <div class="d-flex gap-2">
+                                            <button class="btn btn-outline-dark col-6"
+                                                    data-bs-dismiss="modal" >Cancel</button>
+                                            <a class="btn btn-outline-danger col-6 text-danger"
+                                               href="{% url 'delete_product' product.id %}">Delete</a>
+                                        </div>
+                                        
+                                    <!-- </div> -->
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Warning Modal END -->
+
+        {% endfor %}
+
+    </div>
+    <!--  END PRODUCT GRID -->
+</div>
+<!-- END PRODUCTS TAB -->
+
+{% endblock tab_products %}

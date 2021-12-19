@@ -8,7 +8,7 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        exclude = ["created_by"]
+        exclude = ['created_by', 'favorites']
         fields = '__all__'
 
     image = forms.ImageField(label='Image',

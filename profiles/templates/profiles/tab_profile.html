@@ -1,0 +1,77 @@
+{% load static %}
+
+{% block tab_profile %}
+
+
+<!-- START PROFILE TAB -->
+<div class="tab-pane fade show active" id="pills-profile" role="tabpanel"
+aria-labelledby="pills-profile-tab">
+{% if user.first_name %}
+    <h3>Welcome {{ user.first_name }}!</h3>
+{% else %}
+    <h3>Welcome!</h3>
+{% endif %}
+<div class="card border-0">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-4 col-sm-4">
+                <p class="text-muted ps-2 ps-sm-5">Name</p>
+            </div>
+            <div class="col-8 col-sm-8">
+                <p>{{ user.first_name}} {{ user.last_name}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 col-sm-4">
+                <p class="text-muted ps-2 ps-sm-5">Username</p>
+            </div>
+            <div class="col-8 col-sm-8">
+                <p>{{ user.username}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 col-sm-4">
+                <p class="text-muted ps-2 ps-sm-5">Email</p>
+            </div>
+            <div class="col-8 col-sm-8">
+                <p>{{ user.email}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 col-sm-4">
+                <p class="text-muted ps-2 ps-sm-5">User Type</p>
+            </div>
+            <div class="col-8 col-sm-8">
+                {% if user.user_type == "is_vendor" %}
+                <p>Vendor</p>
+                {% elif user.user_type == "is_customer" %}
+                <p>Customer</p>
+                {% elif user.user_type == "is_admin" %}
+                <p>Admin</p>
+                {% elif user.is_superuser %}
+                <p>Super User</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 col-sm-4">
+                <p class="text-muted ps-2 ps-sm-5">Date Joined</p>
+            </div>
+            <div class="col-8 col-sm-8">
+                <p>{{ user.date_joined | date:"M d, Y" }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 col-sm-4">
+                <p class="text-muted ps-2 ps-sm-5">Last Login</p>
+            </div>
+            <div class="col-8 col-sm-8">
+                <p>{{ user.last_login | date:"M d, Y"}} </p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- END PROFILE TAB -->
+
+{% endblock tab_profile %}

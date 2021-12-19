@@ -28,7 +28,8 @@ class Category(models.Model):
 class Post(models.Model):
     """Blog post model for the blog app"""
 
-    author = models.ForeignKey( settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, 
+                               on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.ImageField()
     title = models.CharField(max_length=150)
@@ -68,17 +69,6 @@ class Comment(models.Model):
     body = models.TextField(max_length=150)
     posted_at = models.DateField(auto_now_add=False, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    # posted_at = models.DateField(default=date.today)
-    # created_at = models.DateTimeField(default=timezone.now)
-    # posted_at = models.DateTimeField(
-    #                 blank=True,
-    #                 null=True
-    #                 )
-    # created_at = models.DateTimeField(
-    #                 blank=True,
-    #                 null=True,
-    #                 default=datetime.now
-    #                 )
 
     def __str__(self):
         return self.name

@@ -1,0 +1,109 @@
+{% load static %}
+
+{% block contact %}
+
+<!-- CONTACT FORM START-->
+<section class="section " id="contact">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-12">
+                <i class="ti-headphone-alt title-icon text-muted"></i>
+                <h3 class="title">Get In <span class="fw-bold">Touch</span></h3>
+                <p class="text-muted mt-3 title-subtitle mx-auto">Drop us a line if you like what you see, or if you have any questions.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="mt-4 pt-4">
+                    <p class="text-muted mt-4"> <span class="fw-bold ">Customer care:</span><br> <span
+                            class="d-block mt-2">+49 234 5665 7894</span></p>
+                    <p class="text-muted mt-4"><span class="fw-bold ">Office Address:</span><br> <span
+                            class="d-block mt-2">Weidener Strasse 25, <br> 86672 Thierhaupten DE</span></p>
+                    <p class="text-muted mt-4"><span class="fw-bold ">Email Address:</span><br> <span
+                            class="d-block mt-2">info@shopforbuddhas.com</span></p>
+                    <p class="text-muted mt-4"><span class="fw-bold ">Office Time:</span><br> <span
+                            class="d-block mt-2">9:00AM To 6:00PM</span></p>
+                </div>
+            </div>
+            
+            <div class="col-lg-8">
+                <div class="custom-form mt-4 pt-4">
+                    <form class="needs-validation" novalidate method="post" name="myForm" id="contact_form" action = "{% url 'contact'  %}" enctype="multipart/form-data" >
+                        <!-- <div class="form-group"> -->
+                            {% csrf_token %}
+                            <p id="error-msg"></p>
+                            <div id="simple-msg"></div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group mt-2">
+                                        <input name="name" id="name" type="text" class="form-control"
+                                            placeholder="Your name*" minlength="2" maxlength="30" pattern="^[a-zA-Z -äöüÄÖÜß]{2,30}$" required >
+                                            <div class="invalid-feedback">
+                                                Please enter your name.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mt-2">
+                                        <input name="email" id="email" type="email" class="form-control"
+                                            placeholder="Your email*"  maxlength="40" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid email.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group mt-2">
+                                        <input type="text" name="subject" class="form-control" id="subject"
+                                            placeholder="Your Subject.." minlength="8" maxlength="20" pattern="^[a-zA-Z -äöüÄÖÜß]{8,20}$" required>
+                                            <div class="invalid-feedback">
+                                                Please enter the subject.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group mt-2">
+                                        <textarea name="comments" id="comments" rows="4" class="form-control"
+                                            placeholder="Your message..." minlength="20" maxlength="200" pattern="^[a-zA-Z -äöüÄÖÜß]{20,200}$" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Please enter your message.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 mt-2 pythontext-end">
+                                    <input type="submit" id="submit" name="send" class="submitBnt btn btn-primary  rounded-3"
+                                        value="Send Message">
+                                    
+                                </div>
+                            </div>
+                        <!-- </div> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CONTACT FORM END-->
+
+{% endblock contact %}
+
+
+

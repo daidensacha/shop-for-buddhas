@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
-
+from django.db.models import Q
 from taggit.models import Tag
 from .models import Category, Post, Comment
 from .forms import CommentForm
@@ -10,27 +10,21 @@ from .forms import CommentForm
 def blog_posts(request, tag_slug=None, category_slug=None):
     """ A view to show the blog list page """
     category_slug = category_slug
-
-    posts = Post.objects.filter(status="published",featured= False)
+    posts = Post.objects.filter(status='published', featured=False)
     featured_post = Post.objects.filter(featured=True)
-    posts_sidebar = Post.objects.filter(status="published")
-    # all_posts = Post.objects.filter(status="published")
+    posts_sidebar = Post.objects.filter(status='published')
     categories = Category.objects.all()
     tags = Tag.objects.all()
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
-        posts = posts.filter(status="published", tags=tag.id)
+        posts = posts.filter(status='published', tags=tag.id)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
-        posts = Post.objects.filter(status="published", category=category.id)
+        posts = Post.objects.filter(status='published', category=category.id)
 
-    # archives
-    #archives = Post.objects.filter(posted_at__month = 1 )
-    #print(archives)
-    
     paginator = Paginator(posts, 2)
-    page = request.GET.get("page", 1)
+    page = request.GET.get('page', 1)
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
@@ -39,25 +33,45 @@ def blog_posts(request, tag_slug=None, category_slug=None):
         posts = paginator.page(paginator.num_pages)
 
     context = {
-        "posts": posts,
+        'posts': posts,
         # "all_posts": all_posts,
-        "featured_post": featured_post,
-        "posts_sidebar": posts_sidebar,
-        "categories": categories,
+        'featured_post': featured_post,
+        'posts_sidebar': posts_sidebar,
+        'categories': categories,
         'tag': tag,
-        "tags": tags,
-        "tag_slug": tag_slug,
-        "category_slug": category_slug,
+        'tags': tags,
+        'tag_slug': tag_slug,
+        'category_slug': category_slug,
     }
 
-    return render(request, "blog/blog_posts.html", context)
-3
+    return render(request, 'blog/blog_posts.html', context)
+
+
+def post_archive_month(request, year, month):
+    #
+    posts_sidebar = Post.objects.filter(status='published')
+    post = Post.objects.filter(status='published')
+    categories = Category.objects.all()
+    tags = Tag.objects.all()
+    #
+    posts = Post.objects.filter(posted_at__year=year, posted_at__month=month)
+
+    context = {
+        'post': post,
+        'posts': posts,
+        'posts_sidebar': posts_sidebar,
+        'categories': categories,
+        'tags': tags
+
+    }
+    return render(request, 'blog/blog_posts.html', context)
+
 
 def post_detail(request, slug):
     """ A view to show the blog post page """
 
     post = Post.objects.get(slug=slug)
-    posts_sidebar = Post.objects.filter(status="published")
+    posts_sidebar = Post.objects.filter(status='published')
     categories = Category.objects.all()
     tags = Tag.objects.all()
     if request.method == 'POST':
@@ -83,3 +97,28 @@ def post_detail(request, slug):
                       'tags': tags
                       }
                   )
+
+
+def blog_search(request):
+    """ Create search query for blog posts """
+    posts_sidebar = Post.objects.filter(status='published')
+    post = Post.objects.filter(status='published')
+    categories = Category.objects.all()
+    tags = Tag.objects.all()
+
+    query = request.GET.get('query', None)
+    posts = Post.objects.filter(
+        Q(category__name__icontains=query) |
+        Q(title__icontains=query) |
+        Q(body__icontains=query) |
+        Q(description__icontains=query)
+        )
+
+    context = {
+        'post': post,
+        'posts': posts,
+        'posts_sidebar': posts_sidebar,
+        'categories': categories,
+        'tags': tags
+    }
+    return render(request, 'blog/blog_posts.html', context)
