@@ -1,5 +1,5 @@
 from django import forms
-from .models import UserProfile
+from .models import UserProfile, Contact
 
 
 class UserProfileForm(forms.ModelForm):
@@ -21,7 +21,6 @@ class UserProfileForm(forms.ModelForm):
             'default_county': 'County, State or Locality',
             'default_postcode': 'Postal Code',
             'default_user_bio': 'User Bio',
-            # 'user_bio_image': 'User Image'
         }
 
         self.fields['default_phone_number'].widget.attrs['autofocus'] = False
@@ -36,3 +35,9 @@ class UserProfileForm(forms.ModelForm):
                                                         rounded-3 \
                                                         form-control-sm'
             self.fields[field].label = False
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = '__all__'

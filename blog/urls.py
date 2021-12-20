@@ -7,7 +7,7 @@ urlpatterns = [
     path('<slug:slug>/', post_detail, name='post_detail'),
     path('tag/<slug:tag_slug>/', blog_posts, name='post_tag'),
     path('category/<slug:category_slug>/', blog_posts, name='post_category'),
-    path('post_archive_month/<year>/<month>/', post_archive_month, 
+    path('post_archive_month/<year>/<month>/', post_archive_month,
          name='post_archive_month'),
 
 ]

@@ -9,10 +9,7 @@ class CommentForm(forms.ModelForm):
         """Define the blog comment form with labels"""
 
         model = Comment
-        fields = ['name', 'email', 'body']
-        # labels = {
-        #     "body": "Comment"
-        # }
+        fields = ['name', 'body']
 
     def __init__(self, *args, **kwargs):
         """
@@ -20,11 +17,11 @@ class CommentForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
-            'name': 'Full Name',
-            'email': 'Email Address',
+            'name': 'Name',
             'body': 'Comment',
         }
         self.fields['name'].widget.attrs['autofocus'] = False
+        self.fields['body'].widget.attrs['rows'] = 3
         for field in self.fields:
 
             placeholder = placeholders[field]

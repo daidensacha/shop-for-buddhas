@@ -32,6 +32,7 @@
                 <div class="custom-form form-group mt-4 pt-4">
 
                     <form class="" method="post" name="contact_form" id="contact_form" >
+                        
                         {% csrf_token %}
                         {{ form|crispy }}
                         

@@ -106,7 +106,7 @@
                                             {% endfor %}
                                                     <!-- <i class="bi bi-heart"></i> -->
                                                 </a> 
-                                                <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-dark">
+                                                <a href="{{ product.image.url }}" data-toggle="lightbox" class="btn btn-outline-dark">
                                                     <i class="bi bi-eye-fill"></i>
                                                 </a>
                                                 <span class="btn btn-outline-dark update-link">

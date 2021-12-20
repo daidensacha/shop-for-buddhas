@@ -47,8 +47,6 @@ class Post(models.Model):
     featured = models.BooleanField(default=False)
     posted_at = models.DateField(auto_now_add=False, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
-    # posted_at = models.DateField(default=date.today)
-    # created_at = models.DateTimeField(default=timezone.now)
 
     tags = TaggableManager()
 
@@ -58,17 +56,18 @@ class Post(models.Model):
 
 class Comment(models.Model):
     """Blog comment model for the blog app"""
-
     post = models.ForeignKey(
                     Post,
                     related_name='comments',
                     on_delete=models.CASCADE
                     )
     name = models.CharField(max_length=150)
-    email = models.EmailField(max_length=150)
     body = models.TextField(max_length=150)
     posted_at = models.DateField(auto_now_add=False, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
 
     def __str__(self):
         return self.name

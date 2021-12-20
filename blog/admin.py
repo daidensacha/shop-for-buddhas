@@ -29,7 +29,8 @@ class PostAdmin(admin.ModelAdmin):
               'created_at',
               'posted_at'
              )
-    list_display = ('title', 'category', 'author', 'featured', 'status', 'created_at', 'posted_at')
+    list_display = ('title', 'category', 'author', 'featured', 'status',
+                    'created_at', 'posted_at')
     list_filter = ('category', 'tags')
     ordering = ('created_at',)
 

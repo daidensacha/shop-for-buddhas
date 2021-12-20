@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import UserProfile
+from .models import UserProfile, Contact
 # Register your models here.
 # admin.site.register(UserProfile)
 
-
+admin.site.register(Contact)
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
     """Change layout of required information in accounts admin panel."""

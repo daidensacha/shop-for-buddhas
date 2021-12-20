@@ -34,7 +34,6 @@ def blog_posts(request, tag_slug=None, category_slug=None):
 
     context = {
         'posts': posts,
-        # "all_posts": all_posts,
         'featured_post': featured_post,
         'posts_sidebar': posts_sidebar,
         'categories': categories,
@@ -48,20 +47,33 @@ def blog_posts(request, tag_slug=None, category_slug=None):
 
 
 def post_archive_month(request, year, month):
-    #
+    """ Create archive widget for the blog sidebar """
+
+    """ Add context filters for the sidebar """
     posts_sidebar = Post.objects.filter(status='published')
     post = Post.objects.filter(status='published')
     categories = Category.objects.all()
     tags = Tag.objects.all()
-    #
+    """ Filter blog posts by year and month """
     posts = Post.objects.filter(posted_at__year=year, posted_at__month=month)
+    archive = True
+
+    paginator = Paginator(posts, 2)
+    page = request.GET.get('page', 1)
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
 
     context = {
         'post': post,
         'posts': posts,
         'posts_sidebar': posts_sidebar,
         'categories': categories,
-        'tags': tags
+        'tags': tags,
+        'archive': archive,
 
     }
     return render(request, 'blog/blog_posts.html', context)
@@ -74,6 +86,7 @@ def post_detail(request, slug):
     posts_sidebar = Post.objects.filter(status='published')
     categories = Category.objects.all()
     tags = Tag.objects.all()
+    """ Add comments to blog posts"""
     if request.method == 'POST':
         form = CommentForm(request.POST)
 
@@ -81,7 +94,8 @@ def post_detail(request, slug):
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
-            messages.success(request, f'Thanks {comment.name}. Comment posted.')
+            messages.success(
+                request, f'Thanks {comment.name}. Comment posted.')
 
             return redirect('post_detail', slug=post.slug)
     else:
@@ -114,7 +128,17 @@ def blog_search(request):
         Q(description__icontains=query)
         )
 
+    paginator = Paginator(posts, 2)
+    page = request.GET.get('page', 1)
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
     context = {
+        'query': query,
         'post': post,
         'posts': posts,
         'posts_sidebar': posts_sidebar,

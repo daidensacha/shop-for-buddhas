@@ -28,16 +28,27 @@
             
             <div class="col-lg-8">
                 <div class="custom-form mt-4 pt-4">
-                    <form class="needs-validation" novalidate method="post" name="myForm" id="contact_form" action = "{% url 'contact'  %}" enctype="multipart/form-data" >
+                    <form class="needs-validation" novalidate method="POST" action="{% url 'contact' %}" id="contact_form" enctype="multipart/form-data" >
                         <!-- <div class="form-group"> -->
+                            
+                            {% if form.errors %}
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <div class="alert alert-danger">
+                                            <small> {{field.label_tag}}{{error}} </small>
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+                            {% endif %}
+
                             {% csrf_token %}
                             <p id="error-msg"></p>
                             <div id="simple-msg"></div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group mt-2">
-                                        <input name="name" id="name" type="text" class="form-control"
-                                            placeholder="Your name*" minlength="2" maxlength="30" pattern="^[a-zA-Z -äöüÄÖÜß]{2,30}$" required >
+                                        <input name="first_name" id="first_name" type="text" class="form-control"
+                                            placeholder="First name*" minlength="2" maxlength="30" pattern="^[a-zA-Z- äöüÄÖÜß]{2,30}$" required >
                                             <div class="invalid-feedback">
                                                 Please enter your name.
                                             </div>
@@ -48,7 +59,21 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group mt-2">
-                                        <input name="email" id="email" type="email" class="form-control"
+                                        <input name="last_name" id="last_name" type="text" class="form-control"
+                                            placeholder="Last name*" minlength="2" maxlength="30" pattern="^[a-zA-Z- äöüÄÖÜß]{2,30}$" required >
+                                            <div class="invalid-feedback">
+                                                Please enter your name.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group mt-2">
+                                        <input name="sender" id="sender" type="email" class="form-control"
                                             placeholder="Your email*"  maxlength="40" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                                             <div class="invalid-feedback">
                                                 Please provide a valid email.
@@ -63,7 +88,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group mt-2">
                                         <input type="text" name="subject" class="form-control" id="subject"
-                                            placeholder="Your Subject.." minlength="8" maxlength="20" pattern="^[a-zA-Z -äöüÄÖÜß]{8,20}$" required>
+                                            placeholder="Your Subject.." minlength="8" maxlength="20" pattern="^[a-zA-Z0-9- äöüÄÖÜß,.?/!$]{2,30}$" required>
                                             <div class="invalid-feedback">
                                                 Please enter the subject.
                                             </div>
@@ -76,8 +101,8 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group mt-2">
-                                        <textarea name="comments" id="comments" rows="4" class="form-control"
-                                            placeholder="Your message..." minlength="20" maxlength="200" pattern="^[a-zA-Z -äöüÄÖÜß]{20,200}$" required></textarea>
+                                        <textarea name="message" id="message" rows="4" class="form-control"
+                                            placeholder="Your message..." minlength="20" maxlength="200" pattern="^[a-zA-Z0-9- äöüÄÖÜß.,'?$!-]{2,30}$" required></textarea>
                                             <div class="invalid-feedback">
                                                 Please enter your message.
                                             </div>

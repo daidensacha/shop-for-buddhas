@@ -5,7 +5,7 @@ from .models import Product, Category
 
 
 class ProductForm(forms.ModelForm):
-
+    """ Product form model """
     class Meta:
         model = Product
         exclude = ['created_by', 'favorites']

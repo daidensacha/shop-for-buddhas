@@ -1,10 +1,9 @@
 from django.db import models
-# from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
 from django.contrib import auth
-from products.models import Product
+# from products.models import Product
 from django_countries.fields import CountryField
 
 
@@ -22,7 +21,6 @@ class UserProfile(models.Model):
     default_postcode = models.CharField(max_length=20, null=True, blank=True)
     default_country = CountryField(blank_label='Country', null=True, blank=True)
     default_user_bio = models.CharField(max_length=300, blank=True)
-    # user_bio_image = models.ImageField(blank=True)
 
     def __str__(self):
         return self.user.username
@@ -38,6 +36,13 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         instance.profile.save()
 
 
-# class Favorite(models.Model):
-#     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete= models.CASCADE)
-#     product = models.ForeignKey(Product, on_delete= models.CASCADE)
+class Contact(models.Model):
+    """ Create a contact form model """
+    first_name = models.CharField(max_length=25)
+    last_name = models.CharField(max_length=25)
+    subject = models.CharField(max_length=25)
+    sender = models.EmailField() 
+    message = models.TextField()
+
+    def __str__(self):
+        return self.first_name+self.last_name

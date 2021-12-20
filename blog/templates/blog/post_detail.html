@@ -6,9 +6,7 @@
   <!-- START POSTS DETAILS SECTION  -->
 
         <div class="blog-details">
-            
-    
-
+   
                 <div class="post-meta">
                     <small>
                         <span class="meta-date">{{ post.posted_at | date }}</span>
@@ -26,7 +24,6 @@
                         <ul class="tags">
                             {% for tag in post.tags.all %}
                             <li><a href="{% url 'post_tag' tag.slug %}">{{tag.name}}</a></li>
-                            <!-- {% if not forloop.last %}, {% endif %} -->
                             {% endfor %}
                         </ul>
                     </div>
@@ -40,23 +37,26 @@
                         </ul>
                     </div>
                 </div>
-
-                <div class="blog-next-previous">
-                    <span class="left">
-                        <a href="#"><i class="fal fa-arrow-left"></i> Older Post </a>
-                    </span>
-                    <span class="right">
-                        <a href="#">Newer Post  <i class="fal fa-arrow-right"></i></a>
-                    </span>
-                </div>
             
         </div>
         <!-- Blog Details End -->
 
-
-
         <!-- Blog Comment Start  -->
         <div class="blog-comment">
+            <div class="comment-wrapper section-padding">
+                <div class="allauth-form-inner-content">
+                    <h2 class="comment-title">Leave a comment</h2>
+
+                    <form method="post" action=".">
+
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                        
+                    <button class="btn btn-outline-dark btn-round rounded-3" type="submit">Submit</button>
+
+                    </form>
+                </div>
+            </div>
             <div class="comment-wrapper section-padding">
                 <h2 class="comment-title">Comments ( {{ post.comments.all.count }} ) </h2>
 
@@ -64,14 +64,10 @@
                     {% for comment in post.comments.all %}
                     <li>
                         <div class="single-comment">
-                            <!-- <div class="comment-avater">
-                                <img src="assets/images/author/author-1.png" alt="">
-                            </div> -->
                             <div class="comment-content">
-                                <h4 class="avater-name">{{ comment.name }}</h4>
-                                <span class="date">{{ comment.created_at }}</span>
+                            <blockquote>
                                 <p>{{ comment.body }}</p>
-                                <!-- <a href="#" class="reply">Reply</a> -->
+                                <footer><span class="avater-name">{{ comment.name }}</span> | <span class="date">{{ comment.created_at | timesince }}</span> ago</footer>
                             </div>
                         </div>
                         <hr>
@@ -88,20 +84,7 @@
                 </ul>
             </div>
 
-            <div class="comment-wrapper section-padding">
-                <div class="allauth-form-inner-content">
-                <h2 class="comment-title">Leave a comment</h2>
-
-                <form method="post" action=".">
-
-                        {% csrf_token %}
-                        {{ form|crispy }}
-                    
-                <button class="btn btn-outline-dark btn-round rounded-3" type="submit">Submit</button>
-
-                </form>
-            </div>
-            </div>
+            
         </div>
         <!-- Blog Comment End  -->
 

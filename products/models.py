@@ -1,20 +1,20 @@
 from django.db import models
 from django.conf import settings
 
-
-product_rating = (("1", "1/5 stars"),
-                  ("2", "2/5 stars"),
-                  ("3", "3/5 stars"),
-                  ("4", "4/5 stars"),
-                  ("5", "5/5 stars")
+""" Product ratings for the product rating select field """
+product_rating = (('1', '1/5 stars'),
+                  ('2', '2/5 stars'),
+                  ('3', '3/5 stars'),
+                  ('4', '4/5 stars'),
+                  ('5', '5/5 stars')
                   )
 
 
 class Category(models.Model):
-    """Model for the shop product categories"""
+    """ Model for the shop product categories """
 
     class Meta:
-        """Plural name for the Category model in the admin view"""
+        """ Plural name for the Category model in the admin view """
 
         verbose_name_plural = 'Categories'
 
@@ -29,7 +29,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    """Model for the shop products"""
+    """ Model for the shop products """
 
     category = models.ForeignKey('Category', null=True, blank=True,
                                  on_delete=models.SET_NULL)
@@ -47,10 +47,11 @@ class Product(models.Model):
                         )
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL,
-                                   on_delete=models.CASCADE)
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     favorites = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, related_name='favorite', default=None, blank=True)
+        settings.AUTH_USER_MODEL, related_name='favorite',
+        default=None, blank=True)
 
     def __str__(self):
         return self.name

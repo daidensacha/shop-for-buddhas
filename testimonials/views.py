@@ -1,9 +1,9 @@
-from datetime import datetime
+# from datetime import datetime
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import TestimonialForm
-from .models import Testimonial
+# from .models import Testimonial
 
 
 # Model Testimonial imported but unused?
@@ -18,12 +18,11 @@ def testimonial_view(request):
         if form.is_valid():
             form_1 = form.save(commit=False)
             form_1.user = request.user
-            # form_1.created_at = datetime.now
             form_1.save()
             messages.success(request, f'Testimonial submitted successfully.')
-            return redirect("home")
+            return redirect('home')
 
     context = {
-        "form": TestimonialForm,
+        'form': TestimonialForm,
     }
-    return render(request, "testimonials/testimonial_form.html", context)
+    return render(request, 'testimonials/testimonial_form.html', context)

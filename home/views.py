@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.core.mail import send_mail, EmailMessage
 from django.template.loader import render_to_string
+from django.contrib import messages
 from testimonials.models import Testimonial
-# from .forms import ContactForm
-# Create your views here.
+from profiles.models import Contact
+from profiles.forms import ContactForm
 
 
 def index(request):
@@ -18,46 +19,34 @@ def index(request):
 
 
 def contact(request):
-    first_name = request.POST.get('first_name')
-    last_name = request.POST.get('last_name')
-    email = request.POST.get('email')
-    subject = request.POST.get('subject')
-    message = request.POST.get('message')
+    """ Create the contact form view on homepage """
+    form = ContactForm()
+    """ Process the posted form data """
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
 
-    # email configurations
-    # title = subject
-    # body = ("Here is subject {} and comments {}".format(subject,comments))
-    # send_mail(title,body,"noreply@gmail.com", [email,"daidensacha@gmail.com"])
+            subject = request.POST['subject']
+            content = render_to_string(
+                'confirmation_emails/contact_email.html', {
+                    'first_name': request.POST['first_name'],
+                    'last_name': request.POST['last_name'],
+                    'sender': request.POST['sender'],
+                    'subject': request.POST['subject'],
+                    'message': request.POST['message']
+                })
+            email = EmailMessage(subject, content, to=[
+                                'daiden@gmail.com', request.POST['sender']])
+            messages.success(request, f'Thanks {request.POST["first_name"]}, \
+                                       your message has been posted.')
+            email.send()
 
-    subject = subject
-    content = render_to_string('confirmation_emails/contact_email.html', {
-        'first_name': first_name,
-        'last_name': last_name,
-        'email': email,
-        'subject': subject,
-        'message': message
-        })
-    email = EmailMessage(subject, content, to=[
-                         'daiden@gmail.com', email])
-    email.send()
+            form.save()
 
     testimonials = Testimonial.objects.filter(approved=True)
     context = {
         'testimonials': testimonials,
         'stars': [1, 2, 3, 4, 5],
-        'first_name': first_name,
-        'last_name': last_name,
-        'email': email,
-        'subject': subject,
-        'message': message,
+        'form': form,
     }
     return render(request, 'home/index.html', context)
-
-
-# def ContactFormView(FormView):
-#     form = contactForm()
-
-#     context = {
-#         "form": ContactForm,
-#         }
-#     return render(request, "home/index.html", context)

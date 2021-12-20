@@ -22,28 +22,32 @@ def profile(request):
             form.save()
             messages.success(request, 'Profile updated successfully')
         else:
-            messages.error(request, 'Update failed. Please ensure the form is valid.')
+            messages.error(request,
+                           'Update failed. Please ensure the form is valid.')
     else:
         form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
 
-    # products context to display the list of vendor products
+    """ Products context to display the list of vendor products """
     try:
         products = Product.objects.filter(created_by=request.user)
     except Exception as e:
         messages.error(request, "No vendor proucts found.")
         products = None
 
-    # vendor orders
+    """ Vendor context create list of vendor sales """
     try:
-        vendor_sales = OrderLineItem.objects.filter(vendor__username=request.user.username)
+        vendor_sales = OrderLineItem.objects.filter(
+                            vendor__username=request.user.username)
     except Exception as e:
         messages.error(request, "No vendor sales found.")
         vendor_sales = None
 
     favorite_list = []
-    # favorite_list = Product.objects.filter(favorites__username=request.user)
-    favorite_list = Product.objects.exclude(favorites=None).filter(favorites__username=request.user)
+    """ Filter products for items associated with the authenticated user """
+    favorite_list = Product.objects.exclude(
+                        favorites=None).filter(
+                            favorites__username=request.user)
 
     all_products = Product.objects.all()
 
@@ -196,3 +200,4 @@ def favorite_list(request):
 #     return render(request,
 #                   'accounts/favourites.html',
 #                   {'new': new})
+
