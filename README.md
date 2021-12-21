@@ -212,7 +212,7 @@ The flow of informatin and the structure is meant to be easy and intuitive to na
 
 #### Shop for Buddhas Database Schema
 
-![](/documentation/images/sfb-db-schema.jpg)
+![](/documentation/images/sfb-db-schema.png)
 
 Being new to Django, planning the database schema was a big challenge. The schema I started with gave me a roadmap to create what I needed. The reality on the way was that at times I needed to change, or add, or adapt certain aspects to encorporate, or fully achive what my goal was.
 
@@ -429,7 +429,7 @@ All products in the site were photographed by me, and photoshopped to clean up t
 
   
 
--  **Create Project Repository** I used the Code Institute [gitpod-full-template](https://github.com/Code-Institute-Org/gitpod-full-template). I clicked on "Use this template" and created my project repository name "mp3-garden-journal". I then opened this in GitPod to start the project.
+-  **Create Project Repository** I used the Code Institute [gitpod-full-template](https://github.com/Code-Institute-Org/gitpod-full-template). I clicked on "Use this template" and created my project repository name "shop-for-buddhas". I then opened this in GitPod to start the project.
 
   
 
@@ -444,30 +444,29 @@ All products in the site were photographed by me, and photoshopped to clean up t
 
 - Once I had the project in GitPod, I created the initial file structure needed to get started.
 
-***Create folders***
+***Install Django and initinalize the project***
 
 ```bash
+ pip3 install django
 
-mkdir templates static static/css static/js static/images
-
-mkdir documentation documentation/images documentation/images/wireframes
+ django-admin startproject shop-for-buddhas .
 
 ```
 
-***Create files*** [update file structure]
+***Create env.py***:  Important for securing sensitive data
 
 ```bash
 
-touch app.py env.py Procfile README.md css/style.css js/main.js
-
-touch templates/base.html templates/home.html
+touch env.py  
 
 ```
 
 
 -  **Implement Django** [notes about implementation of Django]
 
+
 -  **Implement Templates** [notes about the template implementation]
+
 
 -  **Create login and register page and function** [user profile notes?]
 
@@ -550,7 +549,8 @@ touch templates/base.html templates/home.html
 
 ### Credits
 
-[add credits for any code used from other parties]
+1. **Code Institute** Boutique Ado project was a major guide for me in developing this project. Especially the sections on adding products and the checkout app. 
+2. [**Very Academy**](https://www.youtube.com/channel/UC1mxuk7tuQT2D0qTMgKji3w) Throughout the project, while researching I came across youtube videos from Very Academy that were super helpful. In particular, I fould their input on using a ManyToManyField for adding favorites really helpful. I had to adapt it, and then create my own filters, but it openened a doorway that helped me to get it done. 
 
   
 
