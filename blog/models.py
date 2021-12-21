@@ -1,9 +1,9 @@
-from datetime import datetime, date
+# from datetime import datetime, date
 from django.db import models
 from taggit.managers import TaggableManager
-from accounts.models import UserModel
+# from accounts.models import UserModel
 from django.conf import settings
-from django.utils import timezone
+# from django.utils import timezone
 
 STATUS = (('draft', 'Draft'),
           ('published', 'Published')
@@ -28,7 +28,10 @@ class Category(models.Model):
 class Post(models.Model):
     """Blog post model for the blog app"""
 
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, 
+    class Meta:
+        ordering = ['id']
+
+    author = models.ForeignKey(settings.AUTH_USER_MODEL,
                                on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.ImageField()

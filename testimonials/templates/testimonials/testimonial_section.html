@@ -44,12 +44,12 @@
                                       {% endif %}
                                   <p class="text-muted">
                                       {% for star in stars %}
-                                      {% if star < testimonial.user_rating|add:"1" %}
-                                          <span class="text-warning"><i class="fas fa-star"></i></span>
-                                      {% endif %}
-                                      {% if star > testimonial.user_rating|add:"0"%}
-                                          <span class="text-warning"><i class="far fa-star"></i></span>
-                                      {% endif %}
+                                        {% if star < testimonial.user_rating|add:"1" %}
+                                            <span class="text-warning"><i class="fas fa-star"></i></span>
+                                        {% endif %}
+                                        {% if star > testimonial.user_rating|add:"0"%}
+                                            <span class="text-warning"><i class="far fa-star"></i></span>
+                                        {% endif %}
                                       {% endfor %}
                                     </p>
                               </div>

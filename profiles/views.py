@@ -103,53 +103,14 @@ def vendor_order_history(request, order_number):
 
 
 # @login_required
-# def add_remove_favorite(request, product_id):
-#     """ Add product to users favorites list """
-#     if request.user.is_authenticated:
-#         user = request.user
-#         product = Product.objects.get(id=product_id)
-#         try:
-#             a = Favorite.objects.get(product__id=product_id)
-#             a.delete()
-#             messages.info(request, f'Removed {product.name} from favorites.')
-#             # messages.info(request, "Product removed from favorites")
-#             return redirect("products")
-#         except:
-#             # Favorite.objects.create(user=request.user, product=product_id)
-#             Favorite.objects.create(user=user, product=product)
-#             messages.info(request, f'Added {product.name} to favorites.')
-#             # messages.info(request, "Product added to favorites")
-#             return redirect("products")
-#     else:
-#         return redirect("login")
-
-# @login_required
-# def add_remove_favorite(request, product_id):
-#     """ Add product to users favorites list """
-#     if request.user.is_authenticated:
-#         user = request.user
-#         product = Product.objects.get(id=product_id)
-#         favorite = Favorite.objects.filter(product__id=product_id)
-#         # Check list for selected item amd delete if in list.
-#         if favorite:
-#             favorite.delete()
-#             messages.info(request, f'Removed {product.name} from favorites.')
-#             return redirect("products")
-#         else:
-#             # add item to favorites list
-#             Favorite.objects.create(user=user, product=product)
-#             messages.info(request, f'Added {product.name} to favorites.')
-#             return redirect("products")
-#     else:
-#         return redirect("login")
-
-@login_required
 def add_remove_favorite(request, product_id):
-    """ Add or remove user id  favorites list """
+    """
+    If user is authenticated add/ remove item to the favorites list
+    """
     if request.user.is_authenticated:
         product = get_object_or_404(Product, id=product_id)
 
-        """ 
+        """
         Check if the selected item is already in the users favorites
         and if it is, delete it from the list
         """
@@ -162,36 +123,35 @@ def add_remove_favorite(request, product_id):
             messages.info(request, f'Added {product.name} to favorites.')
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
+    else:
+        """
+        If user not authenticated ask them to login and redirect
+        them to the login page
+        """
+        messages.warning(request, 'Please log in to add items to favorites.')
+        # return HttpResponseRedirect(request.META['HTTP_REFERER'])
+        return redirect('account_login')
 
-@ login_required
-def favorite_list(request):
-    # new = Product.objects.filter(favorites=request.user.id)
-    # favorite_list = Product.objects.filter(favorites=request.user.id)
-    # user = request.user
-    # products = Product.objects.all()
-    # favorite_list = user.favorites.all()
-    favorite_list = []
-    prod = Product.objects.all()
-    for i in prod:
 
-        # favorite_list = i.favorites.all()
-        all_favorites = i.favorites.all()
-        
-        print(favorite_list)
-        for item in all_favorites:
-            if item == request.user:
-                favorite_list.append(item)
-                print(favorite_list)
-                # print(item)
+# @ login_required
+# def favorite_list(request):
 
-    context = {
-        # 'favorite_list': favorite_list,
-        # 'products': products
-    }
-    # favorite_list = Product.favorites.filter(request.user.id)
-    # favorite_list = Product.objects.all()
-    print(favorite_list)
-    return render(request, 'profile', context)
+#     favorite_list = []
+#     prod = Product.objects.all()
+#     for i in prod:
+#         all_favorites = i.favorites.all()
+#         # print(favorite_list)
+#         for item in all_favorites:
+#             if item == request.user:
+#                 favorite_list.append(item)
+#                 # print(favorite_list)
+
+#     context = {
+
+#     }
+
+#     print(favorite_list)
+#     return render(request, 'profile', context)
 
 # Example https://github.com/veryacademy/YT-Django-Simple-Blog-App-Part10-User-Favourties-Save/blob/master/accounts/views.py
 # @ login_required
@@ -200,4 +160,3 @@ def favorite_list(request):
 #     return render(request,
 #                   'accounts/favourites.html',
 #                   {'new': new})
-

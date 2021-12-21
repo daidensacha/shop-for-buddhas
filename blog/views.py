@@ -3,7 +3,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
 from django.db.models import Q
 from taggit.models import Tag
-from .models import Category, Post, Comment
+# from .models import Category, Post, Comment
+from .models import Category, Post
 from .forms import CommentForm
 
 
@@ -25,6 +26,7 @@ def blog_posts(request, tag_slug=None, category_slug=None):
 
     paginator = Paginator(posts, 2)
     page = request.GET.get('page', 1)
+
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
@@ -60,6 +62,7 @@ def post_archive_month(request, year, month):
 
     paginator = Paginator(posts, 2)
     page = request.GET.get('page', 1)
+
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
