@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # STRIPE_PRIVATE_KEY = os.environ.get('STRIPE_PRIVATE_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['shop-for-buddhas.herokuapp.com', 'localhost']
 
