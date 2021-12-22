@@ -14,7 +14,7 @@
                     </small>
                 </div>
                 <h4 class="blog-title">{{ post.title }}</h4>
-                <img src="/media/{{post.image}}" alt="">
+                <img src="{{ post.image.url }}" alt="">
                 
                 <div class="blog-body">{{ post.body | safe }}</div>
 
