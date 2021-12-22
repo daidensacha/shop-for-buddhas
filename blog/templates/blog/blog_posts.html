@@ -23,7 +23,7 @@
                                 </small>
 
                             </div>
-                            <a href="{% url 'post_detail' post.slug %}"><img src="/media/{{post.image}}" alt=""></a>
+                            <a href="{% url 'post_detail' post.slug %}"><img src="{{post.image.url}}" alt=""></a>
                             <div class="meta-category">
                                 <a href="{% url 'post_category' post.category.slug %}">{{ post.category }}</a>
                             </div>

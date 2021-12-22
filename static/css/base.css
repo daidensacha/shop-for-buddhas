@@ -11,7 +11,7 @@ html {
 body {
   /* background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed; */
   /* background-size: cover; */
-  background-image: url("/media/cartographer.png");
+  background-image: url("/static/cartographer.png");
   /* position: relative;
     padding: 190px 0; */
   height: calc(100vh - 56px);
@@ -48,7 +48,7 @@ body {
 /*
 ===================== Template Style and Colors ===================== */
 .bg-home {
-  background-image: url("/media/cartographer.png");
+  background-image: url("/static/cartographer.png");
   /* position: relative;
   padding: 190px 0; */
 }
@@ -407,7 +407,7 @@ body {
 
 /* Image for Jumbotron Parallax Section */
 .paralsec {
-  background-image: url("/media/bg_shakyamuni.png");
+  background-image: url("/static/bg_shakyamuni.png");
 
 }
 
