@@ -32,7 +32,7 @@
                                       
                                   <div class="">
                                       <!-- <img src="/media/{{testimonial.user_image}}" alt=""  -->
-                                      <img src="/media/{{testimonial.image}}" alt="" 
+                                      <img src="{{ testimonial.image.url }}" alt="" 
                                           class="rounded-circle testi-user mx-auto d-block">
                                   </div>
                                   {% if testimonial.user.first_name %}
