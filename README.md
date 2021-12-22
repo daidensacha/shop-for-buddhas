@@ -165,48 +165,119 @@ The flow of informatin and the structure is meant to be easy and intuitive to na
 
 #### Information Architecture
 
-***Navigation***
+**Navigation**
 
-- Fixed minimal navbar at the top of the page.
+- Fixed minimal navbar at the top of the page. It is always visible on all pages so the user can easily access the naviagation.
 
-- Navbar: Logo links to the homepage. Links to Shop, Services, Statue Making, Artisans, Contact. Search bar for searching products. My account link. Shopping cart to show added products and link to the secure checkout.
+- Navbar Links: 
+	- ***Logo*** links to the homepage so users can be directed to homepage when clicking it. 
+	- ***Shop:*** I included a megamenu dropdown that displays all products, categories, and filter links in one view. The user can easily see all available shop viewing options in one view. Images were also included to impove the visual stimulation and curiosity of the user.
+	- ***Blog:*** A link to the blog is included in the main nav so the user always has the ability to open the blog page to view contents. 
+	- ***Contact:*** The link in the navbar scrolls the page to the contact form on the bottom of the homepage. It is important that the user can open the contact form from anywhere in the site at the click of one link. 
+	- ***Search:*** The search icon in the navbar opens a fill page modal, with a placehold asking users to Search the shop. In case the user needs some inspiration, I also added links to the products, and filters by category or price. Links to the blog and profile are also included. 
+	- ***Login/ Logout link:*** In the top right above the navbar I added a link that displays ```Login``` or  ```Logout``` depending on whether the user is authenticated or anonomous. This provides direct visual confirmation for the user at all times so they know if they are logged in or not. It also provides quick access to the login or logout pages.
+	- ***Social icons:*** Facebook, Linkedin, and Github icons are included to the right of the login/ logout link. 
+		- ***Linkedin*** and ***Github*** icons link to my user profiles of those platforms. 
+		- The ***Facebook*** icon links to the K.I.B.I. (Karmapa International Buddhist Institute) Facebook page. This provides an interesting resource for users curious or interested in Buddhism.
+	- ***My account Icon:***
+		- When the user hovers the account icon, a dropdown displays different links for users depending on the type of user.
+			- ***Anonomous users:***
+				- Register: Links to the register page.
+				- Login - Links to the login page
+			- ***Authenticated Customer:*** 
+				- My Profile: links to the users profile page.
+				- Logout: Links to the logout page.
+			- ***Authenticated Vendor***
+				- Products management - Links to the page to add products
+				- My Profile: links to the users profile page.
+				- Logout: Links to the logout page.
+	- ***Shopping Cart Icon*** 
+		- The shopping cart icon has a purple circle over it that shows the number if items in the shopping cart. This is visual confirmation for the user of the status of the cart, if items are added, and how many items are added. 
+		- Clicking this icon opens a side modal shopping cart where the user can see the items in the cart, they can adjust the quantity, or delete items from the cart. 
 
-***Services Section***
+**Services Section**
+- The services section on the home page serves to inform the user in brief the services offered by Shop for Buddhas. 
 
-- Outlines the sites services.
+**Features**
+- A section displaying the main products of the site. Hand crafted Buddha statues, and meditation malas. It is a place to introduce teh user to the products so they know what can be found in the shop.
 
-***Features***
+**Testimonial Section**
+- A carousel displaying user testimonials is provided so users can submit comments of their experience. 
+- Displaying user testimonials is for users to read other users experiences dealing with Shop for Buddhas, or in their comments about the products. 
+- A link  to leave a tesitmonial is only visible for logged in users. It takes them to the form to leave a testimonial and rating out of 5.
 
-- A section displaying the main products of the site. Hand crafted Buddha statues, and meditation malas.
+**Contact Form**
+- Simple form with name, email, subject and message for users to be able to easily contact the site adminsistrator. It is in plain site at the bottom of the home page, and there are links are various palces in the site to take uses to it. 
 
-***Testimonial Section***
+**Footer**
 
-- A carousel displaying user testimonials. A link for logged in users will guide them to the form to leave the testimonial.
-
-***Contact Form***
-
-- Simple form with name, email, subject and message for users to be able to easily contact the site adminsistrator.
-
-***Footer***
-
-- Contains social icons linking to Facebook, Github and Linkedin.
+- Contains social icons linking to Facebook, Github and Linkedin. These are visible from the contact form, and above the copyright and website name so users can open links to see more information.
 - Contains 2021 copyright and website name.
 
-***Shop***
+**Shop**
 
 - Products laid out in grid format, displaying the product image that users can select to view more info. Clicking on the link will open the product display page, showing all images for the product, along with the product infomation, rating, price and add to cart button.
 
-***Shopping Cart***
+**Shopping Cart**
 
-- Clicking on the add to cart button adds the product to the shopping cart. A success message appears informing the user the item was added to the cart, along with the total. The cart information and a link to the secure checkout also appears.
+- The cart is easily accessible by clicking the cart icon in the deader navbar. It opens from the right in a modal, displaying the cart items, quantity, and price.
+- There are update and remove buttons so the user can easily update or remove items from the cart. The user is then returned to the same page they were viewing.
+- The user interaction is confirmed in the toast messages that appear from the left of the screen showing the details and status of the action.
+- The cart has a link to view the cart, or to the secure checkout.
 
-***Secure Checkout***
+**Secure Checkout**
 
-- The user can edit the cart contents, and click the link to the secure checkout, or click the link to continue shopping. At the secure checkout, the user is required to fill out the form with their details, to complete the transaction. They can also create an account or login to save the order information to their account. The carts contents with the order total is also displayed.
+***Anonymous User***
 
-***My Account***
+- Users not logged in are required to enter their personal information into the form to compelte the purchase. 
+- There are links to login, or register to save the details to their profile so they can have reference to the information in their uer profile order tab.
 
-- The user can login to view, and or update their account profile. All orders are displayed on this page, with a link to view the order information. The admin user can also add, update or delete product information on from the user profile. A section in the profile will also display the list of users selected favorites.
+***Authenticated User***
+	
+- When the authenticated user is directed to the secure checkout their profile details are added to the payment information form automatically. 
+- The cart contents are displayed, along with price and total cost. 
+- Links are provided below the form so the user can return to edit the cart, or proceed with the payment.
+
+**User Profile**
+The user clicks on the "My Profile" link in the drop down visible when they hover over the user account icon in the navbar and they are redirected to the User Profile page. The user profile is displayed using Bootstrap 5 side pills for desktops, and the pills move to inline view for smaller screens. The tabs displayed depend on the type of user.
+##### CUSTOMERS
+1. **Profile:** A read only view of the users registration informtion. It shows the user name, username, email, user account type, date joined, and their last login. 
+2. **Account Info:** 
+	- ***Section 1:*** The use can update their profile information, and also add personal profile information about themselves. 
+	- ***Section 2:*** Links to update the passord, and the email information are provided. The user can add email, change the primary email, or remove an email. This functionality is provided using the Allauth forms.
+3. **Orders:** A list of the user order history is displayed. The user can click on the order number to be directed to view the details of the order.
+4. **Favorites:** The users favorite list displays all items in the list, with a remove link so the user can remove the items from the list. When the user clicks on the remove link, the item is removed from the users favorite list, and they remain on the profile page. 
+##### VENDORS
+In addition to the above tabs in the user profile, the vendor is provided with two aditional tabs.
+1. **Products:** 
+	-	The users list of products are displayed in the products tab. At the top of the page is a button that links to the form for the user to add new products. 
+	-	Under each item in the users product list are links to edit, or delete the product. 
+	-	Clicking the edit button takes the user to the page to edit the product details. 
+	-	Clicking the delete button opens a modal styled with Bootstrap danger class, asking the user to confirm they want to delete the product. A cancel button and a delete button are provided. Clicking delete removes the product from the database.  
+2. **Sales:**
+-	A list of the vendor product sales is displayed with a link to view the sales. This is provided so the user can have a record of what they have sold, with all the details saved in the order.
+
+##### User Profile images
+
+**Profile tab**  
+![](/documentation/images/profile-profile.jpg)
+
+**Account tab**  
+![](/documentation/images/profile-account.jpg)
+
+**Orders tab**  
+![](/documentation/images/profile-orders.jpg)
+
+**Products tab**  
+![](/documentation/images/profile-products.jpg)
+
+**Sales tab**  
+![](/documentation/images/profile-sales.jpg)
+
+**Favorites tab**  
+![](/documentation/images/profile-favorites.jpg)
+
+
 
 ### Database Schema
 
@@ -412,7 +483,6 @@ The Shoppapp theme is a fully customised Bootstrap theme that fit perfectly with
 #### Images
 All products in the site were photographed by me, and photoshopped to clean up the backgrounds, and add subtle drop shadows. I created json files for the products, and product categories so I could easily add the products to the shop. 
 
-[TESTING/Research](/documentation/testing.md/#research)
 
 ### Development
 

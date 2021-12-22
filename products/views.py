@@ -120,16 +120,21 @@ def add_product(request):
 
 @login_required
 def edit_product(request, product_id):
-    """ Edit a product in the store """
-    """ Restrict view to is_vendor , is_admin, or superusers """
+    """
+    Edit a product in the store
+    Restrict view to is_vendor , is_admin, or superusers
+    Prevent user editing another users products
+    """
+    product = get_object_or_404(Product, pk=product_id)
     if not request.user.user_type == 'is_vendor' \
        and not request.user.is_authenticated or \
        not request.user.user_type == 'is_admin' \
-       and not request.user.is_authenticated:
+       and not request.user.is_authenticated or \
+       request.user != product.created_by:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
-    product = get_object_or_404(Product, pk=product_id)
+    # product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
@@ -148,22 +153,26 @@ def edit_product(request, product_id):
         'form': form,
         'product': product,
     }
-
     return render(request, template, context)
 
 
 @login_required
 def delete_product(request, product_id):
-    """ Delete a product from the store """
-    """ Restrict view to is_vendor , is_admin, or superusers """
+    """
+    Delete a product from the store
+    Restrict view to is_vendor , is_admin, or superusers
+    Prevent vendor deleting another vendors products
+    """
+    product = get_object_or_404(Product, pk=product_id)
     if not request.user.user_type == 'is_vendor' \
        and not request.user.is_authenticated or \
        not request.user.user_type == 'is_admin' \
-       and not request.user.is_authenticated:
+       and not request.user.is_authenticated or \
+       request.user != product.created_by:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
-    product = get_object_or_404(Product, pk=product_id)
+    # product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))

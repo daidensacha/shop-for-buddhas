@@ -102,61 +102,27 @@ def vendor_order_history(request, order_number):
     return render(request, template, context)
 
 
-# @login_required
 def add_remove_favorite(request, product_id):
     """
+    A function to add/ remove items to/ from users favorite list
     If user is authenticated add/ remove item to the favorites list
+    else redirect user to the login page
     """
     if request.user.is_authenticated:
         product = get_object_or_404(Product, id=product_id)
 
-        """
-        Check if the selected item is already in the users favorites
-        and if it is, delete it from the list
-        """
+        # I in users favorite list delete it from the list
         if product.favorites.filter(id=request.user.id).exists():
             product.favorites.remove(request.user)
             messages.info(request, f'Removed {product.name} from favorites.')
         else:
-            """ Add the item to the users list of favorites """
+            # Add the item to the users favorites list
             product.favorites.add(request.user)
             messages.info(request, f'Added {product.name} to favorites.')
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
     else:
-        """
-        If user not authenticated ask them to login and redirect
-        them to the login page
-        """
         messages.warning(request, 'Please log in to add items to favorites.')
-        # return HttpResponseRedirect(request.META['HTTP_REFERER'])
         return redirect('account_login')
 
-
-# @ login_required
-# def favorite_list(request):
-
-#     favorite_list = []
-#     prod = Product.objects.all()
-#     for i in prod:
-#         all_favorites = i.favorites.all()
-#         # print(favorite_list)
-#         for item in all_favorites:
-#             if item == request.user:
-#                 favorite_list.append(item)
-#                 # print(favorite_list)
-
-#     context = {
-
-#     }
-
-#     print(favorite_list)
-#     return render(request, 'profile', context)
-
 # Example https://github.com/veryacademy/YT-Django-Simple-Blog-App-Part10-User-Favourties-Save/blob/master/accounts/views.py
-# @ login_required
-# def favourite_list(request):
-#     new = Post.newmanager.filter(favourites=request.user)
-#     return render(request,
-#                   'accounts/favourites.html',
-#                   {'new': new})

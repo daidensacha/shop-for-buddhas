@@ -145,17 +145,17 @@
                                 <td class="text-center product-thumbnail">
                                     <!-- <a class="text-reset" href="#"><img src="{{ item.product.image.url }}" class="img-fluid" width="100" alt=""></a> -->
                                     {% if item.product.image %}
-                                        <a href="#" data-toggle="lightbox">
-                                            <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" title="">
+                                        <a href="{{ item.product.image.url }}" data-toggle="lightbox">
+                                            <img class="img-fluid img-thumbnail" width="100" src="{{ item.product.image.url }}" alt="" title="">
                                         </a>
                                     {% else %}
-                                        <a href="#">
-                                            <img class="img-fluid" src="{{ MEDIA_URL }} noimage.png" alt="{{ item.product.name }}"  title="">
+                                        <a href="{{ item.product.image.url }}" data-toggle="lightbox">
+                                            <img class="img-fluid img-thumbnail" width="100" src="{{ MEDIA_URL }} noimage.png" alt=""  title="">
                                         </a>
                                     {% endif %}
                                 </td>
                                 <td class="text-center product-name">
-                                    <p><a class="text-reset" href="#">{{ item.product.name }}</a></p>
+                                    <p><a class="text-reset" href="{% url 'product_detail' item.product.id %}">{{ item.product.name }}</a></p>
                                     <p>{{ item.product.sku | upper }}</p>
                                 </td>
                                 <td class="text-center product-price-cart"><span class="amount">${{ item.product.price }}</span></td>

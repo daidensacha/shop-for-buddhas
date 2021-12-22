@@ -13,15 +13,21 @@
 
     <section class="section" id="blog-posts"> 
          <!-- Blog Section Start -->
-         <div class="section-padding-02">
+        <div class="section-padding-02">
             <div class="container">
                 <div class="row justify-content-between">
+
+                    <!-- START BLOG LEFT CONTENT COLUMN -->
                     <div class="col-lg-8">
 
+                        <!-- Include blog posts, or blog detail -->
                         {% block inner_content %}
                         {% endblock %}  
                             
                     </div>
+                    <!-- END BLOG LEFT CONTENT COLUMN -->
+
+                    <!-- START BLOG RIGHT SIDEBAR COLUMN -->
                     <div class="col-xl-3 col-lg-4">
                         <!-- Sidebar Start -->
                         <div class="sidebar pt-1">
@@ -136,6 +142,7 @@
                         </div>
                         <!-- Sidebar End -->
                     </div>
+                    <!-- END BLOG RIGHT SIDEBAR COLUMN -->
                 </div>
             </div>
         </div>

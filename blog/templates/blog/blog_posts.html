@@ -47,20 +47,24 @@
               
                 <h1>Posts</h1>
               
+                <!-- Include blog body -->
                 {% for post in posts %}
-                {% if category_slug != None or archive == True   %}
-                    
-                    {% include 'blog/blog_body.html' %}
+                
+                    {% if category_slug != None or archive == True   %}
+                        
+                        {% include 'blog/blog_body.html' %}
 
-                {% elif category_slug == None %}
-                {% if query %}
-                <h5> You Searched For {{query}}</h5>
-                    {% include 'blog/blog_body.html' %}
-                {% endif %}
-                {% if not post.featured %}
-                    {% include 'blog/blog_body.html' %}                    
-                {% endif %}
-                {% endif %}
+                    {% elif category_slug == None %}
+
+                        {% if query %}
+                        <h5> You Searched For {{query}}</h5>
+                            {% include 'blog/blog_body.html' %}
+                        {% endif %}
+
+                        {% if not post.featured %}
+                            {% include 'blog/blog_body.html' %}                    
+                        {% endif %}
+                    {% endif %}
                 {% endfor %}
 
             </div>
