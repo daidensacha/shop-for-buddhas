@@ -1,1 +1,1 @@
-web: gunicorn shop-for-buddhas.wsgi:application
+web: gunicorn shop_for_buddhas.wsgi:application
