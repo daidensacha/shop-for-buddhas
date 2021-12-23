@@ -141,8 +141,8 @@
                                                 <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
                                             {% else %}
                                                 <label class="form-check-label" for="id-save-info">
-                                                    <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
-                                                    <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                                                    <a class="text-info" href="{% url 'account_signup' %}" aria-label="Signup">Create an account</a> or 
+                                                    <a class="text-info" href="{% url 'account_login' %}" aria-label="Login">login</a> to save this information
                                                 </label>
                                             {% endif %}
                                         </div>
@@ -159,7 +159,7 @@
                 
                                     <div class="row submit-button text-right mt-5 mb-2">    
                                         <div class="col">
-                                            <a href="{% url 'view_cart' %}" class="btn btn-sm btn-outline-dark rounded-3 w-100">
+                                            <a href="{% url 'view_cart' %}" class="btn btn-sm btn-outline-dark rounded-3 w-100" aria-label="Adjust cart">
                                                 <span class="icon">
                                                     <i class="fas fa-chevron-left"></i>
                                                 </span>
@@ -167,7 +167,7 @@
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <button id="submit-button" class="btn btn-sm btn-primary rounded-3 w-100">
+                                            <button id="submit-button" class="btn btn-sm btn-primary rounded-3 w-100" aria-label="Submit">
                                                 <span class="font-weight-bold">Complete Order</span>
                                                 <span class="icon d-none d-sm-inline-block">
                                                     <i class="fas fa-lock"></i>

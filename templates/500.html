@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block content %}
+<div class="container-fluid bg-transparent 100vh">
+    <section class="section" id="fourofour">
+        <div class="row my-5">
+            <div class="col-12 col-lg-6 mx-auto text-center text-white my-5 top-40 align-middle">
+                <span class="top-40">
+                    <h1 class="display-3">500 Internal Server Error</h1>
+                <h1 class="display-6">Sorry, the server is a bit confused.</h1>
+                <p class="fs-4 my-3">We will look into the error and sort it out.</p>
+                <button class="btn btn-lg btn-error my-3 rounded-5">
+                    Go to the homepage
+                </button>
+                </span>
+                
+                <div class="error-404 bg-error">
+                    <img src="/media/bg-error.jpg" alt="404 error">
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

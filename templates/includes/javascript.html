@@ -59,24 +59,11 @@ for(let addButton of addButtonArr){
 }
 
 // Update cart quantity with Vanilla JS
-// let updateItemBtns = document.getElementsByClassName('update-link');
-
     document.querySelectorAll(".update-link").forEach((item) => {
       item.addEventListener('click', (e) => {
         e.target.closest('form').submit();
       }) 
 })
-
-
-// MY SCRIPT
-// document.querySelectorAll('.remove-item').forEach((item) => {
-//         item.addEventListener('click', (e) => {
-//             let id = e.target.closest('.remove-item').dataset['productId'];
-//             document.querySelector(`#remove-item-${id}`).value = 1
-//             e.target.closest('form').submit();
-//         })
-//     })
-
 
 // Remove cart items course example JS
 let removeItemBtns = document.getElementsByClassName('remove-item');
@@ -108,10 +95,8 @@ var toastElList = [].slice.call(document.querySelectorAll('.toast'));
 
 
 
-</script>
 
-<script>
-  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  // Bootstrap 5 JS form validation
   (function () {
   'use strict'
 
@@ -131,4 +116,16 @@ var toastElList = [].slice.call(document.querySelectorAll('.toast'));
       }, false)
       })
   })()
+
+
+    //  This not working 
+var searchModal = document.getElementById('search-open')
+console.log(searchModal)
+var searchInput = document.getElementById('search-shop')
+console.log(searchInput)
+  document.querySelector("#search-open").addEventListener('shown.bs.modal', function (event) {
+          // searchModal.addEventListener('shown.bs.modal', function (event) {
+          console.log('searchshown');
+          searchInput.focus()
+      })
 </script>

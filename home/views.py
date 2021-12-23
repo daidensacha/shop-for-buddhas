@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.core.mail import send_mail, EmailMessage
+# from django.core.mail import send_mail, EmailMessage
+from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.contrib import messages
 from testimonials.models import Testimonial
-from profiles.models import Contact
+# from profiles.models import Contact
 from profiles.forms import ContactForm
 
 

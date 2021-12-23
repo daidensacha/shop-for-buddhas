@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (render, redirect, reverse, get_object_or_404,
+                              HttpResponse)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -68,7 +69,7 @@ def checkout(request):
                             quantity=quantity,
                         )
                         order_line_item.save()
-   
+
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "One of the products in your cart wasn't \
@@ -117,7 +118,7 @@ def checkout(request):
                     'county': profile.default_county,
                     'town_or_city': profile.default_town_or_city,
                     'postcode': profile.default_postcode,
-                    'country': profile.default_country,  
+                    'country': profile.default_country,
                 })
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()

@@ -106,26 +106,22 @@
                                             </div>
                                             <div class="cart-button mb-3 d-flex">
                                                 <button class="btn btn-dark me-3"
-                                                        type="submit">
+                                                        type="submit" 
+                                                        aria-label="Add to cart">
                                                     <i class="bi bi-cart"></i> Add to cart
                                                 </button>
                                                 <a href="{% url 'add_remove_favorite'  product.id %}" class="btn btn-outline-primary me-3">
                                                     {% if product not in favorite_list %}
                                                     <i class="bi bi-heart"></i>
-                                                    <!-- <i class="far fa-heart fa text-danger favorites"></i> -->
                                                     {% endif %}
                                                     {% for favorite in favorite_list %}
                                                     {% if favorite == product %}
-                                                        <!-- <i class="fas fa-heart fa text-danger favorites"></i> -->
                                                             <i class="bi bi-heart-fill text-danger"></i>
                                                     {% endif %}
     
                                                 {% endfor %}
-                                                    <!-- <i class="bi bi-heart"></i> -->
                                                 </a>
-                                                <!-- <button class="btn btn-outline-primary">
-                                                    <i class="bi bi-arrow-left-right"></i>
-                                                </button> -->
+    
                                             </div>
                                             
                                         </div>
@@ -141,13 +137,7 @@
                                                 <i class="fas fa-chevron-right mt-sm-0 me-1"></i>
                                             </a>
                                         </div>
-                                        <!-- <div class="ms-auto">
-                                            <a class="btn btn-outline-primary" href="{% url 'view_cart' %}">
-                                                <span class="d-none d-sm-inline">Update shopping cart</span>
-                                                <span class="d-inline d-sm-none">Next</span>
-                                                <i class="ci-arrow-right mt-sm-0 ms-1"></i>
-                                            </a>
-                                        </div> -->
+  
                                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                     </div>
                                 </form>

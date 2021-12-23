@@ -283,9 +283,8 @@ body {
     box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important;
   }
 }
-/* @media only screen and (min-width: 768px) */
-/* @media (min-width: 768px){ */
-  @media (min-width: 992px){
+
+@media (min-width: 992px){
   
   .message-container {
     position: fixed;
@@ -331,6 +330,8 @@ body {
   background-color: #ffffff;
   /* box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important; */
   border-left: 8px solid #198754;
+  /* border-right: 8px solid #28bb74;
+  border-bottom: 8px solid #28bb74; */
   border-radius: 7px; 
 }
 .toast-success .toast-header {
@@ -344,6 +345,7 @@ body {
   background-color: #ffffff;
   /* box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05); */
   border-left: 8px solid #3b86ff;
+  border-right: 8px solid #0dcaf0;
   border-radius: 7px; 
 }
 
@@ -357,7 +359,8 @@ body {
   position: relative;
   background-color: #ffffff;
   /* box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05); */
-  border-left: 8px solid #dc3545;
+  border-left: 8px solid hsl(354, 70%, 54%);
+  border-right: 8px solid #ff6f61;
   border-radius: 7px; 
 }
 
@@ -372,6 +375,7 @@ body {
   background-color: #ffffff;
   /* box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05); */
   border-left: 8px solid #ff9736;
+  border-right: 8px solid #ffc107;
   border-radius: 7px; 
 }
 
@@ -463,6 +467,24 @@ body {
 .paralsec {
   background-image: url("/media/bg_shakyamuni.png");
 
+}
+
+.fourofour {
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+}
+.fourofour img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
 }
 
 /* Heading for Jumbotron Parallax Section */
@@ -767,6 +789,52 @@ a.social-icon:hover {
   opacity: 1;
 }
 
+
+/* ============================ Custom Error Pages ========================== */
+
+.bg-error {
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+  z-index: -1;
+  /* background-color: transparent; */
+  }
+.bg-error img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+  
+  }
+.bg-transparent {
+  background-color: transparent;
+}
+.btn-error {
+  padding: 0.5rem 1.6rem;
+  font-size: 1.25rem;
+  border: 3px solid #fff;
+  border-radius: 0.8rem;
+  color: #085255;
+  background-color: #e0f7fa21;
+  border-color: #176561;
+}
+
+.btn-error:hover {
+  color: #dfeaf0;
+  background-color: #959b84;
+  border-color: #00838f;
+  text-shadow: 0 0 black;
+}
+.top-40 {
+  top: 70%;
+  position: relative;
+}
 /* PRIMARY COLORS */
 
 
@@ -831,6 +899,7 @@ a.social-icon:hover {
 .btn-outline-primary .open>.dropdown-toggle.btn-primary {
   background: #615fe6;
   border-color: #615fe6;
+  color: #fff;
 }
 
 

@@ -19,7 +19,7 @@ def testimonial_view(request):
             form_1 = form.save(commit=False)
             form_1.user = request.user
             form_1.save()
-            messages.success(request, f'Testimonial submitted successfully.')
+            messages.success(request, 'Testimonial submitted successfully.')
             return redirect('home')
 
     context = {

@@ -125,4 +125,5 @@ def add_remove_favorite(request, product_id):
         messages.warning(request, 'Please log in to add items to favorites.')
         return redirect('account_login')
 
-# Example https://github.com/veryacademy/YT-Django-Simple-Blog-App-Part10-User-Favourties-Save/blob/master/accounts/views.py
+# Example https://github.com/veryacademy/YT-Django-Simple-Blog-
+# # App-Part10-User-Favourties-Save/blob/master/accounts/views.py

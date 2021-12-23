@@ -27,10 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
-# STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', '')
-# STRIPE_PRIVATE_KEY = os.environ.get('STRIPE_PRIVATE_KEY', '')
-
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['shop-for-buddhas.herokuapp.com', 'localhost']
@@ -170,16 +168,20 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': ('django.contrib.auth.password_validation.User'
+                 'AttributeSimilarityValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': ('django.contrib.auth.password_validation.Minimum'
+                 'LengthValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': ('django.contrib.auth.password_validation.Common'
+                 'PasswordValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': ('django.contrib.auth.password_validation.Nu'
+                 'mericPasswordValidator'),
     },
 ]
 

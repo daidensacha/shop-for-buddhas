@@ -36,7 +36,7 @@
                                     <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" title="">
                                 </a>
                             {% else %}
-                                <a href="#">
+                                <a href="{{ MEDIA_URL }} noimage.png">
                                     <img class="img-fluid" src="{{ MEDIA_URL }} noimage.png" alt="{{ item.product.name }}"  title="">
                                 </a>
                             {% endif %}
@@ -51,12 +51,10 @@
                                 </div>
                                 
                                 <div class="product-name">
-                                    <!-- <p><a class="text-reset" href="#">{{ item.product.name }}</a></p> -->
                                         <p>{{ item.product.sku | upper }}</p>
                                 </div>
 
                                 <div class="product-price fs-3 fw-500 mb-2">
-                                    <!-- <del class="text-muted fs-6">$38.<small>50</small></del> -->
                                     <span class="text-primary">${{ item.product.price }}</span>
                                 </div>
                                 <form class="form update-form" data-form="{{ item.item_id }}" method="POST" action="{% url 'adjust_cart' item.item_id %}">
@@ -82,14 +80,8 @@
                                                         data-item_id="{{ product.id }}" 
                                                         id="increment-qty_{{ product.id }}">&plus;</div>
                                             </div>
-                                            <!-- <input type="hidden" 
-                                                    value="" 
-                                                    id="item-delete-{{ item.product.id }}"
-                                                    name="item-delete-{{ item.product.id }}" 
-                                                    data-product-id="{{ item.product.id }}"> -->
 
                                             <div class="cart-button mb-3 d-flex">
-                                                <!-- <div class="input-group col align-items-center me-auto"> -->
                                                     <span class="input-group-text btn btn-outline-primary update-link me-3">
                                                         <i class="fas fa-sync-alt"></i>
                                                     </span>
@@ -102,14 +94,6 @@
                                             </div>
                                             
                                         </div>
-                                        <!-- <div class="d-flex pt-3">
-                                            <a class="btn btn-outline-dark" href="{% url 'products' %}">
-                                                <i class="fas fa-chevron-left mt-sm-0 me-1"></i>
-                                                <span class="d-none d-sm-inline">Continue Shopping</span>
-                                                <span class="d-inline d-sm-none">Back</span>
-                                            </a>
-                                        </div>-->
-                                        <!-- <input type="hidden" name="redirect_url" value="{{ request.path }}">  -->
                                     </div>
                                 </form>
                                 
@@ -127,29 +111,25 @@
                 <!-- Cart Table -->
                 <div class="table-content table-responsive cart-table-content my-5 d-none d-lg-block">
                     <table class="table table-borderless table-sm align-middle">
-                        <!-- <table class="table table-borderless table-sm align-middle"></table> -->
                         <thead>
                             <tr class="text-uppercase">
                                 <th class="text-dark text-center fw-500 text-nowrap" scope="col">Image</th>
                                 <th class="text-dark text-center fw-500 text-nowrap" scope="col">Product Info</th>
                                 <th class="text-dark text-center fw-500 text-nowrap" scope="col">Price</th>
                                 <th class="text-dark text-center fw-500 text-nowrap" scope="col">Qty</th>
-                                <!-- <th class="text-dark fw-500 text-center text-nowrap" colspan="2">Action</th> -->
                                 <th class="text-dark text-end fw-500 text-nowrap" scope="col">Subtotal</th>
-                                <!-- <th class="text-dark fw-500 text-end text-nowrap" scope="col">action</th> -->
                             </tr>
                         </thead>
                         <tbody>
                         {% for item in cart_items %}
                             <tr>
                                 <td class="text-center product-thumbnail">
-                                    <!-- <a class="text-reset" href="#"><img src="{{ item.product.image.url }}" class="img-fluid" width="100" alt=""></a> -->
                                     {% if item.product.image %}
                                         <a href="{{ item.product.image.url }}" data-toggle="lightbox">
                                             <img class="img-fluid img-thumbnail" width="100" src="{{ item.product.image.url }}" alt="" title="">
                                         </a>
                                     {% else %}
-                                        <a href="{{ item.product.image.url }}" data-toggle="lightbox">
+                                        <a href="{{ MEDIA_URL }} noimage.png" data-toggle="lightbox">
                                             <img class="img-fluid img-thumbnail" width="100" src="{{ MEDIA_URL }} noimage.png" alt=""  title="">
                                         </a>
                                     {% endif %}
@@ -188,25 +168,21 @@
                                                     name="remove-item-{{ item.item_id }}">
                                             
                                         
-                                                    <span class="input-group-text btn btn-outline-primary update-link mx-3">
+                                                    <span class="input-group-text btn btn-outline-primary update-link mx-3" 
+                                                        tabindex="0" aria-label="Update quantity">
                                                         <i class="fas fa-sync-alt"></i>
                                                     </span>
                                                     <span class="input-group-text btn btn-outline-danger remove-item me-3"
                                                         id="remove_{{ item.item_id }}"
-                                                        data-product-id="{{ item.product.id }}">
+                                                        data-product-id="{{ item.product.id }}" 
+                                                        tabindex="0" aria-label="Remove items">
                                                     <i class="far fa-trash-alt"></i>
                                                     </span>
-                                                    <!-- <a href="{% url 'remove_from_cart' %" class="input-group-text btn btn-outline-danger remove-item me-3"
-                                                        id="remove_{{ item.item_id }}"
-                                                        data-product-id="{{ item.product.id }}">
-                                                        <i class="far fa-trash-alt"></i>
-                                                    </a> -->
+                                      
                                         </form>
                                        
                                         <!-- END FORM -->
-                                        <!-- This update works wioth the jQuery/ ajax -->
-                                        <!-- <a class="btn btn-sm btn-outline-secondary update-link text-nowrap px-3" data-product-id="{{ item.item.id }}"><i class="bi bi-pencil-square lh-1"></i> <span class="d-none d-md-inline-block">Update</span></a> -->
-
+                                      
                                     </td>
 
                                     <!-- FORM SUBTOTAL -->
@@ -227,17 +203,10 @@
                             
                             <span class="">Continue Shopping</span>
                             <i class="fas fa-chevron-right"></i>
-                            <!-- <span class="d-none d-sm-inline">Continue Shopping</span>
-                            <span class="d-inline d-sm-none">Back</span> -->
+
                         </a>
                     </div>
-                    <!-- <div class="ms-auto">
-                        <a class="btn btn-outline-primary" href="{% url 'view_cart' %}">
-                            <span class="d-none d-sm-inline">Update shopping cart</span>
-                            <span class="d-inline d-sm-none">Next</span>
-                            <i class="ci-arrow-right mt-sm-0 ms-1"></i>
-                        </a>
-                    </div> -->
+  
                 </div>
                 <div class="row flex-row-reverse pt-4 gx-0">
                     <div class="col-md-6 col-lg-4 gx-3">
@@ -266,8 +235,6 @@
                                     </li>
 
                                 </ul>
-
-                                
 
                                 <div class="d-grid gap-2 mx-auto">
                                     <a class="btn btn-primary" href="{% url 'checkout' %}">PROCEED TO CHECKOUT</a>
@@ -311,7 +278,6 @@
        
     </div>
 </section>
-<!-- </div> -->
 <!-- Cart Table -->
   
 {% endblock %}
