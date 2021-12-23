@@ -820,16 +820,16 @@ a.social-icon:hover {
   font-size: 1.25rem;
   border: 3px solid #fff;
   border-radius: 0.8rem;
-  color: #085255;
-  background-color: #e0f7fa21;
-  border-color: #176561;
+  color: #a8a487;
+  background-color: transparent;
+  border-color: #9b9f88;
 }
 
 .btn-error:hover {
-  color: #dfeaf0;
-  background-color: #959b84;
-  border-color: #00838f;
-  text-shadow: 0 0 black;
+    color: #c1b793;
+    background-color: #60808d;
+    border-color: #9c915d;
+    text-shadow: 0 0 black;
 }
 .top-40 {
   /* top: 70%; */
