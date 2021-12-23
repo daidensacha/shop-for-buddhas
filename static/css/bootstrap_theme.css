@@ -3313,9 +3313,18 @@
  .navbar-brand {
    padding-top: 0.42095rem;
    padding-bottom: 0.42095rem;
-   margin-right: 1rem;
-   font-size: 1.023rem;
+   margin-right: .5rem;
+   font-size: 1rem;
    white-space: nowrap; }
+
+  @media (min-width: 768px) {
+    .navbar-brand {
+      padding-top: 0.42095rem;
+      padding-bottom: 0.42095rem;
+      margin-right: 1rem;
+      font-size: 1.023rem;
+      white-space: nowrap; }
+  }
  
  .navbar-nav {
    display: flex;
