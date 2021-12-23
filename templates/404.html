@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %} 
 {% block content %}
-<div class="container-fluid bg-transparent 100vh">
+<div class="container-fluid gx-0 bg-transparent 100vh">
     <section class="section" id="fourofour">
         <div class="row my-5">
             <div class="col-12 col-lg-6 mx-auto text-center text-white my-5 top-40 align-middle">
@@ -9,9 +9,9 @@
                     <h1 class="display-3">404 error</h1>
                 <h1 class="display-6">Sorry, the page was not found</h1>
                 <p class="fs-4 my-3">We could not find the page you are looking for</p>
-                <button class="btn btn-lg btn-error my-3 rounded-5">
+                <a class="btn btn-lg btn-error my-3 rounded-5" href="{% url 'home' %}">
                     Go to the homepage
-                </button>
+                </a>
                 </span>
                 
                 <div class="error-404 bg-error">

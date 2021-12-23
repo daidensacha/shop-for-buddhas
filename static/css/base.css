@@ -832,29 +832,11 @@ a.social-icon:hover {
   text-shadow: 0 0 black;
 }
 .top-40 {
-  top: 70%;
+  /* top: 70%; */
   position: relative;
 }
 /* PRIMARY COLORS */
 
-
-/* .text-primary {
-  color: #615fe6 !important;
-}
-
-.border-primary {
-  color: #615fe6 !important;
-}
-
-.icon-dual-primary {
-  color: #615fe6;
-  fill: rgba(97, 95, 230, 0.2);
-}
-
-.btn-soft-primary {
-  background-color: rgba(97, 95, 230, 0.25) !important;
-  color: #615fe6 !important;
-} */
 
 .btn-soft-primary:hover,
 .btn-soft-primary:focus,
@@ -1053,7 +1035,6 @@ input[name='q']::placeholder {
     display: block;
     opacity: 0;
     visibility: hidden;
-    /* transition: .3s; */
     transform: translateY(-10px);
     transition: all .3s ease;
     margin-top: -1px;
@@ -1067,10 +1048,10 @@ input[name='q']::placeholder {
     top: 100%;
     transform: rotateX(0deg);
   }
-  /* .navbar .megamenu{left:0; right:0; width:100%; padding:20px;  } */
-  /* .navbar .nav-link{ padding-top:1rem; padding-bottom:1rem;  } */
+ 
 }
 
+/* =================== @media (min-width: 992px) ============================ */
 
 @media (min-width: 992px) {
 
@@ -1125,7 +1106,7 @@ input[name='q']::placeholder {
     transform: rotateX(0deg)!important;
   }
 
-    /*********************************************************** Navbar Styling */
+    /************************* Navbar Styling */
 
   .navbar .nav-item .dropdown-menu {
     display: block;
@@ -1166,16 +1147,6 @@ input[name='q']::placeholder {
   nav#main-navbar {
     padding: 0 7em!important;
   }
-    /* .nav-link {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-    } */
-
-    /* .navbar-light .navbar-nav .nav-link:focus,
-    .navbar-light .navbar-nav .nav-link:hover {
-      color: #535353 !important;
-      background-color: #e9ecef;
-    } */
 
   .navbar-expand-lg .offcanvas {
     background-color: transparent;
