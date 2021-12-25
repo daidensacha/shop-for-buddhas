@@ -122,7 +122,7 @@
 						{% endif %})
                 </h6>
                 <!-- Close -->
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
                 </button>
             </div>
             <div class="modal-body">
@@ -155,30 +155,44 @@
 										<form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
 											{% csrf_token %}
 											<div class="cart-qty d-inline-flex">
-												<div class="dec qty-btn"
-													data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">-</div>
-												<input class="cart-qty-input form-control" 
+												<!-- <div class="dec qty-btn"
+													data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">-</div> -->
+													<div class="dec qty-btn"
+													data-item_id="{{ item.item_id }}">&minus;</div>
+												<!-- <input class="cart-qty-input form-control" 
 													type="number" 
 													name="quantity" 
 													min="1" 
 													max="99" 
 													value="{{ item.quantity }}"
 													data-item_id="{{ item.item_id }}"
-													id="id_qty_{{ item.item_id }}">
-												<div class="inc qty-btn"
-													data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">+</div>
+													id="id_qty_{{ item.item_id }}"> -->
+												<input class="cart-qty-input form-control" 
+													type="number" 
+													name="quantity" 
+													min="1" 
+													max="99" 
+													value="{{ item.quantity }}"
+													data-item_id="{{ item.item_id }}">
+												<!-- <div class="inc qty-btn"
+													data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">+</div> -->
+													<div class="inc qty-btn"
+													data-item_id="{{ item.item_id }}">&plus;</div>
 											</div>
 
 											<span class="text-primary update-link mx-3" 
-												aria-label="Add to cart"
 												tabindex="0">
 												<i class="fas fa-sync-alt"></i>
 											</span>
 
-											<span class="text-danger remove-item me-3"
+											<!-- <span class="text-danger remove-item me-3"
 												id="remove_{{ item.item_id }}"
 												data-product-id="{{ item.product.id }}"
-												aria-label="Remove from cart"
+												tabindex="0">
+											<i class="far fa-trash-alt"></i>
+											</span> -->
+											<span class="text-danger remove-item me-3"
+												data-product-id="{{ item.product.id }}"
 												tabindex="0">
 											<i class="far fa-trash-alt"></i>
 											</span>
@@ -190,14 +204,17 @@
 						</li>
 						{% endfor %}
 					{% else %}
-					<p class="lead mb-5">Your bag is empty.</p>
-					<div class="d-flex">
-						<a class="btn btn-outline-dark" href="{% url 'products' %}">
-							<i class="fas fa-chevron-left mt-sm-0 me-1"></i>
-							<span class="d-none d-sm-inline">Continue Shopping</span>
-							<span class="d-inline d-sm-none">Back</span>
-						</a>
-					</div>
+					<li>
+						<p class="lead mb-5">Your bag is empty.</p>
+						<div class="d-flex">
+							<a class="btn btn-outline-dark" href="{% url 'products' %}">
+								<i class="fas fa-chevron-left mt-sm-0 me-1"></i>
+								<span class="d-none d-sm-inline">Continue Shopping</span>
+								<span class="d-inline d-sm-none">Back</span>
+							</a>
+						</div>
+					</li>
+					
 					{% endif %}
                 </ul>
             </div>
@@ -308,7 +325,7 @@
 			<div class="container">
 				<!-- Logo -->
 				<a class="navbar-brand" href="{% url 'home' %}">
-					<p3 class="brand-heading">Shop for Buddhas</p3>
+					<span class="brand-heading">Shop for Buddhas</span>
 				</a>
 				<!-- Menu -->
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">

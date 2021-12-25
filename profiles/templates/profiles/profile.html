@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-<section class="section" id="checkout-section">
+<div class="section" id="checkout-section">
 	<!-- Start Profile Section -->
 	<div class="container">
 		<div class="row">
@@ -100,11 +100,11 @@
 
 		<!-- End Profile Section -->
 	</div>
-</section>
+</div>
 
 {% endblock %}
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+<script src="{% static 'profiles/js/countryfield.js' %}"></script>
 {% endblock %}

@@ -51,3 +51,13 @@ def contact(request):
         'form': form,
     }
     return render(request, 'home/index.html', context)
+
+
+def terms(request):
+    """ A view to terms and conditions """
+    return render(request, 'home/terms_conditions.html')
+
+
+def privacy(request):
+    """ A view to privacy policy """
+    return render(request, 'home/privacy_policy.html')

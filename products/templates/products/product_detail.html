@@ -9,7 +9,7 @@
     <div class="overlay"></div>
     <!-- <div class="top-spacer"></div> -->
     <div class="container-fluid bg-white min-vh-70">
-        <section class="section" id="product-details">
+        <div class="section" id="product-details">
             <div class="row my-5">
                 <div class="col text-center mt-3">
                 <h2>Products</h2>
@@ -89,20 +89,31 @@
                                         <div class="product-detail-actions d-flex flex-wrap pt-3">
 
                                             <div class="cart-qty me-3 mb-3">
-                                                <div class="dec decrement-qty qty-btn" 
+                                                <!-- <div class="dec decrement-qty qty-btn" 
                                                         data-item_id="{{ product.id }}" 
-                                                    id="decrement-qty_{{ product.id }}">-</div>
-                                                <input class="cart-qty-input form-control" 
+                                                    id="decrement-qty_{{ product.id }}">&minus;</div> -->
+                                                <div class="dec decrement-qty qty-btn" 
+                                                        data-item_id="{{ product.id }}">&minus;</div>
+                                                <!-- <input class="cart-qty-input form-control" 
                                                         type="number" 
                                                         name="quantity" 
                                                         value="1" 
                                                         min="1" 
                                                         max="99"
                                                         data-item_id="{{ product.id }}" 
-                                                        id="id_qty_{{ product.id }}">
-                                                <div class="inc increment-qty qty-btn"  
+                                                        id="id_qty_{{ product.id }}"> -->
+                                                <input class="cart-qty-input form-control" 
+                                                        type="number" 
+                                                        name="quantity" 
+                                                        value="1" 
+                                                        min="1" 
+                                                        max="99"
+                                                        data-item_id="{{ product.id }}">
+                                                <!-- <div class="inc increment-qty qty-btn"  
                                                         data-item_id="{{ product.id }}" 
-                                                        id="increment-qty_{{ product.id }}">+</div>
+                                                        id="increment-qty_{{ product.id }}">&plus;</div> -->
+                                                <div class="inc increment-qty qty-btn"  
+                                                        data-item_id="{{ product.id }}">&plus;</div>
                                             </div>
                                             <div class="cart-button mb-3 d-flex">
                                                 <button class="btn btn-dark me-3"
@@ -149,6 +160,6 @@
                     
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 {% endblock %}

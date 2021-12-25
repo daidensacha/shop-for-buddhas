@@ -2,7 +2,7 @@
 
 {% block footer %}
 <!-- START FOOTER -->
-<section class="section footer">
+<div class="section footer">
     <!-- <div class="bg-overlay"></div> -->
     <div class="container">
         <div class="row">
@@ -16,8 +16,8 @@
                 </div>
                 <div class="footer-terms">
                     <ul class="mb-0 list-inline text-center mt-4 pt-2">
-                        <li class="list-inline-item"><a href="#" class="text-muted">Terms & Condition</a></li>
-                        <li class="list-inline-item"><a href="#" class="text-muted">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="{% url 'terms' %}" class="text-muted">Terms & Condition</a></li>
+                        <li class="list-inline-item"><a href="{% url 'privacy' %}" class="text-muted">Privacy Policy</a></li>
                         <li class="list-inline-item"><a href="#" class="text-muted">Contact Us</a></li>
                     </ul>
                 </div>
@@ -31,6 +31,6 @@
             </div>
         </div>
     </div>
- </section>
+</div>
  <!-- END FOOTER -->
  {% endblock footer %}

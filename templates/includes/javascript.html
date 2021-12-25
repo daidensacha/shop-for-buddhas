@@ -1,131 +1,133 @@
-<script type="text/javascript">
+<script>
+  // Back to top button code customised from the following link.
+  // https://dev.to/ljcdev/scroll-to-top-button-in-vanilla-js-beginners-2nc
 
-// Back to top button code customised from the following link.
-// https://dev.to/ljcdev/scroll-to-top-button-in-vanilla-js-beginners-2nc
-// BACK TO TOP BUTTON SCRIPT
+  document.addEventListener("scroll", handleScroll);
+  // get a reference to our predefined button
+  var scrollToTopBtn = document.querySelector(".scrollToTopBtn");
 
-document.addEventListener("scroll", handleScroll);
-// get a reference to our predefined button
-var scrollToTopBtn = document.querySelector(".scrollToTopBtn");
+  function handleScroll() {
+    var scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var GOLDEN_RATIO = 0.5;
 
-function handleScroll() {
-  var scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var GOLDEN_RATIO = 0.5;
-
-  if ((document.documentElement.scrollTop / scrollableHeight ) > GOLDEN_RATIO) {
-    //show button
-    if(!scrollToTopBtn.classList.contains("showScrollBtn"))
-    scrollToTopBtn.classList.add("showScrollBtn")
-  } else {
-    //hide button
-    if(scrollToTopBtn.classList.contains("showScrollBtn"))
-    scrollToTopBtn.classList.remove("showScrollBtn")
-  }
-}
-
-scrollToTopBtn.addEventListener("click", scrollToTop);
-
-function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-}
-
-// Increase and decrease the cart quantity selector
-// https://javascript.tutorialink.com/changing-cart-items-quantity-in-shopping-cart-using-vanilla-javascript/
-let deductBtnArr = document.getElementsByClassName('dec');
-let addButtonArr = document.getElementsByClassName('inc');
-let maxQty = 99
-let minQty = 0
-
-for(let deductBtn of deductBtnArr){
-  deductBtn.onclick = function(){
-    let currentInputBox = deductBtn.nextElementSibling;
-    if (currentInputBox.value > minQty) {
-      currentInputBox.value =  currentInputBox.value - 1;
-    }
-    
-  }
-}
-
-for(let addButton of addButtonArr){
-  addButton.onclick = () => {
-    let currentInputBox = addButton.previousElementSibling;
-    if (currentInputBox.value < maxQty) {
-    currentInputBox.value =  parseInt(currentInputBox.value) + 1;
+    if ((document.documentElement.scrollTop / scrollableHeight) > GOLDEN_RATIO) {
+      //show button
+      if (!scrollToTopBtn.classList.contains("showScrollBtn"))
+        scrollToTopBtn.classList.add("showScrollBtn")
+    } else {
+      //hide button
+      if (scrollToTopBtn.classList.contains("showScrollBtn"))
+        scrollToTopBtn.classList.remove("showScrollBtn")
     }
   }
-}
 
-// Update cart quantity with Vanilla JS
-    document.querySelectorAll(".update-link").forEach((item) => {
-      item.addEventListener('click', (e) => {
-        e.target.closest('form').submit();
-      }) 
-})
+  scrollToTopBtn.addEventListener("click", scrollToTop);
 
-// Remove cart items course example JS
-let removeItemBtns = document.getElementsByClassName('remove-item');
-
-for(let removeBtn of removeItemBtns){
-    removeBtn.onclick = function(){
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/cart/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken};
-        $.post(url, data)
-     .done(function() {
-        location.reload();
-        console.log("done")
-     });
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   }
-}
 
-//  Show toasts
-var toastElList = [].slice.call(document.querySelectorAll('.toast'));
-  var toastList = toastElList.map(function(toastEl) {
+  // Decrease the cart quantity selector
+  document.querySelectorAll(".dec").forEach((item) => {
+    item.addEventListener('click', (e) => {
+      let minQty = 0
+      let currentInputBox = e.target.nextElementSibling;
+      if (currentInputBox.value > minQty) {
+        currentInputBox.value = parseInt(currentInputBox.value) - 1;
+      }
+    })
+  })
+
+  // Increase the cart quantity selector
+  document.querySelectorAll(".inc").forEach((item) => {
+    item.addEventListener('click', (e) => {
+      let maxQty = 99
+      let currentInputBox = e.target.previousElementSibling;
+      if (currentInputBox.value < maxQty) {
+        currentInputBox.value = parseInt(currentInputBox.value) + 1;
+      }
+    })
+  })
+
+  // Update cart quantity with Vanilla JS
+  document.querySelectorAll(".update-link").forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.target.closest('form').submit();
+    })
+  })
+
+  // Remove cart items course example JS
+  let removeItemBtns = document.getElementsByClassName('remove-item');
+
+  for (let removeBtn of removeItemBtns) {
+    removeBtn.onclick = function () {
+      var csrfToken = "{{ csrf_token }}";
+      var itemId = $(this).attr('data-product-id');
+      // var itemId = $(this).attr('id').split('remove_')[1];
+      var url = `/cart/remove/${itemId}/`;
+      var data = {
+        'csrfmiddlewaretoken': csrfToken
+      };
+      $.post(url, data)
+        .done(function () {
+          location.reload();
+          console.log("done")
+        });
+    }
+  }
+
+  //  Show toasts
+  var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+  var toastList = toastElList.map(function (toastEl) {
     return new bootstrap.Toast(toastEl);
   })
   toastList.forEach((toast) => {
     toast.show();
   })
-   
-  console.log(toastList); 
 
-
-
+  console.log(toastList);
 
   // Bootstrap 5 JS form validation
   (function () {
-  'use strict'
+    'use strict'
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.needs-validation')
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
 
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
       .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
+        form.addEventListener('submit', function (event) {
           if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
+            event.preventDefault()
+            event.stopPropagation()
           }
 
           form.classList.add('was-validated')
-      }, false)
+        }, false)
       })
   })()
 
 
-    //  This not working 
-var searchModal = document.getElementById('search-open')
-console.log(searchModal)
+  //  This not working 
+  // var searchModal = document.querySelector('#search-open')
+  // console.log(searchModal)
+  
+  // console.log(searchInput)
+  // document.querySelector("#search-open").addEventListener('on', function (event) {
+  //   // searchModal.addEventListener('shown.bs.modal', function (event) {
+  //   console.log('searchshown');
+  //   searchInput.focus()
+  // })
+// var triggerValue = document.getElementById("search-trigger")
 var searchInput = document.getElementById('search-shop')
-console.log(searchInput)
-  document.querySelector("#search-open").addEventListener('shown.bs.modal', function (event) {
-          // searchModal.addEventListener('shown.bs.modal', function (event) {
-          console.log('searchshown');
-          searchInput.focus()
-      })
+document.querySelector('#search-open').addEventListener('shown.bs.modal', function() {
+  console.log("535 shown")
+  searchInput.focus();
+})
+
+ 
 </script>

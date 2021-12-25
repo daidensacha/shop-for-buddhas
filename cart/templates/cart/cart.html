@@ -11,7 +11,7 @@
 <div class="overlay"></div>
 
 <!-- Cart Table -->
-    <section class="section" id="shopping-cart">
+    <div class="section" id="shopping-cart">
     <div class="container min-vh-60">
         
 
@@ -64,32 +64,49 @@
                                         <div class="product-detail-actions d-flex flex-wrap pt-3">
 
                                             <div class="cart-qty me-3 mb-3">
-                                                <div class="dec decrement-qty qty-btn" 
+                                                <!-- <div class="dec decrement-qty qty-btn" 
                                                         data-item_id="{{ product.id }}" 
-                                                    id="decrement-qty_{{ product.id }}">&minus;</div>
-                                                <input class="cart-qty-input form-control" 
+                                                    id="decrement-qty_{{ product.id }}">&minus;</div> -->
+                                                    <div class="dec decrement-qty qty-btn" 
+                                                        data-item_id="{{ product.id }}">&minus;</div>
+                                                <!-- <input class="cart-qty-input form-control" 
                                                         type="number" 
                                                         name="quantity" 
                                                         value="{{ item.quantity }}" 
                                                         min="1" 
                                                         max="99"
                                                         data-item_id="{{ product.id }}" 
-                                                        id="id_qty_{{ product.id }}">
+                                                        id="id_qty_{{ product.id }}"> -->
+                                                        <input class="cart-qty-input form-control" 
+                                                        type="number" 
+                                                        name="quantity" 
+                                                        value="{{ item.quantity }}" 
+                                                        min="1" 
+                                                        max="99"
+                                                        data-item_id="{{ product.id }}">
                                                 
-                                                <div class="inc increment-qty qty-btn"  
+                                                <!-- <div class="inc increment-qty qty-btn"  
                                                         data-item_id="{{ product.id }}" 
-                                                        id="increment-qty_{{ product.id }}">&plus;</div>
+                                                        id="increment-qty_{{ product.id }}">&plus;</div> -->
+                                                        <div class="inc increment-qty qty-btn"  
+                                                        data-item_id="{{ product.id }}">&plus;</div>
                                             </div>
 
                                             <div class="cart-button mb-3 d-flex">
                                                     <span class="input-group-text btn btn-outline-primary update-link me-3">
                                                         <i class="fas fa-sync-alt"></i>
                                                     </span>
-                                                    <span class="input-group-text btn btn-outline-danger remove-item me-3"
+                                                    <!-- HERE CLASS REMOVE ITEM -->
+                                                    <!-- <span class="input-group-text btn btn-outline-danger remove-item me-3"
                                                         id="remove_{{ item.item_id }}"
                                                         data-product-id="{{ item.product.id }}">
                                                         <i class="far fa-trash-alt"></i>
-                                                    </span>
+                                                    </span> -->
+                                                    <span class="input-group-text btn btn-outline-danger remove-item me-3"
+                                                    id="remove_{{ item.item_id }}"
+                                                    data-product-id="{{ item.product.id }}">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </span>
 
                                             </div>
                                             
@@ -146,20 +163,31 @@
                                             {% csrf_token %}
                                             <div class="cart-qty d-inline-flex">
 
-                                                <div class="dec qty-btn"
-                                                    data-item_id="id_{{ item.item.id }}" id="decrement-qty_{{ item.item_id }}">&minus;</div>
+                                                <!-- <div class="dec qty-btn"
+                                                    data-item_id="id_{{ item.item.id }}" id="decrement-qty_{{ item.item_id }}">&minus;</div> -->
+                                                    <div class="dec qty-btn"
+                                                    data-item_id="id_{{ item.item.id }}">&minus;</div>
 
-                                                <input class="cart-qty-input form-control" 
+                                                <!-- <input class="cart-qty-input form-control" 
                                                     type="number" 
                                                     name="quantity" 
                                                     min="1" 
                                                     max="99" 
                                                     value="{{ item.quantity }}"
                                                     data-item_id="{{ item.item_id }}"
-                                                    id="id_qty_{{ item.item_id }}">
+                                                    id="id_qty_{{ item.item_id }}"> -->
+                                                    <input class="cart-qty-input form-control" 
+                                                    type="number" 
+                                                    name="quantity" 
+                                                    min="1" 
+                                                    max="99" 
+                                                    value="{{ item.quantity }}"
+                                                    data-item_id="{{ item.item_id }}">
 
-                                                <div class="inc qty-btn"
-                                                    data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">&plus;</div>
+                                                <!-- <div class="inc qty-btn"
+                                                    data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">&plus;</div> -->
+                                                    <div class="inc qty-btn"
+                                                    data-item_id="{{ item.item_id }}">&plus;</div>
 
                                             </div>
                                             <input type="hidden" 
@@ -169,15 +197,21 @@
                                             
                                         
                                                     <span class="input-group-text btn btn-outline-primary update-link mx-3" 
-                                                        tabindex="0" aria-label="Update quantity">
+                                                        tabindex="0">
                                                         <i class="fas fa-sync-alt"></i>
                                                     </span>
-                                                    <span class="input-group-text btn btn-outline-danger remove-item me-3"
+                                                    <!--  HERE IS THE CLASS remove-item -->
+                                                    <!-- <span class="input-group-text btn btn-outline-danger remove-item me-3"
                                                         id="remove_{{ item.item_id }}"
                                                         data-product-id="{{ item.product.id }}" 
-                                                        tabindex="0" aria-label="Remove items">
+                                                        tabindex="0">
                                                     <i class="far fa-trash-alt"></i>
-                                                    </span>
+                                                    </span> -->
+                                                    <span class="input-group-text btn btn-outline-danger remove-item me-3"
+                                                    data-product-id="{{ item.product.id }}" 
+                                                    tabindex="0">
+                                                <i class="far fa-trash-alt"></i>
+                                                </span>
                                       
                                         </form>
                                        
@@ -277,14 +311,12 @@
             </div>
        
     </div>
-</section>
+</div>
 <!-- Cart Table -->
   
 {% endblock %}
 
 {% block postloadjs %}
 {{ block.super}}
-<script type="text/javascript">
 
-</script>
 {% endblock %}

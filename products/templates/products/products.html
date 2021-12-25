@@ -9,7 +9,7 @@
     <div class="overlay"></div>
     <!-- <div class="top-spacer"></div> -->
     <div class="container-fluid bg-white min-vh-70">
-        <section class="section" id="products">
+        <div class="section" id="products">
             <div class="row my-5">
                 <div class="col text-center mt-3">
                     <h2>Products</h2>
@@ -113,14 +113,17 @@
                                                     <i class="bi bi-cart"></i>
                                                 </span>
 
-                                                <input class="cart-qty-input form-control" 
+                                                <!-- <input class="cart-qty-input form-control" 
                                                     type="hidden" 
                                                     name="quantity" 
                                                     value="1" 
-                                                    min="1" 
-                                                    max="99"
                                                     data-item_id="{{ product.id }}" 
-                                                    id="id_qty_{{ product.id }}">
+                                                    id="id_qty_{{ product.id }}"> -->
+                                                    <input class="cart-qty-input form-control" 
+                                                    type="hidden" 
+                                                    name="quantity" 
+                                                    value="1" 
+                                                    data-item_id="{{ product.id }}">
                                             
                                                 <input type="hidden" 
                                                     name="redirect_url" 
@@ -214,7 +217,7 @@
                 
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 
 {% endblock %}
