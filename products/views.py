@@ -103,6 +103,7 @@ def add_product(request):
             product = form.save(commit=False)
             product.created_by = request.user
             product.save()
+
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
@@ -173,7 +174,10 @@ def delete_product(request, product_id):
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
+    context = {
+        'on_profile_page': True,
+    }
     # product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted!')
-    return redirect(reverse('products'))
+    return redirect(reverse('profile'), context)

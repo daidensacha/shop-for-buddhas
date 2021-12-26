@@ -106,9 +106,16 @@
                                             {% endfor %}
                                                     <!-- <i class="bi bi-heart"></i> -->
                                                 </a> 
-                                                <a href="{{ product.image.url }}" data-toggle="lightbox" class="btn btn-outline-dark">
-                                                    <i class="bi bi-eye-fill"></i>
-                                                </a>
+                                                {% if product.image %}
+                                                    <a href="{{ product.image.url }}" data-toggle="lightbox" class="btn btn-outline-dark">
+                                                        <i class="bi bi-eye-fill"></i>
+                                                    </a>
+                                                {% else %}
+                                                    <a href="{{ MEDIA_URL }} noimage.png" data-toggle="lightbox" class="btn btn-outline-dark">
+                                                        <i class="bi bi-eye-fill"></i>
+                                                    </a>
+                                                {% endif %}
+
                                                 <span class="btn btn-outline-dark update-link">
                                                     <i class="bi bi-cart"></i>
                                                 </span>
@@ -138,7 +145,7 @@
                                             </a>
                                         {% else %}
                                             <a href="{% url 'product_detail' product.id %}">
-                                                <img class="img-fluid" src="/static/noimage.png" alt="{{ product.name }}"  title="">
+                                                <img class="img-fluid" src="{{ MEDIA_URL }} noimage.png" alt="{{ product.name }}"  title="">
                                             </a>
                                         {% endif %}
 

@@ -5,7 +5,7 @@ from products.models import Product
 
 
 def cart_contents(request):
-
+    """Define contexts for the cart model"""
     cart_items = []
     total = 0
     product_count = 0

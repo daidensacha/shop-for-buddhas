@@ -35,9 +35,4 @@ class PostAdmin(admin.ModelAdmin):
     ordering = ('created_at',)
 
 
-# admin.site.register(Category, CategoryAdmin)
-# admin.site.register(Post, PostAdmin)
 admin.site.register(Comment)
-# @admin.register(Comment)
-# class Comment(admin.ModelAdmin):
-# readonly_fields = ('created_at',)

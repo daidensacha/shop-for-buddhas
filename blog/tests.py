@@ -40,8 +40,6 @@ class ModelTests(TestCase):
         new_user = UserModel.objects.last()
         assert new_user.first_name == "user1"
 
-
-
     def test_post(self):
         length = len(Post.objects.all())
         assert length == 0
@@ -52,14 +50,12 @@ class ModelTests(TestCase):
         user.email = "testuser@gmail.com"
         user.user_type = 'is_customer'
         user.save()
-
-        
         # Category()
         category = Category()
         category.name = "test"
         category.slug = "test"
         category.save()
-        #blog
+        # blog
         blog = Post()
         blog.author = user
         blog.category = category
@@ -77,7 +73,11 @@ class ModelTests(TestCase):
     # def test_post_created(self):
     #     # category1 = mixer.blend(Category, name="cat1", slug="cat1")
     #     # user1 = mixer.blend(UserModel, first_name="user1")
-    #     post1 = mixer.blend(Post, category="cat1", author="user1", title="title1", slug="title1")
+    #     post1 = mixer.blend(
+    #               Post, category="cat1",
+    #                     author="user1",
+    #                     title="title1",
+    #                     slug="title1")
     #     new_post = Post.object.last()
     #     assert new_post.title == "title1"
 
@@ -106,5 +106,6 @@ class ModelTests(TestCase):
 
     def test_comment(self):
         post = self.test_post_str()
-        comment = Comment.objects.create(post=post, name="good test", body="test body")
+        comment = Comment.objects.create(
+            post=post, name="good test", body="test body")
         self.assertEqual(str(comment), "good test")

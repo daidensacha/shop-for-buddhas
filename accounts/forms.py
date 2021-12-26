@@ -13,13 +13,14 @@ user_type = (
 
 
 """
-Add user type choicefield to signup form so users can signup as
+Add user_type choicefield to signup form so users can signup as
 a customer or a vendor
+Add fist_name and last_name fields to the user registraion form.
 """
 
 
 class CustomSignup(SignupForm):
-    """Add user_type choicefield with label to signup form"""
+    """Add additional fields to the custom signup form"""
     first_name = forms.CharField(
         label=False,
         widget=forms.TextInput(attrs={'class': 'form-control-sm rounded-3',

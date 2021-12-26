@@ -13,11 +13,11 @@
     if ((document.documentElement.scrollTop / scrollableHeight) > GOLDEN_RATIO) {
       //show button
       if (!scrollToTopBtn.classList.contains("showScrollBtn"))
-        scrollToTopBtn.classList.add("showScrollBtn")
+        scrollToTopBtn.classList.add("showScrollBtn");
     } else {
       //hide button
       if (scrollToTopBtn.classList.contains("showScrollBtn"))
-        scrollToTopBtn.classList.remove("showScrollBtn")
+        scrollToTopBtn.classList.remove("showScrollBtn");
     }
   }
 
@@ -33,31 +33,31 @@
   // Decrease the cart quantity selector
   document.querySelectorAll(".dec").forEach((item) => {
     item.addEventListener('click', (e) => {
-      let minQty = 0
+      let minQty = 0;
       let currentInputBox = e.target.nextElementSibling;
       if (currentInputBox.value > minQty) {
         currentInputBox.value = parseInt(currentInputBox.value) - 1;
       }
-    })
-  })
+    });
+  });
 
   // Increase the cart quantity selector
   document.querySelectorAll(".inc").forEach((item) => {
     item.addEventListener('click', (e) => {
-      let maxQty = 99
+      let maxQty = 99;
       let currentInputBox = e.target.previousElementSibling;
       if (currentInputBox.value < maxQty) {
         currentInputBox.value = parseInt(currentInputBox.value) + 1;
       }
-    })
-  })
+    });
+  });
 
   // Update cart quantity with Vanilla JS
   document.querySelectorAll(".update-link").forEach((item) => {
     item.addEventListener('click', (e) => {
       e.target.closest('form').submit();
-    })
-  })
+    });
+  });
 
   // Remove cart items course example JS
   let removeItemBtns = document.getElementsByClassName('remove-item');
@@ -74,42 +74,42 @@
       $.post(url, data)
         .done(function () {
           location.reload();
-          console.log("done")
+          console.log("done");
         });
-    }
+    };
   }
 
   //  Show toasts
   var toastElList = [].slice.call(document.querySelectorAll('.toast'));
   var toastList = toastElList.map(function (toastEl) {
     return new bootstrap.Toast(toastEl);
-  })
+  });
   toastList.forEach((toast) => {
     toast.show();
-  })
+  });
 
   console.log(toastList);
 
   // Bootstrap 5 JS form validation
   (function () {
-    'use strict'
+    'use strict';
 
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('.needs-validation')
+    var forms = document.querySelectorAll('.needs-validation');
 
     // Loop over them and prevent submission
     Array.prototype.slice.call(forms)
       .forEach(function (form) {
         form.addEventListener('submit', function (event) {
           if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
+            event.preventDefault();
+            event.stopPropagation();
           }
 
-          form.classList.add('was-validated')
-        }, false)
-      })
-  })()
+          form.classList.add('was-validated');
+        }, false);
+      });
+  })();
 
 
   //  This not working 
@@ -123,9 +123,9 @@
   //   searchInput.focus()
   // })
 // var triggerValue = document.getElementById("search-trigger")
-var searchInput = document.getElementById('search-shop')
+var searchInput = document.getElementById('search-shop');
 document.querySelector('#search-open').addEventListener('shown.bs.modal', function() {
-  console.log("535 shown")
+  console.log("535 shown");
   searchInput.focus();
 })
 

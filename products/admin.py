@@ -6,18 +6,28 @@ from .models import Product, Category
 class ProductAdmin(admin.ModelAdmin):
     """Register the Product admin view and required layout of fields"""
 
-    list_display = (
+    fields = (
+        'created_by',
         'sku',
         'name',
-        'category',
+        'description',
         'size',
         'color',
         'price',
         'rating',
+        'image_url',
         'image',
+        )
+
+    list_display = (
+        'created_by',
+        'sku',
+        'name',
+        'category',
+        'price',
     )
-    list_filter = ('category',)
-    ordering = ('category', 'sku',)
+    list_filter = ('created_by', 'category',)
+    ordering = ('created_by', 'category', 'sku',)
     search_fields = ('name',)
 
 

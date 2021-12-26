@@ -152,7 +152,7 @@
                                     {% endif %}
                                 </td>
                                 <td class="text-center product-name">
-                                    <p><a class="text-reset" href="{% url 'product_detail' item.product.id %}">{{ item.product.name }}</a></p>
+                                    <p><a class="link-primary" href="{% url 'product_detail' item.product.id %}">{{ item.product.name }}</a></p>
                                     <p>{{ item.product.sku | upper }}</p>
                                 </td>
                                 <td class="text-center product-price-cart"><span class="amount">${{ item.product.price }}</span></td>

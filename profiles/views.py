@@ -13,57 +13,63 @@ from products.models import Product
 
 @login_required
 def profile(request):
-    """ Display the users profile """
-    profile = get_object_or_404(UserProfile, user=request.user)
 
-    if request.method == 'POST':
-        form = UserProfileForm(request.POST, instance=profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Profile updated successfully')
+    if request.user.is_authenticated:
+
+        """ Display the users profile """
+        profile = get_object_or_404(UserProfile, user=request.user)
+
+        if request.method == 'POST':
+            form = UserProfileForm(request.POST, instance=profile)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Profile updated successfully')
+            else:
+                messages.error(request,
+                            'Update failed. Please ensure the form is valid.')
         else:
-            messages.error(request,
-                           'Update failed. Please ensure the form is valid.')
+            form = UserProfileForm(instance=profile)
+        orders = profile.orders.all()
+
+        """ Products context to display the list of vendor products """
+        try:
+            products = Product.objects.filter(created_by=request.user)
+        except Exception as e:
+            messages.error(request, "No vendor proucts found.")
+            products = None
+
+        """ Vendor context create list of vendor sales """
+        try:
+            vendor_sales = OrderLineItem.objects.filter(
+                                vendor__username=request.user.username)
+        except Exception as e:
+            messages.error(request, "No vendor sales found.")
+            vendor_sales = None
+
+        favorite_list = []
+        """ Filter products for items associated with the authenticated user """
+        favorite_list = Product.objects.exclude(
+                            favorites=None).filter(
+                                favorites__username=request.user)
+
+        all_products = Product.objects.all()
+
+        template = 'profiles/profile.html'
+        context = {
+            'profile': profile,
+            'form': form,
+            'orders': orders,
+            'products': products,
+            'all_products': all_products,
+            'on_profile_page': True,
+            'vendor_sales': vendor_sales,
+            "favorite_list": favorite_list,
+        }
+
+        return render(request, template, context)
     else:
-        form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
-
-    """ Products context to display the list of vendor products """
-    try:
-        products = Product.objects.filter(created_by=request.user)
-    except Exception as e:
-        messages.error(request, "No vendor proucts found.")
-        products = None
-
-    """ Vendor context create list of vendor sales """
-    try:
-        vendor_sales = OrderLineItem.objects.filter(
-                            vendor__username=request.user.username)
-    except Exception as e:
-        messages.error(request, "No vendor sales found.")
-        vendor_sales = None
-
-    favorite_list = []
-    """ Filter products for items associated with the authenticated user """
-    favorite_list = Product.objects.exclude(
-                        favorites=None).filter(
-                            favorites__username=request.user)
-
-    all_products = Product.objects.all()
-
-    template = 'profiles/profile.html'
-    context = {
-        'profile': profile,
-        'form': form,
-        'orders': orders,
-        'products': products,
-        'all_products': all_products,
-        'on_profile_page': True,
-        'vendor_sales': vendor_sales,
-        "favorite_list": favorite_list,
-    }
-
-    return render(request, template, context)
+        messages.info(request, 'Please log in to add items to favorites.')
+        return redirect('account_login')
 
 
 def order_history(request, order_number):
@@ -122,7 +128,7 @@ def add_remove_favorite(request, product_id):
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
     else:
-        messages.warning(request, 'Please log in to add items to favorites.')
+        messages.info(request, 'Please log in to add items to favorites.')
         return redirect('account_login')
 
 # Example https://github.com/veryacademy/YT-Django-Simple-Blog-

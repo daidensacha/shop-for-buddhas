@@ -37,15 +37,8 @@ class Post(models.Model):
     image = models.ImageField()
     title = models.CharField(max_length=150)
     slug = models.CharField(max_length=150)
-    description = models.TextField(
-                    max_length=200,
-                    blank=True,
-                    null=True
-                    )
-    body = models.TextField(
-                    blank=True,
-                    null=True
-                    )
+    description = models.TextField(max_length=200, blank=True, null=True)
+    body = models.TextField(blank=True, null=True)
     status = models.CharField(max_length=15, choices=STATUS)
     featured = models.BooleanField(default=False)
     posted_at = models.DateField(auto_now_add=False, null=True)
