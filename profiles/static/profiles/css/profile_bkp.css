@@ -16,9 +16,7 @@
 
 #profile-update-form p {
   margin-top: 1.5rem;
-  /* mt-4 */
-  color: #6c757d;
-  /* text-secondary */
+  color: #6c757d; /* text-secondary */
 }
 
 #profile-update-form label:not([for='id_remember']) {
@@ -34,7 +32,7 @@
   color: #aab7c4;
 }
 
-/* Delete modal */
+/* Delete modal styling */
 .btn-outline-danger:hover {
   color: #fff !important;
   background-color: #ff6f61;

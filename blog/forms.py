@@ -12,9 +12,7 @@ class CommentForm(forms.ModelForm):
         fields = ['name', 'body']
 
     def __init__(self, *args, **kwargs):
-        """
-        Add placeholders and classes
-        """
+        # add placeholders and classes
         super().__init__(*args, **kwargs)
         placeholders = {
             'name': 'Name',

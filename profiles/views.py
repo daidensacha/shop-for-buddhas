@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, \
                              HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models import F
 
 from .models import UserProfile
 # from .models import UserProfile, Favorite
@@ -47,11 +48,14 @@ def profile(request):
             vendor_sales = None
 
         favorite_list = []
-        """ Filter products for items associated with the authenticated user """
-        favorite_list = Product.objects.exclude(
-                            favorites=None).filter(
-                                favorites__username=request.user)
-
+        """Filter products for items associated with the authenticated user"""
+        # favorite_list = Product.objects.exclude(
+        #                     favorites=None).filter(
+        #                         favorites__username=request.user).order_by(
+        #                             '-name')
+        favorite_list = Product.objects.filter(
+                                favorites__username=request.user).order_by(
+                                    'category', 'name')
         all_products = Product.objects.all()
 
         template = 'profiles/profile.html'
@@ -120,11 +124,11 @@ def add_remove_favorite(request, product_id):
         # I in users favorite list delete it from the list
         if product.favorites.filter(id=request.user.id).exists():
             product.favorites.remove(request.user)
-            messages.info(request, f'Removed {product.name} from favorites.')
+            messages.success(request, f'Removed {product.name} from favorites.')
         else:
             # Add the item to the users favorites list
             product.favorites.add(request.user)
-            messages.info(request, f'Added {product.name} to favorites.')
+            messages.success(request, f'Added {product.name} to favorites.')
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
     else:

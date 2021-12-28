@@ -27,7 +27,7 @@ class ProductAdmin(admin.ModelAdmin):
         'price',
     )
     list_filter = ('created_by', 'category',)
-    ordering = ('created_by', 'category', 'sku',)
+    ordering = ('created_by', 'category', 'name',)
     search_fields = ('name',)
 
 

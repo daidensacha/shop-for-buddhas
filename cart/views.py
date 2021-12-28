@@ -25,10 +25,11 @@ def add_to_cart(request, item_id):
         cart[item_id] += quantity
         messages.success(
             request, f'Updated {product.name}' +
-            f' quantity to {cart[item_id]}')
+            f' quantity to {cart[item_id]}', extra_tags='is_cart')
     else:
         cart[item_id] = quantity
-        messages.success(request, f'Added {product.name} to your cart')
+        messages.success(request, f'Added {product.name} to your cart',
+                         extra_tags='is_cart')
 
     request.session['cart'] = cart
     return redirect(redirect_url)
@@ -45,10 +46,11 @@ def adjust_cart(request, item_id):
         cart[item_id] = quantity
         messages.success(
             request, f'Updated {product.name} ' +
-            f'quantity to {cart[item_id]}')
+            f'quantity to {cart[item_id]}', extra_tags='is_cart')
     else:
         cart.pop(item_id)
-        messages.success(request, f'Removed {product.name} from your cart')
+        messages.success(request, f'Removed {product.name} from your cart',
+                         extra_tags='is_cart')
 
     request.session['cart'] = cart
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
@@ -63,7 +65,8 @@ def remove_from_cart(request, item_id):
         cart = request.session.get('cart', {})
 
         cart.pop(item_id)
-        messages.success(request, f'Removed {product.name} from your cart')
+        messages.success(request, f'Removed {product.name} from your cart',
+                         extra_tags='is_cart')
 
         request.session['cart'] = cart
         return HttpResponse(status=200)

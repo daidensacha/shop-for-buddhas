@@ -490,7 +490,13 @@
 					{% elif level == 30 %}
 						{% include 'includes/toasts/toast_warning.html' %}
 					{% elif level == 25 %}
-						{% include 'includes/toasts/toast_success_cart1.html' %}
+						{% if "is_cart" in message.extra_tags %}
+							<!-- success cart toast messages -->
+							{% include 'includes/toasts/toast_success_cart.html' %}
+						{% else %}
+							<!-- success toast messages -->
+							{% include 'includes/toasts/toast_success.html' %}
+						{% endif %}
 					{% else %}
 						{% include 'includes/toasts/toast_info.html' %}
 					{% endif %}
