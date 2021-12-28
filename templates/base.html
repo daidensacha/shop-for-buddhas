@@ -482,7 +482,7 @@
 	<!-- header container to push body below fixed navbar -->
 	<div class="container header-container bg-white" id="header-spacer"></div>
 	{% if messages %}
-		<div class="message-container" >
+		<div class="message-container">
 			{% for message in messages %}
 				{% with message.level as level %}
 					{% if level == 40 %}
@@ -490,7 +490,7 @@
 					{% elif level == 30 %}
 						{% include 'includes/toasts/toast_warning.html' %}
 					{% elif level == 25 %}
-						{% include 'includes/toasts/toast_success_cart1.html' %}
+						{% include 'includes/toasts/toast_success.html' %}
 					{% else %}
 						{% include 'includes/toasts/toast_info.html' %}
 					{% endif %}
