@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, \
                              HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import F
+# from django.db.models import F
 
 from .models import UserProfile
 # from .models import UserProfile, Favorite
@@ -27,7 +27,8 @@ def profile(request):
                 messages.success(request, 'Profile updated successfully')
             else:
                 messages.error(request,
-                            'Update failed. Please ensure the form is valid.')
+                               'Update failed. Please ensure \
+                                   the form is valid.')
         else:
             form = UserProfileForm(instance=profile)
         orders = profile.orders.all()
@@ -49,13 +50,14 @@ def profile(request):
 
         favorite_list = []
         """Filter products for items associated with the authenticated user"""
-        # favorite_list = Product.objects.exclude(
-        #                     favorites=None).filter(
-        #                         favorites__username=request.user).order_by(
-        #                             '-name')
-        favorite_list = Product.objects.filter(
+        # Bug with displaying the list
+        favorite_list = Product.objects.exclude(
+                            favorites=None).filter(
                                 favorites__username=request.user).order_by(
                                     'category', 'name')
+        # favorite_list = Product.objects.filter(
+        #                         favorites__username=request.user).order_by(
+        #                             'category', 'name')
         all_products = Product.objects.all()
 
         template = 'profiles/profile.html'
