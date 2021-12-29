@@ -37,7 +37,6 @@ class ModelTests(TestCase):
         return UserProfile.objects.get(user=test_user)
 
     def test_userprofile_str_return(self):
-        # user = UserProfile.objects.all()
         profile = self.test_userprofile()
 
         self.assertEqual(str(profile), 'first_last_username')

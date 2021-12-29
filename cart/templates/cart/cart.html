@@ -64,19 +64,10 @@
                                         <div class="product-detail-actions d-flex flex-wrap pt-3">
 
                                             <div class="cart-qty me-3 mb-3">
-                                                <!-- <div class="dec decrement-qty qty-btn" 
-                                                        data-item_id="{{ product.id }}" 
-                                                    id="decrement-qty_{{ product.id }}">&minus;</div> -->
+
                                                     <div class="dec decrement-qty qty-btn" 
                                                         data-item_id="{{ product.id }}">&minus;</div>
-                                                <!-- <input class="cart-qty-input form-control" 
-                                                        type="number" 
-                                                        name="quantity" 
-                                                        value="{{ item.quantity }}" 
-                                                        min="1" 
-                                                        max="99"
-                                                        data-item_id="{{ product.id }}" 
-                                                        id="id_qty_{{ product.id }}"> -->
+
                                                         <input class="cart-qty-input form-control" 
                                                         type="number" 
                                                         name="quantity" 
@@ -85,9 +76,6 @@
                                                         max="99"
                                                         data-item_id="{{ product.id }}">
                                                 
-                                                <!-- <div class="inc increment-qty qty-btn"  
-                                                        data-item_id="{{ product.id }}" 
-                                                        id="increment-qty_{{ product.id }}">&plus;</div> -->
                                                         <div class="inc increment-qty qty-btn"  
                                                         data-item_id="{{ product.id }}">&plus;</div>
                                             </div>
@@ -97,11 +85,6 @@
                                                         <i class="fas fa-sync-alt"></i>
                                                     </span>
                                                     <!-- HERE CLASS REMOVE ITEM -->
-                                                    <!-- <span class="input-group-text btn btn-outline-danger remove-item me-3"
-                                                        id="remove_{{ item.item_id }}"
-                                                        data-product-id="{{ item.product.id }}">
-                                                        <i class="far fa-trash-alt"></i>
-                                                    </span> -->
                                                     <span class="input-group-text btn btn-outline-danger remove-item me-3"
                                                     id="remove_{{ item.item_id }}"
                                                     data-product-id="{{ item.product.id }}">
@@ -163,19 +146,9 @@
                                             {% csrf_token %}
                                             <div class="cart-qty d-inline-flex">
 
-                                                <!-- <div class="dec qty-btn"
-                                                    data-item_id="id_{{ item.item.id }}" id="decrement-qty_{{ item.item_id }}">&minus;</div> -->
                                                     <div class="dec qty-btn"
                                                     data-item_id="id_{{ item.item.id }}">&minus;</div>
 
-                                                <!-- <input class="cart-qty-input form-control" 
-                                                    type="number" 
-                                                    name="quantity" 
-                                                    min="1" 
-                                                    max="99" 
-                                                    value="{{ item.quantity }}"
-                                                    data-item_id="{{ item.item_id }}"
-                                                    id="id_qty_{{ item.item_id }}"> -->
                                                     <input class="cart-qty-input form-control" 
                                                     type="number" 
                                                     name="quantity" 
@@ -184,8 +157,6 @@
                                                     value="{{ item.quantity }}"
                                                     data-item_id="{{ item.item_id }}">
 
-                                                <!-- <div class="inc qty-btn"
-                                                    data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">&plus;</div> -->
                                                     <div class="inc qty-btn"
                                                     data-item_id="{{ item.item_id }}">&plus;</div>
 
@@ -200,13 +171,7 @@
                                                         tabindex="0">
                                                         <i class="fas fa-sync-alt"></i>
                                                     </span>
-                                                    <!--  HERE IS THE CLASS remove-item -->
-                                                    <!-- <span class="input-group-text btn btn-outline-danger remove-item me-3"
-                                                        id="remove_{{ item.item_id }}"
-                                                        data-product-id="{{ item.product.id }}" 
-                                                        tabindex="0">
-                                                    <i class="far fa-trash-alt"></i>
-                                                    </span> -->
+                                                    <!--  js target class remove-item -->
                                                     <span class="input-group-text btn btn-outline-danger remove-item me-3"
                                                     data-product-id="{{ item.product.id }}" 
                                                     tabindex="0">
@@ -216,14 +181,12 @@
                                         </form>
                                        
                                         <!-- END FORM -->
-                                      
                                     </td>
 
                                     <!-- FORM SUBTOTAL -->
                                     <td class="text-end product-subtotal">${{ item.product.price | calc_subtotal:item.quantity  }}</td>
                                 
                             </tr>
-                            <!-- <hr> -->
                             {% endfor %}
                         
                         </tbody>
@@ -282,10 +245,12 @@
                                 <h6 class="m-0">Use Coupon Code</h6>
                             </div>
                             <div class="card-body ">
-                                <form>
+                                <form method="POST" action="{% url 'coupon' %}">
+                                    {% csrf_token %}
                                     <div class="form-group mb-3">
                                         <label class="form-label">Have a Coupon Code?</label>
-                                        <input type="email" class="form-control" placeholder="">
+                                        <input type="text" class="form-control" placeholder="">
+                                        <input type="hidden" name="redirect" value="{{ request.path }}">
                                     </div>
                                     <button class="btn btn-primary">Apply</button>
                                 </form>
@@ -293,7 +258,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 {% else %}
 

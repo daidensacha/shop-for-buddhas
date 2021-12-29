@@ -13,7 +13,7 @@ from .forms import TestimonialForm
 def testimonial_view(request):
     """Create form view, and post data"""
     form = TestimonialForm()
-    if request.method == "POST":
+    if request.method == 'POST':
         form = TestimonialForm(request.POST, request.FILES)
         if form.is_valid():
             form_1 = form.save(commit=False)

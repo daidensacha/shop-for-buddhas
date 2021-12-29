@@ -29,8 +29,7 @@
             <div class="col-lg-8">
                 <div class="custom-form mt-4 pt-4">
                     <form class="needs-validation" novalidate method="POST" action="{% url 'contact' %}" id="contact_form" enctype="multipart/form-data" >
-                        <!-- <div class="form-group"> -->
-                            
+
                             {% if form.errors %}
                                 {% for field in form %}
                                     {% for error in field.errors %}
@@ -119,7 +118,6 @@
                                     
                                 </div>
                             </div>
-                        <!-- </div> -->
                     </form>
                 </div>
             </div>

@@ -1,11 +1,11 @@
 from django import forms
-from .models import Contact
+from profiles.models import Contact
 
 
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
-        fields = ('first_name', 'last_name', 'subject', 'email', 'message')
+        fields = ('first_name', 'last_name', 'subject', 'sender', 'message')
 
     def __init__(self, *args, **kwargs):
         """
@@ -16,10 +16,10 @@ class ContactForm(forms.ModelForm):
             'first_name': 'First Name',
             'last_name': 'First Name',
             'subject': 'Subject',
-            'email': 'Email',
+            'sender': 'Email',
             'message': 'Message',
         }
-        self.fields['name'].widget.attrs['autofocus'] = False
+        # self.fields['name'].widget.attrs['autofocus'] = False
         for field in self.fields:
 
             placeholder = placeholders[field]

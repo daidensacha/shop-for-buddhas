@@ -73,9 +73,6 @@
                                         <div class="single-post">
                                             <div class="post-thumb">
                                                 <a href="{% url 'post_detail' post.slug %}"><img src="{{ post.image.url }}" alt=""></a>
-                                                <!-- <a href="blog-details-left-sidebar.html">
-                                                    <img src="assets/images/blog/blog-01.jpg" alt="">
-                                                </a> -->
                                             </div>
                                             <div class="post-content">
                                                 <h6 class="post-title"><a href="{% url 'post_detail' post.slug %}"> {{ post.title }} </a></h6>
@@ -95,8 +92,6 @@
 
                                 <!-- Widget Category Start -->
                                 <div class="widget-link">
-
-                                    <!-- {{ all_posts }} -->
                         
                                     {% regroup all_posts by posted_at.year as year_list %}
 
@@ -147,7 +142,6 @@
             </div>
         </div>
         <!-- Blog Section End -->
-
     </div>
 
 {% endblock %}

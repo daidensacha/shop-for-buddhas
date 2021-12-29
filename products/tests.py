@@ -25,7 +25,7 @@ class ModelTests(TestCase):
 
     def test_get_friendly_name(self):
         category = self.test_Category()
-        self.assertEqual(str(category.friendly_name), 'testCat')
+        self.assertEqual(str(category.get_friendly_name()), 'testCat')
 
     def test_Product(self):
         length = len(Product.objects.all())

@@ -67,7 +67,7 @@ def profile(request):
             'all_products': all_products,
             'on_profile_page': True,
             'vendor_sales': vendor_sales,
-            "favorite_list": favorite_list,
+            'favorite_list': favorite_list,
         }
 
         return render(request, template, context)
@@ -124,7 +124,8 @@ def add_remove_favorite(request, product_id):
         # I in users favorite list delete it from the list
         if product.favorites.filter(id=request.user.id).exists():
             product.favorites.remove(request.user)
-            messages.success(request, f'Removed {product.name} from favorites.')
+            messages.success(
+                request, f'Removed {product.name} from favorites.')
         else:
             # Add the item to the users favorites list
             product.favorites.add(request.user)

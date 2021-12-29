@@ -74,3 +74,12 @@ def remove_from_cart(request, item_id):
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
+
+
+def coupon(request):
+    """Return an error message for the coupon"""
+    # This returns error for now untill functionality is added
+    if request.method == 'POST':
+        messages.warning(request, 'The coupon you entered is not valid!')
+        path = request.POST['redirect']
+        return redirect(path)

@@ -2,9 +2,8 @@ from accounts.models import UserModel
 from profiles.models import UserProfile
 from products.models import Category, Product
 from .models import Order, OrderLineItem
-
+from products.tests import ModelTests
 from django.test import TestCase
-# from django.utils import timezone
 
 import pytest
 import tempfile
@@ -13,7 +12,17 @@ MEDIA_ROOT = tempfile.mkdtemp()
 pytestmark = pytest.mark.django_db(transaction=True)
 
 
-class ModelTests(TestCase):
+class test_ModelTests(TestCase):
+    def test_user_return(self):
+        testuser = UserModel.objects.create(
+            first_name='first_user',
+            last_name='last_user',
+            username='first_last_username',
+            email='firstlast@gmail.com',
+            user_type='is_customer'
+            )
+        return testuser
+
     def test_Order(self):
         length = len(Order.objects.all())
         assert length == 0
@@ -27,7 +36,6 @@ class ModelTests(TestCase):
             )
         profile = UserProfile.objects.get(user=test_user)
         order = Order.objects.create(
-
             user_profile=profile,
             full_name='testname',
             email='test@gmail.com',
@@ -57,5 +65,28 @@ class ModelTests(TestCase):
 
     def test_order_str_return(self):
         order = self.test_Order()
-
         self.assertEqual(str(order), order.order_number)
+
+    def test_OrderLineItem(self):
+        length = len(OrderLineItem.objects.all())
+        assert length == 0
+        order = self.test_Order()
+        test_user = UserModel.objects.create(
+            first_name='first_user25',
+            last_name='last_user25',
+            username='first_last_username25',
+            email='firstlast25@gmail.com',
+            user_type='is_customer'
+            )
+        category = Category.objects.create(
+            name='testCategory', friendly_name='testCat')
+        product = Product.objects.create(
+            category=category, sku='25036', name='testProduct',
+            price=25.00, description='testDdescription', rating='5',
+            created_by=test_user
+        )
+        order_line_item = OrderLineItem.objects.create(
+            order=order, vendor=test_user, product=product, quantity=15,)
+
+        length = len(OrderLineItem.objects.all())
+        assert length == 1
