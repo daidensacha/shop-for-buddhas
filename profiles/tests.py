@@ -1,6 +1,7 @@
 from .models import UserProfile, Contact
 from accounts.models import UserModel
 from django.test import TestCase
+from django.urls import reverse
 
 import pytest
 import tempfile
@@ -58,3 +59,10 @@ class ModelTests(TestCase):
     def test_contact_str_return(self):
         contact = self.test_contact()
         self.assertEqual(str(contact), 'firstNamelastName')
+
+
+# class ViewsTests(TestCase):
+#     def test_profile(self):
+#         url = reverse('profile')
+#         response = self.client.get(url)
+#         self.assertEqual(response.status_code, 200)

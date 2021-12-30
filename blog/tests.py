@@ -1,6 +1,7 @@
 from blog.models import Post, Category, Comment
 from accounts.models import UserModel
 from django.test import TestCase
+from django.urls import reverse
 from django.utils import timezone
 from datetime import datetime
 from mixer.backend.django import mixer
@@ -87,3 +88,20 @@ class ModelTests(TestCase):
         comment = Comment.objects.create(
             post=post, name='good test', body='test body')
         self.assertEqual(str(comment), 'good test')
+
+
+class ViewsTests(TestCase):
+    def test_blog_posts_view(self):
+        url = reverse('blog_posts')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    # def test_blog_search_view(self):
+    #     url = reverse('blog_search')
+    #     response = self.client.get(url)
+    #     self.assertEqual(response.status_code, 200)
+
+    def test_post_detail_view(self):
+        url = reverse('post_detail')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
