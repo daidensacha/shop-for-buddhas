@@ -57,54 +57,38 @@
 
                         <!-- Product Box -->
                         {% for product in products %}
-                        <!-- {{ product.favorites }} -->
-                        <div class="col-sm-6 col-lg-3 my-3">
-                            <div class="product-card-3 h-100">
-                                <div class="product-card-image">
-                                    <div class="badge-ribbon">
+                            <div class="col-sm-6 col-lg-3 my-3">
+                                <div class="product-card-3 h-100">
+                                    <div class="product-card-image">
+                                        <div class="badge-ribbon">
 
-                                    </div>
-                                    <!-- Quick add to cart button from product page -->
-                                    
-                                    <div class="favorite">
-                                        <!-- Add-Remove Favorite Icon -->
-                                        <!-- {{ favorite_list}} -->
-                                            <!-- {{ product.favorites }} -->
-                                            <!--   {% for favorite in favorite_list %} -->
-                                        <!-- <div class="btn btn-outline-dark"> -->
-                                            <!-- <div style="width:35px;height:35px;"> -->
+                                        </div>
+                                        <!-- Quick add to cart button from product page -->
+                                        
+                                        <div class="favorite">
+                                            <!-- Add-Remove Favorite Icon -->
                                             {% if product not in favorite_list %}
                                                 <i class="bi bi-heart text-primary favorites"></i>
-                                                <!-- <i class="far fa-heart fa text-danger favorites"></i> -->
                                             {% endif %}
                                             {% for favorite in favorite_list %}
                                                 {% if favorite == product %}
-                                                    <!-- <i class="fas fa-heart fa text-danger favorites"></i> -->
                                                         <i class="bi bi-heart-fill text-danger favorites"></i>
                                                 {% endif %}
-
                                             {% endfor %}
-                                        <!-- </div> -->
-                                        <!-- </div> -->
-                                        <!-- {% endfor %} -->
-                                    </div>
-                                    <form class="form update-form" data-form="{{ item.item_id }}" method="POST" action="{% url 'add_to_cart' product.id %}">
-                                        {% csrf_token %}
-                                        <div class="product-action">
-                                         
+                                        </div>
+                                        <form class="form update-form" data-form="{{ item.item_id }}" method="POST" action="{% url 'add_to_cart' product.id %}">
+                                            {% csrf_token %}
+                                            <div class="product-action">
+                                            
                                                 <a href="{% url 'add_remove_favorite'  product.id %}" class="btn btn-outline-primary">
-                                            {% if product not in favorite_list %}
-                                                <i class="bi bi-heart"></i>
-                                                <!-- <i class="far fa-heart fa text-danger favorites"></i> -->
-                                            {% endif %}
-                                            {% for favorite in favorite_list %}
-                                                {% if favorite == product %}
-                                                    <!-- <i class="fas fa-heart fa text-danger favorites"></i> -->
-                                                        <i class="bi bi-heart-fill text-danger"></i>
-                                                {% endif %}
-
-                                            {% endfor %}
-                                                    <!-- <i class="bi bi-heart"></i> -->
+                                                    {% if product not in favorite_list %}
+                                                        <i class="bi bi-heart"></i>
+                                                    {% endif %}
+                                                    {% for favorite in favorite_list %}
+                                                        {% if favorite == product %}
+                                                                <i class="bi bi-heart-fill text-danger"></i>
+                                                        {% endif %}
+                                                    {% endfor %}
                                                 </a> 
                                                 {% if product.image %}
                                                     <a href="{{ product.image.url }}" data-toggle="lightbox" class="btn btn-outline-dark">
@@ -120,108 +104,79 @@
                                                     <i class="bi bi-cart"></i>
                                                 </span>
 
-                                                <!-- <input class="cart-qty-input form-control" 
-                                                    type="hidden" 
-                                                    name="quantity" 
-                                                    value="1" 
-                                                    data-item_id="{{ product.id }}" 
-                                                    id="id_qty_{{ product.id }}"> -->
-                                                    <input class="cart-qty-input form-control" 
-                                                    type="hidden" 
-                                                    name="quantity" 
-                                                    value="1" 
-                                                    data-item_id="{{ product.id }}">
+                                                <input class="cart-qty-input form-control" 
+                                                type="hidden" 
+                                                name="quantity" 
+                                                value="1" 
+                                                data-item_id="{{ product.id }}">
                                             
                                                 <input type="hidden" 
                                                     name="redirect_url" 
                                                     value="{{ request.path }}">
-                                                 
+                                            </div>
+                                        </form>
+                                        <div class="product-media h-100">
+                                            {% if product.image %}
+                                                <a href="{% url 'product_detail' product.id %}">
+                                                    <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" title="">
+                                                </a>
+                                            {% else %}
+                                                <a href="{% url 'product_detail' product.id %}">
+                                                    <img class="img-fluid" src="{{ MEDIA_URL }} noimage.png" alt="{{ product.name }}"  title="">
+                                                </a>
+                                            {% endif %}
                                         </div>
-                                    </form>
-                                    <div class="product-media h-100">
-                                        {% if product.image %}
-                                            <a href="{% url 'product_detail' product.id %}">
-                                                <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" title="">
-                                            </a>
+                                    </div>
+                                    <div class="product-card-info">
+                                        <h6 class="product-title">
+                                            <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
+                                        </h6>
+                                        {% if product.rating %}
+                                            <div class="rating-star text my-2">
+                                                {% for star in stars %}
+                                                {% if star < product.rating|add:"1" %}
+                                                    <span class="text-warning"><i class="fas fa-star"></i></span>
+                                                {% endif %}
+                                                {% if star > product.rating|add:"0"%}
+                                                    <span class="text-warning"><i class="far fa-star"></i></span>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </div>
                                         {% else %}
-                                            <a href="{% url 'product_detail' product.id %}">
-                                                <img class="img-fluid" src="{{ MEDIA_URL }} noimage.png" alt="{{ product.name }}"  title="">
-                                            </a>
+                                            <small class="text-muted">No Rating</small>
                                         {% endif %}
-
-                                        <!-- <div class="product-cart-btn">
-                                            <a href="#" class="btn btn-primary btn-sm w-100">
-                                                <i class="bi bi-cart"></i>
-                                                Add to cart
-                                            </a>
-                                        </div> -->
-                                    </div>
-                                </div>
-                                <div class="product-card-info">
-                                    
-                                
-                                    <h6 class="product-title">
-                                        <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
-                                    </h6>
-                                    {% if product.rating %}
-                                        <div class="rating-star text my-2">
-                                            {% for star in stars %}
-                                            {% if star < product.rating|add:"1" %}
-                                                <span class="text-warning"><i class="fas fa-star"></i></span>
+                                        <div class="product-meta category-tags small my-2">
+                                            {% if product.category %}
+                                                <a class="tag text-decoration-none" href="{% url 'products' %}?category={{ product.category.name }}">
+                                                    <i class="fas fa-tag"></i>
+                                                    <span class="p-2 mt-2 ">{{ product.category.friendly_name }}</span>
+                                                </a>
                                             {% endif %}
-                                            {% if star > product.rating|add:"0"%}
-                                                <span class="text-warning"><i class="far fa-star"></i></span>
-                                            {% endif %}
-                                            {% endfor %}
                                         </div>
-                                    {% else %}
-                                        <small class="text-muted">No Rating</small>
-                                    {% endif %}
-
-                                    <div class="product-meta category-tags small my-2">
-                                        {% if product.category %}
-                                            <a class="tag text-decoration-none" href="{% url 'products' %}?category={{ product.category.name }}">
-                                                <i class="fas fa-tag"></i>
-                                                <span class="p-2 mt-2 ">{{ product.category.friendly_name }}</span>
-                                            </a>
-                                        {% endif %}
+                                        <div class="product-price my-2">
+                                            <span class="text-primary">${{ product.price }}</span>
+                                        </div>
                                     </div>
-
-                                    <div class="product-price my-2">
-                                        <span class="text-primary">${{ product.price }}</span>
-                                    </div>
-
-                                   
-                                    
-                                    
-
-
-
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- End Product Box -->
-                        {% if forloop.counter|divisibleby:1 %}
-                            <div class="col-12 d-sm-none mb-5">
-                                <hr>
-                            </div>
-                        {% endif %}                        
-                        {% if forloop.counter|divisibleby:2 %}
-                            <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
-                                <hr>
-                            </div>
-                        {% endif %}
-                        {% if forloop.counter|divisibleby:4 %}
-                            <div class="col-12 d-none d-lg-block mb-5">
-                                <hr>
-                            </div>
-                        {% endif %}
-
+                            <!-- End Product Box -->
+                            {% if forloop.counter|divisibleby:1 %}
+                                <div class="col-12 d-sm-none mb-5">
+                                    <hr>
+                                </div>
+                            {% endif %}                        
+                            {% if forloop.counter|divisibleby:2 %}
+                                <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
+                                    <hr>
+                                </div>
+                            {% endif %}
+                            {% if forloop.counter|divisibleby:4 %}
+                                <div class="col-12 d-none d-lg-block mb-5">
+                                    <hr>
+                                </div>
+                            {% endif %}
                         {% endfor %}
-
                     </div>
-                
                 </div>
             </div>
         </div>

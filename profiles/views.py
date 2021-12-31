@@ -50,14 +50,11 @@ def profile(request):
 
         favorite_list = []
         """Filter products for items associated with the authenticated user"""
-        # Bug with displaying the list
+        # Exclude items not selected. Order the list by category, name
         favorite_list = Product.objects.exclude(
                             favorites=None).filter(
                                 favorites__username=request.user).order_by(
                                     'category', 'name')
-        # favorite_list = Product.objects.filter(
-        #                         favorites__username=request.user).order_by(
-        #                             'category', 'name')
         all_products = Product.objects.all()
 
         template = 'profiles/profile.html'

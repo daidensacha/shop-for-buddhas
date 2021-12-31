@@ -8,82 +8,79 @@ aria-labelledby="pills-favorites-tab">
 <h3>My Favorites</h3>
 
 <!-- Start Favorite Product View -->
-<div class="row">
-    <!-- Product Box -->
+    <div class="row">
+        <!-- Product Box -->
+       
+        {% for favorite in favorite_list %}
 
-    {% for product in all_products %}
-    {% for favorite in favorite_list %}
-    {% if favorite == product %} 
+            <div class="col-sm-6 col-lg-3 my-3">
+                <div class="product-card-3 h-100">
+                    <div class="product-card-image">
+                        <div class="product-media h-100">
+                            {% if favorite.image %}
+                            <a href="{% url 'product_detail' favorite.id %}">
+                                <img class="img-fluid" src="{{ favorite.image.url }}"
+                                    alt="{{ favorite.name }}" title="">
+                            </a>
+                            {% else %}
+                            <a href="{% url 'product_detail' favorite.id %}">
+                                <img class="img-fluid" src="/media/noimage.png" alt="{{ favorite.name }}"
+                                    title="">
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="product-card-info">
+                        <h6 class="product-title">
+                            <a href="{% url 'product_detail' favorite.id %}">{{ favorite.name }}</a>
+                        </h6>
 
-        <div class="col-sm-6 col-lg-3 my-3">
-            <div class="product-card-3 h-100">
-                <div class="product-card-image">
-                    <div class="product-media h-100">
-                        {% if product.image %}
-                        <a href="{% url 'product_detail' product.id %}">
-                            <img class="img-fluid" src="{{ product.image.url }}"
-                                alt="{{ product.name }}" title="">
-                        </a>
-                        {% else %}
-                        <a href="{% url 'product_detail' product.id %}">
-                            <img class="img-fluid" src="/media/noimage.png" alt="{{ product.name }}"
-                                title="">
-                        </a>
+                        <div class="product-meta category-tags small my-2">
+                            {% if favorite.category %}
+                            <a class="tag text-decoration-none"
+                                href="{% url 'products' %}?category={{ favorite.category.name }}">
+                                <!-- <i class="fas fa-tag"></i> -->
+                                <span class="p-2 mt-2 ">{{ favorite.category.friendly_name }}</span>
+                            </a>
+                            {% endif %}
+                        </div>
+
+                        <div class="product-price my-2">
+                            <span class="text-primary">${{ favorite.price }}</span>
+                            <!-- <del class="fs-sm text-muted">$38.<small>50</small></del> -->
+                        </div>
+                        {% if request.user %}
+                            <small class="ml-3 my-2">
+                                <a class="link-danger"
+                                    href="{% url 'add_remove_favorite' favorite.id %}" >Remove</a>
+                                    
+                            </small>
                         {% endif %}
+
                     </div>
                 </div>
-                <div class="product-card-info">
-                    <h6 class="product-title">
-                        <a href="#">{{ product.name }}</a>
-                    </h6>
-
-                    <div class="product-meta category-tags small my-2">
-                        {% if favorite.product.category %}
-                        <a class="tag text-decoration-none"
-                            href="{% url 'products' %}?category={{ product.category.name }}">
-                            <!-- <i class="fas fa-tag"></i> -->
-                            <span class="p-2 mt-2 ">{{ product.category.friendly_name }}</span>
-                        </a>
-                        {% endif %}
-                    </div>
-
-                    <div class="product-price my-2">
-                        <span class="text-primary">${{ product.price }}</span>
-                        <!-- <del class="fs-sm text-muted">$38.<small>50</small></del> -->
-                    </div>
-                    {% if request.user %}
-                        <small class="ml-3 my-2">
-                            <a class="text-danger"
-                                href="{% url 'add_remove_favorite' product.id %}" >Remove</a>
-                                
-                        </small>
-                    {% endif %}
-
+            </div>
+            <!-- End Product Box -->
+            {% if forloop.counter|divisibleby:1 %}
+                <div class="col-12 d-sm-none mb-5">
+                    <hr>
                 </div>
-            </div>
-        </div>
-        <!-- End Product Box -->
-        {% if forloop.counter|divisibleby:1 %}
-            <div class="col-12 d-sm-none mb-5">
-                <hr>
-            </div>
-        {% endif %}
-        {% if forloop.counter|divisibleby:2 %}
-            <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
-                <hr>
-            </div>
-        {% endif %}
-        {% if forloop.counter|divisibleby:4 %}
-            <div class="col-12 d-none d-lg-block mb-5">
-                <hr>
-            </div>
-        {% endif %}
+            {% endif %}
+            {% if forloop.counter|divisibleby:2 %}
+                <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
+                    <hr>
+                </div>
+            {% endif %}
+            {% if forloop.counter|divisibleby:4 %}
+                <div class="col-12 d-none d-lg-block mb-5">
+                    <hr>
+                </div>
+            {% endif %}
 
-    {% endif %}
-    {% endfor %}
-    {% endfor %}
 
-</div>
+        {% endfor %}
+
+    </div>
 <!-- End Favorite Product View -->
 </div>
 <!-- START FAVORITES TAB -->
