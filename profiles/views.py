@@ -47,7 +47,7 @@ def profile(request):
         except Exception as e:
             messages.error(request, "No vendor sales found.")
             vendor_sales = None
-
+        # Start with an empty favorites list
         favorite_list = []
         """Filter products for items associated with the authenticated user"""
         # Exclude items not selected. Order the list by category, name

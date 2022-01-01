@@ -210,15 +210,31 @@ I have multiple protections for the forms.
 
 ### HTML Validation
 HTML validated by W3C Markup Validation Service
-See Garden Almanac [W3C Markup Validation Result]()
+Source code from all pages was copied and added into the W3C validation, for the URL's as shown in the following image. 
+
+W3C Validion success for all pages: Document checking completed. No errors or warnings to show.  
+![](/documentation/images/validation_html.png)
 
 ### CSS Validation
 CSS validated by W3C CSS Validation Service
-See Garden Almanac [W3C CSS Validation Result]()
+CSS was copied and pasted into the W3C CSS Validador for all CSS files created by me.  
+
+**NOTE:**
+1. All CSS was put through the [Github autoprefixer](https://autoprefixer.github.io), to add backward complatibility for the 4 last browser releases. This adds webkit prefixes that are not recognised by the W3C CSS Validator, and this is a known issue. It raises warnings for such prefixes. 
+2. I have used a a Bootstrap theme and included the Boostrap CSS (see static/css/bootstrap_theme.css) in my site. Bootstrap run through the W3C Validation raises many warnings, that are not critical and autoprefixing this CSS also increases the validation warnings. 
+3. No errors have been raised for any of my CSS.  
+
+![](/documentation/images/validation_css.png)
 
 ### JS Validation
-JS was validated using [JS Hint](https://jshint.com/), and no errors were noted in main.js.
+JS was validated using [JS Hint](https://jshint.com/), and no errors were noted.
+
+![](/documentation/images/validation_js.png)
+
 
 ### Python Validation
-Python is PEP8 compliant, and shows one error in `app.py`. `env' imported but unused flake8(F401) [13,5]`. The error as described is not actually an error as `env.py` is used to import and protect sensitive data.
+All Python files where copied and pasted into the [PEP8 online](http://pep8online.com) Python validator. 
+Python is PEP8 compliant, and shows one error in `settings.py`. `env' imported but unused flake8(F401) [18,5]`. The error as described is not actually an error as `env.py` is used to import protected sensitive data.
+
+![](/documentation/images/validation_python.png)
 	
