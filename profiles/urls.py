@@ -12,4 +12,5 @@ urlpatterns = [
          name='vendor_order_history'),
     path('add_remove_favorite/<int:product_id>/', views.add_remove_favorite,
          name='add_remove_favorite'),
+    path("disable", views.disable_account, name = "disable"),
 ]

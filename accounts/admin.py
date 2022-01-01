@@ -5,15 +5,12 @@ accounts app in the admin panel.
 """
 
 from django.contrib import admin
-# from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group
 # from django.contrib.sites.models import Site
 from allauth.socialaccount.models import SocialApp, SocialAccount, SocialToken
 from .models import UserModel
 
-# Register your models here.
-
-# admin.site.register(UserModel)
-# admin.site.unregister(Group)
+admin.site.unregister(Group)
 # admin.site.register(Group)
 # admin.site.unregister(Site)
 admin.site.unregister(SocialApp)
@@ -34,7 +31,8 @@ class UserModelAdmin(admin.ModelAdmin):
         'date_joined',
         ('is_active', 'is_superuser')
         )
-    list_display = ('username', 'email', 'user_type', 'date_joined')
+    list_display = (
+        'username', 'email', 'user_type', 'date_joined', 'is_active')
     list_filter = ('user_type',)
     ordering = ('user_type', 'username',)
     search_fields = ('username', 'email', 'user_type')

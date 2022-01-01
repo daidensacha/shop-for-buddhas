@@ -1,6 +1,9 @@
 from django.contrib import admin
 from .models import Category, Post, Comment
+from taggit.admin import Tag
 
+
+admin.site.unregister(Tag)
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

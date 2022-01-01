@@ -779,8 +779,8 @@ At this point you have a working version of the site locally, without any data a
 
 2.  [**Very Academy**](https://www.youtube.com/channel/UC1mxuk7tuQT2D0qTMgKji3w) Throughout the project, while researching I came across youtube videos from Very Academy that were clear and informative.   
 	- Setup/ Custom admin
-	- Creating a blog
-	- In particular, I fould their input on using a ManyToManyField for adding favorites really helpful. I had to adapt it, and then create my own filters, but it opened a doorway that helped me to get it done.
+	- Creating a blog 
+	- [Creating a Bookmark/Favoutites Features](https://www.youtube.com/watch?v=H4QPHLmsZMU) I found their input on using a ManyToManyField for adding favorites really helpful. I had to adapt it, and then create my own filters, but it opened a doorway that helped me to get it done.
 
 3.  **Boostrap 5 Theme** Using and customising Boostrap 5 themes enabled me to focus more on creating the apps and the code for the site. I would like to acknowledge and thank the creators of the 2 themes that I used. 
 [Shopapp Bootstrap 5 Theme](http://pxdraft.com/wrap/shopapp/home/index.html#)

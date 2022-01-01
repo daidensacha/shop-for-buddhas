@@ -135,5 +135,14 @@ def add_remove_favorite(request, product_id):
         messages.info(request, 'Please log in to add items to favorites.')
         return redirect('account_login')
 
-# Example https://github.com/veryacademy/YT-Django-Simple-Blog-
-# # App-Part10-User-Favourties-Save/blob/master/accounts/views.py
+
+def disable_account(request):
+    """
+    Function to disable user account
+    """
+    user = request.user
+    user.is_active = False
+    user.save()
+    messages.success(request, f'The account for {user.first_name} \
+                               {user.last_name} has been closed.')
+    return redirect("account_logout")

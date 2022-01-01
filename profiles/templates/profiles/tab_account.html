@@ -19,7 +19,7 @@
             </form>
         </div>
         <div class="col-12 col-lg-6">
-            <p class="text-muted"><strong>Password and Email</strong></p>
+            <p class="text-muted"><strong>Account Management</strong></p>
             <div class="card border-0">
                 <p class="text-muted card-header">Manage your Password</p>
                 <div class="card-body">
@@ -31,6 +31,47 @@
                     <p>Add an email, remove an email, re-send email verification, or change your primary email.</p>
                     <a href="{% url 'account_email' %}">Manage Email</a>
                 </div>
+                <p class="text-muted card-header">Disable account</p>
+                <div class="card-body">
+                    <p>Clicking the following link will disbale and close your account.</p>
+                    <!-- <a class="link-danger" href="{% url 'disable' %}">Disable</a> -->
+                    <a class="link-danger" data-bs-toggle="modal" data-bs-target="#disable-account_{{ user.id }}" href="">Close Account</a>
+                    
+                </div>
+                 <!-- Warning Modal START -->
+        <div class="modal fade" id="disable-account_{{ user.id }}">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger">
+                        <div class="modal-title p-3">
+                            <h5 class="m-0 text-white">Your account will no longer be accessible</h5>
+                            <p class="m-0 text-white">Are you sure you want to close your account?</p>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="w-100 p-3">
+                                <div class="mb-3">
+                                    <p class="">The account 
+                                        for <mark class="text-danger">{{ user.first_name }} {{ user.last_name }}</mark> will be 
+                                        closed and you will no longer have access.</p>
+                                </div>
+                                <div class="row align-items-center">
+                                        <div class="d-flex gap-2">
+                                            <button class="btn btn-outline-dark col-6"
+                                                    data-bs-dismiss="modal" >Cancel</button>
+                                            <a class="btn btn-outline-danger col-6 text-danger"
+                                               href="{% url 'disable' %}">Close Account</a>
+                                        </div>
+                                        
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Warning Modal END -->
+                
             </div>
         </div>
     </div>
