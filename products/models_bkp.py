@@ -50,9 +50,5 @@ class Product(models.Model):
         settings.AUTH_USER_MODEL, related_name='favorite',
         default=None, blank=True)
 
-    @property
-    def user_type(self):
-        return "%s"%(self.created_by.user_type)
-
     def __str__(self):
         return self.name

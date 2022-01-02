@@ -2,8 +2,9 @@ from django.contrib import admin
 from .models import Category, Post, Comment
 from taggit.admin import Tag
 
-
+# Unregister Taggit from appearing in Admin apps
 admin.site.unregister(Tag)
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
