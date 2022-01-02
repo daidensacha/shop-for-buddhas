@@ -17,14 +17,17 @@ class ProductAdmin(admin.ModelAdmin):
         'rating',
         'image_url',
         'image',
+        # 'is_active',
         )
 
     list_display = (
-        'created_by',
+        'id',
         'sku',
         'name',
         'category',
         'price',
+        # 'is_active',
+        'created_by',
     )
     list_filter = ('created_by', 'category',)
     ordering = ('created_by', 'category', 'name',)

@@ -1,0 +1,900 @@
+[
+    {
+      "pk": 1,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5001340155",
+        "name": "Vajrasattva",
+        "description": "Finished with full gold paint. Hand carved intricate details in the finishing of the statue.",
+        "size": "25 cm",
+        "price": 620.00,
+        "category": 1,
+        "rating": 5,
+        "image_url": "",
+        "image": "BFG5002001.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 2,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5001600425",
+        "name": "Shakyamuni",
+        "description": "Finished with full gold paint.  Hand carved intricate details in the finishing of the statue.",
+        "size": "25 cm",
+        "price": 580.00,
+        "category": 1,
+        "rating": 5,
+        "image_url": "",
+        "image": "BFG5002002.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 3,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5001730010",
+        "name": "Black Zambhala",
+        "description": "Finished with full gold paint.",
+        "size": "15 cm",
+        "price": 480.00,
+        "category": 1,
+        "rating": 5,
+        "image_url": "",
+        "image": "BFG5002003.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 4,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5001890157",
+        "name": "Manjushri",
+        "description": "Half painted with gold paint. Inset turquoise in the statue ornaments.",
+        "size": "25 cm",
+        "price": 580.00,
+        "category": 2,
+        "rating": 5,
+        "image_url": "",
+        "image": "BHG5002001.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 5,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002111605",
+        "name": "Shakyamuni",
+        "description": "Half painted with gold paint. Finished with fine hand carving of the clothing and lotus.",
+        "size": "45 cm",
+        "price": 1280.00,
+        "category": 2,
+        "rating": 5,
+        "image_url": "",
+        "image": "BHG5002002.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 6,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002260206",
+        "name": "Sitting Black Zambhala",
+        "description": "Half painted with gold paint. ",
+        "size": "12 cm",
+        "price": 380.00,
+        "category": 2,
+        "rating": 4,
+        "image_url": "",
+        "image": "BHG5002003.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 7,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002440521",
+        "name": "Mahakala Bernagchen",
+        "description": "Half painted with gold paint. The hand carving finish of the statue is intricate and supurb work.",
+        "size": "25 cm",
+        "price": 1100.00,
+        "category": 2,
+        "rating": 5,
+        "image_url": "",
+        "image": "BHG5002004.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 8,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002601115",
+        "name": "Vajrapani",
+        "description": "Half painted with gold paint. The hand work and final carving is very fine work.",
+        "size": "25 cm",
+        "price": 1080.00,
+        "category": 2,
+        "rating":5,
+        "image_url": "",
+        "image": "BHG5002005.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 9,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002690715",
+        "name": "Shakyamuni",
+        "description": "Oxidised finish. The hand carving and finish of the statue is fine and shows attention to detail.",
+        "size": "45 cm",
+        "price": 1100.00,
+        "category": 3,
+        "rating": 5,
+        "image_url": "",
+        "image": "BO5002001.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 10,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002701115",
+        "name": "Green Tara",
+        "description": "Oxidised finish. The hand carving, the details, and finish are very fine.",
+        "size": "32 cm",
+        "price": 980.00,
+        "category": 3,
+        "rating": 5,
+        "image_url": "",
+        "image": "BO5002002.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 11,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002761055",
+        "name": "Chenrezig",
+        "description": "Oxidised finish. The hand carving, the details, and finish are very fine.",
+        "size": "32 cm",
+        "price": 980.00,
+        "category": 3,
+        "rating":5,
+        "image_url": "",
+        "image": "BO5002003.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 12,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002820069",
+        "name": "Guru Rinpoche",
+        "description": "Oxidised finish. The hand carving in the details of the statue is supurb, very fine and intricate work. Zirconia stones inset into the jewelery of the statue.",
+        "size": "25 cm",
+        "price": 1280.00,
+        "category": 3,
+        "rating": 5,
+        "image_url": "",
+        "image": "BO5002004.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 13,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002820147",
+        "name": "Dhyani Buddha Ratnasambhava",
+        "description": "Oxidised finish. Hand made small statue.",
+        "size": "10 cm",
+        "price": 160.00,
+        "category": 3,
+        "rating": 3,
+        "image_url": "",
+        "image": "BO5002005.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 14,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002910572",
+        "name": "Dhyani Buddha Amitabha",
+        "description": "Oxidised finish. Hand made small statue.",
+        "size": "10 cm",
+        "price": 160.00,
+        "category": 3,
+        "rating": 3,
+        "image_url": "",
+        "image": "BO5002006.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 15,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002990740",
+        "name": "Dhyani Buddha Vairochana",
+        "description": "Oxidised finish. Hand made small statue.",
+        "size": "10 cm",
+        "price": 160.00,
+        "category": 3,
+        "rating": 3,
+        "image_url": "",
+        "image": "BO5002007.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 16,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003050248",
+        "name": "Dhyani Buddha Akshobhya",
+        "description": "Oxidised finish. Hand made small statue.",
+        "size": "10 cm",
+        "price": 160.00,
+        "category": 3,
+        "rating": 3,
+        "image_url": "",
+        "image": "BO5002008.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 17,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003070787",
+        "name": "Dhyani Buddha Amoghasiddhi",
+        "description": "Oxidised finish. Hand made small statue.",
+        "size": "10 cm",
+        "price": 160.00,
+        "category":3,
+        "rating": 3,
+        "image_url": "",
+        "image": "BO5002009.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 18,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003090182",
+        "name": "Five Dhyani Buddha Set",
+        "description": "Oxidised finish. Set of 5 hand made small statues.",
+        "size": "10 cm",
+        "price": 800.00,
+        "category": 3,
+        "rating": 3,
+        "image_url": "",
+        "image": "BO5002010.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 19,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003090186",
+        "name": "Amitabha Buddha",
+        "description": "Oxidised finish. Hand made, hand carved fine details in the finishing of the statue.",
+        "size": "45 cm",
+        "price": 1080.00,
+        "category": 3,
+        "rating": 5,
+        "image_url": "",
+        "image": "BO5002011.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 20,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003161326",
+        "name": "Amethyst Mala",
+        "description": "108 Amethyst crystal beads",
+        "size": "7 mm",
+        "price": 60.00,
+        "category": 5,
+        "rating": 4,
+        "image_url": "",
+        "image": "M108_91164.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 21,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003230723",
+        "name": "Amethyst Mala",
+        "description": "108 Amethyst crystal beads",
+        "size": "8 mm",
+        "price": 68.00,
+        "category": 5,
+        "rating": 5,
+        "image_url": "",
+        "image": "M108_91165.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 22,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003270936",
+        "name": "Amethyst Mala",
+        "description": "108 Amethyst crystal beads",
+        "size": "9 mm",
+        "price": 84.00,
+        "category": 5,
+        "rating": 4,
+        "image_url": "",
+        "image": "M108_91166.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 23,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003360384",
+        "name": "Clear Quartz Mala",
+        "description": "108 Clear Quartz beads",
+        "size": "7 mm",
+        "price": 52.00,
+        "category": 5,
+        "rating": 4,
+        "image_url": "",
+        "image": "M108_91168.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 24,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003440111",
+        "name": "Yellow Onyx Wrist Mala",
+        "description": "21 Yellow Onyx beads",
+        "size": "9 mm",
+        "price": 28.80,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91200.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 25,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003540313",
+        "name": "Green Onyx Wrist Mala",
+        "description": "21 Green Onyx beads.",
+        "size": "9 mm",
+        "price": 28.80,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91201.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 26,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003560513",
+        "name": "Black Onyx Wrist Mala",
+        "description": "21 Black Onyx beads",
+        "size": "7 mm",
+        "price": 28.80,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91202.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 27,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003560948",
+        "name": "Green Onyx Wrist Mala",
+        "description": "21 varying shades of Green Onyx Mala.",
+        "size": "9 mm",
+        "price": 28.80,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91203.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 28,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003570628",
+        "name": "Carnelian Wrist Mala",
+        "description": "21 Carnelian beads",
+        "size": "8 mm",
+        "price": 28.80,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91205.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 29,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003620308",
+        "name": "Brown Tiger Eye Wrist Mala",
+        "description": "21 Brown Tiger Eye beads.",
+        "size": "8 mm",
+        "price": 28.80,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91207.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 30,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003690115",
+        "name": "Yellow Tiget Eye Wrist Mala",
+        "description": "21 Yellow Tiger Eye beads",
+        "size": "8 mm",
+        "price": 28.80,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91208.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 31,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003690116",
+        "name": "Clear Quartz Wrist Mala",
+        "description": "21 Cear Quartz beads",
+        "size": "8 mm",
+        "price": 28.80,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91213.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 32,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003780391",
+        "name": "Purple Agate Wrist Mala",
+        "description": "21 Purple Agate beads.",
+        "size": "7.5 mm",
+        "price": 28.80,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91214.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 33,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003790542",
+        "name": "Light Agate Wrist Mala",
+        "description": "21 Light Agate beads.",
+        "size": "8.5 mm",
+        "price": 28.80,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91215.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 34,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003831225",
+        "name": "Dark Agate Wrist Mala",
+        "description": "21 Dark Agate beads",
+        "size": "8.5 mm",
+        "price": 28.80,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91216.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 35,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003861402",
+        "name": "Light Agate Wrist Mala",
+        "description": "21 Light Agate beads",
+        "size": "7 mm",
+        "price": 28.80,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91217.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 36,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003910638",
+        "name": "Dark Agate Wrist Mala",
+        "description": "21 Dark Agate Beads",
+        "size": "7 mm",
+        "price": 28.80,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91218.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 37,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003950574",
+        "name": "Smokey Quartz Wrist Mala",
+        "description": "21 Smokey Quartz beads.",
+        "size": "7 mm",
+        "price": 34.20,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91219.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 38,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003950576",
+        "name": "Labradorite Wrist Mala",
+        "description": "21 Labradorite beads",
+        "size": "7 mm",
+        "price": 52.80,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91221.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 39,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003960062",
+        "name": "Topaz Wrist Mala",
+        "description": "21 Topaz beads. (17gm)",
+        "size": "7 mm",
+        "price": 45.90,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91222.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 40,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003960682",
+        "name": "Turquoise Wrist Mala",
+        "description": "21 Turquoise beads",
+        "size": "8 mm",
+        "price": 187.20,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M21_91406.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 41,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003960775",
+        "name": "Carnelian Wrist Mala",
+        "description": "27 Carnelian beads",
+        "size": "8 mm",
+        "price": 28.80,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M27_91206.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 42,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003990736",
+        "name": "Topaz Wrist Mala",
+        "description": "27 Topaz beads. (20 gm)",
+        "size": "7 mm",
+        "price": 54.00,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M27_91223.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 43,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5003990746",
+        "name": "Brown Tiget Eye Wrist Mala",
+        "description": "27 Tiger Eye beads.",
+        "size": "8 mm",
+        "price": 30.40,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M27_91401.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 44,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5004111503",
+        "name": "Yellow Tiger Eye Wrist Mala",
+        "description": "27 Yellow Tiger Eye beads.",
+        "size": "8 mm",
+        "price": 30.40,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M27_91402.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 45,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5004230059",
+         "name": "Jade Wrist Mala",
+        "description": "27 Jade beads.",
+        "size": "8 mm",
+        "price": 30.40,
+        "category": 6,
+        "rating": 4,
+        "image_url": "",
+        "image": "M27_91403.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 46,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5004310089",
+        "name": "Sandlewood Mala",
+        "description": "Sandlewood with amethyst divider beads. 108 beads.",
+        "size": "8 mm",
+        "price": 22.60,
+        "category": 5,
+        "rating": 4,
+        "image_url": "",
+        "image": "M108_A91161.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 47,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5004610254",
+        "name": "Sandlewood Mala",
+        "description": "Sandlewood with carnelian divider beads. 108 beads.",
+        "size": "7 mm",
+        "price": 20.60,
+        "category": 5,
+        "rating": 4,
+        "image_url": "",
+        "image": "M108_CA91160.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 48,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5004650050",
+        "name": "Jacques Mort 2-pk. Short-Sleeve Leotard - Girls",
+        "name": "Sandlewood Mala",
+        "description": "Sandlewood with carnelian divider beads. 108 beads.",
+        "size": "8 mm",
+        "price": 22.60,
+        "category": 5,
+        "rating": 4,
+        "image_url": "",
+        "image": "M108_CA91161.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 49,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5004821375",
+        "name": "Sandlewood Mala",
+        "description": "Sandlewood with carnelian divider beads. 108 beads.",
+        "size": "9 mm",
+        "price": 28.60,
+        "category": 5,
+        "rating": 4,
+        "image_url": "",
+        "image": "M108_CA91162.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 50,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5004900522",
+        "name": "Sandlewood Mala",
+        "description": "Sandlewood with quartz divider beads. 108 beads.",
+        "size": "8 mm",
+        "price": 22.60,
+        "category": 5,
+        "rating": 4,
+        "image_url": "",
+        "image": "M108_CQ91161.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 51,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5004910158",
+        "name": "Sandlewood Mala",
+        "description": "Sandlewood with quartz divider beads. 108 beads.",
+        "size": "9 mm",
+        "price": 28.60,
+        "category": 5,
+        "rating": 4,
+        "image_url": "",
+        "image": "M108_CQ91162.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 52,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5004910477",
+        "name": "Sandlewood Mala",
+        "description": "Sandlewood with malachite divider beads. 108 beads.",
+        "size": "9 mm",
+        "price": 28.80,
+        "category": 5,
+        "rating": 4,
+        "image_url": "",
+        "image": "M108_MA91162.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 53,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5004940703",
+        "name": "Sandlewood Mala",
+        "description": "Sandlewood with milky quartz divider beads. 108 beads.",
+        "size": "7 mm",
+        "price": 20.60,
+        "category": 5,
+        "rating": 4,
+        "image_url": "",
+        "image": "M108_RQ91160.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 54,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5004991006",
+        "name": "Sandlewood Mala",
+        "description": "Sandlewood with milky quartz divider beads. 108 beads.",
+        "size": "8 mm",
+        "price": 22.80,
+        "category": 5,
+        "rating": 4,
+        "image_url": "",
+        "image": "M108_RQ91161.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 55,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5004991162",
+        "name": "Sandlewood Mala",
+        "description": "Sandlewood with dark tiger eye divider beads. 108 beads.",
+        "size": "7 mm",
+        "price": 20.60,
+        "category": 5,
+        "rating": 4,
+        "image_url": "",
+        "image": "M108_DTE91160.jpg",
+        "created_by": 1
+      }
+    },
+    {
+      "pk": 56,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5005000046",
+        "name": "Sandlewood Mala",
+        "description": "Sandlewood with dark tiger eye divider beads. 108 beads.",
+        "size": "9 mm",
+        "price": 28.80,
+        "category": 5,
+        "rating": 4,
+        "image_url": "",
+        "image": "M108_DTE91162.jpg",
+        "created_by": 1
+      }
+    }
+  ]
+  
