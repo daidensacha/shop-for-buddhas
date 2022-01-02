@@ -57,6 +57,7 @@
 
                         <!-- Product Box -->
                         {% for product in products %}
+                        {% if product.status == "published" %}
                             <div class="col-sm-6 col-lg-3 my-3">
                                 <div class="product-card-3 h-100">
                                     <div class="product-card-image">
@@ -95,7 +96,7 @@
                                                         <i class="bi bi-eye-fill"></i>
                                                     </a>
                                                 {% else %}
-                                                    <a href="{{ MEDIA_URL }} noimage.png" data-toggle="lightbox" class="btn btn-outline-dark">
+                                                    <a href="/media/noimage.png" data-toggle="lightbox" class="btn btn-outline-dark">
                                                         <i class="bi bi-eye-fill"></i>
                                                     </a>
                                                 {% endif %}
@@ -122,7 +123,7 @@
                                                 </a>
                                             {% else %}
                                                 <a href="{% url 'product_detail' product.id %}">
-                                                    <img class="img-fluid" src="{{ MEDIA_URL }} noimage.png" alt="{{ product.name }}"  title="">
+                                                    <img class="img-fluid" src="/media/noimage.png" alt="{{ product.name }}"  title="">
                                                 </a>
                                             {% endif %}
                                         </div>
@@ -175,6 +176,7 @@
                                     <hr>
                                 </div>
                             {% endif %}
+                        {% endif %}
                         {% endfor %}
                     </div>
                 </div>

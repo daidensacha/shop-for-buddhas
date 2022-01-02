@@ -9,6 +9,10 @@ product_rating = (('1', '1/5 stars'),
                   ('5', '5/5 stars')
                   )
 
+STATUS = (('unpublished', 'Unpublished'),
+          ('published', 'Published')
+          )
+
 
 class Category(models.Model):
     """ Model for the shop product categories """
@@ -41,6 +45,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     rating = models.CharField(
                 max_length=30, choices=product_rating, null=True, blank=True)
+    status = models.CharField(max_length=15, choices=STATUS)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     created_by = models.ForeignKey(

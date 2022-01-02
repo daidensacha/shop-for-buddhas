@@ -15,6 +15,7 @@ class ProductAdmin(admin.ModelAdmin):
         'color',
         'price',
         'rating',
+        'status',
         'image_url',
         'image',
         # 'is_active',
@@ -26,6 +27,7 @@ class ProductAdmin(admin.ModelAdmin):
         'name',
         'category',
         'price',
+        'status',
         # 'is_active',
         'created_by',
     )
