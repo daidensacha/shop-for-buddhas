@@ -18,12 +18,12 @@ aria-labelledby="pills-favorites-tab">
                     <div class="product-card-image">
                         <div class="product-media h-100">
                             {% if favorite.image %}
-                            <a href="{% url 'product_detail' favorite.id %}">
+                            <a href="{{ favorite.image.url }}" data-toggle="lightbox">
                                 <img class="img-fluid" src="{{ favorite.image.url }}"
                                     alt="{{ favorite.name }}" title="">
                             </a>
                             {% else %}
-                            <a href="{% url 'product_detail' favorite.id %}">
+                            <a href="{{ favorite.image.url }}" data-toggle="lightbox">
                                 <img class="img-fluid" src="/media/noimage.png" alt="{{ favorite.name }}"
                                     title="">
                             </a>
