@@ -74,6 +74,44 @@
                                 <div class="product-price fs-3 fw-500 mb-2">
                                     <span class="text-primary">${{ product.price }}</span>
                                 </div>
+                                {% if request.user == product.created_by %}
+                                            <small class="ml-3 my-2">
+                                                <a class="link-primary" href="{% url 'edit_product' product.id %}">Edit</a> |
+                                                <a class="link-danger"
+                                                    href="" data-bs-toggle="modal" data-bs-target="#delete-product_{{ product.id }}">Delete</a>
+                                            </small>
+                                            <!-- Warning Modal START -->
+                                            <div class="modal fade" id="delete-product_{{ product.id }}">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header bg-danger">
+                                                            <div class="modal-title p-3">
+                                                                <h5 class="m-0 text-white">Deleting {{ product.name }} is irreversible!</h5>
+                                                                <p class="m-0 text-white">Are you sure you want to delete the product?</p>
+                                                            </div>
+                                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="w-100 p-3">
+                                                                    <div class="mb-3">
+                                                                        <p class="">Data for <mark class="text-danger">SKU: {{ product.sku }}, {{ product.name}}</mark> will be deleted from the database.</p>
+                                                                    </div>
+                                                                    <div class="row align-items-center">
+                                                                            <div class="d-flex gap-2">
+                                                                                <button class="btn btn-outline-dark col-6"
+                                                                                        data-bs-dismiss="modal" >Cancel</button>
+                                                                                <a class="btn btn-outline-danger col-6"
+                                                                                href="{% url 'delete_product' product.id %}">Delete</a>
+                                                                            </div>
+                                                                            
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Warning Modal END -->
+                                        {% endif %}
                                 <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
                                     {% csrf_token %}
                                     <div class="form-row">

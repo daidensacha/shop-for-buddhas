@@ -8,6 +8,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     fields = (
         'created_by',
+        'category',
         'sku',
         'name',
         'description',

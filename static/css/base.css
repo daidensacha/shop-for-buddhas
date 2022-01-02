@@ -20,7 +20,7 @@ body {
   background-image: url("/media/cartographer.png");
   height: calc(100vh - 56px);
   color: #555;
-  font-family: 'Lato';
+  /* font-family: 'Lato'; */
 }
 
 .overlay {

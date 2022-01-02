@@ -35,7 +35,8 @@ def profile(request):
 
         """ Products context to display the list of vendor products """
         try:
-            products = Product.objects.filter(created_by=request.user)
+            products = Product.objects.filter(
+                created_by=request.user).order_by('category', 'name')
         except Exception as e:
             messages.error(request, "No vendor proucts found.")
             products = None
