@@ -164,7 +164,7 @@ Testing of the site will cover the needs and requirements of different user type
 3. **Customer** refers only to a registered and logged in customer. 
 4. **Vendor** refers to a registered and logged in vendor.
 
-## Home Page 
+## Home Page
 ### Header
 #### Navbar Links
 - [x] I click on the logo and it links to the home page.
@@ -213,6 +213,14 @@ Testing of the site will cover the needs and requirements of different user type
 - [x] When I click on the icon, the quick view modal cart opens showing the cart contents. 
 ---
 #### Modal Quickview Cart
+- [x] I click the header cart icon and the modal cart opens from the right.
+- [x] The cart displays the cart contents, a thumbnail, item quantity, and subtotal. 
+- [x] I change the quantity and click the update icon link. The cart subtotal and total changes to reflect the new quantity.
+- [x] I click on the delete item icon and the item is deleted from the cart.
+- [x] I click on the View Cart button and am redirected to the cart page.
+- [x] I click on the Continue to Checkout button and am redirected to the checkout page. 
+- [x] I click the close icon in the top right of the cart modal and the modal closes.
+- [x] I click anywhere outside of the cart modal and the modal closes.
 ---
 ### Jumbotron
 The Jumbotron is the main feature of the landing page. It is full screen with a repeating dark background image, and a buddha image positioned to the right of the screen. In the center of the page is some text, with a "Shop Now" button. 
@@ -245,44 +253,224 @@ The contact section displays a phone number, address and the office hours.
 The contact form is uses Bootstrap 5 elements, with crispy forms and the Django "csrf_token" to prevent cross site request forgery attacks. 
 
 **Form Validation**
-Form fields are required, and I have implemented Bootstrap 5 JS validation. Regex has been added text and email fields to include English and German letters.
-- [x] I click submit without entering anyting into the form and the bootstrap danger styles kick in with error messages. 
+Form fields are required, and I have implemented Bootstrap 5 JS validation. Regex has been added text and email fields to accept English and German letters. Regex min/max character validation added to inputs. Regex special characters excluded from validation success requirements.
+- [x] I click submit without entering anyting into the form and the bootstrap danger styles kick in and display error messages. 
 - [x] I enter text into one field at a time and the styling changes to success once the regex requirement has been passed. 
 - [x] I click submit when the form is complete, and a success message informs me the message has been sent. 
 - [x] I check my email and I have received a confirmation email from Shop for Buddhas informing me they have received my message.
-- [x] I check the admin, and a copy of the message is in the admin. 
----
+- [x] I check the admin, and a copy of the message has been saved in the profile admin. 
 
+---
 ### Footer
+- [x] **Social icons** 
+	- [x] **Facebook Icon -** I click on the Facebook icon and it opens to the Facebook page for KIBI (Karmapa International Buddhist Institute) in a separate browser tab.
+	- [x] **Github -** I click on the Github icon and it links to my Github profile in a separate tab. 
+	- [x] **Linkedin -** I click on the Linkedin icon and it links to my Linkedin profile in a separate browser tab. 
+- [x] **Terms and Conditions link -** I click on the Terms and conditions link and it opens the Terms and Conditions page.
+- [x] **Privacy Policy link -** I click on the Privacy Policiy link and it opens the Privacy Policy Page. 
+- [x] **Contact Us link -** I click on the Contact Us link and it opens the home page, and scrolls to the contact section of the home page.
 ---
 ### Product Page
 #### Product Content View
-- [x] I hover over the procuct and the icon block containing add to favorites icon, quick view icon, and the quick add icon appears.
-Icon - Add to Favorites
-- [x] **Favorite Icon - Anonomous Users:** I click the add to favorites icon and I am redirected to the login page. An  info toast appears asking me to login to add items to favorites. 
-- [x] **Favorite Icon - Session Users:** I click on the add to favorites icon and it changes from an outline heart icon, to a red filled heart icon. A toast message appear informing me the product has been added to my favorites. the Icon is now red. I am still on the same page.
-- [x] I click on a red icon and the heart changes from a red filled heart to an outlined heart. A toast message appears informing me the product has been reomoved from my favorites. I am still on the same page.
-- [x] I click the quick view icon and an image lightbox appears showing the product image.
-- [x] I click outside the lightbox and the lightbox closes.
-- [x] I click the quick add icon and the item is added to my cart. A toast message appears informing me the product has been added to my cart. 
-- [x] I click the product image and it opens the product detail page.
-- [x] I click the product name and it opens the product detail page. 
-- [x] I click the product category and it opens the product page showing all items in the category.
-- [x] The rating stars are displaying the product rating.
-- [x] The price is displayed.
-- [x] In the top right of each product, a heart is displayed, indicating if the item has been added to favorites or not.
+- [x] **Product Grid view** I open the product page and the products are displayed in a responsive Bootstrap 5 grid.
+- [x] **Product Layout and view**
+	- [x] **Image links -** I click on the image and it redirects me to the product details page. 
+	- [x] **Title links -** I click on the product name and it redirects me to the product details page. 
+	- [x] **Rating Stars -** The rating stars are displaying the correct rating per expectation.
+	- [x] **Category links -** I click on the product category tag and it redirects me to the product page filtered by the selected category. 
+	- [x] **Price -** The price is displaing correctly as expected.
+	- [x] **Favorite Icon** 
+		- [x] **Favorited -** A read heart is displayed for items added to favorites.
+		- [x] **Not favorited -** An outlined heart with no fill is displayed for items not added to favorites. 
+	- [x] **Product Owner Links**
+		- [x] **Edit link -** The edit product link is displayed for products owned by teh session user. 
+		- [x] **Delete link -** The delete product link is displayed for products owned by teh session user. 
+- [x] **Search filter sorting by** 
+	- [x] **Price -**  I click the select input filter by price high to low, and the products are sorted in price order from high to low. Likewise from low to high, the products are filtered accordingly.
+	- [x] **Rating -**   I click the select input filter by rating high to low, and the products are sorted in rating order from high to low. Likewise from low to high, the products are filtered accordingly.
+	- [x] **Name -**   I click the select input filter by name high to low, and the products are sorted in name order from high to low. Likewise from low to high, the products are filtered accordingly.
+	- [x] **Category -**   I click the select input filter by category high to low, and the products are sorted in category order from high to low. Likewise from low to high, the products are filtered accordingly.
+- [x] **On hover -** On hovering over a product, a quick view icon block becomes visible. (a favorite icon, a view icon, and a cart icon)
+	- [x] **Quick add to favorites** 
+		- [x] **Anonomous Users -** As an anonomous user, I click on the favorite icon, and I am redirected to the login page. A message asks me to log in to add items to favorites. 
+		- [x] **Session Users -** 
+			- [x] **Add to Favorites -** As a session user, I click on the product favorite icon, and a message informs me the product has been added to my favorites. The heart changes color to a red filled heart. 
+			- [x] **Remove from Favorites -** As a session user, I click on the product red favorite icon , and a message informs me the product has been removed from my favorites. The heart changes color to a outlined heart with no fill color. 
+	- [x] **Quick view button -** I click on the quick view button and the image opens in a lightbox. I click outside the lightbox and it closes.
+	- [x] **Quick add button -** I click on the quick add to cart icon and the item is added to the shopping cart. A message appears informing me the item has been added to the cart.
 ---
 ### Product Detail Page
-
+- [x] **Product Layout and view -** I click on the product image and it opens the product detail page. 
+	- [x] **Image links -** I click on the image and it links to the image lightbox.
+	- [x] **Image lightbox -** I click outside the image lightbox and the lightbox closes.
+	- [x] **Content as required -** The product content is all displayed correctly per design.
+	- [x] **Category links -** The category tag opens to display the product list filtered by the selected category.
+	- [x] **Increment/Decrement input** I click on the plus icon, and it increases the quantity, I click on the minus icon and it decreases the quantity.
+		- [x] **Minimum Value -** The minimum value in I can enter in the input is 0. 
+		- [x] **Maximum value -** The maximum value I can enter in the input is 99.
+	- [x] **Add to Cart Button -** I click add to cart and quantity selected is entered into the shopping cart. A success message informs me the item has been added to the shopping  cart. 
+	- [x] **Favorites icon -** The favorite icon is displayed beside the add to cart button. 
+	- [x] **Add to favorites -** 
+		- [x] **Anonomous Users -** Adding to favorites requires authentication. The outline heart is displayed for all items for anonomous users. I click on the heart and and redirected to the login page. A toast message informs me that I need to log in to add items to favorites. 
+		- [x] **Session Users -** 
+			- [x] I click on the outlined heart, the color changes to a red filled heart, and a toast message informs me the item has been added to favorites. 
+				- [x] I navigate to my profile favorites tab, and the item is displayed in my favorites list. 
+			- [x] I click on the red filled heart, it changes to an outlined heart and a message informs me the item has been removed from favorites. 
+				- [x] I navigate to my profile favorites tab, and the item has been removed from my favorites list. 
+	- [x] **Continue Shopping button -** I click the ```Continue Shopping``` button and I am redirected to the shop page showign all products.
+	- [x] **Shopping Cart button -** I click on the ```Shopping Cart``` button and I am redirected to the shopping cart page. 
+	- [x] **Product Owner Links -** I log in as a vendor. All products owned by the authenticated vendor display an edit and delete link. The edit and delete links are not visible for products not owned by me. 
+		- [x] **Edit link -** I click on the edit link and I am redirected to the eidt product page, where a form containing the products information is displayed. I edit the product details, and click update product. I am redirected back to the product view and the product details have been updated. 
+		- [x] **Delete link -** I click on the delete product link. A bootstrap danger styled modal opens.
+			- [x] **Delete Modal**
+				- [x] **Modal Content -** The content informs be the product "SKU", and product "name" will be deleted from the database. I am asked if I am sure I want to delete the product. The content is clear and correct.
+				- [x] **Cancel Button -** I click the cancel button and the modal closes.
+				- [x] **Delete Button -** I click the delete button and a message informs be the product has been deleted. I am returned to the product page. 
 ---
-
 ### Shopping Cart Page
-
+- [x] **Empty Cart view** I naviagate to the cart page when I have an empty cart. A message informs me the cart is empty, and a link provides me a way to continue shopping. 
+- [x] **Cart items** I add an item to my cart, and navigate to the shopping cart page. The item is displayed, along with the subtotal, delivery cost, and grand total. 
+	- [x] **Item image -** A thumbnail image of the product is visible. 
+		- [x] **Image lightbox -** I click on the thumbnail and a lightbox opens displaying the product image. I close the lightbox and return to the cart page. 
+	- [x] **Item Name -** The item name is displayed and in the primary link color. 
+		- [x] **Links to Product View -** I click on the product name and am redirected to the product view page. It links correctly to the product page. 
+	- [x] **Item price -** The item price is displayed correctly. 
+	- [x] **Increment quanity** I click the plus sign beside the quantity input and with each click the quantity is incremented by one. 
+	- [x] **Decrement quanity** I click the minus sign beside the quantity input and with each click the quantity is deccremented by one. 
+		- [x] **Minimum Value -** The minimum value I can decrement to is 0.
+		- [x] **Maximum value -** The maximum value I can increment to is 99.
+	- [x] **Icon Update Button -** I change the quantity in the quantity input, and click the update icon button. The cart is updated, showing the new quantity, subtotal, and grand total. 
+	- [x] **Icon Delete Button -** I click delete and the item is deleted from the cart. 
+	- [x] **Item subtotal -** When i udpdate the cart quantity the item subtotal is also updated. 
+		- [x] **Subtotal Updates -** When i udpdate the cart quantity the cart subtotal is also updated. 
+	- [x] **Continure Shopping button -** I click the continue shopping button and am redirected to the shopping page. 
+	- [x] **Coupon Code form -** I enter a value or string into the coupon input and click apply. 
+		- [x] **Toast message -** A toast message informs me the entered coupon  is invalid. 
+	- [x] **Cart Subtotal, Delivery, Grand Total -** Cart total, delivery, and grand total are all correct and update each time the cart is updated. 
+	- [x] **Proceed to Checkout button -** I click on the proceed to checkout button and am redirected to the checkout. 
 ---
 ### Checkout Page
+- [x] **Order Summary -** An order summary displays the cart contents, order total, delivery cost, and grand total. The details are corrrect. 
+- [x] **Shipping address form -**
+	- [x] **Non-authenticated users**
+		- [x] **Form unfilled -**
+		- [x] **Create an account link -**
+		- [x] **Login link -**
+	- [x] **Authenticated users**
+		- [x] **Form automatically filled -** In the form, my saved account registration and profile details are already filled in. 
+		- [x] **Save to profile checkbox -** The "save this delivery information to my profile is also checked"
+- [x] **Adjust Cart button -** I click the adjsut cart button and am redirected back to the cart. 
+- [x] **Payment: Credit Card Details -** I enter the payment details as follows, CVC, Expiry date, and card number.
+
+**Requires:**  
+
+	Any CVC
+	Any date in the future for expiry date
+	Any 5 digit number for postal code
+	Card 4242424242424242 - Successful payment test
+	Card 4000000000009995 - Failed payment test
+	Card 4000002500003155 - Requires authentication test
+
+- [x] **Test Successful Payment -** I enter card number 4242424242424242, click complete order, a success message informs me the payment was successful and I am redirected to the checkout success page displaying the order details. 
+- [x] **Test Failed payment -** I enter card number 4000000000009995, click complete order, I am returned to the shckout page and an error message informs me the card has insufficient funds. 
+- [x] **Test Requires authentication -** I enter card number 4000002500003155, click complete order, a Stripe modal appears asking form authentication. I click the complete authentication, a success message informs me the order has been processedm and I am redirected to the checkout success page displaying the order details. 
+- [x] **Test Stripe Webhooks -**
+- [x] **Complete Order button -** In all the above tests the complete oder button works. 
+- [x] **Payment success confirmation message -** In all the above cases a toast message was displayed informing me of the success or failure of the action. 
+- [x] **Payment success confirmation email -** I received confirmation emails for both the above successful purchases. 
+- [x] **Order details saved to profile -** I navigate to my profile orders tab and the order has been added to my orders list.
 
 ---
+### Stripe Webhooks 
+- [x] **payment_intent.payment_failed -** Send a test event to a webhook endpoint. 
+Event type - payment_intent.payment_failed
+Response - Test webhoook sent successfully.
+Webhook received: payment_intent.payment_failed  
+![](/documentation/images/payment_intent_failed.png)  
+- [x] **payment_intent.succeeded -** Send a test event to a webhook endpoint.  
+Event type - payment_intent.succeeded
+Response - Test webhoook sent successfully.  
+Webhook received: payment_intent.succeeded | SUCCESS: Created order in webhook  
+![](/documentation/images/payment_intent_succeeded.png)  
+
+
+---
+### Profile Page
+Navigate to the user profile by clicking the ```My Profile``` link in the header account icon dropdown. 
+- [x] **Personalised Profile Heading -** The heading of the profile page is personalised, with ```first_name last_name's Profile```. 
+- [x] **Personalised Welcome message -** There is also a message, ```Welcome first_name!```.
+- [x] **User Profile Menu**
+	- [x] **All Users (Customers and Vendors)**
+		- [x] **Profile Tab**
+		My registration informtion is displayed in read only format. (Name, Username, Email, User Type, Date Joined, Last Login)
+		- [x] **Account Info Tab**
+			- [x] **Default Delivery and Profile Info**
+			My profile information is displayed in a form that can be edited and updated. I update my information and click the update information button. A success message is displayed, and I am returned to the main profile tab. I check in the Account Info tab and the information has been updated. 
+			- [x] **Account Management**
+				- [x] **Change Password -** I click the change password link and I'm redirected to the Change Password page. 
+					- [x] I enter my current password, a new password, the new password again, and click "Change Password". 
+					- [x] A success message confirms the password has been updated.
+					- [x] I log out, and then login again using my new password. I confirm that the password has been updated.
+				- [x] **Manage Email -** I click "Manage Email" and am redirected to the email management page. 
+					- [x] **BUG in Allauth template** The radio boxes with the emails and the email status were not being displayed. There was an issue with the positioning of the radio box label closing tag. I move it to the end of the label, then the check boxes were showing. Then I added jinja to display each email beside the radio box. I added Bootstrap 5 classes and grid for responsive display. 
+					- [x] I enter an email in the add email address, click add email and a message informs me a confirmation email has been sent to my new email.
+					- [x] The page refreshes and the new email is displayed in the list of account emails.
+					- [x] It is tagged as unverified.
+					- [x] I check my email, and click on the verify email link, and verify the email.
+					- [x] Checking my email management page and the email is now verified.
+					- [x] I select the new email and click "Make Primary". The primary email is changed.
+					- [x] I check in the admin and confirm the primary email has been changed.
+					- [x] I select an email and click re-send verification, and a verification email is sent to the email, with a link to click and verify the email.
+					- [x] I select an email and click remove. A success message informs me the email has been removed from my account.
+				- [x] **Close Account -** I click "Close Account", a bootstrap danger styled modal opens warning me the account will be closed and I will no longer have access. 
+					- [x] I click Cancel and the modal closes.
+					- [x] I click Close Account and A message informs me the accoutn has been closed. I am logged out to a page that informs me the account is not active. 
+		- [x] **Orders Tab -**
+			- [x] **Order Details -**
+			- [x] **Oder Number Link -**
+		- [x] **Favorites Tab -**
+			- [x] **Favorites Products Grid -**
+			- [x] **Image Lightbox -**
+			- [x] **Product Name Link -**
+			- [x] **Product Category Link -**
+			- [x] **Product Price -**
+			- [x] **Remove Link button -**
+	- [x] **Vendor/ Admin Only Tabs**
+		- [x] **Products Tab -**
+			- [x] **Product Layout Grid -**
+			- [x] **Only Vendors Products Displayed -**
+			- [x] **Image lightbox -**
+			- [x] **Product Name Link -**
+			- [x] **Product Category Link -**
+			- [x] **Product Price -**
+			- [x] **Edit Item Link -**
+			- [x] **Delete Item Link -**
+				- [x] **Delete Modal -**
+					- [x] **Layout/ Boostrap classes -**
+					- [x] **Cancel Button -**
+					- [x] **Delete Button -**
+		- [x] **Sales Tab -**
+			- [x] **Vendor Sales List -**
+			- [x] **Sale Oder Number Link -**
+---
+### Blog All Pages
+**Blog Search**
+**Blog Categories**
+**Recent Posts**
+**Blog Archives**
+**Blog Tags**
+
 ### Blog Page
+**Featured Post**
+**Posts**
+- **Read More**  
+
+**Pagination**
+
+### Blog Post Page
+**Post**
+**Comment Form**
+**Comments View**
 
 ---
 
@@ -341,7 +529,10 @@ Icon - Add to Favorites
 See also [README/BUGS and ISSUES](/README.md/#bugs-and-issues)
 
 ##### ISSUE: 1
-***Issue Name***
+***Safari Jumbotron Background Image***
+There is a bug that is limited to Safari on iPhones. On an iPhone 13 Pro, the Buddha background image is not present. The same issue is not present when checking the iPhone in Chrome and Safari web developer tools. It is not present on tablets, or on Apple or PC desktops. 
+On my macbook pro I checked the iPhone source code in the Safari developer tools, and was unable to locate the error. 
+At this point, I put it down to apple, but am contiuing to investigate. The issue is not critical as the dark background on the small screen of the iPhone is acceptable. 
 
 ## Validation
 
@@ -379,6 +570,5 @@ JS was validated using [JS Hint](https://jshint.com/), and no errors were noted.
 ### Python Validation
 All Python files where copied and pasted into the [PEP8 online](http://pep8online.com) Python validator.
 Python is PEP8 compliant, and shows one error in `settings.py`. `env' imported but unused flake8(F401) [18,5]`. The error as described is not actually an error as `env.py` is used to import protected sensitive data.
- 
 
 ![](/documentation/images/validation_python.png)

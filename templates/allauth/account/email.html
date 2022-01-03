@@ -18,22 +18,23 @@
 
 <div class="ctrlHolder form-check">
     <div class="row">
-		<div class="col-1">
+		<div class="col-1 col-sm-1">
 			<label for="email_radio_{{forloop.counter}}" class="form-check-label {% if emailaddress.primary %}primary_email{%endif%}"></label>
-			<input id="email_radio_{{forloop.counter}}" type="radio" name="email" {% if emailaddress.primary or user.emailaddress_set.count == 1 %}checked="checked"{%endif %} value="{{emailaddress.email}}"/>
+			<input class="form-check-input" id="email_radio_{{forloop.counter}}" type="radio" name="email" {% if emailaddress.primary or user.emailaddress_set.count == 1 %}checked="checked"{%endif %} value="{{emailaddress.email}}"/>
 		</div>
        
-		<div class="col-5">
-			<span class="">{{ emailaddress.email }}</span> 
-		</div>
 		
-		<div class="col-3">
+		
+		<div class="col-11 col-sm-5 ps-0">
 			{% if emailaddress.verified %}
 			<span class="verified">{% trans "Verified" %}</span>
 			{% else %}
 				<span class="unverified">{% trans "Unverified" %}</span>
 			{% endif %}
 			{% if emailaddress.primary %}<span class="primary">{% trans "Primary" %}</span>{% endif %}
+		</div>
+		<div class="col-12 col-sm-6 ps-5 ps-sm-0">
+			<span class="">{{ emailaddress.email }}</span> 
 		</div>
 		
   <!-- </label> -->
