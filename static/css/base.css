@@ -299,7 +299,8 @@ body {
 /* ======= Set toast width using "calc" for screens other than mobile ======= */
 @media (min-width: 768px) {
   .toast {
-    max-width: calc(calc(100vw / 2));
+    /* max-width: calc(calc(100vw / 2)); */
+    max-width: calc(100vw / 2);
     -webkit-box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important;
             box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important;
   }
@@ -318,7 +319,8 @@ body {
   }
 
   .toast {
-    max-width: calc(calc(100vw / 4));
+    /* max-width: calc(calc(100vw / 4)); */
+    max-width: calc(100vw / 4);
     -webkit-box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important;
             box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important;
   }

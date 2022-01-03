@@ -16,13 +16,13 @@ class UserModel(AbstractUser):
     first_name = models.CharField(
         verbose_name='first_name',
         max_length=40,
-        unique=True,
+        unique=False,
     )
 
     last_name = models.CharField(
         verbose_name='last_name',
         max_length=40,
-        unique=True,
+        unique=False,
     )
     username = models.CharField(
         verbose_name='Username',
