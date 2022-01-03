@@ -1065,7 +1065,7 @@ input[name='q']::placeholder {
   border-radius: 0;
 }
 
-/* ========================== Product Image pop up ===========================*/
+/* ========================== Product Image Lightbox =========================*/
 .ratio.ratio-16x9 {
   background-color: #fff !important;
 }
@@ -1078,7 +1078,7 @@ input[name='q']::placeholder {
 .modal-body .lightbox-carousel .carousel-inner .carousel-item.active .ratio {
   position: relative;
   width: 100% !important;
-  max-height: vh-80;
+  /* max-height: vh-80; */
   --bs-aspect-ratio: calc(100%) !important;
 }
 /* Change the color of the close button svg */
