@@ -118,7 +118,7 @@
                                         <div class="product-media h-100">
                                             {% if product.image %}
                                                 <a href="{% url 'product_detail' product.id %}">
-                                                    <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" title="">
+                                                    <img class="img-fluid w-100" src="{{ product.image.url }}" alt="{{ product.name }}" title="">
                                                 </a>
                                             {% else %}
                                                 <a href="{% url 'product_detail' product.id %}">

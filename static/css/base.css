@@ -130,7 +130,6 @@ body {
 #search-products,
 #search-mobile {
   width: calc(100% - 42px);
-  /* transition: width .5s ease; */
   color: #a8a7a7;
   font-family: Roboto;
   border-bottom: 1px solid #616161;
@@ -142,7 +141,6 @@ body {
 
 #search-products:focus,
 #search-mobile:focus {
-  /* width: 150px; */
   outline: none;
   border-bottom: 1px solid #616161;
   border-right: 1px solid #616161;
@@ -293,14 +291,12 @@ body {
    overflow-y: auto;
    -webkit-box-shadow: inset 0 0 1px rgb(165, 165, 165);
    box-shadow:         inset 0 0 1px rgb(165, 165, 165);
-   /* -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);;
-   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
    border: 1px solid rgb(238, 235, 235);
    padding: 20px;
  
  }
 
-/* For screens other than mobile */
+/* ======= Set toast width using "calc" for screens other than mobile ======= */
 @media (min-width: 768px) {
   .toast {
     max-width: calc(calc(100vw / 2));
@@ -309,12 +305,12 @@ body {
   }
 }
 
+/* ================= Toast media query for large screens ==================== */
 @media (min-width: 992px){
   
   .message-container {
     position: fixed;
     top: 125px;
-    /* left: -400px; */
     left: calc(-100vw / 4);
     z-index: 99999999999;
     height: auto;
@@ -328,7 +324,6 @@ body {
   }
   
   .toast.show {
-    /* transform: translateX(430px); */
     -webkit-transform: translateX(calc(100vw / 4)) !important;
         -ms-transform: translateX(calc(100vw / 4)) !important;
             transform: translateX(calc(100vw / 4)) !important;
@@ -341,7 +336,6 @@ body {
     opacity: 1;
    }
    .toast.hide {
-    /* transform: translateX(-400px)!important; */
     -webkit-transform: translateX(calc(-100vw / 4))!important;
         -ms-transform: translateX(calc(-100vw / 4))!important;
             transform: translateX(calc(-100vw / 4))!important;
@@ -356,18 +350,13 @@ body {
    }
 }
 
+/* =============== Custom Bootstrap Toast Message styles ==================== */
 
-/**********************************************************
-******** Custom Bootstrap Toast Message styles ********* */
-
-/* Toast Success */
+/* ==================================  Toast Success */
 .toast-success {
   position: relative;
   background-color: #ffffff;
-  /* box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important; */
   border-left: 8px solid #198754;
-  /* border-right: 8px solid #28bb74;
-  border-bottom: 8px solid #28bb74; */
   border-radius: .25rem; 
 }
 .toast-success .toast-header {
@@ -380,13 +369,11 @@ body {
   border-bottom-right-radius: .25rem;
 }
 
-/* Toast Info */
+/* ================================== Toast Info */
 .toast-info {
   position: relative;
   background-color: #ffffff;
-  /* box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05); */
   border-left: 8px solid #3b86ff;
-  /* border-right: 8px solid #0dcaf0; */
   border-radius: .25rem;
 }
 
@@ -400,13 +387,11 @@ body {
   border-bottom-right-radius: .25rem;
 }
 
-/* Toast Error */
+/* ==================================  Toast Error */
 .toast-error {
   position: relative;
   background-color: #ffffff;
-  /* box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05); */
   border-left: 8px solid hsl(354, 70%, 54%);
-  /* border-right: 8px solid #ff6f61; */
   border-radius: .25rem;
 }
 
@@ -420,13 +405,11 @@ body {
   border-bottom-right-radius: .25rem;
 }
 
-/* Toast Warning */
+/* ==================================  Toast Warning */
 .toast-warning {
   position: relative;
   background-color: #ffffff;
-  /* box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05); */
   border-left: 8px solid #ff9736;
-  /* border-right: 8px solid #ffc107; */
   border-radius: .25rem;
 }
 
@@ -455,7 +438,6 @@ body {
   -o-transition: all 0.3s linear;
   transition: all 0.3s linear;
   margin: 0.2rem;
-  /* display: block; */
 }
 
 .product-meta.category-tags a.tag:hover {
@@ -506,13 +488,11 @@ body {
 /* Remove Bottom Margin/ add top padding for Jumbotron */
 .jumbotron {
   margin-bottom: 0;
-  /* padding-top:130px; */
 }
 
 /* Header Parallax Element Style*/
 .paral {
   height: 100vh;
-  /* min-height: 600px; */
   bottom: 0;
   background-attachment: fixed;
   background-size: cover;
@@ -613,7 +593,7 @@ body {
   border-color: #ffffff;
 }
 
-/* SERVICES SECTION */
+/* =========================== SERVICES SECTION ============================= */
 
 
 .section {
@@ -668,7 +648,7 @@ body {
   position: relative;
 }
 
-/* Style the testimonial button on teh carousel */
+/* Style the testimonial button on the carousel */
 
 .testimonial-btn-wrapper {
   position: absolute;
@@ -738,22 +718,14 @@ textarea.form-control {
 
 /*  ALLAUTH FORM STYLE WORKAROUND */
 .form-control, .form-select {
-  /* margin-bottom: 20px; */
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  /* height: 50px; */
-  /* padding-left: 20px; */
   border: 1px solid #e0e0e0;
   font-size: 14px;
   border-radius: 0.3rem;
-  /* height: 2.5rem; */
   height: 40px;
   padding: 12px 10px;
 }
-
-/* .form-label {
- display: none;
-} */
 
 .form-select {
   padding-top: 0 !important;
@@ -990,6 +962,7 @@ ul, ol {
   list-style: none;
   margin: 0;
 }
+
 /* ============================= Search Input =============================== */
 input[name='q']::-webkit-input-placeholder {
   color: #aab7c4;
@@ -1016,11 +989,6 @@ input[name='q']::placeholder {
   margin-top: 1.5rem; /* mt-4 */
   color: #6c757d; /* text-secondary */
 }
-
-/* .allauth-form-inner-content input {
-  border-color: #000;
-  border-radius: 0;
-} */
 
 .allauth-form-inner-content label:not([for='id_remember']) {
   display: none;
@@ -1100,15 +1068,27 @@ input[name='q']::placeholder {
   background-color: #fff !important;
 }
 
+/* Set max-width for the image lightbox on xl screens */
+.modal.lightbox .modal-dialog.modal-dialog-centered.modal-xl {
+  max-width: 900px;
+}
+/* Set the lightbox ratio to ration-1x1 */
+.modal-body .lightbox-carousel .carousel-inner .carousel-item.active .ratio {
+  position: relative;
+  width: 100% !important;
+  max-height: vh-80;
+  --bs-aspect-ratio: calc(100%) !important;
+}
+/* Change the color of the close button svg */
+.modal.lightbox button.btn-close > svg {
+  fill: #555;
+}
+
 /* Product Favorite icon */
 .product-card-3 .favorites {
   position: absolute;
-  /* top: 15px;
-  right: 15px; */
   top: 20px;
   right: 26px;
-  /* display: flex; */
-  /* flex-direction: column; */
   z-index: 1;
 }
 
