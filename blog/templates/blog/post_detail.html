@@ -7,37 +7,27 @@
 
         <div class="blog-details">
    
-                <div class="post-meta">
-                    <small>
-                        <span class="meta-date">{{ post.posted_at | date }}</span>
-                        <span class="meta-author">Posted by <span> {{ post.author }} </span></span>
-                    </small>
-                </div>
-                <h4 class="blog-title">{{ post.title }}</h4>
-                <img src="{{ post.image.url }}" alt="">
-                
-                <div class="blog-body">{{ post.body | safe }}</div>
-
-                <div class="blog-dec-tags-social">
-                    <div class="blog-dec-tags">
-                        <span>Tags:</span>
-                        <ul class="tags">
-                            {% for tag in post.tags.all %}
-                            <li><a href="{% url 'post_tag' tag.slug %}">{{tag.name}}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="blog-dec-social">
-                        <span>Share:</span>
-                        <ul class="social">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                            <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="post-meta">
+                <small>
+                    <span class="meta-date">{{ post.posted_at | date }}</span>
+                    <span class="meta-author">Posted by <span> {{ post.author }} </span></span>
+                </small>
+            </div>
+            <h4 class="blog-title">{{ post.title }}</h4>
+            <img src="{{ post.image.url }}" alt="">
             
+            <div class="blog-body">{{ post.body | safe }}</div>
+
+            <div class="blog-dec-tags-social">
+                <div class="blog-dec-tags">
+                    <span>Tags:</span>
+                    <ul class="tags">
+                        {% for tag in post.tags.all %}
+                        <li><a href="{% url 'post_tag' tag.slug %}">{{tag.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
         <!-- Blog Details End -->
 

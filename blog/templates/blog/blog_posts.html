@@ -8,36 +8,36 @@
             {% if category_slug == None and tag_slug == None %}
             <div class="row">
                 {% for post in featured_post %}
-                {% if post.featured %}
-                <h1>Featured Post</h1>
-                <div class="col-12">
-                    <!-- Single Blog Start -->
+                    {% if post.featured %}
+                    <h1>Featured Post</h1>
+                    <div class="col-12">
+                        <!-- Single Blog Start -->
 
-                    <div class="single-blog">
-                        <div class="blog-images">
-                            <div class="post-meta">
-                                <small>
-                                    <span class="meta-date">{{ post.posted_at | date }}</span>
-                                    <span class="meta-author">Posted by <span> {{ post.author }} </span></span>
-                                </small>
+                        <div class="single-blog">
+                            <div class="blog-images">
+                                <div class="post-meta">
+                                    <small>
+                                        <span class="meta-date">{{ post.posted_at | date }}</span>
+                                        <span class="meta-author">Posted by <span> {{ post.author }} </span></span>
+                                    </small>
+
+                                </div>
+                                <a href="{% url 'post_detail' post.slug %}"><img src="{{post.image.url}}" alt=""></a>
+                                <div class="meta-category">
+                                    <a href="{% url 'post_category' post.category.slug %}">{{ post.category }}</a>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <h4 class="blog-title"><a href="{% url 'post_detail' post.slug %}"> {{ post.title }} </a>
+                                </h4>
+                                {{ post.description | safe }}
 
                             </div>
-                            <a href="{% url 'post_detail' post.slug %}"><img src="{{post.image.url}}" alt=""></a>
-                            <div class="meta-category">
-                                <a href="{% url 'post_category' post.category.slug %}">{{ post.category }}</a>
-                            </div>
+                            <a href="{% url 'post_detail' post.slug %}">Read more</a>
                         </div>
-                        <div class="blog-content">
-                            <h4 class="blog-title"><a href="{% url 'post_detail' post.slug %}"> {{ post.title }} </a>
-                            </h4>
-                            {{ post.description | safe }}
-
-                        </div>
-                        <a href="{% url 'post_detail' post.slug %}">Read more</a>
+                        <!-- Single Blog end -->
                     </div>
-                    <!-- Single Blog end -->
-                </div>
-                {% endif %}
+                    {% endif %}
                 {% endfor %}
 
             </div>
@@ -54,16 +54,16 @@
                         {% include 'blog/blog_body.html' %}
 
                     {% elif category_slug == None %}
-
                         {% if query %}
                         <h5> You Searched For {{query}}</h5>
                             {% include 'blog/blog_body.html' %}
                         {% endif %}
 
-                        {% if not post.featured %}
+                        {% if not post.featured and not query %}
                             {% include 'blog/blog_body.html' %}                    
                         {% endif %}
                     {% endif %}
+                    
                 {% endfor %}
 
             </div>

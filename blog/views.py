@@ -130,7 +130,7 @@ def blog_search(request):
         Q(body__icontains=query) |
         Q(description__icontains=query)
         )
-
+    print(posts)
     paginator = Paginator(posts, 2)
     page = request.GET.get('page', 1)
     try:
@@ -139,7 +139,7 @@ def blog_search(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
-
+   
     context = {
         'query': query,
         'post': post,

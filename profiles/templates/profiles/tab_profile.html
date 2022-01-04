@@ -11,77 +11,77 @@ aria-labelledby="pills-profile-tab">
 {% else %}
     <h3>Welcome!</h3>
 {% endif %}
-<div class="card border-0">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-4 col-sm-4">
-                <p class="text-muted ps-2 ps-sm-5">Name</p>
+    <div class="card border-0">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-sm-5">
+                    <p class="text-muted ps-2 my-0">Name</p>
+                </div>
+                <div class="col-12 col-sm-7">
+                    <p class="ps-2">{{ user.first_name}} {{ user.last_name}}</p>
+                </div>
             </div>
-            <div class="col-8 col-sm-8">
-                <p>{{ user.first_name}} {{ user.last_name}}</p>
+            <div class="row">
+                <div class="col-12 col-sm-5">
+                    <p class="text-muted ps-2 my-0">Username</p>
+                </div>
+                <div class="col-12 col-sm-7">
+                    <p class="ps-2">{{ user.username}}</p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-4 col-sm-4">
-                <p class="text-muted ps-2 ps-sm-5">Username</p>
+            
+            {% for emailaddress in user.emailaddress_set.all %}
+            <div class="row">
+                <div class="col-12 col-sm-5">
+                    <span class="text-muted ps-2 my-0">Email</span>
+                        {% if emailaddress.verified %}
+                            <span class="text-muted verified ps-2">{{ "Verified" }}</span>
+                        {% else %}
+                            <span class="text-muted unverified ps-2">{{ "Unverified" }}</span>
+                        {% endif %}
+                        {% if emailaddress.primary %}
+                            <span class="text-muted primary ps-2">{{ "Primary" }}</span>
+                        {% endif %}
+                </div>
+                <div class="col-12 col-sm-7">
+                    <p class="ps-2">{{ emailaddress.email }}</p>
+                </div>
             </div>
-            <div class="col-8 col-sm-8">
-                <p>{{ user.username}}</p>
-            </div>
-        </div>
-        
-        {% for emailaddress in user.emailaddress_set.all %}
-        <div class="row">
-            <div class="col-4 col-sm-4">
-                <span class="text-muted ps-2 ps-sm-5">Email</span>
-                    {% if emailaddress.verified %}
-                        <span class="text-muted verified">{{ "Verified" }}</span>
-                    {% else %}
-                        <span class="text-muted unverified">{{ "Unverified" }}</span>
+            {% endfor %}
+            <div class="row">
+                <div class="col-12 col-sm-5">
+                    <p class="text-muted ps-2 my-0">User Type</p>
+                </div>
+                <div class="col-12 col-sm-7">
+                    {% if user.user_type == "is_vendor" %}
+                        <p class="ps-2">Vendor</p>
+                    {% elif user.user_type == "is_customer" %}
+                        <p class="ps-2">Customer</p>
+                    {% elif user.user_type == "is_admin" %}
+                        <p class="ps-2">Admin</p>
+                    {% elif user.is_superuser %}
+                        <p class="ps-2">Super User</p>
                     {% endif %}
-                    {% if emailaddress.primary %}
-                        <span class="text-muted primary">{{ "Primary" }}</span>
-                    {% endif %}
+                </div>
             </div>
-            <div class="col-8 col-sm-8">
-                <p>{{ emailaddress.email }}</p>
+            <div class="row">
+                <div class="col-12 col-sm-5">
+                    <p class="text-muted ps-2 my-0">Date Joined</p>
+                </div>
+                <div class="col-12 col-sm-7">
+                    <p class="ps-2">{{ user.date_joined | date:"M d, Y" }}</p>
+                </div>
             </div>
-        </div>
-        {% endfor %}
-        <div class="row">
-            <div class="col-4 col-sm-4">
-                <p class="text-muted ps-2 ps-sm-5">User Type</p>
-            </div>
-            <div class="col-8 col-sm-8">
-                {% if user.user_type == "is_vendor" %}
-                <p>Vendor</p>
-                {% elif user.user_type == "is_customer" %}
-                <p>Customer</p>
-                {% elif user.user_type == "is_admin" %}
-                <p>Admin</p>
-                {% elif user.is_superuser %}
-                <p>Super User</p>
-                {% endif %}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4 col-sm-4">
-                <p class="text-muted ps-2 ps-sm-5">Date Joined</p>
-            </div>
-            <div class="col-8 col-sm-8">
-                <p>{{ user.date_joined | date:"M d, Y" }}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4 col-sm-4">
-                <p class="text-muted ps-2 ps-sm-5">Last Login</p>
-            </div>
-            <div class="col-8 col-sm-8">
-                <p>{{ user.last_login | date:"M d, Y"}} </p>
+            <div class="row">
+                <div class="col-12 col-sm-5">
+                    <p class="text-muted ps-2 my-0">Last Login</p>
+                </div>
+                <div class="col-12 col-sm-7">
+                    <p class="ps-2">{{ user.last_login | date:"M d, Y"}} </p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 <!-- END PROFILE TAB -->
 

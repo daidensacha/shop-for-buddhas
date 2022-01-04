@@ -14,7 +14,7 @@
 
 ### Shop for Buddhas - Daiden Sacha - Full Stack Web Developer
 
-View [Shop for Buddhas](https://shop-for-buddhas.herokuapp.com/) on Heroku.
+View the [Shop for Buddhas](https://shop-for-buddhas.herokuapp.com/) on Heroku.
 
 [TESTING/](/documentation/testing.md) outlines my testing strategy, development, deployment and post-deployment.
 
@@ -32,7 +32,7 @@ With this in mind, I decided that this site would be a good project to explore t
 
 ### User Stories
 
-1.  **As an vendor:**  
+1.  **As an vendor:**
 	- I want to be able to register to sell my work.
 	- I want to create a profile.
 	- I want to be able to upload my products to be sold in the shop.
@@ -41,7 +41,6 @@ With this in mind, I decided that this site would be a good project to explore t
 	- I want to be able to see a current list of my sold items
 	- I would like to be informed when something sells.
 	- I want customers to be able to commission particular works with specific preferences.  
-
 
 2.  **As a customer:**
 	- I want to buy quality statues.
@@ -66,8 +65,8 @@ With this in mind, I decided that this site would be a good project to explore t
 	- I want to receive confirmation of purchase.
 	- I want a record of my orders attached to my account profile.
 
-
 3.  **As the site owner:**
+
 	- I want to support grass root artists to continue their work.
 	- I want to provide a website where grass root artists can sell their work.
 	- I want to educate about the complexity of producing quality statues.
@@ -535,7 +534,7 @@ django-admin startproject shop-for-buddhas .
 ```bash
 touch env.py
 ```
-# HERE ADD NOTES ABOUT DEV
+### DEVELOPMENT NOTES
 
 -  **Implement Django** [notes about implementation of Django]
 -  **Implement Templates** [notes about the template implementation]
@@ -544,8 +543,134 @@ touch env.py
 -  **Add Update Functionality**
 -  **Add Delete Functionality**
 
+#### Toast Messages
+**Issue 1. Positioning and responsiveness**
+As my shopping cart modal opens from the right, I positioned the toast messages on the left of the screen. I gave them fixed position off the left of the screen, so the messages could slide in, and then close automatically sliding off screen after a short time. 
+With fixed widths, I had issues with the display of the messages on mobile screens. 
+My solution was to use the CSS ```calc`` function to determine widths, and positioning.  The following CSS for mobiles is based on the 100% width of the viewers screen.
+```css
+.message-container {
+	position: fixed;
+	top: 125px;
+	left: calc(-100vw);
+	z-index: 99999999999;
+	height: auto;
+	}
+.toast {
+	width: 100vw;
+	max-width: calc(100vw); /* 100% viewport width */
+	box-shadow: 0  10px  20px  rgba(75, 50, 50, 0.05) !important;
+	}
+.toast.show {
+	transform: translateX(calc(100vw));
+	transition: 1s;
+	transition-timing-function: ease-out;
+	opacity: 1;
+	}
+.toast.hide {
+	transform: translateX(calc(-100vw))!important;
+	transition-timing-function: ease-in!important;
+	transition: 1s;
+	opacity: 0!important;
+	display: block!important;
+	}
+```
+Media query for tablets,  the calc function sets the toast width to 50%.
+```css
+/* Tablets half width toast messages */
+@media (min-width: 768px) {
+	.toast {
+		max-width: calc(100vw / 2); /* 50% viewport width */
+		box-shadow: 0  10px  20px  rgba(75, 50, 50, 0.05) !important;
+	}
+}
+```
+Media query for desktops, the calc function sets the toast width to 25%.
+```css
+@media (min-width: 992px){
+	.message-container {
+		position: fixed;
+		top: 125px;
+		left: calc(-100vw / 4); 
+		z-index: 99999999999;
+		height: auto;
+		max-width: calc(100vw / 4);
+	}
+	.toast {
+		max-width: calc(100vw / 4); /* 25% viewport width */
+		box-shadow: 0  10px  20px  rgba(75, 50, 50, 0.05) !important;
+	}
+	.toast.show {
+		transform: translateX(calc(100vw / 4)) !important;
+		transition: 1s;
+		transition-timing-function: ease-out;
+		opacity: 1;
+	}
+	.toast.hide {
+		transform: translateX(calc(-100vw / 4))!important;
+		transition-timing-function: ease-in!important;
+		transition: 1s;
+		opacity: 0!important;
+		display: block!important;
+	}
+}
+```
 
-#### TESTING DEVICES INFORMATION (update operating systems)
+**Issue 2. Cart adjustment messages**
+I had an issue with cart contents showing in unrelated success messages. It didn't look right, and I only wanted the cart success messages to be shown when a cart adjusment was made. 
+
+I discovered that ```extra_tags``` can be added to messages, and used in templates to filter the display of such messages. I found the Django documentation ambiguous and difficult to understand, but luckily a [stack overflow thread](https://stackoverflow.com/questions/43588876/how-can-i-add-additional-data-to-django-messages) provided the clarity I needed to implement the fix. I added the following ```extra_tags``` to the cart ```view.py``` adjustment related messages.  
+```python
+# Example
+messages.success(request, f'Added {product.name} to your cart', extra_tags='is_cart')
+``` 
+Then in the success toast HTML the cart message is only displayed if the following condition is true.   
+```html jinja
+{% if grand_total and "is_cart" in message.extra_tags %}
+```
+Now the cart success messages only show when an adjustment has been made to the cart.
+
+**Issue 3. Image lightbox sizing ratio**
+I used the built in bootstrap lightbox, which is actually very easy to implement. 
+Its as simple as adding the ```data-toggle="lightbox"``` to the ```a``` element along with the ```href``` to the image.
+```html
+<!-- Product Gallery -->
+<div  class="col-lg-6 lightbox-gallery product-gallery">
+	{% if product.image %}
+		<a  href="{{ product.image.url }}"  data-toggle="lightbox">
+			<img  class="img-fluid"  src="{{ product.image.url }}"  alt="{{ product.name }}"  title="">
+		</a>
+		{% else %}
+		<a  href="">
+			<img  class="img-fluid"  src="{{ MEDIA_URL }} noimage.png"  alt="{{ product.name }}"  title="">
+		</a>
+	{% endif %}
+</div>
+<!-- End Product Gallery -->
+````
+The bootstrap Javascript does the rest of the work, creating the lightbox modal. This also adds the aspect ratio of 16:9, which was ok but not ideal. On small screens the lightbox image is smaller than that shown in the normal view. 
+I changed this by adding custom CSS to the required modal elements to change the aspect ratio to 1:1.   
+```css
+/* Set max-width for the image lightbox on xl screens */
+.modal.lightbox .modal-dialog.modal-dialog-centered.modal-xl {
+	max-width: 900px;
+}
+
+/* Set the lightbox ratio */
+.modal-body .lightbox-carousel .carousel-inner .carousel-item.active .ratio {
+	position: relative;
+	width: 100%  !important;
+	/* Set aspect ratio-1x1 */
+	--bs-aspect-ratio: calc(100%) !important;
+}
+```
+The following is the result on mobiles.   
+![](/documentation/images/lightbox_image_ratio.jpg)    
+
+On desktops, it resulted in an image that was to large on xl screens, so I changed that to a max-width of 900px. It produces a much larger image on desktops, and also on tablets and mobiles. 
+
+---	
+#### TESTING DEVICES INFORMATION 
 
 [TESTING/Testing Devices](/documentation/testing.md/#testing-devices)
 
@@ -573,8 +698,8 @@ touch env.py
 - Chrome Version 90.0.4430.85 (Official Build) (64-Bit)
 - AOC 22E15 21.5-inch Full HD 1920x1080 at 75 Hz
 
+ ---
   
-
 #### Git Version Control
 
 I used Git version control throughout the project to save an commit work incrementally.
@@ -779,16 +904,17 @@ At this point you have a working version of the site locally, without any data a
 
 2.  [**Very Academy**](https://www.youtube.com/channel/UC1mxuk7tuQT2D0qTMgKji3w) Throughout the project, while researching I came across youtube videos from Very Academy that were clear and informative.   
 	- Setup/ Custom admin
-	- Creating a blog 
-	- [Creating a Bookmark/Favoutites Features](https://www.youtube.com/watch?v=H4QPHLmsZMU) I found their input on using a ManyToManyField for adding favorites really helpful. I had to adapt it, and then create my own filters, but it opened a doorway that helped me to get it done.
+	- Creating a blog
+	-  [Creating a Bookmark/Favoutites Features](https://www.youtube.com/watch?v=H4QPHLmsZMU) I found their input on using a ManyToManyField for adding favorites really helpful. I had to adapt it, and then create my own filters, but it opened a doorway that helped me to get it done.
 
 3.  **Boostrap 5 Theme** Using and customising Boostrap 5 themes enabled me to focus more on creating the apps and the code for the site. I would like to acknowledge and thank the creators of the 2 themes that I used. 
 [Shopapp Bootstrap 5 Theme](http://pxdraft.com/wrap/shopapp/home/index.html#)
 [Amino Bootstrap 5 Theme](https://template.hasthemes.com/amino/amino/blog-list-right-sidebar.html) 
 
 4. [Django and DRF Testing Series](https://www.youtube.com/watch?v=KIIdbVs7e8I&list=PLP1DxoSC17LZTTzgfq0Dimkm6eWJQC9ki) by Kenyan Engineer was really helpful with creating unit tests using pytest and pytest-cov. 
+5. [Scroll to top button with vanilla js](https://dev.to/ljcdev/scroll-to-top-button-in-vanilla-js-beginners-2nc) Thanks to the author of this post for the vanilla JS back to top button. I cusomised the CSS to fit with the style of the site.
 
-[add credits for any code used from other parties]
+
 
 ## NOTES
 

@@ -37,6 +37,8 @@ body {
   padding-top: 64px;
 }
 
+/* ============================= HEIGHT CLASSES ============================= */
+
 .min-vh-50 {
   min-height: 50vh !important; }
 
@@ -49,29 +51,51 @@ body {
 .min-vh-80 {
   min-height: 80vh !important; }
 
-/*
-===================== Template Style and Colors ===================== */
+/* =========================== SECTION SPACING ============================== */
+
+.section-padding {
+  padding-top: 100px;
+}
+
+#header-spacer {
+  padding-top: 50px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .section-padding {
+    padding-top: 80px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .section-padding {
+    padding-top: 60px;
+  }
+}
+
+ul, ol {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+
+}
+
+/* ======================== TEMPLATE STYLE AND COLORS ======================= */
+
 .bg-home {
   background-image: url("/media/cartographer.png");
-  /* position: relative;
-  padding: 190px 0; */
 }
 
 .color-lime {
   color: #cddc39;
 }
 
+/* ============================== Navbar Brand ============================== */ 
+
 .brand-heading {
   font-family: 'Caveat', cursive;
   font-size: 1.2em;
 }
-
-/* .navbar-brand {
-  padding-top: 0.42095rem;
-  padding-bottom: 0.42095rem;
-  margin-right: 0rem;
-  font-size: .8rem;
-  white-space: nowrap; } */
 
 @media (min-width: 768px) {
   .brand-heading {
@@ -80,8 +104,7 @@ body {
   }
 }
 
-/*
-===================== Nav Cart ===================== */
+/*=========================== Navbar Cart Styling =========================== */
 .cart {
   text-decoration: none;
 }
@@ -95,6 +118,7 @@ body {
   text-align: center;
 }
 
+/* =========================== Shopping Cart Styling ======================== */
 
 .update-link,
 .remove-item {
@@ -123,9 +147,47 @@ body {
   border: 1px solid #e3e9ef;
   height: 100%;
 }
-/*
-===================== Nav Search Bar ===================== */
 
+/* ============================= Navbar styling ============================= */
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.nav-link:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================= Navbar Megamenu ============================ */
+
+/*  Required for megamenu */
+.box-shadow {
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.megamenu-image {
+  max-height: 175px;
+}
+
+/* ============================= Navbar Dropdown ============================ */
+
+/* Mobile dropdown styling */
+.dropdown-menu.show {
+  border-radius: 0;
+}
+
+.dropdown-menu[data-bs-popper] {
+  top: 100%;
+  left: 0;
+  margin-top: 0;
+}
+
+.header-height-bar {
+  height: 82px;
+}
+
+/* ============================= Navbar Search ============================== */
 
 #search-products,
 #search-mobile {
@@ -152,50 +214,7 @@ body {
 
 #search-products:focus-visible {
   outline: none;
-  /*   border-bottom: 1px solid #484746; */
-  /*   outline: 3px solid #484746;  */
 }
-
-/*
-===================== Navbar styling ===================== */
-
-.nav-link {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.nav-link:hover {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-/*  Required for megamenu */
-.box-shadow {
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.megamenu-image {
-  max-height: 175px;
-}
-
-
-/* TESTING CSS */
-
-/* Mobile dropdown styling */
-.dropdown-menu.show {
-  border-radius: 0;
-}
-
-.dropdown-menu[data-bs-popper] {
-  top: 100%;
-  left: 0;
-  margin-top: 0;
-}
-
-.header-height-bar {
-  height: 82px;
-}
-
-/*  SEARCH BAR */
 
 #search-products {
   width: 75px;
@@ -219,28 +238,25 @@ body {
 
 }
 
-.product-container .card  {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid #e3e9ef;
-  -webkit-box-shadow: 2px 2px 5px #efefef!important;
-          box-shadow: 2px 2px 5px #efefef!important;
+/* ============================= Search Input =============================== */
 
- } 
+input[name='q']::-webkit-input-placeholder {
+  color: #aab7c4;
+}
+input[name='q']::-moz-placeholder {
+  color: #aab7c4;
+}
+input[name='q']:-ms-input-placeholder {
+  color: #aab7c4;
+}
+input[name='q']::-ms-input-placeholder {
+  color: #aab7c4;
+}
+input[name='q']::placeholder {
+  color: #aab7c4;
+}
 
-/* =============================================================================
-============================ BOOTSTRAP TOAST MESSAGES ==========================
-============================================================================= */ 
+/* ======================== BOOTSTRAP TOAST MESSAGES ======================== */ 
 
  .message-container {
   position: fixed;
@@ -250,7 +266,6 @@ body {
   height: auto;
 }
 
-/* Add box shadow */
 .toast {
   width: 100vw;
   max-width: calc(100vw);
@@ -296,63 +311,7 @@ body {
  
  }
 
-/* ======= Set toast width using "calc" for screens other than mobile ======= */
-@media (min-width: 768px) {
-  .toast {
-    /* max-width: calc(calc(100vw / 2)); */
-    max-width: calc(100vw / 2);
-    -webkit-box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important;
-            box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important;
-  }
-}
-
-/* ================= Toast media query for large screens ==================== */
-@media (min-width: 992px){
-  
-  .message-container {
-    position: fixed;
-    top: 125px;
-    left: calc(-100vw / 4);
-    z-index: 99999999999;
-    height: auto;
-    max-width: calc(100vw / 4);  /* Set max width of conatiner */
-  }
-
-  .toast {
-    /* max-width: calc(calc(100vw / 4)); */
-    max-width: calc(100vw / 4);
-    -webkit-box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important;
-            box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important;
-  }
-  
-  .toast.show {
-    -webkit-transform: translateX(calc(100vw / 4)) !important;
-        -ms-transform: translateX(calc(100vw / 4)) !important;
-            transform: translateX(calc(100vw / 4)) !important;
-    -webkit-transition: 1s;
-    -o-transition: 1s;
-    transition: 1s;
-    -webkit-transition-timing-function: ease-out;
-         -o-transition-timing-function: ease-out;
-            transition-timing-function: ease-out;
-    opacity: 1;
-   }
-   .toast.hide {
-    -webkit-transform: translateX(calc(-100vw / 4))!important;
-        -ms-transform: translateX(calc(-100vw / 4))!important;
-            transform: translateX(calc(-100vw / 4))!important;
-    -webkit-transition-timing-function: ease-in!important;
-         -o-transition-timing-function: ease-in!important;
-            transition-timing-function: ease-in!important;
-    -webkit-transition: 1s;
-    -o-transition: 1s;
-    transition: 1s;
-    opacity: 0!important;
-    display: block!important;
-   }
-}
-
-/* =============== Custom Bootstrap Toast Message styles ==================== */
+/* ================= CUSTOM BOOTSTRAP TOAST MESSAGE STYLES ================== */
 
 /* ==================================  Toast Success */
 .toast-success {
@@ -425,7 +384,81 @@ body {
   border-bottom-right-radius: .25rem;
 }
 
- /* ================================ PRODUCTS ================================*/
+/* ==================== MEDIA QUERY (min-width: 768px) ====================== */
+
+@media (min-width: 768px) {
+  .toast {
+    max-width: calc(100vw / 2);
+    -webkit-box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important;
+            box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important;
+  }
+}
+
+/* ==================== MEDIA QUERY (min-width: 992px) ====================== */
+
+@media (min-width: 992px){
+  .message-container {
+    position: fixed;
+    top: 125px;
+    left: calc(-100vw / 4);
+    z-index: 99999999999;
+    height: auto;
+    max-width: calc(100vw / 4);  /* Set max width of conatiner */
+  }
+
+  .toast {
+    max-width: calc(100vw / 4);
+    -webkit-box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important;
+            box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05) !important;
+  }
+  
+  .toast.show {
+    -webkit-transform: translateX(calc(100vw / 4)) !important;
+        -ms-transform: translateX(calc(100vw / 4)) !important;
+            transform: translateX(calc(100vw / 4)) !important;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    -webkit-transition-timing-function: ease-out;
+         -o-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+    opacity: 1;
+   }
+
+   .toast.hide {
+    -webkit-transform: translateX(calc(-100vw / 4))!important;
+        -ms-transform: translateX(calc(-100vw / 4))!important;
+            transform: translateX(calc(-100vw / 4))!important;
+    -webkit-transition-timing-function: ease-in!important;
+         -o-transition-timing-function: ease-in!important;
+            transition-timing-function: ease-in!important;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    opacity: 0!important;
+    display: block!important;
+   }
+}
+
+/* ================================ PRODUCTS ================================ */
+
+ .product-container .card  {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #e3e9ef;
+  -webkit-box-shadow: 2px 2px 5px #efefef!important;
+          box-shadow: 2px 2px 5px #efefef!important;
+ } 
 
  /* Style Tags */
  .product-meta.category-tags a.tag {
@@ -448,46 +481,66 @@ body {
   color: #fff;
 }
 
- /* ======================= Testimonial form rating css ======================*/
- .rate {
-  float: left;
-  height: 46px;
-  padding: 0 10px;
+/************************* Product Form **************************/
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
 }
-.rate:not(:checked) > input {
-  position:absolute;
-  top:-9999px;
+
+.btn-file input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0;
+  cursor: pointer;
 }
-.rate:not(:checked) > label {
-  float:right;
-  width:1em;
-  overflow:hidden;
-  white-space:nowrap;
-  cursor:pointer;
-  font-size:30px;
-  color:#ccc;
+
+.custom-checkbox .custom-control-label::before {
+  border-radius: 0;
+  border-color: #dc3545;
 }
-.rate:not(:checked) > label:before {
-  content: '★ ';
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  border-radius: 0;
 }
-.rate > input:checked ~ label {
-  color: #ffc700;    
+
+/********************* Product Image Lightbox *********************/
+.ratio.ratio-16x9 {
+  background-color: #fff !important;
 }
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-  color: #deb217;  
+
+/* Set max-width for the image lightbox on xl screens */
+.modal.lightbox .modal-dialog.modal-dialog-centered.modal-xl {
+  max-width: 900px;
 }
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
-  color: #c59b08;
+/* Set the lightbox ratio */
+.modal-body .lightbox-carousel .carousel-inner .carousel-item.active .ratio {
+  position: relative;
+  width: 100% !important;
+  /* set the aspect ratio-1x1 */
+  --bs-aspect-ratio: calc(100%) !important;
+}
+/* Change the color of the close button svg */
+.modal.lightbox button.btn-close > svg {
+  fill: #555;
+}
+
+/* Product Favorite icon */
+.product-card-3 .favorites {
+  position: absolute;
+  top: 20px;
+  right: 26px;
+  z-index: 1;
 }
 
 /* =================== Header Section Jumbotron Parallax ==================== */
 
-/* Remove Bottom Margin/ add top padding for Jumbotron */
+/* Remove Bottom Margin */
 .jumbotron {
   margin-bottom: 0;
 }
@@ -504,7 +557,6 @@ body {
 /* Image for Jumbotron Parallax Section */
 .paralsec {
   background-image: url("/media/bg_shakyamuni.png");
-
 }
 
 .fourofour {
@@ -514,6 +566,7 @@ body {
   width: 200%; 
   height: 200%;
 }
+
 .fourofour img {
   position: absolute; 
   top: 0; 
@@ -542,6 +595,8 @@ body {
   line-height: 40px;
 }
 
+/* ============= MEDIA QUERY only screen and (min-width: 768px) ============= */
+
 @media only screen and (min-width: 768px){
   .jumbotron {
     margin-bottom: 0;
@@ -561,6 +616,9 @@ body {
     line-height: 60px;
   }
 }
+
+/* ============= MEDIA QUERY only screen and (min-width: 992px) ============= */
+
 @media only screen and (min-width: 992px){
   .jumbotron {
     margin-bottom: 0;
@@ -575,28 +633,7 @@ body {
   }
 }
 
-/* ============================== Buttons =================================== */
-
-
-.btn-outline-white {
-  color: #ffffff;
-  border-color: #ffffff;
-}
-
-.btn-outline-white:hover,
-.btn-outline-white:focus,
-.btn-outline-white:active,
-.btn-outline-white.active,
-.btn-outline-white.focus,
-.btn-outline-white:not(:disabled):not(.disabled):active,
-.btn-outline-white:not(:disabled):not(.disabled):active:focus,
-.btn-outline-white .open>.dropdown-toggle.btn-primary {
-  background: #ffffff;
-  border-color: #ffffff;
-}
-
 /* =========================== SERVICES SECTION ============================= */
-
 
 .section {
   padding-top: 80px;
@@ -625,14 +662,10 @@ body {
   font-size: 18px;
 }
 
-/*
-============================== TESTIMONIAL SECTION =================================================
-*/
-
+/* =========================== TESTIMONIAL SECTION ========================== */
 
 .bg-client {
   background-image: url("/media/cartographer.png");
-  /* position: relative; */
 }
 
 .bg-client .user-review {
@@ -650,7 +683,7 @@ body {
   position: relative;
 }
 
-/* Style the testimonial button on the carousel */
+/*********** Style the carousel testimonial button ***********/
 
 .testimonial-btn-wrapper {
   position: absolute;
@@ -710,7 +743,42 @@ body {
   width: 220px;
 }
 
-
+/************* Testimonial form rating css **************/
+.rate {
+  float: left;
+  height: 46px;
+  padding: 0 10px;
+}
+.rate:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+}
+.rate:not(:checked) > label {
+  float:right;
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:30px;
+  color:#ccc;
+}
+.rate:not(:checked) > label:before {
+  content: '★ ';
+}
+.rate > input:checked ~ label {
+  color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
 
 /* ================================= CONTACT =================================*/
 
@@ -718,30 +786,10 @@ textarea.form-control {
   height: auto !important;
 }
 
-/*  ALLAUTH FORM STYLE WORKAROUND */
-.form-control, .form-select {
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  border: 1px solid #e0e0e0;
-  font-size: 14px;
-  border-radius: 0.3rem;
-  height: 40px;
-  padding: 12px 10px;
-}
 
-.form-select {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
 
-.form-control:focus {
-  border-color: #ccc;
-}
 
-textarea.form-control {
-  height: auto;
-  padding-top: 13.5px;
-}
+/******************* Social icons *******************/
 
 .contact-social {
   padding: 20px 0px;
@@ -770,7 +818,6 @@ textarea.form-control {
 }
 
 a.social-icon {
-  /* background: #5465ff!important; */
   border: 2px solid #868e96;
   border-radius: 50%;
   -webkit-transition: all 0.5s;
@@ -791,6 +838,8 @@ a.social-icon:hover {
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
+
+/******************* Footer *******************/ 
 
 .footer-terms li:last-child:after {
   content: "";
@@ -816,7 +865,6 @@ a.social-icon:hover {
   bottom: 50px;
   right: 50px;
   display: block;
-  /* padding: 8px 4px; */
   cursor: pointer;
   -webkit-transform: translateY(100px);
       -ms-transform: translateY(100px);
@@ -852,8 +900,8 @@ a.social-icon:hover {
   width: 200%; 
   height: 200%;
   z-index: -1;
-  /* background-color: transparent; */
   }
+
 .bg-error img {
   position: absolute; 
   top: 0; 
@@ -865,9 +913,11 @@ a.social-icon:hover {
   min-height: 50%;
   
   }
+
 .bg-transparent {
   background-color: transparent;
 }
+
 .btn-error {
   padding: 0.5rem 1.6rem;
   font-size: 1.25rem;
@@ -885,11 +935,12 @@ a.social-icon:hover {
   text-shadow: 0 0 black;
 }
 .top-40 {
-  /* top: 70%; */
   position: relative;
 }
-/* PRIMARY COLORS */
 
+/* =============================== BUTTONS ================================== */
+
+/* *************************** BUTTONS PRIMARY ********************************/
 
 .btn-soft-primary:hover,
 .btn-soft-primary:focus,
@@ -937,55 +988,26 @@ a.social-icon:hover {
   color: #fff;
 }
 
+/* ************************ BUTTONS OUTLINE WHITE *****************************/
 
-/* =========================== Section Spacing ============================== */
-.section-padding {
-  padding-top: 100px;
-}
-
-#header-spacer {
-  padding-top: 50px;
+.btn-outline-white {
+  color: #ffffff;
+  border-color: #ffffff;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .section-padding {
-    padding-top: 80px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .section-padding {
-    padding-top: 60px;
-  }
-}
-
-ul, ol {
-  padding: 0;
-  list-style: none;
-  margin: 0;
-}
-
-/* ============================= Search Input =============================== */
-input[name='q']::-webkit-input-placeholder {
-  color: #aab7c4;
-}
-input[name='q']::-moz-placeholder {
-  color: #aab7c4;
-}
-input[name='q']:-ms-input-placeholder {
-  color: #aab7c4;
-}
-input[name='q']::-ms-input-placeholder {
-  color: #aab7c4;
-}
-input[name='q']::placeholder {
-  color: #aab7c4;
+.btn-outline-white:hover,
+.btn-outline-white:focus,
+.btn-outline-white:active,
+.btn-outline-white.active,
+.btn-outline-white.focus,
+.btn-outline-white:not(:disabled):not(.disabled):active,
+.btn-outline-white:not(:disabled):not(.disabled):active:focus,
+.btn-outline-white .open>.dropdown-toggle.btn-primary {
+  background: #ffffff;
+  border-color: #ffffff;
 }
 
 /* ============================= Allauth forms ============================== */
-
-
-/* Allauth form formatting */
 
 .allauth-form-inner-content p {
   margin-top: 1.5rem; /* mt-4 */
@@ -1037,66 +1059,34 @@ input[name='q']::placeholder {
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
 }
 
-/* Product Form */
-
-.btn-file {
-  position: relative;
-  overflow: hidden;
+/*************  Allauth Form Style Workaround **************/
+.form-control, .form-select {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #e0e0e0;
+  font-size: 14px;
+  border-radius: 0.3rem;
+  height: 40px;
+  padding: 12px 10px;
 }
 
-.btn-file input[type="file"] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 100%;
-  min-height: 100%;
-  opacity: 0;
-  cursor: pointer;
+.form-select {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
-.custom-checkbox .custom-control-label::before {
-  border-radius: 0;
-  border-color: #dc3545;
+.form-control:focus {
+  border-color: #ccc;
 }
 
-.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-  background-color: #dc3545;
-  border-color: #dc3545;
-  border-radius: 0;
+textarea.form-control {
+  height: auto;
+  padding-top: 13.5px;
 }
 
-/* ========================== Product Image Lightbox =========================*/
-.ratio.ratio-16x9 {
-  background-color: #fff !important;
-}
+/* ============================== MEDIA QUERIES ============================= */
 
-/* Set max-width for the image lightbox on xl screens */
-.modal.lightbox .modal-dialog.modal-dialog-centered.modal-xl {
-  max-width: 900px;
-}
-/* Set the lightbox ratio to ration-1x1 */
-.modal-body .lightbox-carousel .carousel-inner .carousel-item.active .ratio {
-  position: relative;
-  width: 100% !important;
-  /* max-height: vh-80; */
-  --bs-aspect-ratio: calc(100%) !important;
-}
-/* Change the color of the close button svg */
-.modal.lightbox button.btn-close > svg {
-  fill: #555;
-}
-
-/* Product Favorite icon */
-.product-card-3 .favorites {
-  position: absolute;
-  top: 20px;
-  right: 26px;
-  z-index: 1;
-}
-
-/* 
-================================= MEDIA QUERIES ============================= */
-
+/* ===================== @media (max-width: 767.98px) ======================= */
 @media (max-width: 767.98px) {
   .bg-client .testi-user {
     width: 50px !important;
@@ -1105,7 +1095,7 @@ input[name='q']::placeholder {
     margin-top: 20px;
   }
 }
-
+/* ======================== @media (min-width: 768px) ======================= */
 @media (min-width: 768px) {
   .bg-client .testi-user {
     width: 85px !important;
@@ -1114,6 +1104,7 @@ input[name='q']::placeholder {
     margin-top: 20px;
   }
 }
+/* =================== @media all and (min-width: 992px) ==================== */
 
 /* Required for mega menu */
 @media all and (min-width: 992px) {
@@ -1121,6 +1112,7 @@ input[name='q']::placeholder {
   .navbar .has-megamenu{
     position:static!important;
   }
+
   .navbar .megamenu{
     left:0; 
     right:0; 
@@ -1148,7 +1140,6 @@ input[name='q']::placeholder {
     -webkit-transform: rotateX(0deg);
             transform: rotateX(0deg);
   }
- 
 }
 
 /* =================== @media (min-width: 992px) ============================ */
@@ -1167,8 +1158,6 @@ input[name='q']::placeholder {
   .header-container {
     padding-top: 56px !important;
   }
-
-  
 
   .header-main {
     -webkit-box-shadow: 0px 2px 5px 1px #f5f5f5;

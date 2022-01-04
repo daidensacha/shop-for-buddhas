@@ -96,17 +96,27 @@ def order_history(request, order_number):
 def vendor_order_history(request, order_number):
     """ Create list of vendors product sales """
     order = get_object_or_404(Order, order_number=order_number)
+    sale_total = 0
+    delivery_total = 0
+    grand_total = 0
+    # Return and filter list of vendor sale line items and totals
+    order_item = OrderLineItem.objects.filter(order=order)
+    for item in order_item:
+        if request.user == item.product.created_by:
+            sale_total += item.lineitem_total
 
+    grand_total = sale_total + delivery_total
     messages.info(request, (
         f'This is a past confirmation of vendor \
-            sale for order number {order_number}. '
-        'A confirmation email was sent on the order date.'
+            sale for order number {order_number}.'
     ))
 
-    template = 'checkout/checkout_success.html'
+    template = 'checkout/checkout_vendor_sales.html'
     context = {
         'order': order,
-        'from_profile': True,
+        'sale_total': sale_total,
+        'delivery_total': delivery_total,
+        'grand_total': grand_total,
     }
 
     return render(request, template, context)
@@ -121,7 +131,7 @@ def add_remove_favorite(request, product_id):
     if request.user.is_authenticated:
         product = get_object_or_404(Product, id=product_id)
 
-        # I in users favorite list delete it from the list
+        # If in users favorite list delete it from the list
         if product.favorites.filter(id=request.user.id).exists():
             product.favorites.remove(request.user)
             messages.success(
