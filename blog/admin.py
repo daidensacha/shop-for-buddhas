@@ -38,4 +38,24 @@ class PostAdmin(admin.ModelAdmin):
     ordering = ('created_at',)
 
 
-admin.site.register(Comment)
+# admin.site.register(Comment)
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    """ Comment Admin Layout """
+
+    readonly_fields = ('posted_by', 'created_at')
+    fields = (
+        'post',
+        'name',
+        'body',
+        'posted_by',
+        'created_at'
+    )
+    list_display = (
+        'created_at',
+        'posted_by',
+        'name',
+        'post'
+    )
+    list_filter = ('posted_by', 'name',)
+    ordering = ('created_at', 'posted_by',)

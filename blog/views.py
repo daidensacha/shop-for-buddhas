@@ -94,6 +94,7 @@ def post_detail(request, slug):
 
         if form.is_valid():
             comment = form.save(commit=False)
+            comment.posted_by = request.user
             comment.post = post
             comment.save()
             messages.success(
@@ -138,7 +139,7 @@ def blog_search(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
-   
+
     context = {
         'query': query,
         'post': post,
