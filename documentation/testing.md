@@ -405,7 +405,7 @@ Navigate to the user profile by clicking the ```My Profile``` link in the header
 		My registration informtion is displayed in read only format. (Name, Username, Email, User Type, Date Joined, Last Login)
 		- [x] **Account Info Tab**
 			- [x] **Default Delivery and Profile Info**
-			My profile information is displayed in a form that can be edited and updated. I update my information and click the update information button. A success message is displayed, and I am returned to the main profile tab. I check in the Account Info tab and the information has been updated. 
+		My profile information is displayed in a form that can be edited and updated. I update my information and click the update information button. A success message is displayed, and I am returned to the main profile tab. I check in the Account Info tab and the information has been updated. 
 			- [x] **Account Management**
 				- [x] **Change Password -** I click the change password link and I'm redirected to the Change Password page. 
 					- [x] I enter my current password, a new password, the new password again, and click "Change Password". 
@@ -425,81 +425,168 @@ Navigate to the user profile by clicking the ```My Profile``` link in the header
 				- [x] **Close Account -** I click "Close Account", a bootstrap danger styled modal opens warning me the account will be closed and I will no longer have access. 
 					- [x] I click Cancel and the modal closes.
 					- [x] I click Close Account and A message informs me the accoutn has been closed. I am logged out to a page that informs me the account is not active. 
-		- [x] **Orders Tab -**
-			- [x] **Order Details -**
-			- [x] **Oder Number Link -**
+		- [x] **Orders Tab -** I open the profile order tab and a list of my orders is displayed.
+			- [x] **Order Details -** The order number, order date, order items, item quantity, and order total is displayed for each order. 
+			- [x] **Order Number Link -** The order number a link. 
+				- [x] I click on a order number link and I am redirected to the order confirmation page displaying the order details. 
+				- [x] A toast message informs me I am viewing a past order.
 		- [x] **Favorites Tab -**
-			- [x] **Favorites Products Grid -**
-			- [x] **Image Lightbox -**
-			- [x] **Product Name Link -**
-			- [x] **Product Category Link -**
-			- [x] **Product Price -**
-			- [x] **Remove Link button -**
-	- [x] **Vendor/ Admin Only Tabs**
+			- [x] **Favorites Products Grid -** I click on the favorites tab and the favorites list is displayed in a bootstrap grid.
+			- [x] **Image Lightbox -** I click on the image and it opens in an image lightbox. 
+			- [x] **Product Name Link -** I click the product name and am redirected to the product detail page. 
+			- [x] **Product Category Link -** I click the category and it opens a page displaying all the products in that category. 
+			- [x] **Product Price -** The product price is displayed.
+			- [x] **Remove Link button -** I click on the remove link below an item and the page refreshes. A toast message informs me the item has been removed from my favorites. 
+				- [x] **ISSUE:** When the page refreshes it goes to the profile tab. This is not ideal, and I plan to implement Ajax to update the list without refreshing the page.
+	- [x] **Vendor/ Admin Only Tabs -** The following two tabs are displayed for vendors only.
 		- [x] **Products Tab -**
-			- [x] **Product Layout Grid -**
-			- [x] **Only Vendors Products Displayed -**
-			- [x] **Image lightbox -**
-			- [x] **Product Name Link -**
-			- [x] **Product Category Link -**
-			- [x] **Product Price -**
-			- [x] **Edit Item Link -**
-			- [x] **Delete Item Link -**
-				- [x] **Delete Modal -**
-					- [x] **Layout/ Boostrap classes -**
-					- [x] **Cancel Button -**
-					- [x] **Delete Button -**
-		- [x] **Sales Tab -**
-			- [x] **Vendor Sales List -**
-			- [x] **Sale Oder Number Link -**
+			- [x] **Product Layout Grid -** I open the profile products tab and a list of the vendors products is dispplayed. 
+			- [x] **Only Vendors Products Displayed -** I confirm that only the vendors items are displayed by changing ownership of some products in the admin. The products are no longer displayed in this vendors  profile. 
+			- [x] **Image lightbox -** I click the image and it opens the image lightbox.
+			- [x] **Product Name Link -** I click the product name and it redirects me to the product detail page. 
+			- [x] **Product Category Link -** I click the category and it opens a page displaying all the products in that category. 
+			- [x] **Product Price -** The product price is displayed.
+				- [x] **Edit link -** I click on the edit link and I am redirected to the eidt product page, where a form containing the products information is displayed. I edit the product details, and click update product. I am redirected back to the product view and the product details have been updated. 
+				- [x] **Delete link -** I click on the delete product link. A bootstrap danger styled modal opens.
+					- [x] **Delete Modal**
+						- [x] **Modal Content -** The content informs be the product "SKU", and product "name" will be deleted from the database. I am asked if I am sure I want to delete the product. The content is clear and correct.
+						- [x] **Cancel Button -** I click the cancel button and the modal closes.
+						- [x] **Delete Button -** I click the delete button and a message informs be the product has been deleted. I am returned to the product page. 
+		- [x] **Sales Tab**
+			- [x] **Vendor Sales List -** I open the vendor sales tab and a list of the vendor product sales is displayed.
+				- [x] To test this, I create an order for 4 seaparate items, in different quantities, belonging to 3 different vendors. 
+				- [x] I check the order, and the line items in the Django admin. The details are correct, and showing the different line items product owners. 
+				- [x] In the profile for each vendor, the items for each vendor are showing in the vendor sales tab. The totals are correct. 
+			- [x] **Sales Details -** The date, order number, vendor, item quantity, order items, and line item total is displayed for each item. 
+			- [x] **Sale Order Number Link -** The order number links to the vendor sale order details. 
+				- [x] I click on a order number link and I am redirected to the sale  confirmation page displaying the sale item details. 
+				- [x] A toast message informs me I am viewing a sale confirmation for a past sale.
 ---
-### Blog All Pages
-**Blog Search**
-**Blog Categories**
-**Recent Posts**
-**Blog Archives**
-**Blog Tags**
+### Blog All Pages  
+I navigate to the blog, and the content is displayed as per design. A featured article, the blog posts, and a right sidebar.
+- [x] **Blog Right Sidebar**
+	- [x] **Blog Search -** I enter various search terms in the blog search input, and it returns related results for the serach term within the blog posts. 
+	- [x] **Blog Categories -** I click on the category in the blog sidebar and the related items within that category are returned.
+	- [x] **Recent Posts -** In the recent posts, the four most recent posts are displayed. This is by design. 
+	- [x] **Blog Archives -** The blog archives displays Year, and month with the total items from that month. Clicking on the month displays the posts from that month. 
+	- [x] **Blog Tags -** I click on the blog tags and the items with that tag are displayed. 
+- [x] **Blog Featured Post**
+	- [x] A featured post is displayed at the top of the page. This option is checked in the Post admin. 
+	- [x] In the post admin I uncheck the option and the featured post is no longer visible. 
+	- [x] I click on the post image, or read more link, it opens and displays the post.
+	- [x] **Note** The featured post is currently displayed on all ```blog_posts``` pages. I intend to change this so it is visible only on the first ```blog_posts``` page. 
+- [x] **Blog Posts Page**
+	- [x] Regular posts are displayed below the featured post.
+	- [x] The posts are paginated, 2 posts per page.
+	- [x] I click on the image or readme link of the regular post. The post is opened and displayed.
+- [x] **Post Detail Page**
+	- [x] **Post -** The blog detail page is per design. The date, posted by, article title, article image, article and article tags. Below the article is a form for the user to leave a comment. 
+- [x] **Blog Post Comments**
+	- [x] The post comment form is available for authenticated users. As a logged out user I confirm that ```Register``` and ```Login``` links are displayed for users if they want to leave a comment.
+	![](documentation/images/blog-comments-login.png)  
+	- [x] I log in and on the same page now there is a "```Leave a comment```" link displayed instead.  
+	![](documentation/images/blog-comments-logged-in.png)  
+	- [x] I click on the "```Leave a comment```" link and the comment form toggles open and is now visible.  
+	![](documentation/images/blog-comments-form.png)  
+		- [x] I enter my name and a comment, and click submit. 
+		- [x] A toast message informs me the comment has been posted. It is now displayed below the article. 
+		- [x] The page refreshes, the comment form no longer visible, and the comment is displayed below the "```Leave a comment```" link.
+	- [x] **Comments View -**
+		- [x] The comment is displayed in a blockquote, with my name, and how long ago it was posted.
+		- [x] The comment section heading displays teh numbe rof comments in brackets. This is updated when I add a comment. 
+		- [x] The comments are posted in date order, newest comments are at the top. 
 
-### Blog Page
-**Featured Post**
-**Posts**
-- **Read More**  
+#### NOTE: Changes to the Blog Comment Model
+At this point in my testing, I became aware that I hadn't really thought out the comment process. I have added images above. 
+1. The comment form was available for all users to leave comments. I chnaged this, adding a requirement for users to be authenticated to leave a comment. Logged out users see  ```Register or login to leave a comment``` , with links to register or login. 
+2. Logged in users see a link ```Add a comment```, which toggles open the form to leave a comment. 
+3. I added a foreign key field to the comment model, so that it registers the authenticated users id with the comment. This allows me to monitor users that might add malicious or unfriendly content. 
+4. I updated the admin comment view to dispplay the ```created_at```, ```posted_by```, ```name``` and ```post```. I also added a filter so I can filter by ```posted_by``` and ```name```.
+5. I have updated the ER Diagram to reflect the added foreign key field in the comment model. 
 
-**Pagination**
+#### NOTE: Blog HTML Template structure.
+Within the blog I have divided up the code into different templates so it was easier to work with.
+```shell
+|-- templates/blog/
+|   |-- base.html
+|	|-- blog-body.html
+|	|-- blog-posts.html
+|	|-- blog-detail.html
+```
+**Separation of HTML to reduce duplication**
+Initially i started with the ```blog-posts.html``` and ```blog-detail.html``` files. 
 
-### Blog Post Page
-**Post**
-**Comment Form**
-**Comments View**
+As I began to develop the application, it became complex as the page was long and the sidebar was repeated in the post and detail pages. 
+
+I created the ```base.html``` page, containing the blog sidebar. I created an ```inner_content``` block within the ```base.html```, and moved the post and detail html into separate pages. Those pages are now included into the ```base.html``` page as required, using the same sidebar. 
+
+This saved me repeating and having to remember to make simultaneous changes to the sidebar in separate pages. 
+
+**Tags, categories, archive and search query conflicts**
+I found that results shown when looking for tags, categories, search queries were sometimes duplicated when displaying the result in the HTML template.
+ My work around was to remvove the blog body from the ```blog-posts.html``` page, and include it back in when returning the result. For this, i needed to distinguish what result was being returned and displayed. 
+The followign is my workaround, using jijna to include the blog body displaying the result. 
+```jinja-html
+<!-- Include blog body -->
+{% for post in posts %}
+	<!-- Option 1: If there is a slug or archive item -->
+	{% if category_slug != None or archive == True %}
+		{% include 'blog/blog_body.html' %}
+	<!-- Option 2: If there is no slug -->
+	{% elif category_slug == None %}
+		<!-- Option 2a: If it's a query -->
+		{% if query %}
+			<h5> You Searched For {{query}}</h5>
+			{% include 'blog/blog_body.html' %}
+		{% endif %}
+		<!-- Option 2b: If its not a featured post or query -->
+		{% if not post.featured and not query %}
+			{% include 'blog/blog_body.html' %}
+		{% endif %}
+	{% endif %}
+{% endfor %}
+```
+I'm not sure if this is the best way, but it works, and I am open to resolving the conflicts another way if there is a better way. 
+The ```blog-body.html``` being included is the same page, but the contents are not, and this was a way to separated the different results so that duplicates are not shown. 
+
+---
+### Toast Messages
+[Readme/Toast Messages](/README.md/#toast-messages)  
+In the read me I have outlined the style and positioning of the toast messages. 
+I also explained how I have used Django messages ```extra_tags``` to limit the posting of the cart related messages. 
+- [x] When i add, update, or remove an item from the cart, the toast message appears showing the cart details. 
+- [x] I confirm that this is not repeated and shown for messages unrelated to the cart adjustments. 
+- [x] I click on the toast cart link to a secure checkout and it redirects me to the checkout page. 
+- [x] The toast messages function per design, sliding in, then automaticallay closing after some seconds. 
+---
+
+### Responsive Testing
+To be completed.
 
 ---
 
 
-4. **All Users:**
+#### Custom Error pages
+Custom 400, 403, 404, and 500 error pages have been included within the product base template folder. 
 
-5. **Session Users:**
+**404 Errors** 
+- [x] I type a [url to a page that doesn't exist](https://shop-for-buddhas.herokuapp.com/test/) in this project into the browser. The custom 404.html page is displayed.   
 
-6. **Admin Users:**
+**500 Errors**
+- [x] I add an extra letter in a [blog slug url](https://shop-for-buddhas.herokuapp.com/blog/lost-wax-method-of-making-status-in-nepall/) (nepall instead of nepal), and the 500.html server error page is displayed.
 
 ---
-
-### ALL USERS
-
-### SESSION USERS
-
-### ADMIN USERS
-
-
-#### 404 Errors
-
-##### ALL USERS
-
-- [x] Test
+### Page Views that Require Authentication
 
 ##### USERS NOT LOGGED IN
 
-- [x] Test
+To be completed
 
+##### AUTHENTICATED USERS
+
+To be completed
+
+---
 
 ## USER STORIES REVIEW (Development-Deployment)
 
@@ -510,19 +597,157 @@ Navigate to the user profile by clicking the ```My Profile``` link in the header
 ### User Story Reviews
 
 ---
-### As the user, ...
+### As a vendor, ...
 
-**As the user:**
-> User story
-- User Story Review
+**As a vendor:**
+> I want to be able to register to sell my work.
+- I have extended the AbstractUser model to include the possibity for users to register as a customer or a vendor. 
+![](/documentation/images/vendor-registration.jpg)  
 
-### As the owner, ...
-**As the owner:**
-> User story
-- User Story Review
+**As a vendor:**
+> I want to create a profile.
+- The profile is created as part of the registration process. The user can then update the profile with their details. 
+![](/documentation/images/vendor-profile.jpg)    
 
-![](/documentation/images/)  
+**As a vendor:**
+> I want to be able to upload my products to be sold in the shop.
+- In the vendor profile, in the product tab, the vendor can click the add new product button. They are redirected to the add new product page, where they can add the product details, image and save the product.   
+![](/documentation/images/vendor-profile-product.jpg)    
+![](/documentation/images/vendor-add-product.jpg)     
 
+
+**As a vendor:**
+> I want to be able to edit, update or delete my listed products.
+- All the vendors products have an edit, and delete link under them in the product list page, in the product detail page, and in the vendors profile product tab. Profile view is above.
+This is the product view, see vendors product with edit and delete links.
+![](/documentation/images/product-view-edit.jpg)    
+This is the product detail view with the edit delete links.
+![](/documentation/images/product-detail-edit.jpg)    
+- **Edit/ Update Product -** Clicking the edit button opens the edit product page, where the vendor can update the details and save them.   See the edit and delete links in above image. 
+![](/documentation/images/vendor-edit-product.jpg)    
+- **Delete Product -** To delete a product, it is 2 clicks. Click the delete under the product, then confirm by clicking delete again in the delete modal. 
+![](/documentation/images/vendor-delete-product.jpg)    
+
+**As a vendor:**
+> I want to be able to see a current list of my items listed for sale.
+- A complete list of all the vendors products are shown in the vendors profile product tab. The vendor can view the product there. Clicking on the image will open the image in a lightbox. Clicking the item name will redirect the vendor to the product detail page. 
+![](/documentation/images/vendor-products.jpg)    
+
+**As a vendor:**
+> I want to be able to see a current list of my sold items
+- In the vendor profile sales tab is a list of the vendors sold items. By clicking on the sale order link the vendor can view the details of the vendor sold items on the cutomer order. It provides the vendor with the delivery address, and customer contact details. 
+![](/documentation/images/vendor-sales.jpg)    
+
+**As a vendor:**
+> I want customers to be able to commission particular works with specific preferences.  
+- This is described as an available service in the services section in the homepage. Customer can contact us to ask if they have a particular requirement. 
+![](/documentation/images/services.jpg)    
+
+### As a customer, ...
+
+**As a customer:**
+> I want to buy quality statues.
+- Over many years visiting Nepal, India and Tibet, we have many connections in Nepal, and with a grounding in Buddhist practice, we understand the need for quality when it comes to Vajrayana Buddha statues. 
+![](/documentation/images/products-quality.jpg)  
+
+**As a customer:**
+> I want to be able to contact the seller if I have questions about the product.
+- Customer can contact us via the contact form when they have particular questions for vendors. In such cases, when it is required, we connect the vendor with the customer to address those inquiries. 
+
+**As a customer:**
+> I want to be able to commission work for items I cannot find in the shop.
+- This matches with the vendors requirement for the same. We have offered this as a possibility in the services section on the homepage. 
+![](/documentation/images/services.jpg)    
+
+**As a customer:**
+> I'm interested in knowing about the statue making process and the artisans that make the statues.   
+- A blog has been included in the site with this in mind. The need to educate, inform, and raise awareness about this craft is important. The blog is a place where we can promote new items, vendors, and to publish other infomation of interest for customers to read. 
+![](/documentation/images/blog.jpg)    
+
+**As a customer:**
+> I want to be able to view items by category.
+- In the navbar a megamenu has been provided which has links to all product categories. The customer can easily see all available categories in this view. Additionally, every product has a category tag. The user can click that tag to view all the other products within the same category. 
+![](/documentation/images/megamenu.jpg)    
+
+**As a customer:**
+> I want to be able to sort the items by ascending, descending order.
+- In the top right of the product page, a filter allows the user to filter by price, rating, category, and name. 
+![](/documentation/images/product-filter.jpg)    
+
+**As a customer:**
+> I want to be able to search statues by name. 
+- See the previous.
+
+
+**As a customer:**
+> I want a seamless registration process.
+- Registration is a simple process. Complete the registration form. A unique username and email must be provided. A confirmation email is sent with a link to click and confirm the provided email is correct. Once that is complete, the customer can login. 
+![](/documentation/images/vendor-registration.jpg)  
+
+**As a customer:**
+> I want to be able to log in with an email and password.
+- The user can use their username or email, and their password to login. 
+![](/documentation/images/login.jpg)    
+
+**As a customer:**
+> I want to be able to have a profile to save time for future purchases.
+- This need is provided for. The user can fill in their profile, so when they purchase something their details are automatcially entered in the checkout form. The order details are also saved to the user profile order tab.
+![](/documentation/images/profile-account-info.jpg)    
+
+**As a customer:**
+> I want an option to be able to close my account.  
+- The user can close their account by clicking the close account in their profile account info tab. See above image.
+
+**As a customer:**
+> It's important that I can easily and intuitively navigate the site.
+- The navbar is fixed and viewable at all times. The megamenu displays all the shop links. The cart icon in the navbar opens the modal side cart, which displays all cart items, and has links to the cart or checkout. 
+- Links are provided at all stages of the vnavigation process, to go on or to go back. The user can also click the links in the navbar which link to main pages.   
+![](/documentation/images/buttons.jpg)    
+![](/documentation/images/shopping-cart.jpg)    
+
+**As a customer:**
+> I want to easily select and pay for items.
+- In the product list page, quick view, and quick add buttons are provided so the user can easily view and add items to the cart. The user can click the go to secure checkout link in the toast success message, or open the modal cart to update, or navigate to the cart or checkout. 
+![](/documentation/images/quickview.jpg)     
+![](/documentation/images/cart.jpg)    
+![](/documentation/images/toast.jpg)    
+
+**As a customer:**
+> I want to receive confirmation of purchase.
+- The user receives a confirmation email of their purchase once the payment has been completed. 
+- ![](/documentation/images/purchase-success.jpg)    
+
+**As a customer:**
+> I want a record of my orders attached to my account profile.
+- In the user profile orders tab is a list of all orders, with a link to view the order details. 
+![](/documentation/images/profile-orders.jpg)    
+
+### As the site owner, ...
+
+**As the site owner:**
+>  I want to support grass root artists to continue their work.
+- In this site, I have made it possible for artisans to register and upload their products to sell. 
+
+**As the site owner:**
+> I want to provide a website where grass root artists can sell their work.
+- It is my goal to support grass root artists, however I also recognise that this needs to be managed so that quality and integrity is maintained. 
+
+**As the site owner:**
+> I want to educate about the complexity of producing quality statues.
+- I have created the blog as a part of this site with the intent to use it to promote the artisans and services of the site. I also intend that it is to be used to educate and raise awareness by publishing articles about Buddhist philosophy. 
+![](/documentation/images/blog.jpg)    
+
+**As the site owner:**
+> I want to help to preserve the rich tradition of statue making.
+- It is my goal that this site will provide additional support to the artisans in Nepal to sell their works. Hopefully it will provide them with access to markets outside of what they normally have access to. 
+
+**As the site owner:**
+> I want to provide quality hand made Buddhist dharma products to Buddhist practitioners.
+- I have many connections around the world and plan to use this site as a nexus to connect Buddhist practitioners and the artisans in Nepal. This will provide support to the artisans, and also provide the ability for potential customer to connect directly with the creators of the works. 
+
+**As the site owner:**
+> I want to make a nominal commission to pay for the maintenance of the site.
+- This is yet to be decided, but the plan will be to negotiate a small commission that will cover the costs of maintaining the site for the benefit of all those who benefit from it. 
 
 ### Issues and Fixes
 

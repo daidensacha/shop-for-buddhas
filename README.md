@@ -1,598 +1,951 @@
 
-# TESTING
 
-  ![](documentation/images/autumn-readme.png)   
 
-## TESTING PLAN (Pre-development)
 
-[README](/README.md) Documentation for the project
+  
 
-[README/Testing](/README.md/#testing)
+![](/documentation/images/shopforbuddhas-home.jpg)
 
-### RESEARCH
+  
 
-[README/Research](/README.md/#research)
+# Welcome
 
-#### Required elements
+## Code Institute: Milestone Project 4
 
-- Research and read about Django Models.
-- Investigate what components will be suitable and meet the needs of this project.
-- Research how the components work and how to write code to implement them.
-- It is crucial to understand how the components function and what I can expect from them.
-- Use [Web Maker App](https://webmaker.app/app/) to experiment, learn, and implement instances of the components to see which are better suited for Shop for Buddhas.
-- Research and study up on Django Models to see how to best design a Schema that will fulfil the needs of Shop for Buddhas.
+### Shop for Buddhas - Daiden Sacha - Full Stack Web Developer
 
-### DEVELOPMENT
+View the [Shop for Buddhas](https://shop-for-buddhas.herokuapp.com/) on Heroku.
 
-[README/Development](/README.md/#development)
+[TESTING/](/documentation/testing.md) outlines my testing strategy, development, deployment and post-deployment.
 
-#### HTML
+## UX DESIGN
 
-- Incorporate core feature components using HTML5 and Bootstrap5. 
-- Core components to incorporate:
-	- Header will be a main feature of the site
-		- Nav-bar/ Off-canvas
-		-  Search bar
-		- Shopping cart.
-	- A full page modal incorporating the shop search.
-	- A quick view modal side shopping cart to view the cart items. 
-	- Carousel to display testimonials.
-	- Contact form.
-	- Product forms for adding, updating and removing items. 
-	- Tab Pills for the User Account Profile page.
-	- Social Icons 
-- Incorporate Bootstrap Breakpoints as media queries in CSS for responsive display. - Use Chrome DevTools to ensure positioning of elements for each breakpoint.
+### 1. Strategy
 
-#### JavaScript/ jQuery
-- As Bootstrap 5 now uses Vanilla JS, my goal is where possible to learn and use this in other scripts as well. jQuery may be used in some functions of working with the shop functions.
+In a changing world wracked by uncertainty due to COVID, tourist dependent countries like Nepal are deeply impacted. Crafts like the lost wax method of making Vajrayana Buddha statues are at danger of being lost, as younger generations choose not to take up the craft handed down through generations of their forebears.
 
-### DEPLOYMENT
-[README/Deployment](/README.md/#deployment)
+With this in mind, I decided that this site would be a good project to explore the possibility of creating a market for the artisans to register and sell their works. The intention is to pass those sale proceeds directly to the artisans, to support them to continue their work. It gives them access to markets they would not otherwise have.
 
-#### Test for production
+#### User Stories:
 
-- **Test local and Test live**
+[TESTING/User Stories Review](/documentation/testing.md/#user-stories-review-development-deployment)
 
-	- Create the application in Gitpod, using the python server to view the work in the browser. It has two advantages:
-		- The Python server and pep8 syntax checking ensure the code is compliant and structured correctly; otherwise, the server shuts down.
-		- Set `debug=True`, ensuring that Jinja errors show in the browser, with a lot of detail, so I can fix mistakes as I go.
-		- Due to the nature of Python and Jinja, checking is completed in the process of development while writing route paths and functions that run the app.
-		Based on experience, I need to deploy the project live to Heroku to check the live site along the way, ensuring expected behaviour is consistent in the live site.
-	- Compare and test development and deployed versions of the website.
-		- Ensure the deployed site is the same and there are no bugs.
-		- Inputs, forms, features need to display and function as expected.
+### User Stories
 
-- **Responsiveness**
-	- Chrome DevTools:
-		- Test by screen sizes
-		- Test by viewing media queries which will specifically include Bootstrap breakpoints.
-		- Test on different devices, different operating systems, different browsers, screen sizes.
-	- Share the application to get third-party feedback
+1.  **As an vendor:**
+	- I want to be able to register to sell my work.
+	- I want to create a profile.
+	- I want to be able to upload my products to be sold in the shop.
+	- I want to be able to edit, update or delete my listed products.
+	- I want to be able to see a current list of my items listed for sale.
+	- I want to be able to see a current list of my sold items
+	- I would like to be informed when something sells.
+	- I want customers to be able to commission particular works with specific preferences.  
 
-- **Function**
-	- Test on different devices, operating systems, and browsers.
-	- Test all external links, inputs, forms, navigation links, and features.
+2.  **As a customer:**
+	- I want to buy quality statues.
+	- I want to be able to contact the seller if I have questions about the product.
+	- I want to be able to commission work for items I cannot find in the shop.
+	- I'm interested in knowing about the statue making process and the artisans that make the statues.   
 
-- **Custom Error Pages**
+	***Browsing Products***
+	- I want to be able to view items by category.
+	- I want to be able to sort the items by ascending, descending order.
+	- I want to be able to search statues by name.      
+	
+	***Accounts & Registration***   
+	- I want a seamless registration process.
+	- I want to be able to log in with an email and password, or with my social network account.
+	- I want to be able to have a profile to save time for future purchases.
+	- I want an option to be able to close my account.  
+	
+	 ***Orders & Checkout***
+	- It's important that I can easily and intuitively navigate the site.
+	- I want to easily select and pay for items.
+	- I want to receive confirmation of purchase.
+	- I want a record of my orders attached to my account profile.
 
-	- Create 404 Page not found page.
-	- Create 405 Method Not Allowed page
-	- Create 500 Server Error page
+3.  **As the site owner:**
 
-- **User Experience**
+	- I want to support grass root artists to continue their work.
+	- I want to provide a website where grass root artists can sell their work.
+	- I want to educate about the complexity of producing quality statues.
+	- I want to help to preserve the rich tradition of statue making.
+	- I want to provide quality hand made Buddhist dharma products to Buddhist practitioners.
+	- I want to make a nominal commission to pay for the maintenance of the site.
 
-**Feedback**: Share the application to get feedback and test the UI to see how users intuit the application process.
+### 2. Scope
 
-- **User Stories**: Check the application fulfils the needs expressed in the user stories.
+#### Required Features
 
-### DEVELOPMENT SETUP
+##### ALL USERS:
 
-#### Code Editor
+-  **Navbar:** A simple navbar with the site logo, links to landing page sectons the shop, and the contact form. A search bar, and the shopping cart.
+-  **Landing Page Banner:** I full screen banner with a link to the shop, simple callout message to engage the visitors attention.
+-  **Contact Form:** A simple contact form for users to be able to contact the site administrator.
+-  **Testimonial Carousel:** A Testimonial carousel displaying customer feedback.
+-  **Blog:** A blog displaying providing information about the site, products, vendors, and other inforamtion to inform customers about the site and its activities.
+-  **Shop:** An e-commerce shop to display the products produced and uploaded by teh vendors.
+-  **Shopping Cart:** A shopping cart to display items selected by customers to purchase.
 
-[Gitpod](https://www.gitpod.io/): I chose to use Gitpod to develop the site. This enables me to get support from Code Institute if needed. It makes it easy to share the workspace and get help troubleshooting problems.
+##### REGISTERED VENDOR USERS:
 
-- Python3 Development Server: I use the Python3 command `python3 manage.py runserver` to run my application in the development server and view the work live in the browser. This enables me to check incrementally as I develop code, so it is clear where errors might be.
+-  **Profile:** A user profile displaying the vendors registration information.
+-  **Profile Management** A profile management section where the user can update information.
+-  **Order History** Show a a list of the users order history.
+-  **Sales History** Show a a list of the vendors sales history.
+-  **Product List** Show a a list of the vendors products.
+-  **Favorites List** Show a a list of the users favorites.
+-  **Product Management** The vendor should be able to create and upload, edit, and or delete products.
 
-My preferred browser for development is Chrome DevTools. I have a USB-C to dual HDMI hub for my MacBook Pro, with 2 x Dell U2419H monitors, a wireless keyboard, and a mouse.
+##### REGISTERED CUSTOMER USERS:
 
-### TESTING DEVICES
+-  **Profile:** A user profile displaying the customers registration information.
+-  **Profile Management** A profile management section where the user can update information.
+-  **Order History** Show a a list of the users order history.
+-  **Favorites List** Show a a list of the users favorites.
+-  **Checkout:** The user should be able to select and purchase items.
 
-[README/Testing Devices Info](/README.md/#testing-devices-information)
+#### Functional Requirements
 
-#### MacBook Pro 15 inch
+-  **Navbar:** Links to landing page sections, and to the shop.
+-  **Search bar:** The user can search for shop items by name or category.
+-  **Register Form:** New users can register an account.
+-  **Login Form:** Users can login to their profile.
+-  **Login Form:** Users can update their password.
+-  **Profile management:** Users can update their profile details.
+-  **Blog posts** Blog posts will be displayed in a list view.
+-  **Blog Featured Post** Superusr can select posts to be displayed as featured posts.
+-  **Blog pagination** Pagination will enable blog posts to be displayed on multiple pages.
+-  **Blog tags and categories** Post tags and categories will allow for easy filtering of posts.
+-  **Blog archive** A blog archive will display posts by year and month.
+-  **Blog comments** A comment form will follow all blog posts so users can comment on the posts.
+-  **Testinmnial Carousel** A carousel will display user testimonials that are publoished once approved by the superuser.
+-  **Testinmnial Form** Logged in users will have access to a link on the testimonial carousel that will take them to a form to leave a testimonial.
+-  **Contact Form:** Users can send a message easily using the simple form at the bottom of the landing page.
+-  **Product Page:** The website shop will display products in a responsive grid. Users can select a product to view more detail and to purchase.
+-  **Product Favorites:** An icon will allow users to select item to be added to a favorites list. The same button will also allow the user to remove the items from the favorite list. The status of the product will be evident by the color of the icon which will be a red heart when favorited, and an outlined heart when not favorited.
+-  **Quick view/add:** Icons enable the user to easily add or view the products in the list view.
+-  **Simple navigation:** Links and buttons provide easy and clear navigation options for the user to have a seamless experience navigating the site.
+-  **Search Filters:** Users can select products by category and sub category. Links from the main navbar. Users will further be able to filter by ascending and descending order.
+-  **Product Display:** Each product will display images, along with details of the product, and a add to cart button.
+-  **Messages:** User actions will prompt messages that will be displayed in a drop down message div, that the user can then close.
+-  **Shopping Cart:** When the user adds items to the cart, it will be displayed along with a link to the secure checkout. The cart will be easily accessible in a side modal, and enable the user to easily delete items from the cart without leaving the products page.
+-  **Secure Checkout:** Transactions will be processed using Stripe, and will save the oder to the user profile when the transaction is processed.
+-  **Image lightbox:** Images will be easily viewable in an image lightbox by clicking a quickview icon in the product list view.
+-  **Admin Management** The site owner will be able to log in the the admin panel to view and manage products and users.
+-  **Products Management:** In the admin panel, the admin user can add, update and delete products.
+-  **User Management:** In the admin panel, the admin user can add, update and delete users.
 
-```shell
-- Operating System
-- macOS Big Sur 11.2.3
-- Safari Version 14.0.3 (16610.4.3.1.7)
-- Chrome Version 90.0.4430.72 (Official Build) (x86_64)
-- Firefox 88 (64-bit)
-- Windows 10 Pro (Boot Camp installation)
-- Microsoft Edge Version
-- Firefox
-- Chrome Version
-- External Monitors
-- 2 x Dell U2419H Monitor 23.8-inch Full HD 1920 x 1080 at 60 Hz
+#### Content Requirements
+1.  **Inform and Educate:**
+	- The main focus of the landing page will be to engage the site visitor, to inform and to educate them about Buddhist statues, the complexities time-consuming processes involved in making them. I want users to understand the history of the art, and how it is becoming lost. It is important to understand that quality comes at a price.
+	- The motivation for the site is a not for profit site providing suppor to grass root artists making Traditional Tibetan Buddhist Statues. This is a theme that is imortant to convey.
+
+2.  **Display and Sell:**
+
+	- The site will provide a shop displaying the artists works for sale. Each product will show images, along with information about the items.
+	- The site will focus on selling qualtiy hand made Buddhist Dharma items to support practicing Buddhists.
+	- The items will also be available for novice practitioners or those appreciative of the art.
+
+### 3. Structure
+#### Interaction Design
+
+Visitors to the site will be greeted by a full screen dark banner, with with callout text gteeting them, and a link to the shop.
+
+The landing page will display cascading sections, each flowing into the next in a logical order.
+
+Navbar | Jumbotron | Services | Features | Testimonials | Contact
+
+The home page goal is to engage the user, though the contrast in color, and interesting content. It is meant to be an out of the box clean and crisp design. Interest engaged, the user is then led to visit the shop out of curiosity to view the works on offer.
+
+The flow of informatin and the structure is meant to be easy and intuitive to navigate. An adventrure to discover and enjoy.
+
+#### Information Architecture
+
+**Navigation**
+- Fixed minimal navbar at the top of the page. It is always visible on all pages so the user can easily access the naviagation.
+		- **Navbar Links:**
+
+	-  ***Logo*** links to the homepage so users can be directed to homepage when clicking it.
+
+	-  ***Shop:*** I included a megamenu dropdown that displays all products, categories, and filter links in one view. The user can easily see all available shop viewing options in one view. Images were also included to impove the visual stimulation and curiosity of the user.
+
+	-  ***Blog:*** A link to the blog is included in the main nav so the user always has the ability to open the blog page to view contents.
+
+	-  ***Contact:*** The link in the navbar scrolls the page to the contact form on the bottom of the homepage. It is important that the user can open the contact form from anywhere in the site at the click of one link.
+
+	-  ***Search:*** The search icon in the navbar opens a fill page modal, with a placehold asking users to Search the shop. In case the user needs some inspiration, I also added links to the products, and filters by category or price. Links to the blog and profile are also included.
+
+	-  ***Login/ Logout link:*** In the top right above the navbar I added a link that displays ```Login``` or ```Logout``` depending on whether the user is authenticated or anonomous. This provides direct visual confirmation for the user at all times so they know if they are logged in or not. It also provides quick access to the login or logout pages.
+
+	-  ***Social icons:*** Facebook, Linkedin, and Github icons are included to the right of the login/ logout link.
+
+	-  ***Linkedin*** and ***Github*** icons link to my user profiles of those platforms.
+
+	- The ***Facebook*** icon links to the K.I.B.I. (Karmapa International Buddhist Institute) Facebook page. This provides an interesting resource for users curious or interested in Buddhism.
+
+-  ***My account Icon:***
+	When the user hovers the account icon, a dropdown displays different links for users depending on the type of user.
+
+	-  ***Anonomous users:***
+		- Register: Links to the register page.
+		- Login - Links to the login page
+	-  ***Authenticated Customer:***
+		- My Profile: links to the users profile page.
+		- Logout: Links to the logout page.
+	-  ***Authenticated Vendor***
+		- Products management - Links to the page to add products
+		- My Profile: links to the users profile page.
+		- Logout: Links to the logout page.
+-  ***Shopping Cart Icon***
+	- The shopping cart icon has a purple circle over it that shows the number if items in the shopping cart. This is visual confirmation for the user of the status of the cart, if items are added, and how many items are added.
+	- Clicking this icon opens a side modal shopping cart where the user can see the items in the cart, they can adjust the quantity, or delete items from the cart.
+
+**Services Section**
+- The services section on the home page serves to inform the user in brief the services offered by Shop for Buddhas.
+
+**Features**
+- A section displaying the main products of the site. Hand crafted Buddha statues, and meditation malas. It is a place to introduce teh user to the products so they know what can be found in the shop.
+
+**Testimonial Section**
+- A carousel displaying user testimonials is provided so users can submit comments of their experience.
+- Displaying user testimonials is for users to read other users experiences dealing with Shop for Buddhas, or in their comments about the products.
+- A link to leave a tesitmonial is only visible for logged in users. It takes them to the form to leave a testimonial and rating out of 5.
+
+**Contact Form**
+- Simple form with name, email, subject and message for users to be able to easily contact the site adminsistrator. It is in plain site at the bottom of the home page, and there are links are various palces in the site to take uses to it.
+
+**Footer**
+- Contains social icons linking to Facebook, Github and Linkedin. These are visible from the contact form, and above the copyright and website name so users can open links to see more information.
+- Contains 2021 copyright and website name.
+
+**Shop**
+- Products laid out in grid format, displaying the product image that users can select to view more info. Clicking on the link will open the product display page, showing all images for the product, along with the product infomation, rating, price and add to cart button.
+
+**Shopping Cart**
+- The cart is easily accessible by clicking the cart icon in the deader navbar. It opens from the right in a modal, displaying the cart items, quantity, and price.
+
+- There are update and remove buttons so the user can easily update or remove items from the cart. The user is then returned to the same page they were viewing.
+- The user interaction is confirmed in the toast messages that appear from the left of the screen showing the details and status of the action.
+- The cart has a link to view the cart, or to the secure checkout.
+
+**Secure Checkout**
+
+***Anonymous User***
+- Users not logged in are required to enter their personal information into the form to compelte the purchase.
+- There are links to login, or register to save the details to their profile so they can have reference to the information in their uer profile order tab.
+
+  
+
+***Authenticated User***
+- When the authenticated user is directed to the secure checkout their profile details are added to the payment information form automatically.
+- The cart contents are displayed, along with price and total cost.
+- Links are provided below the form so the user can return to edit the cart, or proceed with the payment.
+
+**User Profile**
+
+The user clicks on the "My Profile" link in the drop down visible when they hover over the user account icon in the navbar and they are redirected to the User Profile page. The user profile is displayed using Bootstrap 5 side pills for desktops, and the pills move to inline view for smaller screens. The tabs displayed depend on the type of user.
+
+##### CUSTOMERS
+
+1.  **Profile:** A read only view of the users registration informtion. It shows the user name, username, email, user account type, date joined, and their last login.
+
+2.  **Account Info:**
+    -  ***Section 1:*** The use can update their profile information, and also add personal profile information about themselves.  
+	-  ***Section 2:*** Links to update the passord, and the email information are provided. The user can add email, change the primary email, or remove an email. This functionality is provided using the Allauth forms.
+3.  **Orders:** A list of the user order history is displayed. The user can click on the order number to be directed to view the details of the order.
+4.  **Favorites:** The users favorite list displays all items in the list, with a remove link so the user can remove the items from the list. When the user clicks on the remove link, the item is removed from the users favorite list, and they remain on the profile page.  
+
+**Customer Profile Tabs**  
+![](/documentation/images/profile-customer.jpg)  
+
+##### VENDORS
+
+In addition to the above tabs in the user profile, the vendor is provided with two aditional tabs.
+1.  **Products:**
+	- The users list of products are displayed in the products tab. At the top of the page is a button that links to the form for the user to add new products.
+	- Under each item in the users product list are links to edit, or delete the product.
+	- Clicking the edit button takes the user to the page to edit the product details.
+	- Clicking the delete button opens a modal styled with Bootstrap danger class, asking the user to confirm they want to delete the product. A cancel button and a delete button are provided. Clicking delete removes the product from the database.
+
+2.  **Sales:**
+	- A list of the vendor product sales is displayed with a link to view the sales. This is provided so the user can have a record of what they have sold, with all the details saved in the order.  
+
+**Vendor Profile Tabs**  
+![](/documentation/images/profile-vendor.jpg)  
+
+### Database Schema
+
+#### Shop for Buddhas Database Schema  
+
+![](/documentation/images/db-schema.jpg)  
+
+Being new to Django, planning the database schema was a big challenge. The schema I started with gave me a roadmap to create what I needed. The reality on the way was that at times I needed to change, or add, or adapt certain aspects to encorporate, or fully achive what my goal was.
+
+**Django Models**
+
+1.  **Accounts Model**
+
+I needed to create a custom user registration to allow users to select their type of account, a customer, or a vendor. This presented several problems.
+
+- The Allauth registration form template does not include the fields for first and last names. I fixed this after creatign the user profile, when I realised that it should have been included in the initial registration
+- Adding select for the ```user_type``` required including the additional fields in the form, and ensuring that the information was saved to the database.
+
+To do this I extended the ```AbstractUser``` model, adding a select field to the allauth user registration form with the option for users to select the type of account.
+
+```python
+# models.py
+user_type = (
+	('is_admin', "Admin"),
+	('is_customer', "Customer"),
+	('is_vendor', "Vendor")
+	)
+
+"""Add user_type field to user profile model"""
+user_type = models.CharField(max_length=25, choices=user_type, blank=True)
 ```
 
-#### HP ProDesk 600 Desktop PC
+```python
+# forms.py
+"""
+Note the is_admin option is excluded here intenionally as I did not want
+this choice available to users in the registraion process. This option was
+included purely for use in the administraion panel.
+"""
+user_type = (
+	('is_customer', "Customer"),
+	('is_vendor', "Vendor")
+	)
 
-```shell
-- Operating System
+"""Add user_type field to user profile model"""
+user_type = forms.ChoiceField(
+	choices=user_type,
+	label='Register as a customer or vendor?',
+	required=True)
+```
+
+This allowed users to register either as a customer, or as a vendor.
+
+2.  **Products Model**
+
+- My products model is an extended version of the same model used in the Boutique Ado project. I needed to add additional fields to
+
+allocate ownership of the product to a vendor, or admin. For this I added the ```created_by``` field which references the ```user_id```.
+
+- Adding the functionality for users to add products to a favorite list was initially problematic. I initially tried creating a separate table for the favorites. That table container references to the primary key of the user and of the product. I encountered issues displaying the items as I wanted, so I changed to a simpler method.
+
+I added a favorites ManyToManyField to the product model that references the user primary key. The favorites column then contains a list of users who added it to their favorites. This allowed me to filter each product for the authenticated user to return the list of their favorites, and display the result on the products page, and in the users profile.
+
+**Favorites: Product List Page**
+
+![](/documentation/images/favorites-products.jpg)
+
+**Favorites: User Profile Page**
+
+![](/documentation/images/favorites-profile.jpg)
+
+3.  **Testimonial Model**
+
+The testimonial model was fairly straight formard. I allows authenticated users to create a testimonial, which once approved, is then displayed in the home page testimonial carousel.
+
+Here I wanted the users rating to be refelcted in the HTML by displaying visually the rating of the user. For this I added the select options to the user form.
+
+In the Django model.
+
+```python
+rating = (('1', '1/5 stars'),
+	('2', '2/5 stars'),
+	('3', '3/5 stars'),
+	('4', '4/5 stars'),
+	('5', '5/5 stars')
+	)
+```
+
+In the HTML I then looped the rating adding one full star for each loop.
+
+```python html
+{% for star in stars %}
+	{% if star < testimonial.user_rating|add:"1" %}
+		<span class="text-warning"><i class="fas fa-star"></i></span>
+	{% endif %}
+	{% if star > testimonial.user_rating|add:"0"%}
+		<span class="text-warning"><i class="far fa-star"></i></span>
+	{% endif %}
+{% endfor %}
+```
+
+**User Rating**
+
+![](/documentation/images/user-rating.jpg)  
+
+I incorporated this into the product model as well for the product rating.
+
+4.  **Blog Model**
+
+The blog was initially meant to be simple, as I wasn't sure how complex it can be, and with limitations on time I wanted to limit the scope to ensure it didn't blow out.
+
+I created a ```Post``` model, a ```Category``` model, and a ```Comment``` model. In addition to this, I added ```django-taggit==2.0.0``` to add tags to the posts.
+
+Displaying the posts was a relatively straight forward. I had many issues with returning and displaying correct results for the category and search query. The root of the issue always seemed to come back to the featured article. It was not being included in the filter, or when it was it was being displayed as the featured article.
+
+It now displays correctly, and the tag, category, and blog search queries all work as I expect.
+
+5.  **Checkout Model**
+
+The checkout model is based on the Boutique Ado model, with some minor changes as my handling os the size for my products is different, using a charfield.
+
+6.  **UserProfile Model**
+
+The UserProfile model is also based on the Boutique Ado project. By including the user type field in the user registration, I was able to use the same profile model to display the same profile information for both customers and vendors.
+
+In the HTML, i have included additional tabs in the vendor profile, one for vendor sales, and one for vendor products.
+
+I was able to do this by filtering the order line items and product models to list the vendors sold products, and listed products.
+
+The vendors can upload their products by completing a form linked from their profile menu, or the vendors products list in their profile.
+
+### 4. Skeleton
+
+#### Wireframing:
+
+I created the wireframes for the project in Adobe XD. Wireframes are basic and only a guide.
+
+**Change in navbar color from wireframe**
+
+After creating the HTML template, I changed the color of the navbar from dark as shown in the wireframes, to light. The whole page is a contrast of sections flowing from light to dark, and the light navbar fitted the design much more. It is lifting and very clear. I felt this was nessessary to and best compliments the site.
+
+[View the wireframes/](/documentation/wireframes.md)
+
+### 5. Surface
+
+**Visual Design:**
+
+The selection of colors for the site displays stark contrast between dark and light, giving a clean and crisp feel. the choice of purple and green gives a fresh and uplifting feeling and highlights UI points to be focussed on.
+
+The navigation is minimal, offering a home, shop, blog and contact links. A megamenu drops down to display all the shop categories. I used a side modal for the shopping cart, easily accessiible at all times and on all pages.
+
+A contact form is at the bottom of the home page, and the link in the menu scrolls the page to the form. As the user navigates the site, I have placed links and buttons anticipating the users desire to move to other parts of the site or shopping process.
+
+Toast messages inform the user of the success of their interactions. The toast messages slide in, then slide off screen automatically.
+
+The design intention is for the experience of visiting the site to be seemless and enjoyable.
+
+## TECHNOLOGIES USED
+
+**Languages Used**
+
+1. HTML
+2. CSS3
+3. SCSS
+4. JavaScript
+5. jQuery
+6. Python
+7. Jinja
+8. Markdown
+
+**Frameworks, Libraries, Programs used**
+
+1.  [Django 3.2](https://www.djangoproject.com/)
+"The web framework for perfectionists with deadlines".
+2.  [sqlite3](https://docs.python.org/3/library/sqlite3.html)
+Relational database used for project data storage in development.
+3.  [PostgreSQL](https://www.postgresql.org)
+Relational database used for project data storage on Heroku in production
+4.  [Bootstrap 5](https://getbootstrap.com/)
+The responsive framework of choice for this project.
+5.  [Heroku](https://www.heroku.com/home)
+Hosting the production version of the project.
+6.  [AWS](https://aws.amazon.com/de/free/?trk=c25dd0aa-ac63-4039-9735-8633c6c683f6&sc_channel=ps&sc_campaign=acquisition&sc_medium=ACQ-P%7CPS-GO%7CBrand%7CDesktop%7CSU%7CCore-Main%7CCore%7CDACH%7CDE%7CText&ef_id=EAIaIQobChMIp6PEmqKQ9QIV1uF3Ch1XdQQREAAYASAAEgKoAvD_BwE:G:s&s_kwcid=AL!4422!3!560181736076!e!!g!!aws&ef_id=EAIaIQobChMIp6PEmqKQ9QIV1uF3Ch1XdQQREAAYASAAEgKoAvD_BwE:G:s&s_kwcid=AL!4422!3!560181736076!e!!g!!aws&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all)
+An AWS S3 Bucket was setup to store static files and product images.
+8.  [Font Awesome](https://fontawesome.com/)
+Icons used in the website.
+9.  [GitHub](https://github.com/)
+Used to host project repository and to deploy the project live via GitHub Pages
+10.  [Git Version Control](https://git-scm.com/)
+I used it to commit blocks of work to the GitHub repository and create branches to work on specific changes or testing.
+11.  [Gitpod](https://gitpod.io/workspaces)
+The editor used to work on the project.
+12.  [Adobe XD](https://www.adobe.com/products/xd.html)
+Used to create wireframes
+13.  [Adobe Photoshop](https://www.adobe.com/products/photoshop.html)
+I used the software to work on the project images.
+14.  [Adobe Illustrator](https://www.adobe.com/de/products/illustrator.html)
+Used to create my 404, 405, and 500 error images to display if users encountered missing or broken page links.
+15.  [Squoosh](https://squoosh.app/)
+I used it to compress images to optimize load performance.
+16.  [Quire](https://quire.io/)
+Free project and task planning application used for adding and planning tasks for the project.
+17.  [Depositphotos](https://depositphotos.com/?gclsrc=aw.ds&&utm_source=google&utm_medium=cpc&utm_campaign=DP_EU_EN_Brand_Search&utm_term=depositphotos&gclid=CjwKCAjwuvmHBhAxEiwAWAYj-EVeHDBPdjs594mAT_HDLeFGM_g2IVcGn78NSArH7vXIYqfoO1BuhBoCv_kQAvD_BwE)
+My source of choice for stock images.
+18.  [StackEdit](https://stackedit.io/)
+It's a free, online note-taking and markdown application. I used it to create the README file for GitHub.
+19.  [Webmaker App](https://webmaker.app/app/) It is a free application similar to codepen, used to create and save the work locally. I use it to implement and experiment with using components of different frameworks that I am using, so I am familiar with how to use them when I come to implementing them in my work.
+
+## TESTING
+
+[TESTING/Testing Checklist](/documentation/testing.md#testing-checklist-development-deployment)
+
+### Research
+
+#### Boostrap 5 Theme Templates
+I researched bootstrap 5 themes to look for inspiration and style ideas that would fit with the motication for building this site. I foudn two thems that I liked, niether in its entirety, but as they were relatively inexpensive, I bought them both and used part of them in the site to build the pages.
+
+**Theme 1.**  [Shopapp](http://pxdraft.com/wrap/shopapp/home/index.html#).
+This is the main theme that I used, namely for the navbar, modal cart, homepeage serach modal, and shop product detail page.
+
+**Theme 2.**  [Amino Bootstrap 5 Theme](https://template.hasthemes.com/amino/amino/blog-list-right-sidebar.html) Offered a freshness that I liked for the blog. The greens, complimented the purples of the Shopapp theme perfectly.
+The Shoppapp theme is a fully customised Bootstrap theme that fit perfectly with what I wanted to achieve. I integrated that theme, adding parts of the css for the sections of the blog I used from the Amino theme.
+
+  
+
+#### Images
+All products in the site were photographed by me, and photo shopped to clean up the backgrounds, and add subtle drop shadows. 
+
+#### Fixtures 
+I created json files for the products, and product categories so I could easily add the products to the shop.
+
+[TESTING/Research](/documentation/testing.md/#research)
+
+### Development
+
+[TESTING/Development](/documentation/testing.md/#development)
+
+#### Create Project
+
+**Create Project Repository**
+I used the Code Institute [gitpod-full-template](https://github.com/Code-Institute-Org/gitpod-full-template). I clicked on "Use this template" and created my project repository name "shop-for-buddhas". I then opened this in GitPod to start the project.
+
+**Initialise Git**
+To begin my project, I started with `git init` to initialize git within the project.
+
+ **Git Ignore**
+I created a **.gitignore** file to add files and directories I didn't want to upload to GitHub. 
+
+`git echo "file_name" >> .gitignore` is the terminal command I used to add files and directories to **.gitignore**. 
+
+**Install Django and initinalize the project**
+```bash
+pip3 install django
+django-admin startproject shop-for-buddhas .
+```
+
+**Create env.py**: Important for securing sensitive data
+```bash
+touch env.py
+```
+### DEVELOPMENT NOTES
+
+-  **Implement Django** [notes about implementation of Django]
+-  **Implement Templates** [notes about the template implementation]
+-  **Create login and register page and function** [user profile notes?]
+-  **Add Create Functionality**
+-  **Add Update Functionality**
+-  **Add Delete Functionality**
+
+#### Toast Messages
+**Issue 1. Positioning and responsiveness**
+As my shopping cart modal opens from the right, I positioned the toast messages on the left of the screen. I gave them fixed position off the left of the screen, so the messages could slide in, and then close automatically sliding off screen after a short time. 
+With fixed widths, I had issues with the display of the messages on mobile screens. 
+My solution was to use the CSS ```calc`` function to determine widths, and positioning.  The following CSS for mobiles is based on the 100% width of the viewers screen.
+```css
+.message-container {
+	position: fixed;
+	top: 125px;
+	left: calc(-100vw);
+	z-index: 99999999999;
+	height: auto;
+	}
+.toast {
+	width: 100vw;
+	max-width: calc(100vw); /* 100% viewport width */
+	box-shadow: 0  10px  20px  rgba(75, 50, 50, 0.05) !important;
+	}
+.toast.show {
+	transform: translateX(calc(100vw));
+	transition: 1s;
+	transition-timing-function: ease-out;
+	opacity: 1;
+	}
+.toast.hide {
+	transform: translateX(calc(-100vw))!important;
+	transition-timing-function: ease-in!important;
+	transition: 1s;
+	opacity: 0!important;
+	display: block!important;
+	}
+```
+Media query for tablets,  the calc function sets the toast width to 50%.
+```css
+/* Tablets half width toast messages */
+@media (min-width: 768px) {
+	.toast {
+		max-width: calc(100vw / 2); /* 50% viewport width */
+		box-shadow: 0  10px  20px  rgba(75, 50, 50, 0.05) !important;
+	}
+}
+```
+Media query for desktops, the calc function sets the toast width to 25%.
+```css
+@media (min-width: 992px){
+	.message-container {
+		position: fixed;
+		top: 125px;
+		left: calc(-100vw / 4); 
+		z-index: 99999999999;
+		height: auto;
+		max-width: calc(100vw / 4);
+	}
+	.toast {
+		max-width: calc(100vw / 4); /* 25% viewport width */
+		box-shadow: 0  10px  20px  rgba(75, 50, 50, 0.05) !important;
+	}
+	.toast.show {
+		transform: translateX(calc(100vw / 4)) !important;
+		transition: 1s;
+		transition-timing-function: ease-out;
+		opacity: 1;
+	}
+	.toast.hide {
+		transform: translateX(calc(-100vw / 4))!important;
+		transition-timing-function: ease-in!important;
+		transition: 1s;
+		opacity: 0!important;
+		display: block!important;
+	}
+}
+```
+
+**Issue 2. Cart adjustment messages**
+I had an issue with cart contents showing in unrelated success messages. It didn't look right, and I only wanted the cart success messages to be shown when a cart adjusment was made. 
+
+I discovered that ```extra_tags``` can be added to messages, and used in templates to filter the display of such messages. I found the Django documentation ambiguous and difficult to understand, but luckily a [stack overflow thread](https://stackoverflow.com/questions/43588876/how-can-i-add-additional-data-to-django-messages) provided the clarity I needed to implement the fix. I added the following ```extra_tags``` to the cart ```view.py``` adjustment related messages.  
+```python
+# Example
+messages.success(request, f'Added {product.name} to your cart', extra_tags='is_cart')
+``` 
+Then in the success toast HTML the cart message is only displayed if the following condition is true.   
+```html jinja
+{% if grand_total and "is_cart" in message.extra_tags %}
+```
+Now the cart success messages only show when an adjustment has been made to the cart.
+
+**Issue 3. Image lightbox sizing ratio**
+I used the built in bootstrap lightbox, which is actually very easy to implement. 
+Its as simple as adding the ```data-toggle="lightbox"``` to the ```a``` element along with the ```href``` to the image.
+```html
+<!-- Product Gallery -->
+<div  class="col-lg-6 lightbox-gallery product-gallery">
+	{% if product.image %}
+		<a  href="{{ product.image.url }}"  data-toggle="lightbox">
+			<img  class="img-fluid"  src="{{ product.image.url }}"  alt="{{ product.name }}"  title="">
+		</a>
+		{% else %}
+		<a  href="">
+			<img  class="img-fluid"  src="{{ MEDIA_URL }} noimage.png"  alt="{{ product.name }}"  title="">
+		</a>
+	{% endif %}
+</div>
+<!-- End Product Gallery -->
+````
+The bootstrap Javascript does the rest of the work, creating the lightbox modal. This also adds the aspect ratio of 16:9, which was ok but not ideal. On small screens the lightbox image is smaller than that shown in the normal view. 
+I changed this by adding custom CSS to the required modal elements to change the aspect ratio to 1:1.   
+```css
+/* Set max-width for the image lightbox on xl screens */
+.modal.lightbox .modal-dialog.modal-dialog-centered.modal-xl {
+	max-width: 900px;
+}
+
+/* Set the lightbox ratio */
+.modal-body .lightbox-carousel .carousel-inner .carousel-item.active .ratio {
+	position: relative;
+	width: 100%  !important;
+	/* Set aspect ratio-1x1 */
+	--bs-aspect-ratio: calc(100%) !important;
+}
+```
+The following is the result on mobiles.   
+![](/documentation/images/lightbox_image_ratio.jpg)    
+
+On desktops, it resulted in an image that was to large on xl screens, so I changed that to a max-width of 900px. It produces a much larger image on desktops, and also on tablets and mobiles. 
+
+---	
+#### TESTING DEVICES INFORMATION 
+
+[TESTING/Testing Devices](/documentation/testing.md/#testing-devices)
+
+**Personal Testing Devices/ Software/ Browsers**
+
+- Macbook Pro (15-inch)
+- macOS Monterey 12.1
+- Safari Version 15.2 (17612.3.6.1.6)
+- Chrome Version 96.0.4664.110 (Official Build) (x86_64)
+- Firefox 95.0.2 (64-bit)
+- Windows 10 (bootcamp)
+- Microsoft Edge
+- Chrome
+- Firefox
+- Dell 2419 Monitor
+- iPad Air
+- iPhone 13 Pro
+
+**Secondary Testing Device/ Sofware/ Browser**
+
+- HP ProDesk 600 Desktop PC
 - Windows 10 Pro
 - Microsoft Edge Version 90.0.818.42 (Official Build) (64-Bit)
 - Firefox 78.10.0esr (64-Bit)
 - Chrome Version 90.0.4430.85 (Official Build) (64-Bit)
-- Monitor
 - AOC 22E15 21.5-inch Full HD 1920x1080 at 75 Hz
-```
 
+ ---
   
+#### Git Version Control
 
-#### Apple iPad Air Gen 1 9.7 inches 4:3 ratio
+I used Git version control throughout the project to save an commit work incrementally.
 
-  
+I created development branches (```dev_account, dev_blog, dev_profiles```) at stages throughout the project so I could work on developing applications without compromising the stable body of completed work.  
 
-```shell
-- Operating System
-- iOS 12.5.2 (16H30) released March 26
-- Screen resolution
-- 1536 x 2048 pixels, 4:3 ratio (~264 ppi density)
+**Detatched Head**
+At one point after migrating data for my profile model, my database became corrupted and I went back to look at a previous commit in my code. I was looking at a way to recover the database, however I needed to create my data fresh. In doing this the head became detached and I needed to save the work without loosing it.
+[Circleci Blog](https://circleci.com/blog/git-detached-head-state/)  outlined the steps to recover from the detatched head state. 
+```bash
+# Create new branch and check out to it to reattach the head
+git checkout -b temp-branch
+
+# Then I could commit the work to save it
+git commit -m "temp-branch"
+
+# Then I am able to merge the changes into the main branch
+git checkout main
+git merge temp-branch
+git commit -m "merged detaiched head and work into the main branch"
+```
+The solution above saved me from losing my work, and although I then needed to resolve some conficts, it was far better than loosing the work outright. 
+Thanks to Ron Powell for writing a great article that helped me in that time of need.
+
+
+**ERROR Pages**
+
+The following custom error pages were created and are stored in the base level template folder.
+1.  **400 Bad Request** "The server can't process the request due to an apparent error."
+2.  **403 Forbidden Error** "Looks like you don't have access to this page."
+3.  **404 Error** "Sorry, the page was not found"
+4.  **500 Internal Server Error** "Sorry, the server is a bit confused."
+
+### Deployment
+
+[TESTING/Deployment](/documentation/testing.md/#deployment)
+
+**Create Heroku App**
+1. Navigate to [Heroku](https://id.heroku.com/login), create an account, and or login.
+2. Select **New** > **Create new app**.
+3. Enter app name
+4. Select region closest to yourself
+
+**Add Postgres SQL Database**
+1. Click on the **Resources** tab
+2. Under **Add-ons** enter ```Postgres``` in the search field, and select ```Heroku Postgres```.
+3. Select free plan
+
+**Set Database environment variable in Heroku**  
+```
+# Set environ variables in Heroku
+# Set SECRET_KEY and other environ variables in the settings in Heroku
+	DATABASE_URL
+	EMAIL_HOST_PASS
+	EMAIL_HOST_USER
+	SECRET_KEY
+	STRIPE_PRICE_ID
+	STRIPE_PUBLIC_KEY
+	STRIPE_SECRET_KEY
+	STRIPE_WH_SECRET
+```
+**Back in Gitpod install:**
+```bash
+# Install dependencies for migration to Heroku PostgresSQL
+pip3 install dj_database_url
+pip3 install psycopg2-binary
+pip3 freeze > requirements.txt
+
+# In settings.py 
+import dj_database_url
+
+# Use postgresSQL if DATABASE_URL when in Heroku production
+if  'DATABASE_URL'  in os.environ:
+	DATABASES = {
+	'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+	}
+else:
+	# Use sqlite3 when in Gitpod development environment
+	DATABASES = {
+		'default': {
+		'ENGINE': 'django.db.backends.sqlite3',
+		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+		}
+}
+
+# Applies all migrations to postgresSQL to setup database	
+python3 manage.py migrate
+
+# Create superuser first as products require the user id field to be installed.
+python3 manage.py createsuperuser
+# enter username, email, password, password again
+
+python3 manage.py loaddata categories
+python3 manage.py loaddata products
 ```
 
-#### Apple iPhone 11 Pro
- 
-```shell
-- Operating System
-- iOS 14.4.2
-- Screen resolution
-- 2436‑by-1125‑pixel resolution at 458 ppi
-- 5.8‑inch (diagonal) all‑screen OLED Multi‑Touch display
-- Width: 2.81 inches (71.4 mm)
-- Height: 5.67 inches (144.0 mm)
+WIth this finished the Heroku app and database are ready to go.
+
+Change database settings to access postgres db on heroku, or mysqlite3 in gitpod.
+
+```bash
+# Install gunicorn to act as the webserver
+pip3 install gunicorn
+pip3 freeze > requirements.txt 
+
+# create Procfile to tell Heroku to create a web dyno which will run gunicorn and serve the Django app.
+touch Procfile
+
+# Note that "heroku login" doesn't work in Gitpod, enter as follows instead
+heroku login -i
+# Enter email and password for heroku login
+
+# Disable collect static so static files are not stored in Heroku
+heroku config:set DISABLE_COLLECTSTATIC=1
+# Add "--app" plus your app name if you have more than one app
+heroku config:set DISABLE_COLLECTSTATIC=1 --app yourappname
+
+# Add the hostname of your Heroku app to allowed hosts in settings.py
+# Add local host so the site is also available in Gitpod.
+ALLOWED_HOSTS = ['yourappname.herokuapp.com', 'localhost']
+# git add, commit and push to github
+
+# Set environ variables in Heroku
+# Set SECRET_KEY and other environ variables in the settings in Heroku
+
+# initialise git heroku remote
+heroku git:remote -a yourappname
+git push heroku main
 ```
 
----------- 
+At this point the project is deployed, without static files.
 
-## TESTING CHECKLIST (Development-Deployment)
+**Connect to Github Repository**
+1. Click on the **Deploy** tab.
+2. Select **Github** > **Connect to Gitbub**
+3. Search for the Repository name, select and click connect.
+4. Click **enable automatic deployment**
 
-[README/Testing](/README.md/#testing)
+Now the project will be automatically pushed to Heroku when commits are made to the github repository.
 
-Testing of the site will cover the needs and requirements of different user types. Here I will define the user types to be referred to in the testing as follows.
-1. **Anonomous User** refers to all users not logged in.
-2. **Session User** refers to all registered and logged in users.
-3. **Customer** refers only to a registered and logged in customer. 
-4. **Vendor** refers to a registered and logged in vendor.
-
-## Home Page
-### Header
-#### Navbar Links
-- [x] I click on the logo and it links to the home page.
-- [x] I click on the Home link in the navbar and it links to the home page.
-- [x] I click the Shop/By Price link and it opens the product page, with products filtered by price
-- [x] I click on the Shop/By Rating and it opens the product page, with products filtered by rating.
-- [x] I click on the Shop/By Category and it opens the product page, with products filtered by category.
-- [x] I click on the Shop/All Products and it opens the product page, displaying all products.
-- [x] I click on the Shop/Oxidised and it opens the product page, displaying oxidised Buddha statues.
-- [x] I click on the Shop/Half Gold and it opens the product page, displaying Half Gold Buddha statues.
-- [x] I click on the Shop/Full Gold and it opens the product page, displaying Full Gold Buddha statues.
-- [x] I click on the Shop/All Buddhas and it opens the product page, displaying all Buddha statues.
-- [x] I click on the Shop/108 Beads and it opens the product page, displaying all malas with 108 beads.
-- [x] I click on the Shop/Wrist Malas and it opens the product page, displaying all wrist malas.
-- [x]  I click on the Shop/All Malas and it opens the product page, displaying all malas.
-- [x] I click on the blog link and it opens the blog page.
-- [x] I click on the contact link and it scrolls the home page to the contact form at the bottom of the page.
-- [x] I click the Facebook icon in the top right of the navbar and it open a Facebook page for the KIBI (Karmapa International Buddist Institute).
-- [x] I click the GitHub icon in the top right of the navbar  and it links to my githib profile. 
-- [x] I click on the Linkedin icon in the top right of the navbar  and it links to my Linkedin profile.
-#### Navbar Login/ Logout views
-**Anonomous Users**
-- [x] The login link is visible in the top right of the navbar for anonomous users.
-- [x] I click the login link and it opens the login page with a link also to the register page. 
-- [x] I hover on the "Account Icon" and a dropdown appears displaying login and register links. 
-- [x] I click the login link and the login page opens. 
-- [x] I click the register link and the register page opens.
-
-**Customers**
-- [x] The logout link is visible in the top right of the navbar. 
-- [x] I click the logout link and it opens the logout page with buttons to confirm the logout.
-- [x] I hover over the "Account" icon and a dropdown appears displaying a link to my profile, and a logout link.
-- [x] I click the "My Profile" button and am redirected to my account profile page. 
-- [x] I click the logout link and it opens the logout page with a button to confirm the logout.
-
-**Vendors**
-- [x] The logout link is visible in the top right of the navbar. 
-- [x] I click the logout link and it opens the logout page with buttons to confirm the logout.
-- [x] I hover over the "Account" icon and a dropdown appears displaying a link to my profile, a Product Management link, and a logout link. 
-- [x] I click the "My Profile" button and am redirected to my account profile page. 
-- [x] I click the product management link and am redirected to the add product page.
-- [x] I click the logout link and it opens the logout page with a button to confirm the logout.
-
-#### Navbar Shopping Cart Icon
-- [x] The cart icon has a bubble showing the cart quantity of items. This is updates as products are added to the cart. I confirm this by adding items to the cart. 
-- [x] When I click on the icon, the quick view modal cart opens showing the cart contents. 
----
-#### Modal Quickview Cart
-- [x] I click the header cart icon and the modal cart opens from the right.
-- [x] The cart displays the cart contents, a thumbnail, item quantity, and subtotal. 
-- [x] I change the quantity and click the update icon link. The cart subtotal and total changes to reflect the new quantity.
-- [x] I click on the delete item icon and the item is deleted from the cart.
-- [x] I click on the View Cart button and am redirected to the cart page.
-- [x] I click on the Continue to Checkout button and am redirected to the checkout page. 
-- [x] I click the close icon in the top right of the cart modal and the modal closes.
-- [x] I click anywhere outside of the cart modal and the modal closes.
----
-### Jumbotron
-The Jumbotron is the main feature of the landing page. It is full screen with a repeating dark background image, and a buddha image positioned to the right of the screen. In the center of the page is some text, with a "Shop Now" button. 
-- [x] I confirm the content is well balanced and positioned for all screens. 
-- [x] I click the shop now button and it takes me to the shop page.
----
-### Services Section
-Six blocks layed out in a grid, each explaining in breif a different aspect of what Shop for Buddhas has to offer. 
-- [x] I confirm the scope of services as outlined in user stories is covered in this brief explanation of services on offer.
----
-
-### Our Products Section
-This block describes the primary products sold by Shop for Buddhas. An image accompanied by a brief explanation is designed to invoce curiosity. 
-
----
-### Testimonial Section
-- [x] I confirm that the testimonial carousel is working and displays the user testimonials. 
-- [x] I confirm that the rating stars display the correct rating selected by the user. 
-
-**Session Users**
-A button is visible for session users and positioned on the top left of the testimonial carousel. It is meant to be non intrusive, and expands when hovered over showing text "Leave a testimonial". 
-- [x] I click on the button and am redirected to a page with the testimonial form. 
-- [x] I complete the form and submit it. A success toast is displayed informing me the testimonial has been submitted. 
-- [x] The testimonial is not displayed as it needs to be approved.
-- [x] I check in the admin and approve the testimonial. It is then shown in the testimonial carousel. 
----
-### Contact Section
-The contact section displays a phone number, address and the office hours. 
-#### Contact Form
-The contact form is uses Bootstrap 5 elements, with crispy forms and the Django "csrf_token" to prevent cross site request forgery attacks. 
-
-**Form Validation**
-Form fields are required, and I have implemented Bootstrap 5 JS validation. Regex has been added text and email fields to accept English and German letters. Regex min/max character validation added to inputs. Regex special characters excluded from validation success requirements.
-- [x] I click submit without entering anyting into the form and the bootstrap danger styles kick in and display error messages. 
-- [x] I enter text into one field at a time and the styling changes to success once the regex requirement has been passed. 
-- [x] I click submit when the form is complete, and a success message informs me the message has been sent. 
-- [x] I check my email and I have received a confirmation email from Shop for Buddhas informing me they have received my message.
-- [x] I check the admin, and a copy of the message has been saved in the profile admin. 
-
----
-### Footer
-- [x] **Social icons** 
-	- [x] **Facebook Icon -** I click on the Facebook icon and it opens to the Facebook page for KIBI (Karmapa International Buddhist Institute) in a separate browser tab.
-	- [x] **Github -** I click on the Github icon and it links to my Github profile in a separate tab. 
-	- [x] **Linkedin -** I click on the Linkedin icon and it links to my Linkedin profile in a separate browser tab. 
-- [x] **Terms and Conditions link -** I click on the Terms and conditions link and it opens the Terms and Conditions page.
-- [x] **Privacy Policy link -** I click on the Privacy Policiy link and it opens the Privacy Policy Page. 
-- [x] **Contact Us link -** I click on the Contact Us link and it opens the home page, and scrolls to the contact section of the home page.
----
-### Product Page
-#### Product Content View
-- [x] **Product Grid view** I open the product page and the products are displayed in a responsive Bootstrap 5 grid.
-- [x] **Product Layout and view**
-	- [x] **Image links -** I click on the image and it redirects me to the product details page. 
-	- [x] **Title links -** I click on the product name and it redirects me to the product details page. 
-	- [x] **Rating Stars -** The rating stars are displaying the correct rating per expectation.
-	- [x] **Category links -** I click on the product category tag and it redirects me to the product page filtered by the selected category. 
-	- [x] **Price -** The price is displaing correctly as expected.
-	- [x] **Favorite Icon** 
-		- [x] **Favorited -** A read heart is displayed for items added to favorites.
-		- [x] **Not favorited -** An outlined heart with no fill is displayed for items not added to favorites. 
-	- [x] **Product Owner Links**
-		- [x] **Edit link -** The edit product link is displayed for products owned by teh session user. 
-		- [x] **Delete link -** The delete product link is displayed for products owned by teh session user. 
-- [x] **Search filter sorting by** 
-	- [x] **Price -**  I click the select input filter by price high to low, and the products are sorted in price order from high to low. Likewise from low to high, the products are filtered accordingly.
-	- [x] **Rating -**   I click the select input filter by rating high to low, and the products are sorted in rating order from high to low. Likewise from low to high, the products are filtered accordingly.
-	- [x] **Name -**   I click the select input filter by name high to low, and the products are sorted in name order from high to low. Likewise from low to high, the products are filtered accordingly.
-	- [x] **Category -**   I click the select input filter by category high to low, and the products are sorted in category order from high to low. Likewise from low to high, the products are filtered accordingly.
-- [x] **On hover -** On hovering over a product, a quick view icon block becomes visible. (a favorite icon, a view icon, and a cart icon)
-	- [x] **Quick add to favorites** 
-		- [x] **Anonomous Users -** As an anonomous user, I click on the favorite icon, and I am redirected to the login page. A message asks me to log in to add items to favorites. 
-		- [x] **Session Users -** 
-			- [x] **Add to Favorites -** As a session user, I click on the product favorite icon, and a message informs me the product has been added to my favorites. The heart changes color to a red filled heart. 
-			- [x] **Remove from Favorites -** As a session user, I click on the product red favorite icon , and a message informs me the product has been removed from my favorites. The heart changes color to a outlined heart with no fill color. 
-	- [x] **Quick view button -** I click on the quick view button and the image opens in a lightbox. I click outside the lightbox and it closes.
-	- [x] **Quick add button -** I click on the quick add to cart icon and the item is added to the shopping cart. A message appears informing me the item has been added to the cart.
----
-### Product Detail Page
-- [x] **Product Layout and view -** I click on the product image and it opens the product detail page. 
-	- [x] **Image links -** I click on the image and it links to the image lightbox.
-	- [x] **Image lightbox -** I click outside the image lightbox and the lightbox closes.
-	- [x] **Content as required -** The product content is all displayed correctly per design.
-	- [x] **Category links -** The category tag opens to display the product list filtered by the selected category.
-	- [x] **Increment/Decrement input** I click on the plus icon, and it increases the quantity, I click on the minus icon and it decreases the quantity.
-		- [x] **Minimum Value -** The minimum value in I can enter in the input is 0. 
-		- [x] **Maximum value -** The maximum value I can enter in the input is 99.
-	- [x] **Add to Cart Button -** I click add to cart and quantity selected is entered into the shopping cart. A success message informs me the item has been added to the shopping  cart. 
-	- [x] **Favorites icon -** The favorite icon is displayed beside the add to cart button. 
-	- [x] **Add to favorites -** 
-		- [x] **Anonomous Users -** Adding to favorites requires authentication. The outline heart is displayed for all items for anonomous users. I click on the heart and and redirected to the login page. A toast message informs me that I need to log in to add items to favorites. 
-		- [x] **Session Users -** 
-			- [x] I click on the outlined heart, the color changes to a red filled heart, and a toast message informs me the item has been added to favorites. 
-				- [x] I navigate to my profile favorites tab, and the item is displayed in my favorites list. 
-			- [x] I click on the red filled heart, it changes to an outlined heart and a message informs me the item has been removed from favorites. 
-				- [x] I navigate to my profile favorites tab, and the item has been removed from my favorites list. 
-	- [x] **Continue Shopping button -** I click the ```Continue Shopping``` button and I am redirected to the shop page showign all products.
-	- [x] **Shopping Cart button -** I click on the ```Shopping Cart``` button and I am redirected to the shopping cart page. 
-	- [x] **Product Owner Links -** I log in as a vendor. All products owned by the authenticated vendor display an edit and delete link. The edit and delete links are not visible for products not owned by me. 
-		- [x] **Edit link -** I click on the edit link and I am redirected to the eidt product page, where a form containing the products information is displayed. I edit the product details, and click update product. I am redirected back to the product view and the product details have been updated. 
-		- [x] **Delete link -** I click on the delete product link. A bootstrap danger styled modal opens.
-			- [x] **Delete Modal**
-				- [x] **Modal Content -** The content informs be the product "SKU", and product "name" will be deleted from the database. I am asked if I am sure I want to delete the product. The content is clear and correct.
-				- [x] **Cancel Button -** I click the cancel button and the modal closes.
-				- [x] **Delete Button -** I click the delete button and a message informs be the product has been deleted. I am returned to the product page. 
----
-### Shopping Cart Page
-- [x] **Empty Cart view** I naviagate to the cart page when I have an empty cart. A message informs me the cart is empty, and a link provides me a way to continue shopping. 
-- [x] **Cart items** I add an item to my cart, and navigate to the shopping cart page. The item is displayed, along with the subtotal, delivery cost, and grand total. 
-	- [x] **Item image -** A thumbnail image of the product is visible. 
-		- [x] **Image lightbox -** I click on the thumbnail and a lightbox opens displaying the product image. I close the lightbox and return to the cart page. 
-	- [x] **Item Name -** The item name is displayed and in the primary link color. 
-		- [x] **Links to Product View -** I click on the product name and am redirected to the product view page. It links correctly to the product page. 
-	- [x] **Item price -** The item price is displayed correctly. 
-	- [x] **Increment quanity** I click the plus sign beside the quantity input and with each click the quantity is incremented by one. 
-	- [x] **Decrement quanity** I click the minus sign beside the quantity input and with each click the quantity is deccremented by one. 
-		- [x] **Minimum Value -** The minimum value I can decrement to is 0.
-		- [x] **Maximum value -** The maximum value I can increment to is 99.
-	- [x] **Icon Update Button -** I change the quantity in the quantity input, and click the update icon button. The cart is updated, showing the new quantity, subtotal, and grand total. 
-	- [x] **Icon Delete Button -** I click delete and the item is deleted from the cart. 
-	- [x] **Item subtotal -** When i udpdate the cart quantity the item subtotal is also updated. 
-		- [x] **Subtotal Updates -** When i udpdate the cart quantity the cart subtotal is also updated. 
-	- [x] **Continure Shopping button -** I click the continue shopping button and am redirected to the shopping page. 
-	- [x] **Coupon Code form -** I enter a value or string into the coupon input and click apply. 
-		- [x] **Toast message -** A toast message informs me the entered coupon  is invalid. 
-	- [x] **Cart Subtotal, Delivery, Grand Total -** Cart total, delivery, and grand total are all correct and update each time the cart is updated. 
-	- [x] **Proceed to Checkout button -** I click on the proceed to checkout button and am redirected to the checkout. 
----
-### Checkout Page
-- [x] **Order Summary -** An order summary displays the cart contents, order total, delivery cost, and grand total. The details are corrrect. 
-- [x] **Shipping address form -**
-	- [x] **Non-authenticated users**
-		- [x] **Form unfilled -**
-		- [x] **Create an account link -**
-		- [x] **Login link -**
-	- [x] **Authenticated users**
-		- [x] **Form automatically filled -** In the form, my saved account registration and profile details are already filled in. 
-		- [x] **Save to profile checkbox -** The "save this delivery information to my profile is also checked"
-- [x] **Adjust Cart button -** I click the adjsut cart button and am redirected back to the cart. 
-- [x] **Payment: Credit Card Details -** I enter the payment details as follows, CVC, Expiry date, and card number.
-
-**Requires:**  
-
-	Any CVC
-	Any date in the future for expiry date
-	Any 5 digit number for postal code
-	Card 4242424242424242 - Successful payment test
-	Card 4000000000009995 - Failed payment test
-	Card 4000002500003155 - Requires authentication test
-
-- [x] **Test Successful Payment -** I enter card number 4242424242424242, click complete order, a success message informs me the payment was successful and I am redirected to the checkout success page displaying the order details. 
-- [x] **Test Failed payment -** I enter card number 4000000000009995, click complete order, I am returned to the shckout page and an error message informs me the card has insufficient funds. 
-- [x] **Test Requires authentication -** I enter card number 4000002500003155, click complete order, a Stripe modal appears asking form authentication. I click the complete authentication, a success message informs me the order has been processedm and I am redirected to the checkout success page displaying the order details. 
-- [x] **Test Stripe Webhooks -**
-- [x] **Complete Order button -** In all the above tests the complete oder button works. 
-- [x] **Payment success confirmation message -** In all the above cases a toast message was displayed informing me of the success or failure of the action. 
-- [x] **Payment success confirmation email -** I received confirmation emails for both the above successful purchases. 
-- [x] **Order details saved to profile -** I navigate to my profile orders tab and the order has been added to my orders list.
-
----
-### Stripe Webhooks 
-- [x] **payment_intent.payment_failed -** Send a test event to a webhook endpoint. 
-Event type - payment_intent.payment_failed
-Response - Test webhoook sent successfully.
-Webhook received: payment_intent.payment_failed  
-![](/documentation/images/payment_intent_failed.png)  
-- [x] **payment_intent.succeeded -** Send a test event to a webhook endpoint.  
-Event type - payment_intent.succeeded
-Response - Test webhoook sent successfully.  
-Webhook received: payment_intent.succeeded | SUCCESS: Created order in webhook  
-![](/documentation/images/payment_intent_succeeded.png)  
-
-
----
-### Profile Page
-Navigate to the user profile by clicking the ```My Profile``` link in the header account icon dropdown. 
-- [x] **Personalised Profile Heading -** The heading of the profile page is personalised, with ```first_name last_name's Profile```. 
-- [x] **Personalised Welcome message -** There is also a message, ```Welcome first_name!```.
-- [x] **User Profile Menu**
-	- [x] **All Users (Customers and Vendors)**
-		- [x] **Profile Tab**
-		My registration informtion is displayed in read only format. (Name, Username, Email, User Type, Date Joined, Last Login)
-		- [x] **Account Info Tab**
-			- [x] **Default Delivery and Profile Info**
-		My profile information is displayed in a form that can be edited and updated. I update my information and click the update information button. A success message is displayed, and I am returned to the main profile tab. I check in the Account Info tab and the information has been updated. 
-			- [x] **Account Management**
-				- [x] **Change Password -** I click the change password link and I'm redirected to the Change Password page. 
-					- [x] I enter my current password, a new password, the new password again, and click "Change Password". 
-					- [x] A success message confirms the password has been updated.
-					- [x] I log out, and then login again using my new password. I confirm that the password has been updated.
-				- [x] **Manage Email -** I click "Manage Email" and am redirected to the email management page. 
-					- [x] **BUG in Allauth template** The radio boxes with the emails and the email status were not being displayed. There was an issue with the positioning of the radio box label closing tag. I move it to the end of the label, then the check boxes were showing. Then I added jinja to display each email beside the radio box. I added Bootstrap 5 classes and grid for responsive display. 
-					- [x] I enter an email in the add email address, click add email and a message informs me a confirmation email has been sent to my new email.
-					- [x] The page refreshes and the new email is displayed in the list of account emails.
-					- [x] It is tagged as unverified.
-					- [x] I check my email, and click on the verify email link, and verify the email.
-					- [x] Checking my email management page and the email is now verified.
-					- [x] I select the new email and click "Make Primary". The primary email is changed.
-					- [x] I check in the admin and confirm the primary email has been changed.
-					- [x] I select an email and click re-send verification, and a verification email is sent to the email, with a link to click and verify the email.
-					- [x] I select an email and click remove. A success message informs me the email has been removed from my account.
-				- [x] **Close Account -** I click "Close Account", a bootstrap danger styled modal opens warning me the account will be closed and I will no longer have access. 
-					- [x] I click Cancel and the modal closes.
-					- [x] I click Close Account and A message informs me the accoutn has been closed. I am logged out to a page that informs me the account is not active. 
-		- [x] **Orders Tab -** I open the profile order tab and a list of my orders is displayed.
-			- [x] **Order Details -** The order number, order date, order items, item quantity, and order total is displayed for each order. 
-			- [x] **Order Number Link -** The order number a link. 
-				- [x] I click on a order number link and I am redirected to the order confirmation page displaying the order details. 
-				- [x] A toast message informs me I am viewing a past order.
-		- [x] **Favorites Tab -**
-			- [x] **Favorites Products Grid -** I click on the favorites tab and the favorites list is displayed in a bootstrap grid.
-			- [x] **Image Lightbox -** I click on the image and it opens in an image lightbox. 
-			- [x] **Product Name Link -** I click the product name and am redirected to the product detail page. 
-			- [x] **Product Category Link -** I click the category and it opens a page displaying all the products in that category. 
-			- [x] **Product Price -** The product price is displayed.
-			- [x] **Remove Link button -** I click on the remove link below an item and the page refreshes. A toast message informs me the item has been removed from my favorites. 
-				- [x] **ISSUE:** When the page refreshes it goes to the profile tab. This is not ideal, and I plan to implement Ajax to update the list without refreshing the page.
-	- [x] **Vendor/ Admin Only Tabs -** The following two tabs are displayed for vendors only.
-		- [x] **Products Tab -**
-			- [x] **Product Layout Grid -** I open the profile products tab and a list of the vendors products is dispplayed. 
-			- [x] **Only Vendors Products Displayed -** I confirm that only the vendors items are displayed by changing ownership of some products in the admin. The products are no longer displayed in this vendors  profile. 
-			- [x] **Image lightbox -** I click the image and it opens the image lightbox.
-			- [x] **Product Name Link -** I click the product name and it redirects me to the product detail page. 
-			- [x] **Product Category Link -** I click the category and it opens a page displaying all the products in that category. 
-			- [x] **Product Price -** The product price is displayed.
-				- [x] **Edit link -** I click on the edit link and I am redirected to the eidt product page, where a form containing the products information is displayed. I edit the product details, and click update product. I am redirected back to the product view and the product details have been updated. 
-				- [x] **Delete link -** I click on the delete product link. A bootstrap danger styled modal opens.
-					- [x] **Delete Modal**
-						- [x] **Modal Content -** The content informs be the product "SKU", and product "name" will be deleted from the database. I am asked if I am sure I want to delete the product. The content is clear and correct.
-						- [x] **Cancel Button -** I click the cancel button and the modal closes.
-						- [x] **Delete Button -** I click the delete button and a message informs be the product has been deleted. I am returned to the product page. 
-		- [x] **Sales Tab**
-			- [x] **Vendor Sales List -** I open the vendor sales tab and a list of the vendor product sales is displayed.
-				- [x] To test this, I create an order for 4 seaparate items, in different quantities, belonging to 3 different vendors. 
-				- [x] I check the order, and the line items in the Django admin. The details are correct, and showing the different line items product owners. 
-				- [x] In the profile for each vendor, the items for each vendor are showing in the vendor sales tab. The totals are correct. 
-			- [x] **Sales Details -** The date, order number, vendor, item quantity, order items, and line item total is displayed for each item. 
-			- [x] **Sale Order Number Link -** The order number links to the vendor sale order details. 
-				- [x] I click on a order number link and I am redirected to the sale  confirmation page displaying the sale item details. 
-				- [x] A toast message informs me I am viewing a sale confirmation for a past sale.
----
-### Blog All Pages  
-I navigate to the blog, and the content is displayed as per design. A featured article, the blog posts, and a right sidebar.
-- [x] **Blog Right Sidebar**
-	- [x] **Blog Search -** I enter various search terms in the blog search input, and it returns related results for the serach term within the blog posts. 
-	- [x] **Blog Categories -** I click on the category in the blog sidebar and the related items within that category are returned.
-	- [x] **Recent Posts -** In the recent posts, the four most recent posts are displayed. This is by design. 
-	- [x] **Blog Archives -** The blog archives displays Year, and month with the total items from that month. Clicking on the month displays the posts from that month. 
-	- [x] **Blog Tags -** I click on the blog tags and the items with that tag are displayed. 
-- [x] **Blog Featured Post**
-	- [x] A featured post is displayed at the top of the page. This option is checked in the Post admin. 
-	- [x] In the post admin I uncheck the option and the featured post is no longer visible. 
-	- [x] I click on the post image, or read more link, it opens and displays the post.
-	- [x] **Note** The featured post is currently displayed on all ```blog_posts``` pages. I intend to change this so it is visible only on the first ```blog_posts``` page. 
-- [x] **Blog Posts Page**
-	- [x] Regular posts are displayed below the featured post.
-	- [x] The posts are paginated, 2 posts per page.
-	- [x] I click on the image or readme link of the regular post. The post is opened and displayed.
-- [x] **Post Detail Page**
-	- [x] **Post -** The blog detail page is per design. The date, posted by, article title, article image, article and article tags. Below the article is a form for the user to leave a comment. 
-- [x] **Blog Post Comments**
-	- [x] The post comment form is available for authenticated users. As a logged out user I confirm that ```Register``` and ```Login``` links are displayed for users if they want to leave a comment.
-	![](documentation/images/blog-comments-login.png)  
-	- [x] I log in and on the same page now there is a "```Leave a comment```" link displayed instead.  
-	![](documentation/images/blog-comments-logged-in.png)  
-	- [x] I click on the "```Leave a comment```" link and the comment form toggles open and is now visible.  
-	![](documentation/images/blog-comments-form.png)  
-		- [x] I enter my name and a comment, and click submit. 
-		- [x] A toast message informs me the comment has been posted. It is now displayed below the article. 
-		- [x] The page refreshes, the comment form no longer visible, and the comment is displayed below the "```Leave a comment```" link.
-	- [x] **Comments View -**
-		- [x] The comment is displayed in a blockquote, with my name, and how long ago it was posted.
-		- [x] The comment section heading displays teh numbe rof comments in brackets. This is updated when I add a comment. 
-		- [x] The comments are posted in date order, newest comments are at the top. 
-
----
-### Toast Messages
-
-4. **All Users:**
-
-5. **Session Users:**
-
-6. **Admin Users:**
-
----
-
-### ALL USERS
-
-### SESSION USERS
-
-### ADMIN USERS
-
-
-#### 404 Errors
-
-##### ALL USERS
-
-- [x] Test
-
-##### USERS NOT LOGGED IN
-
-- [x] Test
-
-
-## USER STORIES REVIEW (Development-Deployment)
-
-[Readme/User Stories](/README.md/#user-stories)
-
-[notes about the user stories]
-
-### User Story Reviews
-
----
-### As the user, ...
-
-**As the user:**
-> User story
-- User Story Review
-
-### As the owner, ...
-**As the owner:**
-> User story
-- User Story Review
-
-![](/documentation/images/)  
-
-
-### Issues and Fixes
-
-See also [README/BUGS and ISSUES](/README.md/#bugs-and-issues)
-
-##### ISSUE: 1
-***Safari Jumbotron Background Image***
-There is a bug that is limited to Safari on iPhones. On an iPhone 13 Pro, the Buddha background image is not present. The same issue is not present when checking the iPhone in Chrome and Safari web developer tools. It is not present on tablets, or on Apple or PC desktops. 
-On my macbook pro I checked the iPhone source code in the Safari developer tools, and was unable to locate the error. 
-At this point, I put it down to apple, but am contiuing to investigate. The issue is not critical as the dark background on the small screen of the iPhone is acceptable. 
-
-## Validation
-
-### Form Validation
-
-I have multiple protections for the forms.
-
--   **Browser Validation** 
--   **Regex:** 
-
-
-### HTML Validation
-HTML validated by W3C Markup Validation Service
-Source code from all pages was copied and added into the W3C validation, for the URL's as shown in the following image.
-W3C Validion success for all pages: Document checking completed. No errors or warnings to show.
-
-![](/documentation/images/validation_html.png)
-
-### CSS Validation
-CSS validated by W3C CSS Validation Service
-CSS was copied and pasted into the W3C CSS Validador for all CSS files created by me.
+```python
+# settings.py 
+DEBUG = 'DEVELOPMENT'  in os.environ
+```
 
 **NOTE:**
-1. All CSS was put through the [Github autoprefixer](https://autoprefixer.github.io), to add backward complatibility for the 4 last browser releases. This adds webkit prefixes that are not recognised by the W3C CSS Validator, and this is a known issue. It raises warnings for such prefixes.
-2. I have used a a Bootstrap theme and included the Boostrap CSS (see static/css/bootstrap_theme.css) in my site. Bootstrap run through the W3C Validation raises many warnings, that are not critical and autoprefixing this CSS also increases the validation warnings.
-3. No errors have been raised for any of my CSS.
 
-![](/documentation/images/validation_css.png)
+I used AWS S3 bucket for storage of my project static files and product images. If you want to do this, you will need to:
 
-### JS Validation
-JS was validated using [JS Hint](https://jshint.com/), and no errors were noted.
+1. Open AWS account
+2. Create account and continue
+3. Enter credit card in case you go above the limit.
+4. Sign in the management console
+5. Create your S3 bucket and dependencies required for storing the project static files. This is a complex process that I will not describe here as AWS is constantly evolving and any outline i give here could become problematic in the future.
 
-![](/documentation/images/validation_js.png)
+Using AWS will require adding environme nt variables to Heroku for the following.
 
-### Python Validation
-All Python files where copied and pasted into the [PEP8 online](http://pep8online.com) Python validator.
-Python is PEP8 compliant, and shows one error in `settings.py`. `env' imported but unused flake8(F401) [18,5]`. The error as described is not actually an error as `env.py` is used to import protected sensitive data.
+-   AWS_ACCESS_KEY_ID ```Requires AWS S3 bucket setup```
+-   AWS_SECRET_ACCESS_KEY ```Requires AWS S3 bucket setup```
+-   USE_AWS ```Requires AWS S3 bucket setup```
 
-![](/documentation/images/validation_python.png)
+[TESTING/Testing Checklist](/documentation/testing.md#testing-checklist-development-deployment)
+
+#### Forking or Cloning [Shop for Buddhas](https://github.com/daidensacha/shop-for-buddhas)
+
+1. If you're interested in forking the project to experiment with the code or propose changes, navigate to the [Shop for Buddhas](https://github.com/daidensacha/shop-for-buddhas), and click on the fork button.
+
+![](/documentation/images/fork-project.png)
+
+2. You have forked the project but will not yet have files locally on your computer.
+
+3. Navigate to the the [Shop for Buddhas Repository](https://github.com/daidensacha/shop-for-buddhas)
+
+4.  **Get Clone URL:** Click **Code**, then click the **copy icon** on the right of the HTTPS URL.
+
+![](/documentation/images/clone-project.jpg)
+
+5.  **Clone the project:** Open your IDE of choice, and in terminal enter ```git clone repository-url```.
+
+6.  **Open locally:** Open the project in your IDE of choice and create your virtual environment if required.
+
+8.  **Install dependencies:** Enter ```pip3 install -r requirements.txt``` to install project dependencies.
+
+9.  **Create superuser:** In terminal enter ```python3 manage.py createsuperuser```, and create your username, email, and password to access the project admin.
+
+10.  **Create database**  ```python3 manage.py makemigrations``` and then ```python3 manage.py migrate```.
+
+At this point you have a working version of the site locally, without any data added. You can add products, product categories, testimonials, and blog posts. This will populate the sites pages with content. You can register customer and vendor accounts to test the functionality, and explore code.
+
+[Github documetation on forking](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+
+[Github documentaiton on cloning](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+
+### Feedback
+
+[add feedback about the site/ project]
+
+
+### Credits
+
+1.  **Code Institute** Boutique Ado project was a major guide for me in developing this project. Especially the sections on adding products and the checkout app.
+
+2.  [**Very Academy**](https://www.youtube.com/channel/UC1mxuk7tuQT2D0qTMgKji3w) Throughout the project, while researching I came across youtube videos from Very Academy that were clear and informative.   
+	- Setup/ Custom admin
+	- Creating a blog
+	-  [Creating a Bookmark/Favoutites Features](https://www.youtube.com/watch?v=H4QPHLmsZMU) I found their input on using a ManyToManyField for adding favorites really helpful. I had to adapt it, and then create my own filters, but it opened a doorway that helped me to get it done.
+
+3.  **Boostrap 5 Theme** Using and customising Boostrap 5 themes enabled me to focus more on creating the apps and the code for the site. I would like to acknowledge and thank the creators of the 2 themes that I used. 
+[Shopapp Bootstrap 5 Theme](http://pxdraft.com/wrap/shopapp/home/index.html#)
+[Amino Bootstrap 5 Theme](https://template.hasthemes.com/amino/amino/blog-list-right-sidebar.html) 
+
+4. [Django and DRF Testing Series](https://www.youtube.com/watch?v=KIIdbVs7e8I&list=PLP1DxoSC17LZTTzgfq0Dimkm6eWJQC9ki) by Kenyan Engineer was really helpful with creating unit tests using pytest and pytest-cov. 
+5. [Scroll to top button with vanilla js](https://dev.to/ljcdev/scroll-to-top-button-in-vanilla-js-beginners-2nc) Thanks to the author of this post for the vanilla JS back to top button. I cusomised the CSS to fit with the style of the site.
+
+
+
+## NOTES
+
+[additional notes about the project, if any]
+
+## IMPROVEMENTS/ FUTURE FEATURES
+
+ 1. Ajax
+There are cases where teh use of Ajax would be far preferable to refreshing the page, or redirecting the user to another page. 
+	 - Quick add items to the shopping cart.
+	 - Updaing the cart quantity.
+	 - Deleting items from the shopping cart. 
+	 - Adding or removing items from the favorites list.  
+
+	At present the pages refresh for teh above actions, which returns the user to the top of the page, or to a different page view. This is not ideal and it will be a priority to address this issue.
+2. Email notifications for the vendors when their products are sold.
+3. Coupon management functionality, creating and managing coupons, and integrating it with the payment system.
+
+
+  
+
+## BUGS and ISSUES
+
+See also [TESTING/Issues and Fixes](/documentation/testing.md/#issues-and-fixes)
+
+  
+See also [README/Database Issues and Notes](/README.md/#database-issues-and-notes)
+
+
+##### ISSUE: [NUMBER]
+**ISSUE_NAME**
+**Issue**
+**Description**
+**Troubleshooting**

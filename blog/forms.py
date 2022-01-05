@@ -9,6 +9,7 @@ class CommentForm(forms.ModelForm):
         """Define the blog comment form with labels"""
 
         model = Comment
+        exclude = ['posted_by']
         fields = ['name', 'body']
 
     def __init__(self, *args, **kwargs):
