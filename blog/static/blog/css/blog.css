@@ -599,6 +599,7 @@
   font-size: 16px;
   font-weight: 600;
   color: #1d1d1d;
+  padding-left: 10px;
 }
 
 .single-comment .comment-content .date {
@@ -609,6 +610,7 @@
 
 .single-comment .comment-content p {
   margin-top: 15px;
+  padding-left: 10px;
 }
 
 .single-comment .comment-content .replay {

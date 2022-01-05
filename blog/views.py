@@ -3,7 +3,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
 from django.db.models import Q
 from taggit.models import Tag
-# from .models import Category, Post, Comment
 from .models import Category, Post
 from .forms import CommentForm
 

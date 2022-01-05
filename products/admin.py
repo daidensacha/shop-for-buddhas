@@ -15,13 +15,11 @@ class VendorFilter(admin.SimpleListFilter):
             product = Product.objects.filter(created_by=user)
             if product:
                 vendor_list.append((user, user))
-
         return vendor_list
 
     def queryset(self, request, queryset):
         if not self.value():
             return queryset.all()
-
         return queryset.filter(created_by__username=self.value())
 
 
