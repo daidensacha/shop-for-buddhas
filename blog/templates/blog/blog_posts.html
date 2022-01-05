@@ -48,17 +48,20 @@
               
                 <!-- Include blog body -->
                 {% for post in posts %}
-                
+
+                    <!-- 1 if there is a slug or archive item  -->
                     {% if category_slug != None or archive == True   %}
                         
                         {% include 'blog/blog_body.html' %}
 
+                    <!-- 2 if there is no slug -->
                     {% elif category_slug == None %}
+                        <!-- 2a if its a query -->
                         {% if query %}
                         <h5> You Searched For {{query}}</h5>
                             {% include 'blog/blog_body.html' %}
                         {% endif %}
-
+                        <!-- 2b if its not a featured post or query -->
                         {% if not post.featured and not query %}
                             {% include 'blog/blog_body.html' %}                    
                         {% endif %}

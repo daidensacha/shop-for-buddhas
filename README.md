@@ -4,7 +4,7 @@
 
   
 
-![](/documentation/images/shopforbuddhas-home.jpg)
+![](/documentation/images/mochup-light.png)
 
   
 

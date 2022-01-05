@@ -84,9 +84,16 @@ class ModelTests(TestCase):
         return blog
 
     def test_comment(self):
+        user = UserModel.objects.create(
+            first_name='test',
+            last_name='test1',
+            username='testuser1',
+            email='testemai@`gmail.com',
+            user_type='is_customer'
+            )
         post = self.test_post_str()
         comment = Comment.objects.create(
-            post=post, name='good test', body='test body')
+            post=post, posted_by=user, name='good test', body='test body')
         self.assertEqual(str(comment), 'good test')
 
 

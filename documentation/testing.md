@@ -565,8 +565,18 @@ To be completed.
 
 ---
 
+### Unit Testing
+**Pytest and Pytest-cov**
+Unit testing was completed using Pytest and pytest-cov.  Focus was on testing models, forms, urls, and views. It is not complete, but the pages were also extensivly tested in the broweser for expected behaviour. 
+62% coverage was attained. Screenshot of the testing prinout from terminal as follows.    
+![](/documentation/images/unit-testing.png)   
 
-#### Custom Error pages
+Pytest-cov report   
+![](/documentation/images/pytest-cov.jpg)   
+
+---
+
+### Custom Error pages
 Custom 400, 403, 404, and 500 error pages have been included within the product base template folder. 
 
 **404 Errors** 
@@ -600,13 +610,13 @@ To be completed
 ### As a vendor, ...
 
 **As a vendor:**
-> I want to be able to register to sell my work.
-- I have extended the AbstractUser model to include the possibity for users to register as a customer or a vendor. 
-![](/documentation/images/vendor-registration.jpg)  
+> I want to be able to register to sell my work.   
+- I have extended the AbstractUser model to include the possibity for users to register as a customer or a vendor.      
+![](/documentation/images/vendor-registration.jpg)   
 
 **As a vendor:**
 > I want to create a profile.
-- The profile is created as part of the registration process. The user can then update the profile with their details. 
+- The profile is created as part of the registration process. The user can then update the profile with their details.    
 ![](/documentation/images/vendor-profile.jpg)    
 
 **As a vendor:**
@@ -619,18 +629,18 @@ To be completed
 **As a vendor:**
 > I want to be able to edit, update or delete my listed products.
 - All the vendors products have an edit, and delete link under them in the product list page, in the product detail page, and in the vendors profile product tab. Profile view is above.
-This is the product view, see vendors product with edit and delete links.
-![](/documentation/images/product-view-edit.jpg)    
-This is the product detail view with the edit delete links.
-![](/documentation/images/product-detail-edit.jpg)    
-- **Edit/ Update Product -** Clicking the edit button opens the edit product page, where the vendor can update the details and save them.   See the edit and delete links in above image. 
+This is the product view, see vendors product with edit and delete links.   
+![](/documentation/images/product-view-edit.jpg)     
+This is the product detail view with the edit delete links.     
+![](/documentation/images/product-detail-edit.jpg)     
+- **Edit/ Update Product -** Clicking the edit button opens the edit product page, where the vendor can update the details and save them.   See the edit and delete links in above image.    
 ![](/documentation/images/vendor-edit-product.jpg)    
-- **Delete Product -** To delete a product, it is 2 clicks. Click the delete under the product, then confirm by clicking delete again in the delete modal. 
+- **Delete Product -** To delete a product, it is 2 clicks. Click the delete under the product, then confirm by clicking delete again in the delete modal.    
 ![](/documentation/images/vendor-delete-product.jpg)    
 
 **As a vendor:**
 > I want to be able to see a current list of my items listed for sale.
-- A complete list of all the vendors products are shown in the vendors profile product tab. The vendor can view the product there. Clicking on the image will open the image in a lightbox. Clicking the item name will redirect the vendor to the product detail page. 
+- A complete list of all the vendors products are shown in the vendors profile product tab. The vendor can view the product there. Clicking on the image will open the image in a lightbox. Clicking the item name will redirect the vendor to the product detail page.     
 ![](/documentation/images/vendor-products.jpg)    
 
 **As a vendor:**
@@ -647,7 +657,7 @@ This is the product detail view with the edit delete links.
 
 **As a customer:**
 > I want to buy quality statues.
-- Over many years visiting Nepal, India and Tibet, we have many connections in Nepal, and with a grounding in Buddhist practice, we understand the need for quality when it comes to Vajrayana Buddha statues. 
+- Over many years visiting Nepal, India and Tibet, we have many connections in Nepal, and with a grounding in Buddhist practice, we understand the need for quality when it comes to Vajrayana Buddha statues.  
 ![](/documentation/images/products-quality.jpg)  
 
 **As a customer:**
@@ -656,22 +666,22 @@ This is the product detail view with the edit delete links.
 
 **As a customer:**
 > I want to be able to commission work for items I cannot find in the shop.
-- This matches with the vendors requirement for the same. We have offered this as a possibility in the services section on the homepage. 
+- This matches with the vendors requirement for the same. We have offered this as a possibility in the services section on the homepage.  
 ![](/documentation/images/services.jpg)    
 
 **As a customer:**
 > I'm interested in knowing about the statue making process and the artisans that make the statues.   
-- A blog has been included in the site with this in mind. The need to educate, inform, and raise awareness about this craft is important. The blog is a place where we can promote new items, vendors, and to publish other infomation of interest for customers to read. 
+- A blog has been included in the site with this in mind. The need to educate, inform, and raise awareness about this craft is important. The blog is a place where we can promote new items, vendors, and to publish other infomation of interest for customers to read.  
 ![](/documentation/images/blog.jpg)    
 
 **As a customer:**
 > I want to be able to view items by category.
-- In the navbar a megamenu has been provided which has links to all product categories. The customer can easily see all available categories in this view. Additionally, every product has a category tag. The user can click that tag to view all the other products within the same category. 
+- In the navbar a megamenu has been provided which has links to all product categories. The customer can easily see all available categories in this view. Additionally, every product has a category tag. The user can click that tag to view all the other products within the same category.   
 ![](/documentation/images/megamenu.jpg)    
 
 **As a customer:**
 > I want to be able to sort the items by ascending, descending order.
-- In the top right of the product page, a filter allows the user to filter by price, rating, category, and name. 
+- In the top right of the product page, a filter allows the user to filter by price, rating, category, and name.   
 ![](/documentation/images/product-filter.jpg)    
 
 **As a customer:**
@@ -681,17 +691,17 @@ This is the product detail view with the edit delete links.
 
 **As a customer:**
 > I want a seamless registration process.
-- Registration is a simple process. Complete the registration form. A unique username and email must be provided. A confirmation email is sent with a link to click and confirm the provided email is correct. Once that is complete, the customer can login. 
+- Registration is a simple process. Complete the registration form. A unique username and email must be provided. A confirmation email is sent with a link to click and confirm the provided email is correct. Once that is complete, the customer can login.  
 ![](/documentation/images/vendor-registration.jpg)  
 
 **As a customer:**
 > I want to be able to log in with an email and password.
-- The user can use their username or email, and their password to login. 
+- The user can use their username or email, and their password to login.  
 ![](/documentation/images/login.jpg)    
 
 **As a customer:**
 > I want to be able to have a profile to save time for future purchases.
-- This need is provided for. The user can fill in their profile, so when they purchase something their details are automatcially entered in the checkout form. The order details are also saved to the user profile order tab.
+- This need is provided for. The user can fill in their profile, so when they purchase something their details are automatcially entered in the checkout form. The order details are also saved to the user profile order tab.  
 ![](/documentation/images/profile-account-info.jpg)    
 
 **As a customer:**
@@ -707,26 +717,26 @@ This is the product detail view with the edit delete links.
 
 **As a customer:**
 > I want to easily select and pay for items.
-- In the product list page, quick view, and quick add buttons are provided so the user can easily view and add items to the cart. The user can click the go to secure checkout link in the toast success message, or open the modal cart to update, or navigate to the cart or checkout. 
+- In the product list page, quick view, and quick add buttons are provided so the user can easily view and add items to the cart. The user can click the go to secure checkout link in the toast success message, or open the modal cart to update, or navigate to the cart or checkout.  
 ![](/documentation/images/quickview.jpg)     
 ![](/documentation/images/cart.jpg)    
 ![](/documentation/images/toast.jpg)    
 
 **As a customer:**
 > I want to receive confirmation of purchase.
-- The user receives a confirmation email of their purchase once the payment has been completed. 
+- The user receives a confirmation email of their purchase once the payment has been completed.  
 - ![](/documentation/images/purchase-success.jpg)    
 
 **As a customer:**
 > I want a record of my orders attached to my account profile.
-- In the user profile orders tab is a list of all orders, with a link to view the order details. 
+- In the user profile orders tab is a list of all orders, with a link to view the order details.  
 ![](/documentation/images/profile-orders.jpg)    
 
 ### As the site owner, ...
 
 **As the site owner:**
 >  I want to support grass root artists to continue their work.
-- In this site, I have made it possible for artisans to register and upload their products to sell. 
+- In this site, I have made it possible for artisans to register and upload their products to sell.  
 
 **As the site owner:**
 > I want to provide a website where grass root artists can sell their work.
@@ -734,7 +744,7 @@ This is the product detail view with the edit delete links.
 
 **As the site owner:**
 > I want to educate about the complexity of producing quality statues.
-- I have created the blog as a part of this site with the intent to use it to promote the artisans and services of the site. I also intend that it is to be used to educate and raise awareness by publishing articles about Buddhist philosophy. 
+- I have created the blog as a part of this site with the intent to use it to promote the artisans and services of the site. I also intend that it is to be used to educate and raise awareness by publishing articles about Buddhist philosophy.  
 ![](/documentation/images/blog.jpg)    
 
 **As the site owner:**
