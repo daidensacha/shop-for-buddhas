@@ -519,7 +519,7 @@ My workaround was to remove the blog body from the ```blog-posts.html``` page an
 
 The followign is my workaround, using jijna to include the blog body displaying the result.
 
-```html-jinja
+```html+jinja
 <!-- Include blog body -->
 {% for post in posts %}
 	<!-- Option 1: If there is a slug or archive item -->
@@ -587,7 +587,6 @@ Custom 400, 403, 404, and 500 error pages are in the product base template folde
 
 **500 Errors**
 - [x] I add an extra letter in a [blog slug url](https://shop-for-buddhas.herokuapp.com/blog/lost-wax-method-of-making-status-in-nepall/) (nepall instead of nepal), and the 500.html server error page is displayed.    
-
 ![](/documentation/images/500_error.jpg)   
 
 

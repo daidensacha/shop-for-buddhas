@@ -246,7 +246,7 @@ In addition to the above tabs in the user profile, the profile provides the vend
 
 ### Database Schema     
 #### Shop for Buddhas Database Schema     
-![](/documentation/images/sfb-db-schema.jpg)     
+![](/documentation/images/db-schema.jpg)     
 
 Being new to Django, planning the database schema was a big challenge. The schema I started with gave me a roadmap to create what I needed. The reality on the way was that I sometimes needed to change, add, or adapt certain aspects to incorporate and fully achieve what my goal was.
 
@@ -322,7 +322,7 @@ The testimonial model was reasonably straightforward. I allow authenticated user
 
 	In the HTML, I then looped the rating, adding one whole star for each loop.
 
-	```html-jinja
+	```html+jinja
 	{% for star in stars %}
 		{% if star < testimonial.user_rating|add:"1" %}
 			<span class="text-warning"><i class="fas fa-star"></i></span>
@@ -346,6 +346,9 @@ I wasn't sure how complex it could be, and with limitations on time, I wanted to
 	Displaying the posts was relatively straightforward. I had many issues returning and displaying the category and search query results without conflicts. The root of the issue always seemed to come back to the featured article. The search did not include it in the filter, or when it was, the result displayed as a featured article.
 
 	It now displays correctly, and the tag, category, and blog search query work as expected.
+
+	**NOTE** I changed the comments model. It now requires users to login to leave comments. I added a foreign key reference to the user in the comments model.   
+	[Testing.md/Changes to Comment Model](/documentation/testing.md#note-changes-to-the-blog-comment-model)
 
 5. **Checkout Model**
 I based my checkout model on the Boutique Ado model, with minor changes as my handling of products' sizes' differs, using a charfield.
@@ -724,7 +727,7 @@ messages.success(request, f'Added {product.name} to your cart', extra_tags='is_c
 
 Then in the success toast HTML, the cart message is only displayed if the following condition is true.
 
-```html-jinja
+```html+jinja
 {% if grand_total and "is_cart" in message.extra_tags %}
 ```
 Now the cart success messages only show for cart adjustments.
@@ -735,7 +738,7 @@ I used the built in bootstrap lightbox, which is actually very easy to implement
 
 Its as simple as adding the ```data-toggle="lightbox"``` to the ```a``` element along with the ```href``` to the image.
 
-```html-jinja
+```html+jinja
 <!-- Product Gallery -->
 <div class="col-lg-6 lightbox-gallery product-gallery">
 	{% if product.image %}
