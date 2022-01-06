@@ -259,7 +259,7 @@ I needed to create a custom user registration to select their type of account, a
 
 	To do this, I extended the ```AbstractUser``` model, adding a select field to the allauth user registration form with the option for users to select the type of account.
 
-	```python
+	```python3
 	# models.py
 	user_type = (
 		('is_admin', "Admin"),
@@ -271,7 +271,7 @@ I needed to create a custom user registration to select their type of account, a
 	user_type = models.CharField(max_length=25, choices=user_type, blank=True)
 	```
 
-	```python
+	```python3
 	# forms.py
 	"""
 	Note: I intentionally excluded the is_admin option in the signup form as I did not want this choice available to users in the registration process. I included this option purely for use in the administration panel.
@@ -311,7 +311,7 @@ The testimonial model was reasonably straightforward. I allow authenticated user
 
 	In the Django model.
 
-	```python
+	```python3
 	rating = (('1', '1/5 stars'),
 			  ('2', '2/5 stars'),
 			  ('3', '3/5 stars'),
@@ -497,7 +497,7 @@ In ```settings.py```:
 2. Set the default AUTH_USER_MODEL to your custom model class
 3. Set the other settings per your specific requirement. Refer to the Allauth configuration link above.
 
-```python
+```python3
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
@@ -517,7 +517,7 @@ AUTH_USER_MODEL = "accounts.UserModel"
 
 In ```forms.py``` import Allauth SignUp form and Django forms.
 
-```python
+```python3
 from allauth.account.forms import SignupForm
 from django import forms
 
@@ -562,7 +562,7 @@ I created the choice field tuple for customers and vendors in the above code fro
 
 In ```models.py``` import Django models and the AbstractUser model.
 
-```python
+```python3
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -617,7 +617,7 @@ I chose to extend the AbstractUser to keep it simple. Most of the examples I fou
 
 With the experience of hindsight, I would create one app for accounts and profiles rather than have it in two separate apps. Naming the app accounts is problematic, as I discovered when first opening the admin. I had two apps called ```ACCOUNTS```, the Allauth ```accounts``` and my app ```accounts```. Rather than deleting and starting over, I added the following into the ```accounts/app.py```.
 
-```python
+```python3
 from django.apps import AppConfig
 
 	class AccountsConfig(AppConfig):
@@ -720,7 +720,7 @@ I had an issue with cart contents showing in unrelated success messages. It didn
 
 I found the Django documentation ambiguous and challenging to understand. Still, luckily a [stack overflow thread](https://stackoverflow.com/questions/43588876/how-can-i-add-additional-data-to-django-messages) provided the clarity I needed to implement the fix. I discovered that ```extra_tags``` can be added to messages and used in templates to filter the display of such messages. I added the following ```extra_tags``` to the cart ```view.py``` adjustment-related messages.
 
-```python
+```python3
 # Example
 messages.success(request, f'Added {product.name} to your cart', extra_tags='is_cart')
 ```
@@ -864,7 +864,7 @@ I created the following custom error pages in the base level template folder.
 
 **Set Database environment variable in Heroku**
 
-```
+```python3
 # Set environ variables in Heroku
 # Set SECRET_KEY and other environ variables in the settings in Heroku
 DATABASE_URL
@@ -884,9 +884,9 @@ STRIPE_WH_SECRET
 pip3 install dj_database_url
 pip3 install psycopg2-binary
 pip3 freeze > requirements.txt
-
+```
 # In settings.py
-
+```python3
 import dj_database_url
 
 # Use postgresSQL if DATABASE_URL when in Heroku production
@@ -904,6 +904,7 @@ else:
 		}
 }
 
+```bash
 # Applies all migrations to postgresSQL to setup database
 python3 manage.py migrate
 
@@ -935,12 +936,15 @@ heroku config:set DISABLE_COLLECTSTATIC=1
 
 # Add "--app" plus your app name if you have more than one app
 heroku config:set DISABLE_COLLECTSTATIC=1 --app yourappname
+```
 
 # Add the hostname of your Heroku app to allowed hosts in settings.py
-
+```python3
 # Add localhost, so the site is also available in Gitpod.
 ALLOWED_HOSTS = ['yourappname.herokuapp.com', 'localhost']
+```
 
+```bash
 # git add, commit and push to github
 # Set environ variables in Heroku
 # Set SECRET_KEY and other environ variables in the settings in Heroku
@@ -959,7 +963,7 @@ At this point, the project is deployed without static files.
 4. Click **enable automatic deployment**
 
 The project will be automatically pushed to Heroku when commits are made to the GitHub repository.
-```python
+```python3
 # settings.py
 DEBUG = 'DEVELOPMENT' in os.environ
 ```
