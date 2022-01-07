@@ -76,6 +76,7 @@ def profile(request):
         return redirect('account_login')
 
 
+@login_required
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
@@ -93,6 +94,7 @@ def order_history(request, order_number):
     return render(request, template, context)
 
 
+@login_required
 def vendor_order_history(request, order_number):
     """ Create list of vendors product sales """
     order = get_object_or_404(Order, order_number=order_number)

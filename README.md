@@ -291,7 +291,7 @@ I needed to create a custom user registration to select their type of account, a
 
 	This choice allows users to register either as a customer or a vendor.  
 
-	[See more: README/Development-Writeup](/README.md/#signup---extening-allauth)
+	[See more: README/Development-Writeup](/README.md/#development-notes)
 
 2. **Products Model**
 - My products model is an extended version of the same model used in the Boutique Ado project. I needed to add additional fields to allocate ownership of the product to a vendor or admin. I added the ```created_by``` field, which references the ```user_id```.
@@ -1007,8 +1007,9 @@ At this point, you have a working version of the site locally, without any data 
 1.  You can add products, product categories, testimonials, and blog posts to populate the site's pages with content.
 2.  You can register customer and vendor accounts to test the functionality and explore code.
 
-[Github documentation on forking](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
-[Github documentation on cloning](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+[Github documentation on forking](https://docs.github.com/en/get-started/quickstart/fork-a-repo)     
+
+[Github documentation on cloning](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)   
 
 ### Feedback
 
@@ -1048,6 +1049,4 @@ There are cases where the use of Ajax would be far preferable to refreshing the 
 
 ## BUGS and ISSUES
 
-See also [TESTING/Issues and Fixes](/documentation/testing.md/#issues-and-fixes)
-
-See also [README/Database Issues and Notes](/README.md/#database-issues-and-notes)
+See also [TESTING/Issues and Fixes](/documentation/testing.md/#issues-and-fixes)    
