@@ -241,8 +241,8 @@ In addition to the above tabs in the user profile, the profile provides the vend
 2. **Sales:**
 - A list of the vendor product sales is displayed with a link to view the sales. The user can have a history of what they have sold, with all the details saved in the order.     
 
-	**Vendor Profile Tabs**     
-	![](/documentation/images/profile-vendor.jpg)     
+**Vendor Profile Tabs**     
+![](/documentation/images/profile-vendor.jpg)     
 
 ### Database Schema     
 #### Shop for Buddhas Database Schema     
@@ -289,7 +289,9 @@ I needed to create a custom user registration to select their type of account, a
 		required=True)
 	```
 
-	This choice allows users to register either as a customer or a vendor.
+	This choice allows users to register either as a customer or a vendor.  
+
+	[See more: README/Development-Writeup](/README.md/#signup---extening-allauth)
 
 2. **Products Model**
 - My products model is an extended version of the same model used in the Boutique Ado project. I needed to add additional fields to allocate ownership of the product to a vendor or admin. I added the ```created_by``` field, which references the ```user_id```.
@@ -484,11 +486,11 @@ touch env.py
 #### Signup - Extening Allauth
 **Useful links to Allauth documentation**
 
-[Allauth Configuration](https://django-allauth.readthedocs.io/en/latest/configuration.html) Crucial information if you are changing the account authentication method.
-[Allauth Views](https://django-allauth.readthedocs.io/en/latest/views.html) This is especially handy for linking to Allauth password and email management forms if you want to add this functionality to the user profile management.
-[Allauth Custom User Models](https://django-allauth.readthedocs.io/en/latest/advanced.html#custom-user-models)
-[Allauth Adding fields to the signup form](https://django-allauth.readthedocs.io/en/latest/forms.html#signup-allauth-account-forms-signupform)
-[Django Choices](https://docs.djangoproject.com/en/4.0/ref/models/fields/#field-choices)
+[Allauth Configuration](https://django-allauth.readthedocs.io/en/latest/configuration.html) Crucial information if you are changing the account authentication method.    
+[Allauth Views](https://django-allauth.readthedocs.io/en/latest/views.html) This is especially handy for linking to Allauth password and email management forms if you want to add this functionality to the user profile management.    
+[Allauth Custom User Models](https://django-allauth.readthedocs.io/en/latest/advanced.html#custom-user-models)    
+[Allauth Adding fields to the signup form](https://django-allauth.readthedocs.io/en/latest/forms.html#signup-allauth-account-forms-signupform)    
+[Django Choices](https://docs.djangoproject.com/en/4.0/ref/models/fields/#field-choices)    
 
 **App Settings**
 

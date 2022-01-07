@@ -773,9 +773,39 @@ See also [README/BUGS and ISSUES](/README.md/#bugs-and-issues)
 
 There is a bug that is limited to Safari on iPhones. On an iPhone 13 Pro, the Buddha background image is not present. The same issue is not present when checking the iPhone in Chrome and Safari web developer tools. It is not present on tablets or Apple or PC desktops.
 
-On my MacBook Pro, I checked the iPhone source code in the Safari developer tools and could not locate the error.
+**UPDATE:** This issue is not evident in Chome and Safari on the laptop. There is a difference in how iOS Sarafi reads and presents the HTML and CSS. The issue also affects the iPad, which has no background image showing. 
 
-At this point, I put it down to Apple, but I am continuing to investigate. The issue is not critical, as the dark background on the small screen of the iPhone is acceptable.
+Using Safari dev tools on my laptop, I connected to my iPhone. I spent time analyzing the issue to find a way to fix it. Using media queries to drill down in the iPhone css, I was able to change the positioning of the background image, so it is visible in the iPhone and on the iPad. 
+
+```css
+/* mobiles */
+.paralsec {
+	background-image: url("/media/bg_shakyamuni_vh1200.png");
+}
+.paral {
+	height: 100vh;
+	bottom: 0;
+	background-attachment: fixed;
+	background-size: 100vh  auto;
+	background-repeat: no-repeat;
+	background-position: 50%  0%;
+}
+/* Tablets */
+@media only screen and (min-width: 768px){
+	.paral {
+		background-position: 40%  0%;
+		}
+}
+/* Destops and bigger */
+@media only screen and (min-width: 992px){
+	.paral {
+		background-position: 80%  0%;
+		}
+}
+```
+Initially, I had the background-size set to cover. I changed it to ```100vh auto```, added ```background-repeat: no-repeat;```, and tweaked the positioning for each screen size. 
+
+The background image is now visible on mobiles and tablets. 
 
 ## Validation
 ### Form Validation
