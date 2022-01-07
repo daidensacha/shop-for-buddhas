@@ -246,7 +246,7 @@ In addition to the above tabs in the user profile, the profile provides the vend
 
 ### Database Schema     
 #### Shop for Buddhas Database Schema     
-![](/documentation/images/sfb-db-schema.jpg)     
+![](/documentation/images/db-schema.jpg)     
 
 Being new to Django, planning the database schema was a big challenge. The schema I started with gave me a roadmap to create what I needed. The reality on the way was that I sometimes needed to change, add, or adapt certain aspects to incorporate and fully achieve what my goal was.
 
@@ -259,7 +259,7 @@ I needed to create a custom user registration to select their type of account, a
 
 	To do this, I extended the ```AbstractUser``` model, adding a select field to the allauth user registration form with the option for users to select the type of account.
 
-	```python
+	```python3
 	# models.py
 	user_type = (
 		('is_admin', "Admin"),
@@ -271,7 +271,7 @@ I needed to create a custom user registration to select their type of account, a
 	user_type = models.CharField(max_length=25, choices=user_type, blank=True)
 	```
 
-	```python
+	```python3
 	# forms.py
 	"""
 	Note: I intentionally excluded the is_admin option in the signup form as I did not want this choice available to users in the registration process. I included this option purely for use in the administration panel.
@@ -311,7 +311,7 @@ The testimonial model was reasonably straightforward. I allow authenticated user
 
 	In the Django model.
 
-	```python
+	```python3
 	rating = (('1', '1/5 stars'),
 			  ('2', '2/5 stars'),
 			  ('3', '3/5 stars'),
@@ -322,7 +322,7 @@ The testimonial model was reasonably straightforward. I allow authenticated user
 
 	In the HTML, I then looped the rating, adding one whole star for each loop.
 
-	```html-jinja
+	```html+jinja
 	{% for star in stars %}
 		{% if star < testimonial.user_rating|add:"1" %}
 			<span class="text-warning"><i class="fas fa-star"></i></span>
@@ -346,6 +346,9 @@ I wasn't sure how complex it could be, and with limitations on time, I wanted to
 	Displaying the posts was relatively straightforward. I had many issues returning and displaying the category and search query results without conflicts. The root of the issue always seemed to come back to the featured article. The search did not include it in the filter, or when it was, the result displayed as a featured article.
 
 	It now displays correctly, and the tag, category, and blog search query work as expected.
+
+	**NOTE** I changed the comments model. It now requires users to login to leave comments. I added a foreign key reference to the user in the comments model.   
+	[Testing.md/Changes to Comment Model](/documentation/testing.md#note-changes-to-the-blog-comment-model)
 
 5. **Checkout Model**
 I based my checkout model on the Boutique Ado model, with minor changes as my handling of products' sizes' differs, using a charfield.
@@ -494,7 +497,7 @@ In ```settings.py```:
 2. Set the default AUTH_USER_MODEL to your custom model class
 3. Set the other settings per your specific requirement. Refer to the Allauth configuration link above.
 
-```python
+```python3
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
@@ -514,7 +517,7 @@ AUTH_USER_MODEL = "accounts.UserModel"
 
 In ```forms.py``` import Allauth SignUp form and Django forms.
 
-```python
+```python3
 from allauth.account.forms import SignupForm
 from django import forms
 
@@ -559,7 +562,7 @@ I created the choice field tuple for customers and vendors in the above code fro
 
 In ```models.py``` import Django models and the AbstractUser model.
 
-```python
+```python3
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -614,7 +617,7 @@ I chose to extend the AbstractUser to keep it simple. Most of the examples I fou
 
 With the experience of hindsight, I would create one app for accounts and profiles rather than have it in two separate apps. Naming the app accounts is problematic, as I discovered when first opening the admin. I had two apps called ```ACCOUNTS```, the Allauth ```accounts``` and my app ```accounts```. Rather than deleting and starting over, I added the following into the ```accounts/app.py```.
 
-```python
+```python3
 from django.apps import AppConfig
 
 	class AccountsConfig(AppConfig):
@@ -717,14 +720,14 @@ I had an issue with cart contents showing in unrelated success messages. It didn
 
 I found the Django documentation ambiguous and challenging to understand. Still, luckily a [stack overflow thread](https://stackoverflow.com/questions/43588876/how-can-i-add-additional-data-to-django-messages) provided the clarity I needed to implement the fix. I discovered that ```extra_tags``` can be added to messages and used in templates to filter the display of such messages. I added the following ```extra_tags``` to the cart ```view.py``` adjustment-related messages.
 
-```python
+```python3
 # Example
 messages.success(request, f'Added {product.name} to your cart', extra_tags='is_cart')
 ```
 
 Then in the success toast HTML, the cart message is only displayed if the following condition is true.
 
-```html-jinja
+```html+jinja
 {% if grand_total and "is_cart" in message.extra_tags %}
 ```
 Now the cart success messages only show for cart adjustments.
@@ -735,7 +738,7 @@ I used the built in bootstrap lightbox, which is actually very easy to implement
 
 Its as simple as adding the ```data-toggle="lightbox"``` to the ```a``` element along with the ```href``` to the image.
 
-```html-jinja
+```html+jinja
 <!-- Product Gallery -->
 <div class="col-lg-6 lightbox-gallery product-gallery">
 	{% if product.image %}
@@ -861,7 +864,7 @@ I created the following custom error pages in the base level template folder.
 
 **Set Database environment variable in Heroku**
 
-```
+```python3
 # Set environ variables in Heroku
 # Set SECRET_KEY and other environ variables in the settings in Heroku
 DATABASE_URL
@@ -881,9 +884,9 @@ STRIPE_WH_SECRET
 pip3 install dj_database_url
 pip3 install psycopg2-binary
 pip3 freeze > requirements.txt
-
+```
 # In settings.py
-
+```python3
 import dj_database_url
 
 # Use postgresSQL if DATABASE_URL when in Heroku production
@@ -901,6 +904,7 @@ else:
 		}
 }
 
+```bash
 # Applies all migrations to postgresSQL to setup database
 python3 manage.py migrate
 
@@ -932,12 +936,15 @@ heroku config:set DISABLE_COLLECTSTATIC=1
 
 # Add "--app" plus your app name if you have more than one app
 heroku config:set DISABLE_COLLECTSTATIC=1 --app yourappname
+```
 
 # Add the hostname of your Heroku app to allowed hosts in settings.py
-
+```python3
 # Add localhost, so the site is also available in Gitpod.
 ALLOWED_HOSTS = ['yourappname.herokuapp.com', 'localhost']
+```
 
+```bash
 # git add, commit and push to github
 # Set environ variables in Heroku
 # Set SECRET_KEY and other environ variables in the settings in Heroku
@@ -956,7 +963,7 @@ At this point, the project is deployed without static files.
 4. Click **enable automatic deployment**
 
 The project will be automatically pushed to Heroku when commits are made to the GitHub repository.
-```python
+```python3
 # settings.py
 DEBUG = 'DEVELOPMENT' in os.environ
 ```

@@ -99,7 +99,7 @@ My preferred browser for development is Chrome DevTools. I have a USB-C to dual 
 [README/Testing Devices Info](/README.md/#testing-devices-information)
 
 #### MacBook Pro 15 inch
-```shell
+```bash
 - Operating System
 - macOS Big Sur 11.2.3
 - Safari Version 14.0.3 (16610.4.3.1.7)
@@ -114,7 +114,7 @@ My preferred browser for development is Chrome DevTools. I have a USB-C to dual 
 ```
 
 #### HP ProDesk 600 Desktop PC
-```shell
+```bash
 - Operating System
 - Windows 10 Pro
 - Microsoft Edge Version 90.0.818.42 (Official Build) (64-Bit)
@@ -125,7 +125,7 @@ My preferred browser for development is Chrome DevTools. I have a USB-C to dual 
 ```
 
 #### Apple iPad Air Gen 1 9.7 inches 4:3 ratio
-```shell
+```bash
 - Operating System
 - iOS 12.5.2 (16H30) released March 26
 - Screen resolution
@@ -133,7 +133,7 @@ My preferred browser for development is Chrome DevTools. I have a USB-C to dual 
 ```
 
 #### Apple iPhone 11 Pro
-```shell
+```bash
 - Operating System
 - iOS 14.4.2
 - Screen resolution
@@ -494,7 +494,7 @@ At this point in my testing, I realized that I hadn't thought out the comment pr
 #### NOTE: Blog HTML Template structure.
 I have divided the code into different templates within the blog. It will be easier to understand if someone needs to work on it.
 
-```shell
+```bash
 |--templates/blog/
 |  |--base.html
 |  |--blog-body.html
@@ -519,7 +519,7 @@ My workaround was to remove the blog body from the ```blog-posts.html``` page an
 
 The followign is my workaround, using jijna to include the blog body displaying the result.
 
-```html-jinja
+```html+jinja
 <!-- Include blog body -->
 {% for post in posts %}
 	<!-- Option 1: If there is a slug or archive item -->
