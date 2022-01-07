@@ -257,13 +257,13 @@
 						<!-- Top link -->
 						<ul class="nav ms-auto ms-lg-3">
 							<li class="nav-item">
-								<a href="{% url 'home' %}#contact" class="nav-link text-white">Contact</a>
+								<a href="{% url 'home' %}#contact" class="nav-link link-white">Contact</a>
 							</li>
 							<li class="nav-item">
 								{% if request.user.is_authenticated %}
-									<a class="nav-link text-white" href="{% url 'account_logout' %}"><i class="bi bi-person-circle me-2"></i>Logout</a>
+									<a class="nav-link link-white" href="{% url 'account_logout' %}"><i class="bi bi-person-circle me-2"></i>Logout</a>
 								{% else %}
-									<a class="nav-link text-white" href="{% url 'account_login' %}"><i class="bi bi-person-circle me-2"></i>Login</a>
+									<a class="nav-link link-white" href="{% url 'account_login' %}"><i class="bi bi-person-circle me-2"></i>Login</a>
 								{% endif %}
 							</li>
 						</ul>
@@ -418,7 +418,7 @@
 							aria-haspopup="true" aria-expanded="false">
 							<i class="bi bi-person-circle"> </i>
 						</a>
-						<div class="dropdown-menu mt-2 shadow" aria-labelledby="dropdown_myaccount">
+						<div class="dropdown-menu dropdown-menu-lg-end mt-2 shadow" aria-labelledby="dropdown_myaccount">
 							{% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser or request.user.user_type == "is_vendor" %}
 									<a  class="dropdown-item" href="{% url 'add_product' %}">Product Management</a>
