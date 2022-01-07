@@ -34,7 +34,7 @@ class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
                                on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    image = models.ImageField()
+    image = models.ImageField(blank=True)
     title = models.CharField(max_length=150)
     slug = models.CharField(max_length=150)
     description = models.TextField(max_length=200, blank=True, null=True)

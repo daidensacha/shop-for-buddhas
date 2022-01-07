@@ -887,7 +887,7 @@ pip3 install dj_database_url
 pip3 install psycopg2-binary
 pip3 freeze > requirements.txt
 ```
-# In settings.py
+**In settings.py**
 ```python3
 import dj_database_url
 
@@ -905,7 +905,9 @@ else:
 		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 		}
 }
+```
 
+Migrate the models to Heroku, create a superuser, then load the fixture JSON data files. In this oder for this project. 
 ```bash
 # Applies all migrations to postgresSQL to setup database
 python3 manage.py migrate
@@ -1030,58 +1032,22 @@ At this point, you have a working version of the site locally, without any data 
 
 ## IMPROVEMENTS/ FUTURE FEATURES
 
-  
-
 1. Ajax
-
 There are cases where the use of Ajax would be far preferable to refreshing the page or redirecting the user to another page.
+	- Quick add items to the shopping cart.
+	- Updating the cart quantity.
+	- Deleting items from the shopping cart.
+	- Adding or removing items from the favorites list.   
 
-- Quick add items to the shopping cart.
-
-- Updating the cart quantity.
-
-- Deleting items from the shopping cart.
-
-- Adding or removing items from the favorites list.
-
-  
-
-The pages refresh for the above actions, which returns the user to the top of the page or a different page view. It's not ideal, and it will be a priority to address this issue.
-
+	The pages refresh for the above actions, which returns the user to the top of the page or a different page view. It's not ideal, and it will be a priority to address this issue.
 2. Coupon management functionality, creating and managing coupons, and integrating it with the payment system.
-
 3. Email confirmation for vendors' product sales. I didn't have time to implement this now, but it is in the pipeline for development.
-
 4. I would like to improve the vendor registration process. I need to manage this process to vet the vendors, ensuring the site's integrity is maintained.
-
 5. Product reviews. At this point, vendors can register and upload products. Still, it is necessary to review products intended for sale on the site. This site supports artisans, but it is also where vendors can sell quality items suitable for Buddhist practice. It is not a marketplace for selling items that are not quality.
 
-  
-
-  
-
-  
 
 ## BUGS and ISSUES
 
-  
-
 See also [TESTING/Issues and Fixes](/documentation/testing.md/#issues-and-fixes)
 
-  
-
 See also [README/Database Issues and Notes](/README.md/#database-issues-and-notes)
-
-  
-
-  
-
-##### ISSUE: [NUMBER]
-
-**ISSUE_NAME**
-
-**Issue**
-
-**Description**
-
-**Troubleshooting**

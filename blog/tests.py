@@ -103,12 +103,36 @@ class ViewsTests(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
-    # def test_blog_search_view(self):
-    #     url = reverse('blog_search')
-    #     response = self.client.get(url)
-    #     self.assertEqual(response.status_code, 200)
+    def test_blog_search_view(self):
+        url = reverse('blog_search')
+        response = self.client.get(url, {"query": "nepal"})
+        self.assertEqual(response.status_code, 200)
 
     # def test_post_detail_view(self):
-    #     url = reverse('post_detail')
+    #     user = UserModel()
+    #     user.first_name = 'test'
+    #     user.last_name = 'user'
+    #     user.username = 'testuser'
+    #     user.email = 'testuser@gmail.com'
+    #     user.user_type = 'is_customer'
+    #     user.save()
+    #     # Category()
+    #     category = Category()
+    #     category.name = 'test'
+    #     category.slug = 'test'
+    #     category.save()
+    #     # blog
+    #     blog = Post()
+    #     blog.author = user
+    #     blog.category = category
+    #     blog.title = 'test article'
+    #     blog.slug = 'test-article'
+    #     blog.body = 'Wwe are doing testing'
+    #     blog.status = 'published'
+    #     blog.posted_at = datetime.today()
+    #     blog.created_at = timezone.now
+    #     blog.save()
+    #     assert len(Post.objects.all()) == 1
+    #     url = reverse('post_detail', args=['test-article'])
     #     response = self.client.get(url)
     #     self.assertEqual(response.status_code, 200)

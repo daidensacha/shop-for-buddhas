@@ -814,11 +814,32 @@ The background image is now visible on mobiles and tablets.
 3. Forms other than registration and login require authentication to access the forms. 
 
 **Client-side validation**
-In the contact form, which is accessible from the home
+Included in the contact form, which is accessible from the home page.  
 Client-side Javascript validation per Bootstrap 5 documentation.
 
+
 **Regex patterns:**
-The custom Regex patterns validate English and German language and include min and max characters for appropriate inputs. The regex patterns fail validation for some special characters.
+The custom Regex patterns validate English and German language and include min and max characters for appropriate inputs. The regex patterns fail validation for some special characters.    
+[Created and tested at Regex101](https://regex101.com/)
+
+```python
+# First_name and Last_name 
+/^[a-zA-Z- äöüÄÖÜß]{2,30}$/
+```    
+![](/documentation/images/regex_name.png)        
+
+```python
+# Email
+/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
+```      
+![](/documentation/images/regex_email.png)         
+
+```python
+# Subject
+/^[a-zA-Z0-9- äöüÄÖÜß,.?\/!$]{2,30}$/
+```    
+![](/documentation/images/regex_subject.png)     
+
 
 **Server-side validation:**
 Django ```csrf_token``` with Django validation included in all forms. 
@@ -827,7 +848,8 @@ Django ```csrf_token``` with Django validation included in all forms.
 HTML validated by W3C Markup Validation Service
 Source code from all listed pages was copied and added into the W3C HTML validation, tested pages shown in the following image.
 
-W3C Validation success for all pages: Document checking completed. No errors or warnings to show.     
+W3C Validation success for all pages: Document checking completed. No errors or warnings to show.   
+
 ![](/documentation/images/validation_html.png)     
 
 ### CSS Validation
@@ -836,17 +858,19 @@ CSS was copied and pasted into the W3C CSS Validator for all CSS files I created
 
 **NOTE:**
 1. I put all CSS through the [Github autoprefixer](https://autoprefixer.github.io) to add backward compatibility for the four last browser releases. The Github autoprefixer adds Webkit prefixes that the W3C CSS Validator does not recognize, a known issue. It raises warnings for such prefixes.
-2. I have used a Bootstrap theme and included the Boostrap CSS (see static/css/bootstrap_theme.css) in my site. Bootstrap run through the W3C Validation raises many warnings that are not critical, and autoprefixing this CSS also increases the validation warnings.
-
+2. I have used a Bootstrap theme and included the Boostrap CSS (see static/css/bootstrap_theme.css) in my site. Bootstrap run through the W3C Validation raises many warnings that are not critical, and autoprefixing this CSS also increases the validation warnings.   
 3. No errors have been raised for any of my CSS.     
+
 ![](/documentation/images/validation_css.png)     
 
 ### JS Validation
-JS was validated using [JS Hint](https://jshint.com/), and JSHint noted no errors.     
+JS was validated using [JS Hint](https://jshint.com/), and JSHint noted no errors.  
+
 ![](/documentation/images/validation_js.png)     
 
 ### Python Validation
 Python code from all the Python files was copied and pasted into the [PEP8 online](http://pep8online.com) Python validator.     
 
 All Python code is PEP8 compliant and shows one error in `settings.py`. `env' imported but unused flake8(F401) [18,5]`. The error described is not an error as `env.py` is used to import protected sensitive data.   
+
 ![](/documentation/images/validation_python.png)     

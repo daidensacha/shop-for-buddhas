@@ -1,9 +1,10 @@
 from .models import Category, Product
 from accounts.models import UserModel
 from django.test import TestCase
-
+from django.urls import reverse
 import pytest
 import tempfile
+from django.test.client import Client
 
 MEDIA_ROOT = tempfile.mkdtemp()
 pytestmark = pytest.mark.django_db(transaction=True)
@@ -52,3 +53,54 @@ class ModelTests(TestCase):
     def test_Product_str_return(self):
         product = self.test_Product()
         self.assertEqual(str(product), 'testProduct')
+
+
+class ViewsTests(TestCase):
+    def test_products_view(self):
+        url = reverse('products')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_product_detail_view(self):
+        test_user = UserModel.objects.create(
+            first_name='first_user',
+            last_name='last_user',
+            username='first_last_username',
+            email='firstlast@gmail.com',
+            user_type='is_customer',
+            password="test"
+            )
+
+        category = Category.objects.create(
+            name='testCategory', friendly_name='testCat')
+        product = Product.objects.create(
+            category=category, sku='25036', name='testProduct',
+            price='25.00', description='testDdescription', rating='5',
+            created_by=test_user
+        )
+        url = reverse('product_detail', args=[product.id])
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_add_product_anonymouse_view(self):
+        url = reverse('add_product')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 302)
+
+    def setUp(self):
+        self.client = Client()
+        self.user = UserModel.objects.create(
+            first_name='first_user',
+            last_name='last_user',
+            username='test_username',
+            email='testusername@gmail.com',
+            user_type='is_admin',
+            is_active=True,
+            password="test"
+            )
+
+    # def test_add_product_view(self):
+    #     self.client.login(username="test_username", password="test")
+    #     url = reverse('add_product')
+    #     response = self.client.get(url)
+    #     self.assertEqual(response.status_code, 200)
