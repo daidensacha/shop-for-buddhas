@@ -18,7 +18,7 @@ html {
 
 body {
   background-image: url("/media/cartographer.png");
-  height: calc(100vh - 56px);
+  /* height: calc(100vh - 56px); */
   color: #555;
   /* font-family: 'Lato'; */
 }
@@ -36,6 +36,17 @@ body {
 #landing-page {
   padding-top: 64px;
 }
+
+.top-20 {
+  top: 20%;
+}
+.top-30 {
+  top: 30%;
+}
+.top-40 {
+  top: 40%;
+}
+
 
 /* ============================= HEIGHT CLASSES ============================= */
 
@@ -549,15 +560,6 @@ input[name='q']::placeholder {
 }
 
 /* Header Parallax Element Style*/
-/* .paral {
-  height: 100vh;
-  bottom: 0;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: 70% 70%;
-} */
-
-
 
 .paral {
   height: 100vh;
@@ -565,18 +567,13 @@ input[name='q']::placeholder {
   background-attachment: fixed;
   background-size: 100vh auto;
   background-repeat: no-repeat;
-  background-position: 30% .5%;
+  background-position: 50% .5%;
 }
 
 /* Image for Jumbotron Parallax Section */
 .paralsec {
   background-image: url("/media/bg_shakyamuni_mb.png");
 }
-
-/* Image for Jumbotron Parallax Section */
-/* .paralsec {
-  background-image: url("/media/bg_shakyamuni.png");
-} */
 
 .fourofour {
   position: fixed; 
@@ -597,12 +594,17 @@ input[name='q']::placeholder {
   min-height: 50%;
 }
 
+.jumbo-content {
+  position: relative;
+  top: 20%;
+}
+
 /* Heading for Jumbotron Parallax Section */
 .paral h1 {
   color: rgba(255, 255, 255, 0.8);
   font-size: 30px;
   text-align: center;
-  padding-top: 100px;
+  /* padding-top: 100px; */
   line-height: 60px;
 }
 
@@ -621,11 +623,15 @@ input[name='q']::placeholder {
     margin-bottom: 0;
     padding-top: 220px;
   }
+  .jumbo-content {
+    position: relative;
+    top: 20%;
+  }
   .paral h1 {
     color: rgba(255, 255, 255, 0.8);
     font-size: 60px;
     text-align: center;
-    padding-top: 60px;
+    /* padding-top: 60px; */
     line-height: 100px;
   }
   .paral p {
@@ -652,11 +658,15 @@ input[name='q']::placeholder {
     margin-bottom: 0;
     padding-top: 200px;
   }
+  .jumbo-content {
+    position: relative;
+    top: 10%;
+  }
   .paral h1 {
     color: rgba(255, 255, 255, 0.8);
     font-size: 60px;
     text-align: center;
-    padding-top: 60px;
+    /* padding-top: 60px; */
     line-height: 100px;
   }
 }
