@@ -549,18 +549,33 @@ input[name='q']::placeholder {
 }
 
 /* Header Parallax Element Style*/
-.paral {
+/* .paral {
   height: 100vh;
   bottom: 0;
   background-attachment: fixed;
   background-size: cover;
   background-position: 70% 70%;
+} */
+
+
+
+.paral {
+  height: 100vh;
+  bottom: 0;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 70% right;
 }
 
 /* Image for Jumbotron Parallax Section */
 .paralsec {
-  background-image: url("/media/bg_shakyamuni.png");
+  background-image: url("/media/bg_shakyamuni_mb.png");
 }
+
+/* Image for Jumbotron Parallax Section */
+/* .paralsec {
+  background-image: url("/media/bg_shakyamuni.png");
+} */
 
 .fourofour {
   position: fixed; 
@@ -617,6 +632,15 @@ input[name='q']::placeholder {
     color: #f5f5f5;
     text-align: center;
     line-height: 60px;
+  }
+  /* Header Parallax Element Style*/
+  .paral {
+    height: 100vh;
+    bottom: 0;
+    background-attachment: fixed;
+    background-size: 100vh auto;
+    background-repeat: no-repeat;
+    background-position: 80% 10%;
   }
 }
 

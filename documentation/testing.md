@@ -587,7 +587,6 @@ Custom 400, 403, 404, and 500 error pages are in the product base template folde
 
 **500 Errors**
 - [x] I add an extra letter in a [blog slug url](https://shop-for-buddhas.herokuapp.com/blog/lost-wax-method-of-making-status-in-nepall/) (nepall instead of nepal), and the 500.html server error page is displayed.    
-
 ![](/documentation/images/500_error.jpg)   
 
 
@@ -780,16 +779,19 @@ At this point, I put it down to Apple, but I am continuing to investigate. The i
 
 ## Validation
 ### Form Validation
-I have multiple protections for the forms.
+1. Contact form. The contact form is available from the homepage, and I considered it important to be available to anonymous users. To this end, the form includes additional protection of client-side Javascript validation, Regex patterns, and Django server-side CSRF validation. 
+2. All other forms on the site user CSRF tokens and Django validation. 
+3. Forms other than registration and login require authentication to access the forms. 
 
-**Browser Validation**
-Client side Javascript validation per Bootstrap 5 documentaion.
+**Client-side validation**
+In the contact form, which is accessible from the home
+Client-side Javascript validation per Bootstrap 5 documentation.
 
-**Regex:**
-Cusom Regex patterns to include English and German language. Min and max characters included for relative inputs. Special characters excluded from validation.
+**Regex patterns:**
+The custom Regex patterns validate English and German language and include min and max characters for appropriate inputs. The regex patterns fail validation for some special characters.
 
-**Serverside:**
-Django ```csrf``` protection added to all forms. 
+**Server-side validation:**
+Django ```csrf_token``` with Django validation included in all forms. 
 
 ### HTML Validation
 HTML validated by W3C Markup Validation Service
