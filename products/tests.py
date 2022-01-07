@@ -99,8 +99,11 @@ class ViewsTests(TestCase):
             password="test"
             )
 
-    # def test_add_product_view(self):
-    #     self.client.login(username="test_username", password="test")
-    #     url = reverse('add_product')
-    #     response = self.client.get(url)
-    #     self.assertEqual(response.status_code, 200)
+    def test_add_product_view(self):
+        login_url = reverse('account_login')
+        response = self.client.post(
+            login_url, {"username": self.user.username,
+                        "password": self.user.password})
+        url = reverse('add_product')
+        response = self.client.post(url, follow=True)
+        self.assertEqual(response.status_code, 200)

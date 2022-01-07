@@ -594,14 +594,60 @@ Custom 400, 403, 404, and 500 error pages are in the product base template folde
 
 ### Page Views that Require Authentication
 
+
 ##### USERS NOT LOGGED IN
-
-To be completed
-
+[Profile Page](https://shop-for-buddhas.herokuapp.com/profile/)
+- [x] Anonymous Users redirected to the login page.
+[Add Product Page](https://shop-for-buddhas.herokuapp.com/products/add/)
+- [x] Anonymous Users redirected to the login page.
+[Add Remove Favorite](https://shop-for-buddhas.herokuapp.com/products/) 
+- [x] Anonymous Users are redirected to the login page when they click on a favorite icon.
+[Edit Product page](https://shop-for-buddhas.herokuapp.com/products/edit/58/)
+- [x] Anonymous Users redirected to the login page.
+[Delete Product page](https://shop-for-buddhas.herokuapp.com/products/delete/58/)
+- [x] Anonymous Users redirected to the login page.
+[Order History](https://shop-for-buddhas.herokuapp.com/profile/order_history/5714F339E479479D8D8D986667A84CFC)
+- [x] Anonymous Users redirected to the login page.
+[Vendor Order History](https://shop-for-buddhas.herokuapp.com/profile/vendor_order_history/BFB28218BB7745B69F16A2E97FA5B807)
+- [x] Anonymous Users redirected to the login page.
+[Leave Testimonial Form](https://shop-for-buddhas.herokuapp.com/testimonials/)
+- [x] Anonymous Users redirected to the login page.
+[Blog Comments](https://shop-for-buddhas.herokuapp.com/blog/lost-wax-method-of-making-status-in-nepal/)
+- [x] Comment form is not available for anonymous users. I checked this issue thoroughly in the testing checklist.
+[Manage Email](https://shop-for-buddhas.herokuapp.com/accounts/email/)
+- [x] Anonymous Users redirected to the login page.
+[Change Password](https://shop-for-buddhas.herokuapp.com/accounts/password/change/)
+- [x] Anonymous Users redirected to the login page.
 
 ##### AUTHENTICATED USERS
 
-To be completed
+[Profile Page](https://shop-for-buddhas.herokuapp.com/profile/)
+- [x] Authenticated Users can access their profile only.
+[Add Product Page](https://shop-for-buddhas.herokuapp.com/products/add/)
+- [x] Authenticated Customers cannot access the page.
+- [x] Authenticated Vendors can access the page.
+[Add Remove Favorite](https://shop-for-buddhas.herokuapp.com/add_remove_favorite/delete/7/)
+- [x] Authenticated Users can add and remove favorites.
+[Edit Product page](https://shop-for-buddhas.herokuapp.com/products/edit/58/)
+- [x] Authenticated Customers cannot access the page.
+- [x] Authenticated Vendors can access their products only. 
+- [x] Authenticated Vendors cannot edit other users' products.
+[Delete Product page](https://shop-for-buddhas.herokuapp.com/products/delete/58/)
+- [x] Authenticated Customers cannot access the page.
+- [x] Authenticated Vendors can access their products only. 
+- [x] Authenticated Vendors cannot edit other users' products.
+[Order History](https://shop-for-buddhas.herokuapp.com/profile/order_history/5714F339E479479D8D8D986667A84CFC)
+- [x] Authenticated Users cannot view other users' information.
+[Vendor Order History](https://shop-for-buddhas.herokuapp.com/profile/vendor_order_history/BFB28218BB7745B69F16A2E97FA5B807)
+- [x] Authenticated Users cannot view other vendors' sales information.
+[Leave Testimonial Form](https://shop-for-buddhas.herokuapp.com/testimonials/)
+- [x] Authenticated users' can access the page and leave a testimonial.
+[Blog Comments](https://shop-for-buddhas.herokuapp.com/blog/lost-wax-method-of-making-status-in-nepal/)
+- [x] Authenticated users' can access the form and leave comments.
+[Manage Email](https://shop-for-buddhas.herokuapp.com/accounts/email/)
+- [x] Authenticated users' can access the page to manage their email.
+[Change Password](https://shop-for-buddhas.herokuapp.com/accounts/password/change/)
+- [x] Authenticated users' can access the page to change their password.
 
 ---  
 

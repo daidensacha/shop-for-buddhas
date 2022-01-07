@@ -76,14 +76,39 @@ def profile(request):
         return redirect('account_login')
 
 
+# @login_required
+# def order_history(request, order_number):
+#     order = get_object_or_404(Order, order_number=order_number)
+
+#     messages.info(request, (
+#         f'This is a past confirmation for order number {order_number}. '
+#         'A confirmation email was sent on the order date.'
+#     ))
+
+#     template = 'checkout/checkout_success.html'
+#     context = {
+#         'order': order,
+#         'from_profile': True,
+#     }
+
+#     return render(request, template, context)
+
 @login_required
 def order_history(request, order_number):
+    """
+    Get the order details
+    Check the authenticated user owns the order
+    Stop users viewing orders that are not theirs
+    """
     order = get_object_or_404(Order, order_number=order_number)
-
-    messages.info(request, (
-        f'This is a past confirmation for order number {order_number}. '
-        'A confirmation email was sent on the order date.'
-    ))
+    if not request.user.username == order.user_profile.user.username:
+        messages.info(request, 'You are trying to view information \
+            that is not available.')
+    else:
+        messages.info(request, (
+            f'This is a past confirmation for order number {order_number}.'
+            'A confirmation email was sent on the order date.'
+        ))
 
     template = 'checkout/checkout_success.html'
     context = {
@@ -94,10 +119,21 @@ def order_history(request, order_number):
     return render(request, template, context)
 
 
+#  product = get_object_or_404(Product, pk=product_id)
+#     if not request.user.user_type == 'is_vendor' \
+#        and not request.user.is_authenticated or \
+#        not request.user.user_type == 'is_admin' \
+#        and not request.user.is_authenticated or \
+#        request.user != product.created_by:
+#         messages.error(request, 'Sorry, only store owners can do that.')
+#         return redirect(reverse('home'))
+        
+
 @login_required
 def vendor_order_history(request, order_number):
     """ Create list of vendors product sales """
     order = get_object_or_404(Order, order_number=order_number)
+
     sale_total = 0
     delivery_total = 0
     grand_total = 0
@@ -108,11 +144,15 @@ def vendor_order_history(request, order_number):
             sale_total += item.lineitem_total
 
     grand_total = sale_total + delivery_total
-    messages.info(request, (
-        f'This is a past confirmation of vendor \
+    if grand_total == 0:
+        messages.info(request, 'This informatin is restricted.')
+        return redirect('account_login')
+    else:
+        messages.info(request, (
+         f'This is a past confirmation of vendor \
             sale for order number {order_number}.'
-    ))
-
+        ))
+    
     template = 'checkout/checkout_vendor_sales.html'
     context = {
         'order': order,
