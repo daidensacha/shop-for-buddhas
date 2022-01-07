@@ -495,11 +495,11 @@ At this point in my testing, I realized that I hadn't thought out the comment pr
 I have divided the code into different templates within the blog. It will be easier to understand if someone needs to work on it.
 
 ```bash
-|--templates/blog/
-|  |--base.html
-|  |--blog-body.html
-|  |--blog-posts.html
-|  |--blog-detail.html
+|-- templates/blog/
+|  |-- base.html
+|  |-- blog-body.html
+|  |-- blog-posts.html
+|  |-- blog-detail.html
 ```
 
 **Separation of HTML to reduce duplication**
