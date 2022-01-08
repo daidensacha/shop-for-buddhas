@@ -661,11 +661,11 @@ Custom 400, 403, 404, and 500 error pages are in the product base template folde
 - [x] [Leave Testimonial Form](https://shop-for-buddhas.herokuapp.com/testimonials/)    
 	- [x] Authenticated users' can access the page and leave a testimonial.    
 - [x] [Blog Comments](https://shop-for-buddhas.herokuapp.com/blog/lost-wax-method-of-making-status-in-nepal/)    
-- [x] Authenticated users' can access the form and leave comments.    
+	- [x] Authenticated users' can access the form and leave comments.    
 - [x] [Manage Email](https://shop-for-buddhas.herokuapp.com/accounts/email/)    
-- [x] Authenticated users' can access the page to manage their email.    
+	- [x] Authenticated users' can access the page to manage their email.    
 - [x] [Change Password](https://shop-for-buddhas.herokuapp.com/accounts/password/change/)    
-			- [x] Authenticated users' can access the page to change their password.    
+	- [x] Authenticated users' can access the page to change their password.    
 
 ---  
 

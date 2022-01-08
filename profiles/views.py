@@ -102,8 +102,8 @@ def order_history(request, order_number):
     """
     order = get_object_or_404(Order, order_number=order_number)
     if not request.user.username == order.user_profile.user.username:
-        messages.info(request, 'You are trying to view information \
-            that is not available.')
+        messages.warning(request, 'Users can only view their own order \
+            information.')
     else:
         messages.info(request, (
             f'This is a past confirmation for order number {order_number}.'
@@ -117,16 +117,6 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
-
-
-#  product = get_object_or_404(Product, pk=product_id)
-#     if not request.user.user_type == 'is_vendor' \
-#        and not request.user.is_authenticated or \
-#        not request.user.user_type == 'is_admin' \
-#        and not request.user.is_authenticated or \
-#        request.user != product.created_by:
-#         messages.error(request, 'Sorry, only store owners can do that.')
-#         return redirect(reverse('home'))
         
 
 @login_required
@@ -145,8 +135,9 @@ def vendor_order_history(request, order_number):
 
     grand_total = sale_total + delivery_total
     if grand_total == 0:
-        messages.info(request, 'There is no information for you to view.')
+        messages.warning(request, 'You can only access your own sales information')
         return redirect('account_login')
+        # return HttpResponseRedirect(request.META['HTTP_REFERER'])
     else:
         messages.info(request, (
          f'This is a past confirmation of vendor \
