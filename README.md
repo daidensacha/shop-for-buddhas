@@ -1027,6 +1027,8 @@ At this point, you have a working version of the site locally, without any data 
 	-	[Amino Bootstrap 5 Theme](https://template.hasthemes.com/amino/amino/blog-list-right-sidebar.html)
 4. [Django and DRF Testing Series](https://www.youtube.com/watch?v=KIIdbVs7e8I&list=PLP1DxoSC17LZTTzgfq0Dimkm6eWJQC9ki) by Kenyan Engineer was beneficial with creating unit tests using pytest and pytest-cov.
 5. [Scroll to top button with vanilla js](https://dev.to/ljcdev/scroll-to-top-button-in-vanilla-js-beginners-2nc) Thanks to the author of this post for the vanilla JS back to top button. I customized the CSS to fit with the style of the site.
+6. Last but not least, I want to thank my Code Institute mentor, [Daisy McGirr](https://www.linkedin.com/comm/in/daisy-mcgirr?midToken=AQHg3jBTM8UfHg&midSig=097cw4mle3rW41&trk=eml-email_m2m_invite_single_01-hero-3-prof%7Ename&trkEmail=eml-email_m2m_invite_single_01-hero-3-prof%7Ename-null-dcfqat%7Eky257r5e%7Ext-null-neptune%2Fprofile%7Evanity%2Eview&lipi=urn%3Ali%3Apage%3Aemail_email_m2m_invite_single_01%3B0Rc%2BfihnTEqUiTp1Yks1OQ%3D%3D).    
+When I was most stressed or needed input, Daisy was available and generous with her time and support. Thank you, Daisy!!
 
 ## NOTES
 
