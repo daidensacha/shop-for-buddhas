@@ -10,3 +10,4 @@ node_modules/
 *.pyc
 requirements_bkp.txt
 tab_favorites_bkp.html
+static/vendor/slick/slick.css

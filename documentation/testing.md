@@ -591,7 +591,7 @@ Unit testing attained 62% coverage. A screenshot of the testing printout from th
 ![](/documentation/images/unit-testing.png)     
 
 Pytest-cov report     
-![](/documentation/images/pytest-cov.jpg)     
+![](/documentation/images/pytest-cov.png)     
 
 ---
 

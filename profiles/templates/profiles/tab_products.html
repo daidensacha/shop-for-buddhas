@@ -16,7 +16,6 @@
     <div class="row">
         <!-- Product Box -->
         {% for product in products %}
-
             <div class="col-sm-6 col-lg-3 my-3">
                 <div class="product-card-3 h-100">
                     <div class="product-card-image">
@@ -38,7 +37,6 @@
                         <h6 class="product-title">
                             <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
                         </h6>
-
                         <div class="product-meta category-tags small my-2">
                             {% if product.category %}
                                 <a class="tag text-decoration-none"
@@ -47,11 +45,9 @@
                                 </a>
                             {% endif %}
                         </div>
-
                         <div class="product-price my-2">
                             <span class="text-primary">${{ product.price }}</span>
                         </div>
-
                         {% if request.user.user_type == "is_vendor" or request.user.user_type == "is_admin" or request.user.is_superuser %}
                             <small class="ml-3 my-2">
                                 <a class="link-primary" href="{% url 'edit_product' product.id %}">Edit</a> |
@@ -78,7 +74,6 @@
                     <hr>
                 </div>
             {% endif %}
-
             <!-- Warning Modal START -->
             <div class="modal fade" id="delete-product_{{ product.id }}">
                 <div class="modal-dialog modal-dialog-centered">

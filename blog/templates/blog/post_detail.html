@@ -4,9 +4,7 @@
 {% block inner_content %}
        
   <!-- START POSTS DETAILS SECTION  -->
-
         <div class="blog-details">
-   
             <div class="post-meta">
                 <small>
                     <span class="meta-date">{{ post.posted_at | date }}</span>
@@ -15,9 +13,7 @@
             </div>
             <h4 class="blog-title">{{ post.title }}</h4>
             <img src="{{ post.image.url }}" alt="">
-            
             <div class="blog-body">{{ post.body | safe }}</div>
-
             <div class="blog-dec-tags-social">
                 <div class="blog-dec-tags">
                     <span>Tags:</span>
@@ -30,18 +26,14 @@
             </div>
         </div>
         <!-- Blog Details End -->
-
         <!-- Blog Comment Start  -->
         <div class="blog-comment">
             <div class="comment-wrapper section-padding">
                 <h2 class="comment-title">Comments ( {{ post.comments.all.count }} ) </h2>
                 <div class="allauth-form-inner-content">
-
                     {% if request.user.is_authenticated %}
-
                         <h2 class="mt-0"><a href="#postComment" class="btn btn-link link-primary ps-4" data-bs-toggle="collapse" 
                             role="button" aria-label="Leave a comment" aria-expanded="false" aria-controls="postComment">Leave a comment</a></h2>
-                        
                         <div class="collapse" id="postComment">
                             <div class="card card-body">
                                 <form method="post" action=".">
@@ -51,13 +43,11 @@
                                 </form>
                             </div>
                         </div>
-                   
                     {% else %}
                         <a class="btn btn-link link-primary ps-4 pe-0" href="{% url 'account_signup' %}" aria-label="Signup">Register</a> or 
                         <a class="btn btn-link link-primary px-0" href="{% url 'account_login' %}" aria-label="Login">login</a> to leave a comment.
                     {% endif %}
                 </div>
-
                 <ul class="comment-items pt-2">
                     {% for comment in post.comments.all %}
                     <li>
@@ -69,7 +59,6 @@
                             </div>
                         </div>
                         <hr>
-
                     </li>
                     {% empty %}
                     <li>
@@ -77,15 +66,11 @@
                             <p>No comments yet...</p> 
                         </div>
                     </li>
-                        
                     {% endfor %}
                 </ul>
             </div>
-
-            
         </div>
         <!-- Blog Comment End  -->
-
     <!-- END BLOG POSTS SECTION  -->
 
 {% endblock %}

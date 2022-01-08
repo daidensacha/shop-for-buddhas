@@ -76,7 +76,6 @@
                                     <a class="nav-link px-0" href="{% url 'profile' %}">
                                         <i class="fas fa-angle-right me-1"></i> Profile
                                     </a>
-                                   
                                 </div>
                                 <div class="col-6 white-link">
                                     <a class="nav-link px-0" href="{% url 'products' %}?category=oxidised,half_gold,full_gold">
@@ -156,7 +155,7 @@
 											{% csrf_token %}
 											<div class="cart-qty d-inline-flex">
 
-													<div class="dec qty-btn"
+												<div class="dec qty-btn"
 													data-item_id="{{ item.item_id }}">&minus;</div>
 
 												<input class="cart-qty-input form-control" 
@@ -167,21 +166,17 @@
 													value="{{ item.quantity }}"
 													data-item_id="{{ item.item_id }}">
 
-													<div class="inc qty-btn"
+												<div class="inc qty-btn"
 													data-item_id="{{ item.item_id }}">&plus;</div>
+
 											</div>
-
 											<span class="text-primary update-link mx-3" 
-												tabindex="0">
-												<i class="fas fa-sync-alt"></i>
+												tabindex="0"><i class="fas fa-sync-alt"></i>
 											</span>
-
 											<span class="text-danger remove-item me-3"
 												data-product-id="{{ item.product.id }}"
-												tabindex="0">
-											<i class="far fa-trash-alt"></i>
+												tabindex="0"><i class="far fa-trash-alt"></i>
 											</span>
-
 										</form>
 									</div>
 								</div>
@@ -199,7 +194,6 @@
 							</a>
 						</div>
 					</li>
-					
 					{% endif %}
                 </ul>
             </div>
@@ -353,7 +347,7 @@
 														</li>
 													</ul>
 												</div>
-												<!--           END COLUMN 2             -->
+												<!-- END COLUMN 2 -->
 											</div>
 										</div>
                                         <!-- END SECOND MEGAMENU COLUMN -->
@@ -362,12 +356,10 @@
 											<div class="row">
 												<div class="col-6 col-sm-6 text-end">
 													<img class="rounded megamenu-image" src="{% static 'img/M108_MA91162.jpg' %}" alt="">
-                                                    
 												</div>
 												<div class="col-6 col-sm-6">
 													<h6 class="px-3 text-uppercase">Malas</h6>
 													<ul class="list-unstyled">
-
 														<li>
 															<a href="{% url 'products' %}?category=mala_108"
 																class="dropdown-item">108 Beads</a>
@@ -381,7 +373,6 @@
 															<a href="{% url 'products' %}?category=mala_108,mala_wrist"
 																class="dropdown-item">All Malas</a>
 														</li>
-
 													</ul>
 												</div>
 											</div>
@@ -393,13 +384,11 @@
 								</div>
 							</div>
 						</li>
-
 						<li class="nav-item">
 							<a href="{% url 'blog_posts' %}" class="nav-link">Blog</a>
 						</li>
 						<li class="nav-item">
 							<a href="{% url 'home' %}#contact" class="nav-link">Contact</a>
-
 						</li>
 					</ul>
 				</div>
@@ -431,7 +420,6 @@
 							{% endif %}
 
 						</div>
-
 					</div>
 					<!-- Wishlist -->
 					<div class="nav-item d-none d-xl-block">
@@ -502,7 +490,7 @@
 	{% endblock %}
 
 	{% block footer %}
-    {% include 'includes/footer.html' %}
+    	{% include 'includes/footer.html' %}
 	{% endblock footer %}
 	
 	{% block backtotop %}
@@ -510,7 +498,7 @@
 	{% endblock backtotop %}
 
 	{% block postloadjs %}
-	{{ block.super }}
+		{{ block.super }}
 		{% include 'includes/javascript.html' %}
 	{% endblock %}
 

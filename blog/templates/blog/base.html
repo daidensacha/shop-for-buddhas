@@ -19,11 +19,9 @@
 
                     <!-- START BLOG LEFT CONTENT COLUMN -->
                     <div class="col-lg-8">
-
                         <!-- Include blog posts, or blog detail -->
                         {% block inner_content %}
                         {% endblock %}  
-                            
                     </div>
                     <!-- END BLOG LEFT CONTENT COLUMN -->
 
@@ -31,11 +29,9 @@
                     <div class="col-xl-3 col-lg-4">
                         <!-- Sidebar Start -->
                         <div class="sidebar pt-1">
-
                             <!-- Sidebar Widget Start -->
                             <div class="sidebar-widget">
                                 <h3 class="widget-title">Search</h3>
-
                                 <!-- Widget Search Start -->
                                 <div class="widget-search">
                                     <form method="GET" action="{%  url 'blog_search' %}">
@@ -46,11 +42,9 @@
                                 <!-- Widget Search End -->
                             </div>
                             <!-- Sidebar Widget End -->
-
                             <!-- Sidebar Widget Start -->
                             <div class="sidebar-widget">
                                 <h3 class="widget-title">Category</h3>
-
                                 <!-- Widget Category Start -->
                                 <div class="widget-link">
                                     <ul>
@@ -62,11 +56,9 @@
                                 <!-- Widget Category End -->
                             </div>
                             <!-- Sidebar Widget End -->
-
                             <!-- Sidebar Widget Start -->
                             <div class="sidebar-widget">
                                 <h3 class="widget-title">Recent Posts</h3>
-
                                 <!-- Widget Post Start -->
                                 <div class="widget-post">
                                     {% for post in posts_sidebar|slice:":4" %}
@@ -79,22 +71,17 @@
                                                 <span class="date">{{ post.posted_at | date }}</span>
                                             </div>
                                         </div>
-                                      
                                     {% endfor %}
                                 </div>
                                 <!-- Widget Post End -->
                             </div>
                             <!-- Sidebar Widget End -->
-
                             <!-- Sidebar Widget Start -->
                             <div class="sidebar-widget">
                                 <h3 class="widget-title">Blog Archives</h3>
-
                                 <!-- Widget Category Start -->
                                 <div class="widget-link">
-                        
                                     {% regroup all_posts by posted_at.year as year_list %}
-
                                     <ul>
                                     {% for year in year_list %}
                                         <li>{{ year.grouper }}
@@ -102,7 +89,6 @@
                                             <ul>
                                             {% for month in month_list %}
                                                 <li>
-                                                   
                                                     <a href ="{% url 'post_archive_month' year.grouper month.grouper %}"> 
                                                         {{ month.list.0.posted_at|date:'b' }} ({{ month.list|length }})
                                                     </a>
@@ -112,28 +98,23 @@
                                         </li>
                                     {% endfor %}
                                     </ul>
-                             
                                 </div>
                                 <!-- Widget Category End -->
                             </div>
                             <!-- Sidebar Widget End -->
-
                             <!-- Sidebar Widget Start -->
                             <div class="sidebar-widget">
                                 <h3 class="widget-title">tags</h3>
-
                                 <!-- Widget Tags Start -->
                                 <div class="widget-tags">
                                     {% for tag in tags %}
                                     <a href="{% url 'post_tag' tag.slug %}">{{tag.name}}</a>
                                     <!-- {% if not forloop.last %}, {% endif %} -->
                                     {% endfor %}
-                                    
                                 </div>
                                 <!-- Widget Tags End -->
                             </div>
                             <!-- Sidebar Widget End -->
-
                         </div>
                         <!-- Sidebar End -->
                     </div>

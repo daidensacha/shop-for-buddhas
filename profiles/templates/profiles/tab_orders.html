@@ -13,7 +13,6 @@
                     <hr class="my-2">
                     <div class="col-5 ps-5">Date:</div>
                     <div class="col-7">{{ order.date | date:"M d, Y" }}</div>
-
                     <div class="col-5 ps-5">Order Number:</div>
                     <div class="col-7">
                         <a href="{% url 'order_history' order.order_number %}"
@@ -21,7 +20,6 @@
                             {{ order.order_number|truncatechars:6 }}
                         </a>
                     </div>
-
                     <div class="col-5 ps-5">Items:</div>
                     <div class="col-7">
                         <ul class="list-unstyled">
@@ -32,13 +30,10 @@
                             {% endfor %}
                         </ul>
                     </div>
-
                     <div class="col-5 ps-5">Order Total:</div>
                     <div class="col-7">${{ order.grand_total }}</div>
-                
                 {% endfor %}
             </div>
-
             <div class="order-history table-responsive d-none d-sm-block">
                 <table class="table table-sm table-hover">
                     <thead>

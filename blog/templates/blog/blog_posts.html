@@ -12,7 +12,6 @@
                     <h1>Featured Post</h1>
                     <div class="col-12">
                         <!-- Single Blog Start -->
-
                         <div class="single-blog">
                             <div class="blog-images">
                                 <div class="post-meta">
@@ -20,7 +19,6 @@
                                         <span class="meta-date">{{ post.posted_at | date }}</span>
                                         <span class="meta-author">Posted by <span> {{ post.author }} </span></span>
                                     </small>
-
                                 </div>
                                 <a href="{% url 'post_detail' post.slug %}"><img src="{{post.image.url}}" alt=""></a>
                                 <div class="meta-category">
@@ -39,21 +37,15 @@
                     </div>
                     {% endif %}
                 {% endfor %}
-
             </div>
             {% endif %}
             <div class="row">
-              
                 <h1>Posts</h1>
-              
                 <!-- Include blog body -->
                 {% for post in posts %}
-
                     <!-- 1 if there is a slug or archive item  -->
                     {% if category_slug != None or archive == True   %}
-                        
                         {% include 'blog/blog_body.html' %}
-
                     <!-- 2 if there is no slug -->
                     {% elif category_slug == None %}
                         <!-- 2a if its a query -->
@@ -66,11 +58,8 @@
                             {% include 'blog/blog_body.html' %}                    
                         {% endif %}
                     {% endif %}
-                    
                 {% endfor %}
-
             </div>
-
             <div class="page-pagination">
                 {% if posts.has_other_pages %}
                 <ul class="pagination justify-content-center">
