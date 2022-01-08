@@ -11,7 +11,6 @@ from allauth.socialaccount.models import SocialApp, SocialAccount, SocialToken
 from .models import UserModel
 
 admin.site.unregister(Group)
-# admin.site.register(Group)
 # admin.site.unregister(Site)
 admin.site.unregister(SocialApp)
 admin.site.unregister(SocialAccount)

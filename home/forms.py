@@ -19,7 +19,6 @@ class ContactForm(forms.ModelForm):
             'sender': 'Email',
             'message': 'Message',
         }
-        # self.fields['name'].widget.attrs['autofocus'] = False
         for field in self.fields:
 
             placeholder = placeholders[field]

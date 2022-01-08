@@ -1,9 +1,12 @@
 from django.contrib import admin
 from .models import Category, Post, Comment
+from accounts.models import UserModel
+from django.db.models import Q
+
 from taggit.admin import Tag
 
-
 admin.site.unregister(Tag)
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -15,6 +18,13 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     """ Change layout of required information in accounts admin panel. """
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'author':
+            kwargs['queryset'] = UserModel.objects.filter(
+               Q(user_type__in=['is_admin']) |
+               Q(is_superuser=True)
+                )
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('created_at',)
@@ -38,7 +48,6 @@ class PostAdmin(admin.ModelAdmin):
     ordering = ('created_at',)
 
 
-# admin.site.register(Comment)
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     """ Comment Admin Layout """

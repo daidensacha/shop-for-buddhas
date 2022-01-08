@@ -2,14 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404, \
                              HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-# from django.db.models import F
 
 from .models import UserProfile
-# from .models import UserProfile, Favorite
 from .forms import UserProfileForm
 from checkout.models import Order, OrderLineItem
 from products.models import Product
-# import products.views
 
 
 @login_required
@@ -76,23 +73,6 @@ def profile(request):
         return redirect('account_login')
 
 
-# @login_required
-# def order_history(request, order_number):
-#     order = get_object_or_404(Order, order_number=order_number)
-
-#     messages.info(request, (
-#         f'This is a past confirmation for order number {order_number}. '
-#         'A confirmation email was sent on the order date.'
-#     ))
-
-#     template = 'checkout/checkout_success.html'
-#     context = {
-#         'order': order,
-#         'from_profile': True,
-#     }
-
-#     return render(request, template, context)
-
 @login_required
 def order_history(request, order_number):
     """
@@ -101,9 +81,11 @@ def order_history(request, order_number):
     Stop users viewing orders that are not theirs
     """
     order = get_object_or_404(Order, order_number=order_number)
+    # Ensure users cannot view other users order information
     if not request.user.username == order.user_profile.user.username:
         messages.warning(request, 'Users can only view their own order \
             information.')
+        return HttpResponseRedirect(request.META['HTTP_REFERER'])
     else:
         messages.info(request, (
             f'This is a past confirmation for order number {order_number}.'
@@ -117,7 +99,7 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
-        
+
 
 @login_required
 def vendor_order_history(request, order_number):
@@ -134,16 +116,17 @@ def vendor_order_history(request, order_number):
             sale_total += item.lineitem_total
 
     grand_total = sale_total + delivery_total
+    # Ensure users cannot view other vendors sale order information
     if grand_total == 0:
-        messages.warning(request, 'You can only access your own sales information')
-        return redirect('account_login')
-        # return HttpResponseRedirect(request.META['HTTP_REFERER'])
+        messages.warning(
+            request, 'You can only access your own sales information')
+        return redirect(request.META.get('HTTP_REFERER', 'profile'))
     else:
         messages.info(request, (
          f'This is a past confirmation of vendor \
             sale for order number {order_number}.'
         ))
-    
+
     template = 'checkout/checkout_vendor_sales.html'
     context = {
         'order': order,

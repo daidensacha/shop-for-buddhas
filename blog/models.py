@@ -1,9 +1,6 @@
-# from datetime import datetime, date
 from django.db import models
 from taggit.managers import TaggableManager
-# from accounts.models import UserModel
 from django.conf import settings
-# from django.utils import timezone
 
 STATUS = (('draft', 'Draft'),
           ('published', 'Published')

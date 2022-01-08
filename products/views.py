@@ -62,7 +62,6 @@ def all_products(request):
         'current_categories': categories,
         'current_sorting': current_sorting,
         'favorite_list': favorite_list,
-        # 'user': user,
     }
 
     return render(request, 'products/products.html', context)
@@ -136,7 +135,6 @@ def edit_product(request, product_id):
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
-    # product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
@@ -177,7 +175,6 @@ def delete_product(request, product_id):
     context = {
         'on_profile_page': True,
     }
-    # product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('profile'), context)

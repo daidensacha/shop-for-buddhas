@@ -1,7 +1,4 @@
-# from datetime import datetime
 from django.db import models
-# from django.contrib.auth.models import User
-# from accounts.models import UserModel
 from django.conf import settings
 
 rating = (('1', '1/5 stars'),

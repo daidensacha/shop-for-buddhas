@@ -3,7 +3,6 @@ Create custom signup form for multiple user types.
 """
 from allauth.account.forms import SignupForm
 from django import forms
-# from .models import UserModel
 
 
 user_type = (
