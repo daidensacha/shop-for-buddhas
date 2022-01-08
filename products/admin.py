@@ -49,7 +49,7 @@ class ProductAdmin(admin.ModelAdmin):
         'price',
     )
     list_filter = (VendorFilter, 'category', )
-    ordering = ('created_by', 'category', 'name',)
+    ordering = ('category', 'name',)
     search_fields = ('name',)
 
 

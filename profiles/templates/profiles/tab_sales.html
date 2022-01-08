@@ -27,8 +27,6 @@
                 <div class="col-5 ps-5">Vendor Name:</div>
                 <div class="col-7">{{ line_item.product.created_by }}</div>
 
-                
-
                 <div class="col-5 ps-5">Items:</div>
                 <div class="col-7">
                     <ul class="list-unstyled">
@@ -47,12 +45,7 @@
         <!-- start table responsive -->
         <div class="order-history table-responsive d-none d-sm-block">
             <table class="table table-sm table-hover">
-                <thead>
-                    ORDER: {{ order_item }}
-                    <!-- {{ order.user_profile }} | {{ request.user }}
-                    {% if request.user.username == order.user_profile.user.username %}
-                    {{ order.user_profile }} | {{ request.user }}
-                    {% endif %} -->
+                <thead> 
                     <tr>
                         <th>Date</th>
                         <th>Order Number</th>

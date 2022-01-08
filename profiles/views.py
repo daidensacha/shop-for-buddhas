@@ -145,7 +145,7 @@ def vendor_order_history(request, order_number):
 
     grand_total = sale_total + delivery_total
     if grand_total == 0:
-        messages.info(request, 'This informatin is restricted.')
+        messages.info(request, 'There is no information for you to view.')
         return redirect('account_login')
     else:
         messages.info(request, (

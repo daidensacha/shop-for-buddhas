@@ -1030,21 +1030,56 @@ At this point, you have a working version of the site locally, without any data 
 
 ## NOTES
 
+To prepare the project for submission and for final checking, I created 3 customers, and 3 vendors in addition to myself as the superuser. 
+
+**Registered users**    
+![](/documentation/images/registered_users.png)     
+
+The above image lists the  user types, how many favorites they have added, how many vendor products and vendor sales, customer order and lineitems. 
+
+**User Orders**    
+![](/documentation/images/user_orders.png)     
+ 
+The above image lists orders, customer, lineitem qualtity and the product vendor.
+
+**Testimonials**
+I created one testimonial for each customer, and published them to the testimonial carousel. I unpublished my testing testimonials which are still saved but not published.
 
 ## IMPROVEMENTS/ FUTURE FEATURES
 
-1. Ajax
+
+**Blog**
+- **Image Sizes** I will add the option in the admin to change the size of images in blog posts.
+- **Comment replies** I planned to add comment replies, but I did not have time to implement them before submitting the project. I plan to do it soon.
+- Currently, the featured post is displayed at the top of all blog post list pages. I will make this, so it only shows at the top of page 1 of the paginated pages. 
+
+**Products**
+- Products currently have one image. I want to make it possible to have multiple images for each product in a gallery. 
+- Product zoom feature when hovering over the product image. 
+-
+
+**Checkout**
+- Coupon management functionality, creating and managing coupons, and integrating it with the payment system.
+- Email confirmation for vendors' product sales. I didn't have time to implement this now, but it is in the pipeline for development.
+
+**Ajax to update info without refreshing page**
 There are cases where the use of Ajax would be far preferable to refreshing the page or redirecting the user to another page.
-	- Quick add items to the shopping cart.
-	- Updating the cart quantity.
-	- Deleting items from the shopping cart.
-	- Adding or removing items from the favorites list.   
+- Quick add items to the shopping cart.
+- Updating the cart quantity.
+- Deleting items from the shopping cart.
+- Adding or removing items from the favorites list.
 
 	The pages refresh for the above actions, which returns the user to the top of the page or a different page view. It's not ideal, and it will be a priority to address this issue.
-2. Coupon management functionality, creating and managing coupons, and integrating it with the payment system.
-3. Email confirmation for vendors' product sales. I didn't have time to implement this now, but it is in the pipeline for development.
-4. I would like to improve the vendor registration process. I need to manage this process to vet the vendors, ensuring the site's integrity is maintained.
-5. Product reviews. At this point, vendors can register and upload products. Still, it is necessary to review products intended for sale on the site. This site supports artisans, but it is also where vendors can sell quality items suitable for Buddhist practice. It is not a marketplace for selling items that are not quality.
+
+**Vendor and Product Management**
+- I would like to improve the vendor registration process. I need to manage this process to vet vendors, ensuring the site's integrity is maintained.
+- Product reviews. At this point, vendors can register and upload products. Still, it is necessary to review products intended for sale on the site. This site supports artisans, but it is also where vendors can sell quality items suitable for Buddhist practice. It is not a marketplace for selling items that are not quality.
+
+**Other Features**
+- **Currencies** I would like to add multi-currency functionality. Euro, GBP, $US.
+- **Languages** I would like to add German, French, Italian, Spanish translations for users to select from. 
+- **Social Media login** I had so much to do, I didn't have time to implement this, but it is a priority. 
+
 
 
 ## BUGS and ISSUES
