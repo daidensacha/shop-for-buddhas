@@ -562,7 +562,24 @@ I also explained how I had used Django messages ```extra_tags``` to limit the po
 
 ### Responsive Testing
 
-To be completed.
+
+I have tested the site extensively throughout development using Chrome dev tools. 
+It has been my experience that while the dev tools are helpful, they do not always truly reflect how the actual device presents the page. Hence, I have also used Apple dev tools and tested the Heroku production version on actual devices. 
+
+The site presents consistently across a range of devices. Where required, I used media queries in addition to bootstrap classes to fine-tune presentations.
+Some example screenshots of the site taken from [Am I Responsive](http://ami.responsivedesign.is/#)    
+[Home page](https://shop-for-buddhas.herokuapp.com/)     
+
+![](/documentation/images/responsive_checking_1.png)     
+  
+[Blog](https://shop-for-buddhas.herokuapp.com/blog/)     
+
+![](/documentation/images/responsive_checking_2.png)     
+
+[Shop](https://shop-for-buddhas.herokuapp.com/products/)     
+
+![](/documentation/images/responsive_checking_3.png)   
+
 
 ---
 
