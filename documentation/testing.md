@@ -570,15 +570,15 @@ The site presents consistently across a range of devices. Where required, I used
 Some example screenshots of the site taken from [Am I Responsive](http://ami.responsivedesign.is/#)    
 [Home page](https://shop-for-buddhas.herokuapp.com/)     
 
-![](/documentation/images/responsive_checking_1.png)     
+![](/documentation/images/responsive_checking_1.jpg)     
   
 [Blog](https://shop-for-buddhas.herokuapp.com/blog/)     
 
-![](/documentation/images/responsive_checking_2.png)     
+![](/documentation/images/responsive_checking_2.jpg)     
 
 [Shop](https://shop-for-buddhas.herokuapp.com/products/)     
 
-![](/documentation/images/responsive_checking_3.png)   
+![](/documentation/images/responsive_checking_3.jpg)   
 
 
 ---
