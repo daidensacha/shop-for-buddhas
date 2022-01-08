@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Product, Category
 from accounts.models import UserModel
+from django.db.models import Q
 
 
 class VendorFilter(admin.SimpleListFilter):
@@ -29,7 +30,9 @@ class ProductAdmin(admin.ModelAdmin):
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'created_by':
             kwargs['queryset'] = UserModel.objects.filter(
-                                    user_type__in=['is_vendor'])
+                                    Q(user_type__in=['is_vendor']) |
+                                    Q(is_superuser=True)
+                                    )
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
     fields = (

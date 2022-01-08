@@ -587,7 +587,7 @@ Some example screenshots of the site taken from [Am I Responsive](http://ami.res
 ****Pytest and Pytest-cov****
 I unit tested using Pytest and pytest-cov. The focus was on testing models, forms, URLs, and views. It is not complete, but the pages were also extensively tested in the browser for expected behavior.
 
-Unit testing attained 62% coverage. A screenshot of the testing printout from the terminal is as follows.     
+Unit testing attained 65% coverage. A screenshot of the testing printout from the terminal is as follows.     
 ![](/documentation/images/unit-testing.png)     
 
 Pytest-cov report     
