@@ -1087,3 +1087,11 @@ There are cases where the use of Ajax would be far preferable to refreshing the 
 ## BUGS and ISSUES
 
 See also [TESTING/Issues and Fixes](/documentation/testing.md/#issues-and-fixes)    
+
+**Django Admin**
+Shop for Buddhas is my first Django project, so I'm happy with the result. I have learned a lot and would do some things differently. 
+Some things you can only learn from experience and cannot know before. 
+I stressed a lot creating my models, and it was the hardest thing for me to do to start the project. At one point, I just had to accept and jump without knowing how it would turn out. 
+- **Django User Model**
+I wanted to implement customer and vendor user types. I decided to use the same table for both types of users and distinguish them using the ```user_type```. I'm not sure if it was the best way or if it might have been better to create different tables for the user types. For example, in Product Admin, I have the situation that I need to write filters to limit the ```user_type```displayed. The dropdown lists all users, not only vendors, when selecting a product owner. In the blog posts, when selecting ```created_by```, it lists all users, not only the superuser. I need to look at this, talk to someone more knowledgeable, and get advice on the best way to deal with it. 
+For now, it is fine, but not a long-term issue that I want to leave unaddressed. There has to be a better way to improve the usability from the admin perspective.
