@@ -775,7 +775,8 @@ I changed this by adding custom CSS to the required modal elements to change the
 }
 ```
 
-The following is the result on mobiles.    
+The following is the result on mobiles.   
+  
 ![](/documentation/images/lightbox_image_ratio.jpg)    
 
 It resulted in an image that was too large on xl screens on desktops, so I changed that to a max-width of 900px. It produces a larger image on desktops and tablets, and mobiles.
@@ -942,7 +943,7 @@ heroku config:set DISABLE_COLLECTSTATIC=1
 heroku config:set DISABLE_COLLECTSTATIC=1 --app yourappname
 ```
 
-# Add the hostname of your Heroku app to allowed hosts in settings.py
+Add the hostname of your Heroku app to allowed hosts in settings.py
 ```python3
 # Add localhost, so the site is also available in Gitpod.
 ALLOWED_HOSTS = ['yourappname.herokuapp.com', 'localhost']
@@ -1018,7 +1019,7 @@ At this point, you have a working version of the site locally, without any data 
 ### Credits
 
 1. **Code Institute** Boutique Ado project was a significant guide for developing this project. Especially the sections on adding products and the checkout app. The project introduced me to Django, and I referenced the code regularly to understand things. It was a great help and formed the foundation of this project.
-2. [**Very Academy**](https://www.youtube.com/channel/UC1mxuk7tuQT2D0qTMgKji3w) Throughout the project, while researching, I came across clear and informative youtube videos from Very Academy.
+2. [Very Academy](https://www.youtube.com/channel/UC1mxuk7tuQT2D0qTMgKji3w) Throughout the project, while researching, I came across clear and informative youtube videos from Very Academy.
 	- Setup/ Custom admin
 	- Creating a blog
 	- [Creating a Bookmark/Favorites Features](https://www.youtube.com/watch?v=H4QPHLmsZMU) I found their input on using a ManyToManyField for adding favorites helpful. I had to adapt it and then create my filters, but it opened a doorway that helped me to get it done.
@@ -1135,4 +1136,5 @@ The same issue in the blog PostAdmin was resolved as follows.
 
 - **Issue Fix in Checkout OrderAdmin**    
 When opening an order to view the details in the checkout OrderAdmin, the ```user_profile``` select displayed a list of all users. I don't see that this should be displayed, as it only creates a possibility for mistakes. 
-I set the field to read-only, and now instead of the select showing all users, it shows a link to the order's user. It is a shortcut to open the user's profile.
+I set the field to read-only, and now instead of the select showing all users, it shows a link to the order's user_profile.        
+![](/documentation/images/order_user_profile.png)    
