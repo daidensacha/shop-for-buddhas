@@ -18,6 +18,7 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     """ Change layout of required information in accounts admin panel. """
+    # Blog posts can only be created by superuser and admin users.
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'author':
             kwargs['queryset'] = UserModel.objects.filter(

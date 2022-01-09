@@ -27,6 +27,7 @@ class VendorFilter(admin.SimpleListFilter):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     """Register the Product admin view and required layout of fields"""
+    # Filter the users to display in the created_by field
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'created_by':
             kwargs['queryset'] = UserModel.objects.filter(

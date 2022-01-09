@@ -1095,3 +1095,44 @@ I stressed a lot creating my models, and it was the hardest thing for me to do t
 - **Django User Model**
 I wanted to implement customer and vendor user types. I decided to use the same table for both types of users and distinguish them using the ```user_type```. I'm not sure if it was the best way or if it might have been better to create different tables for the user types. For example, in Product Admin, I have the situation that I need to write filters to limit the ```user_type```displayed. The dropdown lists all users, not only vendors, when selecting a product owner. In the blog posts, when selecting ```created_by```, it lists all users, not only the superuser. I need to look at this, talk to someone more knowledgeable, and get advice on the best way to deal with it. 
 For now, it is fine, but not a long-term issue that I want to leave unaddressed. There has to be a better way to improve the usability from the admin perspective.
+
+ **Django Admin Notes addendum**
+
+- **Issue Fix In Products ProductAdmin using filter**    
+[A solution found via Google](https://books.agiliq.com/projects/django-admin-cookbook/en/latest/filter_fk_dropdown.html) helped me to resolve this issue. I had to change a few references, but it works.
+
+	```python3
+	# Import Q
+	from django.db.models import Q
+	# Add to the ProductAdmin class
+	def  formfield_for_foreignkey(self, db_field, request, **kwargs):
+		if db_field.name == 'created_by':
+				kwargs['queryset'] = UserModel.objects.filter(
+				Q(user_type__in=['is_vendor']) |
+				Q(is_superuser=True)
+				)
+		return  super().formfield_for_foreignkey(db_field, request, **kwargs)
+	```
+	The product model referenced the UserModel foreign key and displayed all users un the admin ```created_by``` select. The above filters the users and only returns the vendors and superusers to the list.    
+
+- **Issue Fix In Blog PostAdmin using filter**    
+The same issue in the blog PostAdmin was resolved as follows.
+
+	```python3
+	# Import Q
+	from django.db.models import Q
+	# Add to the PostAdmin class
+	def  formfield_for_foreignkey(self, db_field, request, **kwargs):
+		if db_field.name == 'author':
+			kwargs['queryset'] = UserModel.objects.filter(
+				Q(user_type__in=['is_admin']) |
+				Q(is_superuser=True)
+				)
+		return  super().formfield_for_foreignkey(db_field, request, **kwargs)
+	```
+
+	The author field now displays superusers and admin users using the above filter.    
+
+- **Issue Fix in Checkout OrderAdmin**    
+When opening an order to view the details in the checkout OrderAdmin, the ```user_profile``` select displayed a list of all users. I don't see that this should be displayed, as it only creates a possibility for mistakes. 
+I set the field to read-only, and now instead of the select showing all users, it shows a link to the order's user. It is a shortcut to open the user's profile.
