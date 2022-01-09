@@ -776,7 +776,7 @@ I changed this by adding custom CSS to the required modal elements to change the
 ```
 
 The following is the result on mobiles.   
-  
+
 ![](/documentation/images/lightbox_image_ratio.jpg)    
 
 It resulted in an image that was too large on xl screens on desktops, so I changed that to a max-width of 900px. It produces a larger image on desktops and tablets, and mobiles.
@@ -988,14 +988,16 @@ Using AWS will require adding environment variables to Heroku for the following
 
 [TESTING/Testing Checklist](/documentation/testing.md#testing-checklist-development-deployment)
 
-#### Forking or Cloning [Shop for Buddhas](https://github.com/daidensacha/shop-for-buddhas)
+#### Forking or Cloning [Shop for Buddhas](https://github.com/daidensacha/shop-for-buddhas)    
 
-1. If you're interested in forking the project to experiment with the code or propose changes, navigate to the [Shop for Buddhas](https://github.com/daidensacha/shop-for-buddhas), and click on the fork button.    
-![](/documentation/images/fork-project.png)    
+1. If you're interested in forking the project to experiment with the code or propose changes, navigate to the [Shop for Buddhas](https://github.com/daidensacha/shop-for-buddhas), and click on the fork button.  
+
+	![](/documentation/images/fork-project.png)    
 2. You have forked the project but will not yet have files locally on your computer.
 3. Navigate to the [Shop for Buddhas Repository](https://github.com/daidensacha/shop-for-buddhas)
 4. **Get Clone URL:** Click **Code**, then click the **copy icon** on the right of the HTTPS URL.    
-![](/documentation/images/clone-project.jpg)    
+
+	![](/documentation/images/clone-project.jpg)    
 
 5. **Clone the project:** Open your IDE of choice, and in terminal enter ```git clone repository-url```.
 6. **Open locally:** Open the project in your IDE of choice and create your virtual environment if required.
@@ -1136,5 +1138,6 @@ The same issue in the blog PostAdmin was resolved as follows.
 
 - **Issue Fix in Checkout OrderAdmin**    
 When opening an order to view the details in the checkout OrderAdmin, the ```user_profile``` select displayed a list of all users. I don't see that this should be displayed, as it only creates a possibility for mistakes. 
-I set the field to read-only, and now instead of the select showing all users, it shows a link to the order's user_profile.        
+I set the field to read-only, and now instead of the select showing all users, it shows a link to the order's user_profile.   
+     
 ![](/documentation/images/order_user_profile.png)    
