@@ -372,13 +372,15 @@ Form fields are required, and I have implemented Bootstrap 5 JS validation. Rege
 - [x] **payment_intent.payment_failed -** Send a test event to a webhook endpoint.
 Event type - payment_intent.payment_failed
 Response - Test webhoook sent successfully.
-Webhook received: payment_intent.payment_failed     
-![](/documentation/images/payment_intent_failed.png)     
+Webhook received: payment_intent.payment_failed  
+
+	![](/documentation/images/payment_intent_failed.png)     
 - [x] **payment_intent.succeeded -** Send a test event to a webhook endpoint.
 Event type - payment_intent.succeeded
 Response - Test webhoook sent successfully.
-Webhook received: payment_intent.succeeded | SUCCESS: Created order in webhook     
-![](/documentation/images/payment_intent_succeeded.png)     
+Webhook received: payment_intent.succeeded | SUCCESS: Created order in webhook   
+
+	![](/documentation/images/payment_intent_succeeded.png)     
 
 ---
 ### Profile Page
@@ -468,12 +470,15 @@ I navigate to the blog, where the content is as per design. A featured article, 
 - [x] **Post Detail Page**
 	- [x] **Post -** The blog detail page as per design. The date, posted by, article title, article image, article, and article tags. Below the article is a form for users to leave comments.
 - [x] **Blog Post Comments**
-	- [x] The post comment form is available for authenticated users. As a logged-out user, I confirm that ```Register``` and ```Login``` links are displayed for users to leave a comment.
-	![](documentation/images/blog-comments-login.png)    
-	- [x] I log in, and on the same page now, there is a "```Leave a comment```" link displayed instead.    
-	![](documentation/images/blog-comments-logged-in.png)    
+	- [x] The post comment form is available for authenticated users. As a logged-out user, I confirm that ```Register``` and ```Login``` links are displayed for users to leave a comment.    
+
+		![](/documentation/images/comments-logged-out.jpg)    
+	- [x] I log in, and on the same page now, there is a "```Leave a comment```" link displayed instead.  
+
+		![](/documentation/images/comments-logged-in.jpg)    
 	- [x] I click on the "```Leave a comment```" link, and the comment form toggles open and is now visible.    
-	![](documentation/images/blog-comments-form.png)    
+	
+		![](/documentation/images/comments-form.jpg)    
 		- [x] I enter my name and a comment and click submit.
 		- [x] A toast message informs me that I have posted the comment. I see the comment posted below the article.
 		- [x] The page refreshes, the comment form is no longer visible, and the comment is displayed below the "```Leave a comment```" link.
@@ -587,10 +592,12 @@ Some example screenshots of the site taken from [Am I Responsive](http://ami.res
 ****Pytest and Pytest-cov****
 I unit tested using Pytest and pytest-cov. The focus was on testing models, forms, URLs, and views. It is not complete, but the pages were also extensively tested in the browser for expected behavior.
 
-Unit testing attained 65% coverage. A screenshot of the testing printout from the terminal is as follows.     
+Unit testing attained 65% coverage. A screenshot of the testing printout from the terminal is as follows.   
+
 ![](/documentation/images/unit-testing.png)     
 
 Pytest-cov report     
+
 ![](/documentation/images/pytest-cov.png)     
 
 ---
@@ -600,11 +607,13 @@ Custom 400, 403, 404, and 500 error pages are in the product base template folde
 
 **404 Errors**
 - [x] I type a [url to a page that doesn't exist](https://shop-for-buddhas.herokuapp.com/test/) in this project into the browser. The custom 404.html page is displayed.  
-![](/documentation/images/404_error.jpg)   
+
+	![](/documentation/images/404_error.jpg)   
 
 **500 Errors**
 - [x] I add an extra letter in a [blog slug url](https://shop-for-buddhas.herokuapp.com/blog/lost-wax-method-of-making-status-in-nepall/) (nepall instead of nepal), and the 500.html server error page is displayed.    
-![](/documentation/images/500_error.jpg)   
+
+	![](/documentation/images/500_error.jpg)   
 
 
 ---
@@ -614,38 +623,25 @@ Custom 400, 403, 404, and 500 error pages are in the product base template folde
 
 ##### USERS NOT LOGGED IN
 
-- [x] [Profile Page](https://shop-for-buddhas.herokuapp.com/profile/)    
-	- [x] Anonymous Users redirected to the login page.    
-- [x] [Add Product Page](https://shop-for-buddhas.herokuapp.com/products/add/)    
-	- [x] Anonymous Users redirected to the login page.    
-- [x] [Add Remove Favorite](https://shop-for-buddhas.herokuapp.com/products/)    
-	- [x] Anonymous Users are redirected to the login page when they click on a favorite icon.    
-- [x] [Edit Product page](https://shop-for-buddhas.herokuapp.com/products/edit/58/)    
-	- [x] Anonymous Users redirected to the login page.    
-- [x] [Delete Product page](https://shop-for-buddhas.herokuapp.com/products/delete/58/)    
-	- [x] Anonymous Users redirected to the login page.    
-- [x] [Order History](https://shop-for-buddhas.herokuapp.com/profile/order_history/5714F339E479479D8D8D986667A84CFC)    
-	- [x] Anonymous Users redirected to the login page.    
-- [x] [Vendor Order History](https://shop-for-buddhas.herokuapp.com/profile/vendor_order_history/BFB28218BB7745B69F16A2E97FA5B807)    
-	- [x] Anonymous Users redirected to the login page.    
-- [x] [Leave Testimonial Form](https://shop-for-buddhas.herokuapp.com/testimonials/)    
-	- [x] Anonymous Users redirected to the login page.    
-- [x] [Blog Comments](https://shop-for-buddhas.herokuapp.com/blog/lost-wax-method-of-making-status-in-nepal/)    
-	- [x] Comment form is not available for anonymous users. I checked this issue thoroughly in the testing checklist.    
-- [x] [Manage Email](https://shop-for-buddhas.herokuapp.com/accounts/email/)    
-	- [x] Anonymous Users redirected to the login page.    
-- [x] [Change Password](https://shop-for-buddhas.herokuapp.com/accounts/password/change/)    
-	- [x] Anonymous Users redirected to the login page.    
+- [x] [Profile Page](https://shop-for-buddhas.herokuapp.com/profile/) - Anonymous Users redirected to the login page.    
+- [x] [Add Product Page](https://shop-for-buddhas.herokuapp.com/products/add/) - Anonymous Users redirected to the login page.    
+- [x] [Add Remove Favorite](https://shop-for-buddhas.herokuapp.com/products/) - Anonymous Users are redirected to the login page when they click on a favorite icon.    
+- [x] [Edit Product page](https://shop-for-buddhas.herokuapp.com/products/edit/58/) - Anonymous Users redirected to the login page.    
+- [x] [Delete Product page](https://shop-for-buddhas.herokuapp.com/products/delete/58/) - Anonymous Users redirected to the login page.    
+- [x] [Order History](https://shop-for-buddhas.herokuapp.com/profile/order_history/5714F339E479479D8D8D986667A84CFC) - Anonymous Users redirected to the login page.    
+- [x] [Vendor Order History](https://shop-for-buddhas.herokuapp.com/profile/vendor_order_history/BFB28218BB7745B69F16A2E97FA5B807) - Anonymous Users redirected to the login page.    
+- [x] [Leave Testimonial Form](https://shop-for-buddhas.herokuapp.com/testimonials/) - Anonymous Users redirected to the login page.    
+- [x] [Blog Comments](https://shop-for-buddhas.herokuapp.com/blog/lost-wax-method-of-making-status-in-nepal/) - Comment form is not available for anonymous users. I checked this issue thoroughly in the testing checklist.    
+- [x] [Manage Email](https://shop-for-buddhas.herokuapp.com/accounts/email/) - Anonymous Users redirected to the login page.    
+- [x] [Change Password](https://shop-for-buddhas.herokuapp.com/accounts/password/change/) - Anonymous Users redirected to the login page.    
 
 ##### AUTHENTICATED USERS
 
-- [x] [Profile Page](https://shop-for-buddhas.herokuapp.com/profile/)    
-	- [x] Authenticated Users can access their profile only.    
+- [x] [Profile Page](https://shop-for-buddhas.herokuapp.com/profile/) - Authenticated Users can access their profile only.    
 - [x] [Add Product Page](https://shop-for-buddhas.herokuapp.com/products/add/)    
 	- [x] Authenticated Customers cannot access the page.    
 	- [x] Authenticated Vendors can access the page.    
-- [x] [Add Remove Favorite](https://shop-for-buddhas.herokuapp.com/add_remove_favorite/delete/7/)    
-	- [x] Authenticated Users can add and remove favorites.    
+- [x] [Add Remove Favorite](https://shop-for-buddhas.herokuapp.com/add_remove_favorite/delete/7/) - Authenticated Users can add and remove favorites.    
 - [x] [Edit Product page](https://shop-for-buddhas.herokuapp.com/products/edit/58/)    
 	- [x] Authenticated Customers cannot access the page.    
 	- [x] Authenticated Vendors can access their products only.     
@@ -654,18 +650,12 @@ Custom 400, 403, 404, and 500 error pages are in the product base template folde
 	- [x] Authenticated Customers cannot access the page.    
 	- [x] Authenticated Vendors can access their products only.     
 	- [x] Authenticated Vendors cannot edit other users' products.    
-- [x] [Order History](https://shop-for-buddhas.herokuapp.com/profile/order_history/5714F339E479479D8D8D986667A84CFC)    
-	- [x] Authenticated Users cannot view other users' information.    
-- [x] [Vendor Order History](https://shop-for-buddhas.herokuapp.com/profile/vendor_order_history/BFB28218BB7745B69F16A2E97FA5B807)    
-	- [x] Authenticated Users cannot view other vendors' sales information.    
-- [x] [Leave Testimonial Form](https://shop-for-buddhas.herokuapp.com/testimonials/)    
-	- [x] Authenticated users' can access the page and leave a testimonial.    
-- [x] [Blog Comments](https://shop-for-buddhas.herokuapp.com/blog/lost-wax-method-of-making-status-in-nepal/)    
-	- [x] Authenticated users' can access the form and leave comments.    
-- [x] [Manage Email](https://shop-for-buddhas.herokuapp.com/accounts/email/)    
-	- [x] Authenticated users' can access the page to manage their email.    
-- [x] [Change Password](https://shop-for-buddhas.herokuapp.com/accounts/password/change/)    
-	- [x] Authenticated users' can access the page to change their password.    
+- [x] [Order History](https://shop-for-buddhas.herokuapp.com/profile/order_history/5714F339E479479D8D8D986667A84CFC) - Authenticated Users cannot view other users' information.    
+- [x] [Vendor Order History](https://shop-for-buddhas.herokuapp.com/profile/vendor_order_history/BFB28218BB7745B69F16A2E97FA5B807) - Authenticated Users cannot view other vendors' sales information.    
+- [x] [Leave Testimonial Form](https://shop-for-buddhas.herokuapp.com/testimonials/) - Authenticated users' can access the page and leave a testimonial.    
+- [x] [Blog Comments](https://shop-for-buddhas.herokuapp.com/blog/lost-wax-method-of-making-status-in-nepal/) - Authenticated users' can access the form and leave comments.    
+- [x] [Manage Email](https://shop-for-buddhas.herokuapp.com/accounts/email/) - Authenticated users' can access the page to manage their email.    
+- [x] [Change Password](https://shop-for-buddhas.herokuapp.com/accounts/password/change/) - Authenticated users' can access the page to change their password.    
 
 ---  
 
@@ -680,55 +670,66 @@ Custom 400, 403, 404, and 500 error pages are in the product base template folde
 
 **As a vendor:**
 > I want to be able to register to sell my work.
-- I have extended the AbstractUser model to include the possibility for users to register as a customer or a vendor.     
-![](/documentation/images/vendor-registration.jpg)     
+- I have extended the AbstractUser model to include the possibility for users to register as a customer or a vendor.   
+
+	![](/documentation/images/vendor-registration.jpg)     
 
 **As a vendor:**
 > I want to create a profile.
-- The profile is created as part of the registration process. The user can then update the profile with their details.     
-![](/documentation/images/vendor-profile.jpg)     
+- The profile is created as part of the registration process. The user can then update the profile with their details.    
+
+	![](/documentation/images/vendor-profile.jpg)     
 
 **As a vendor:**
 > I want to upload my products to be sold in the shop.
-- The vendor can click the add new product button in the product tab in the vendor profile. They are redirected to the add new product page to add the product details, images and save the product.     
-![](/documentation/images/vendor-profile-product.jpg)     
-![](/documentation/images/vendor-add-product.jpg)     
+- The vendor can click the add new product button in the product tab in the vendor profile. They are redirected to the add new product page to add the product details, images and save the product.  
+
+	![](/documentation/images/vendor-profile-product.jpg)     
+	![](/documentation/images/vendor-add-product.jpg)     
 
 **As a vendor:**
 > I want to edit, update or delete my listed products.
 - All the vendor's products have edit and delete links under them in the product list page, the product detail page, and the vendor's profile product tab. The profile view is above.
-The image below is the product view, see the vendor's product with edit and delete links.     
-![](/documentation/images/product-view-edit.jpg)     
-The image below is the product detail view with the edit delete links.     
-![](/documentation/images/product-detail-edit.jpg)     
+The image below is the product view, see the vendor's product with edit and delete links.  
 
-	***Edit/ Update Product -*** Clicking the edit button opens the edit product page. The vendor can update the details and save them. See the edit and delete links in the above image.     
+	![](/documentation/images/product-view-edit.jpg)     
+The image below is the product detail view with the edit delete links.   
+
+	![](/documentation/images/product-detail-edit.jpg)     
+
+	***Edit/ Update Product -*** Clicking the edit button opens the edit product page. The vendor can update the details and save them. See the edit and delete links in the above image. 
+
 	![](/documentation/images/vendor-edit-product.jpg)     
 
-	***Delete Product -*** To delete a product, it is two clicks. Click the delete under the product, then confirm by clicking delete again in the delete modal.     
+	***Delete Product -*** To delete a product, it is two clicks. Click the delete under the product, then confirm by clicking delete again in the delete modal.   
+
 	![](/documentation/images/vendor-delete-product.jpg)     
 
 **As a vendor:**
 > I want to see a current list of my items listed for sale.
-- A complete list of all the vendor's products is shown in the vendor's profile product tab. The vendor can view the product there. Clicking on the image will open the image in a lightbox. Clicking the item name will redirect the vendor to the product detail page.     
-![](/documentation/images/vendor-products.jpg)      
+- A complete list of all the vendor's products is shown in the vendor's profile product tab. The vendor can view the product there. Clicking on the image will open the image in a lightbox. Clicking the item name will redirect the vendor to the product detail page.    
+
+	![](/documentation/images/vendor-products.jpg)      
 
 **As a vendor:**
 > I want to be able to see a current list of my sold items
-- The vendor profile sales tab is a list of the vendors selling items. By clicking on the sale order link, the vendor can view the details of the vendor's sold items from the customer order. It provides the vendor with the delivery address and customer contact details.     
-![](/documentation/images/vendor-sales.jpg)     
+- The vendor profile sales tab is a list of the vendors selling items. By clicking on the sale order link, the vendor can view the details of the vendor's sold items from the customer order. It provides the vendor with the delivery address and customer contact details.   
+
+	![](/documentation/images/vendor-sales.jpg)     
 
 **As a vendor:**
 > I want customers to commission particular works with specific preferences.
-- This is described as an available service in the services section on the homepage. Customers can contact us to ask if they have a particular requirement.     
-![](/documentation/images/services.jpg)     
+- This is described as an available service in the services section on the homepage. Customers can contact us to ask if they have a particular requirement.   
+
+	![](/documentation/images/services.jpg)     
 
 ### As a customer, ...
 
 **As a customer:**
 > I want to buy quality statues.
-- Over many years of visiting Nepal, India, and Tibet, we have many connections in Nepal. With a grounding in Buddhist practice, we understand the need for quality in Vajrayana Buddha statues.     
-![](/documentation/images/products-quality.jpg)     
+- Over many years of visiting Nepal, India, and Tibet, we have many connections in Nepal. With a grounding in Buddhist practice, we understand the need for quality in Vajrayana Buddha statues.   
+
+	![](/documentation/images/products-quality.jpg)     
 
 **As a customer:**
 > I want to contact the seller if I have questions about the product.
@@ -737,42 +738,50 @@ The image below is the product detail view with the edit delete links.
 **As a customer:**
 > I want to commission work for items I cannot find in the shop.
 - This matches with the vendor's requirement for the same. We have offered this as a possibility in the services section on the homepage.     
-![](/documentation/images/services.jpg)     
+
+	![](/documentation/images/services.jpg)     
 
 **As a customer:**
 > I'm interested in knowing about the statue-making process and the artisans that make the statues.
-- A blog has been included in the site with this in mind. It is important to educate, inform, and raise awareness about this craft. A blog is a place where we can promote new items, vendors and publish other information of interest for customers to read.     
-![](/documentation/images/blog.jpg)     
+- A blog has been included in the site with this in mind. It is important to educate, inform, and raise awareness about this craft. A blog is a place where we can promote new items, vendors and publish other information of interest for customers to read.    
+
+	![](/documentation/images/blog.jpg)     
 
 **As a customer:**
 > I want to be able to view items by category.   
-- The mega menu has in the navbar has links to all product categories. The customer can easily see all available categories in this view. Additionally, every product has a category tag. The user can click that tag to view all the other products within the same category.     
-![](/documentation/images/megamenu.jpg)     
+- The mega menu has in the navbar has links to all product categories. The customer can easily see all available categories in this view. Additionally, every product has a category tag. The user can click that tag to view all the other products within the same category.    
+
+	![](/documentation/images/megamenu.jpg)     
 
 **As a customer:**
 > I want to be able to sort the items in ascending, descending order.
-- In the top right of the product page, a filter allows the user to filter by price, rating, category, and name.     
-![](/documentation/images/product-filter.jpg)     
+- In the top right of the product page, a filter allows the user to filter by price, rating, category, and name.    
+
+	![](/documentation/images/product-filter.jpg)     
 
 **As a customer:**
 > I want to be able to search statues by name.
 - In additon to the search option mentioned user story directly above, you the user can also open the search from teh navbar. SOme quick links are provided in the modal that opens, or teh user can enter a search parameter in the search input.   
-![](/documentation/images/header-search.jpg)   
+
+	![](/documentation/images/header-search.jpg)   
 
 **As a customer:**
 > I want a seamless registration process.
 - Registration is a simple process. Complete the registration form. New users must provide a unique username and email. A confirmation email is sent with a link to click and confirm the provided email is correct. Once that is complete, the customer can log in.     
-![](/documentation/images/vendor-registration.jpg)     
+
+	![](/documentation/images/vendor-registration.jpg)     
 
 **As a customer:**
 > I want to log in with an email and password.
-- The user can use their username or email and password to log in.     
-![](/documentation/images/login.jpg)     
+- The user can use their username or email and password to log in.    
+
+	![](/documentation/images/login.jpg)     
 
 **As a customer:**
 > I want to have a profile to save time for future purchases.
 - The user can fill in their profile, so their details are automatically entered in the checkout form when they purchase something.     
-![](/documentation/images/profile-account-info.jpg)     
+
+	![](/documentation/images/profile-account-info.jpg)     
 
 **As a customer:**
 > I want an option to be able to close my account.
@@ -781,26 +790,31 @@ The image below is the product detail view with the edit delete links.
 **As a customer:**
 > It's important that I can easily and intuitively navigate the site.
 - The navbar is fixed and viewable at all times. The megamenu displays all the shop links. The cart icon in the navbar opens the modal side cart, which displays all cart items, and has links to the cart or checkout.
-- Links are provided at all stages of the navigation process, to go on or to go back. The user can also click the links in the navbar, which link to the main pages.     
-![](/documentation/images/buttons.jpg)     
-![](/documentation/images/shopping-cart.jpg)     
+- Links are provided at all stages of the navigation process, to go on or to go back. The user can also click the links in the navbar, which link to the main pages.   
+
+	![](/documentation/images/buttons.jpg)  
+
+	![](/documentation/images/shopping-cart.jpg)     
 
 **As a customer:**
 > I want to select and pay for items easily.
-- In the product list page, quick view and quick add buttons are provided so the user can easily view and add items to the cart. The user can click the go to secure checkout link in the toast success message or open the modal cart to update or navigate to the cart or checkout.     
-![](/documentation/images/quickview.jpg)     
-![](/documentation/images/cart.jpg)     
-![](/documentation/images/toast.jpg)     
+- In the product list page, quick view and quick add buttons are provided so the user can easily view and add items to the cart. The user can click the go to secure checkout link in the toast success message or open the modal cart to update or navigate to the cart or checkout.    
+
+	![](/documentation/images/quickview.jpg)     
+	![](/documentation/images/cart.jpg)     
+	![](/documentation/images/toast.jpg)     
 
 **As a customer:**
 > I want to receive confirmation of purchase.
 - The user receives a confirmation email of their purchase upon payment success.     
-![](/documentation/images/purchase-success.jpg)     
+
+	![](/documentation/images/purchase-success.jpg)     
 
 **As a customer:**
 > I want a record of my orders attached to my account profile.
-- The user profile orders tab is a list of all orders, with a link to view the order details.     
-![](/documentation/images/profile-orders.jpg)     
+- The user profile orders tab is a list of all orders, with a link to view the order details.    
+
+	![](/documentation/images/profile-orders.jpg)     
 
 ### As the site owner, ...
 
@@ -815,7 +829,8 @@ The image below is the product detail view with the edit delete links.
 **As the site owner:**
 > I want to educate potential customers about the complexity of producing quality statues.
 - I intend to use the blog to promote the artisans and services of the site. I also intend to educate and raise awareness by publishing articles about Buddhist philosophy.     
-![](/documentation/images/blog.jpg)     
+
+	![](/documentation/images/blog.jpg)     
 
 **As the site owner:**
 > I want to help to preserve the rich tradition of statue making.

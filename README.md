@@ -1139,5 +1139,5 @@ The same issue in the blog PostAdmin was resolved as follows.
 - **Issue Fix in Checkout OrderAdmin**    
 When opening an order to view the details in the checkout OrderAdmin, the ```user_profile``` select displayed a list of all users. I don't see that this should be displayed, as it only creates a possibility for mistakes. 
 I set the field to read-only, and now instead of the select showing all users, it shows a link to the order's user_profile.   
-     
-![](/documentation/images/order_user_profile.png)    
+
+	![](/documentation/images/order_user_profile.png)    
