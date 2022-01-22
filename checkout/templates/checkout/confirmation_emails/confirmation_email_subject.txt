@@ -1,1 +1,1 @@
-Boutique Ado Confirmation for Order Number {{ order.order_number }}
+Shop for Buddhas Confirmation for Order Number {{ order.order_number }}
