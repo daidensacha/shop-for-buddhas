@@ -1,3 +1,5 @@
+![](/documentation/images/mochup-light.png)
+
 🪷 Shop for Buddhas
 ===================
 
