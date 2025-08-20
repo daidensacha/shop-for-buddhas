@@ -1,12 +1,57 @@
-core.Microsoft*
-core.mongo*
-core.python*
-env.py
+
+
+# ---- Python ----
 __pycache__/
 *.py[cod]
-node_modules/
-.github/
-*.sqlite3
+*.pyo
+*.pyd
 *.pyc
+*.so
+*.egg
+*.egg-info/
+.eggs/
+core.python*
+env.py
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+pip-log.txt
+pip-delete-this-directory.txt
 requirements_bkp.txt
 
+# ---- Node ----
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+package-lock.json
+yarn.lock
+
+# ---- Databases ----
+*.sqlite3
+*.db
+*.db-journal
+core.Microsoft*
+core.mongo*
+
+# ---- OS files ----
+.DS_Store
+Thumbs.db
+
+# ---- Logs & misc ----
+*.log
+*.out
+*.pid
+*.seed
+*.cover
+coverage/
+.cache/
+.pytest_cache/
+.mypy_cache/
+.pyre/
+.pytype/
+.github/
